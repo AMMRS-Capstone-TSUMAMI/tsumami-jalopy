@@ -21,13 +21,13 @@ import Meals, {MealsEvent} from "./views/Meals.js";
 
 export default function router(URI) {
     const routes = {
-        '/': {
+        '/landing': {
             returnView: Landing,
             state: {},
             uri: '/',
             title: 'Landing',
         },
-        '/home': {
+        '/': {
             returnView: Home,
             state: {},
             uri: '/Home',
