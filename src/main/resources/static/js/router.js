@@ -8,8 +8,10 @@ import Login from "./views/Login.js";
 import LoginEvent from "./auth.js";
 import Register from "./views/Register.js"
 import {RegisterEvent} from "./views/Register.js";
-import prepareUserHTML, {prepareUserJS} from "./views/Account.js";
+import prepareUserHTML, {AccountEvent, prepareUserJS} from "./views/Account.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
+import Meals, {MealsEvent} from "./views/Meals";
+import Account from "./views/Account.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -18,18 +20,25 @@ import Logout, {LogoutEvent} from "./views/Logout.js";
  */
 export default function router(URI) {
     const routes = {
-        // '/': {
-        //     returnView: Home,
-        //     state: {},
-        //     uri: '/',
-        //     title: 'Home',
-        // },
+        '/': {
+            returnView: Home,
+            state: {},
+            uri: '/',
+            title: 'Home',
+        },
         '/account': {
             returnView: Account,
             state: {},
-            uri: '/logout',
-            title: "Logout",
+            uri: '/account',
+            title: "Account",
             viewEvent: AccountEvent
+        },
+        '/login': {
+            returnView: Login,
+            state: {},
+            uri: '/login',
+            title: "Login",
+            viewEvent: LoginEvent
         },
         '/logout': {
             returnView: Logout,
