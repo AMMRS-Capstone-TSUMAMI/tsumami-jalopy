@@ -1,4 +1,4 @@
-export default function Landing(props) {
+export default function About(props) {
     return `
         <header>
             <h1>Landing Page things</h1>
