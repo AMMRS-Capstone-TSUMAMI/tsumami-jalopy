@@ -1,4 +1,4 @@
-export default function Home(props) {
+export default function Landing(props) {
     console.log("The frontend did it. HER FAULT");
     return `
         <header>

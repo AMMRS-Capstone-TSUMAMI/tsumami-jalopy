@@ -40,6 +40,8 @@
             <a href="/account" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Account</a>
             <a href="/about" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Logo(About)<a/>
             <a href="/logout" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Logout<a/>
+            <a href="/landing" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Landing<a/>
+
             </nav>
             `;
     }

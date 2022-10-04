@@ -17,12 +17,20 @@ import Meals, {MealsEvent} from "./views/Meals.js";
  * @param URI
  * @returns {*}
  */
+
+
 export default function router(URI) {
     const routes = {
         '/': {
-            returnView: Home,
+            returnView: Landing,
             state: {},
             uri: '/',
+            title: 'Landing',
+        },
+        '/home': {
+            returnView: Home,
+            state: {},
+            uri: '/Home',
             title: 'Home',
         },
         '/account': {
@@ -78,7 +86,15 @@ export default function router(URI) {
         //     title: 'DoLogin',
         //     viewEvent: DoLoginEvents
         // }
-    };
+        // '/meals': {
+        //     returnView: Meals,
+        //     state: {},
+        //     uri: '/meals',
+        //     title: 'Meals',
+        //     viewEvent: MealsEvent
+        // },
 
+        };
     return routes[URI];
 }
+
