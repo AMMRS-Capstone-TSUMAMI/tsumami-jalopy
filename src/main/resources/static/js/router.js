@@ -8,8 +8,10 @@ import Login from "./views/Login.js";
 import LoginEvent from "./auth.js";
 import Register from "./views/Register.js"
 import {RegisterEvent} from "./views/Register.js";
-import prepareUserHTML, {prepareUserJS} from "./views/Account.js";
+import prepareUserHTML, {AccountEvent, prepareUserJS} from "./views/Account.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
+import Meals, {MealsEvent} from "./views/Meals";
+import Account from "./views/Account.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -23,6 +25,13 @@ export default function router(URI) {
             state: {},
             uri: '/',
             title: 'Home',
+        },
+        '/account': {
+            returnView: Account,
+            state: {},
+            uri: '/account',
+            title: "Account",
+            viewEvent: AccountEvent
         },
         '/login': {
             returnView: Login,
@@ -38,41 +47,19 @@ export default function router(URI) {
             title: "Logout",
             viewEvent: LogoutEvent
         },
-        '/register': {
-            returnView: Register,
+        '/meals': {
+            returnView: Meals,
             state: {},
-            uri: '/register',
-            title: 'Register',
-            viewEvent: RegisterEvent
+            uri: '/meals',
+            title: 'Meals',
+            viewEvent: MealsEvent
         },
-        '/me': {
-            returnView: prepareUserHTML,
-            state: {
-                me: '/api/users/me'
-            },
-            uri: '/me',
-            title: 'Account',
-            viewEvent: prepareUserJS
-        },
-        '/landing': {
-            returnView: Landing,
-            state: {},
-            uri: '/landing',
-            title: 'Landing',
-        },
-        // '/meals': {
-        //     returnView: Meals,
-        //     state: {},
-        //     uri: '/meals',
-        //     title: 'Meals',
-        // },
         '/about': {
             returnView: About,
             state: {},
             uri: '/about',
             title: 'About',
         },
-
         '/error': {
             returnView: Error404,
             state: {},
@@ -84,6 +71,13 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
+        },
+        '/dologin': {
+            returnView: DoLogin,
+            state: {},
+            uri: '/dologin',
+            title: 'DoLogin',
+            viewEvent: DoLoginEvents
         }
     };
 
