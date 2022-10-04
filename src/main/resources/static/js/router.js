@@ -1,5 +1,4 @@
 import Home from "./views/Home.js";
-// import Meals from "./views/Meals.js";
 import Landing from "./views/Landing.js";
 import About from "./views/About.js";
 import Error404 from "./views/Error404.js";
@@ -10,7 +9,7 @@ import Register from "./views/Register.js"
 import {RegisterEvent} from "./views/Register.js";
 import prepareUserHTML, {AccountEvent, prepareUserJS} from "./views/Account.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
-import Meals, {MealsEvent} from "./views/Meals";
+import Meals, {MealsEvent} from "./views/Meals.js";
 import Account from "./views/Account.js";
 
 /**
