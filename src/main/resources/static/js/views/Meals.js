@@ -1,4 +1,4 @@
-// import createView from "../createView.js";
+import createView from "../createView.js";
 
 export default function Meals(props) {
     return `
