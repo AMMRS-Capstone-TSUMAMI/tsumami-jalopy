@@ -1,5 +1,3 @@
-import {isLoggedIn} from "../../auth.js";
-
 // export default function Navbar(props) {
 //
 //     let navbar = `<nav class="d-flex bd-highlight mb-3 mt-1">
@@ -37,12 +35,12 @@ import {isLoggedIn} from "../../auth.js";
 
     export default function Navbar(props) {
 
-        let navbar = `<nav class="d-flex bd-highlight mb-3 mt-1">
+        return `<nav class="d-flex bd-highlight mb-3 mt-1">
             <a href="/meals" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Meals</a>
             <a href="/account" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Account</a>
             <a href="/about" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Logo(About)<a/>
             <a href="/logout" data-link class="nav-item text-white bg-success badge p-2 bd-highlight">Logout<a/>
-        }
-        navbar += `</nav>`;
-        return navbar;
-}
+            </nav>
+            `;
+    }
+

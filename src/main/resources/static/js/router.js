@@ -7,10 +7,10 @@ import Login from "./views/Login.js";
 import LoginEvent from "./auth.js";
 import Register from "./views/Register.js"
 import {RegisterEvent} from "./views/Register.js";
-import prepareUserHTML, {AccountEvent, prepareUserJS} from "./views/Account.js";
+import Account, {AccountEvent} from "./views/Account.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
 import Meals, {MealsEvent} from "./views/Meals.js";
-import Account from "./views/Account.js";
+// import Account from "./views/Account.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -71,13 +71,13 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
-        '/dologin': {
-            returnView: DoLogin,
-            state: {},
-            uri: '/dologin',
-            title: 'DoLogin',
-            viewEvent: DoLoginEvents
-        }
+        // '/dologin': {
+        //     returnView: DoLogin,
+        //     state: {},
+        //     uri: '/dologin',
+        //     title: 'DoLogin',
+        //     viewEvent: DoLoginEvents
+        // }
     };
 
     return routes[URI];
