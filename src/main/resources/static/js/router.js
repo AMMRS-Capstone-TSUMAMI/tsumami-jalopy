@@ -18,18 +18,18 @@ import Logout, {LogoutEvent} from "./views/Logout.js";
  */
 export default function router(URI) {
     const routes = {
-        '/': {
-            returnView: Home,
+        // '/': {
+        //     returnView: Home,
+        //     state: {},
+        //     uri: '/',
+        //     title: 'Home',
+        // },
+        '/account': {
+            returnView: Account,
             state: {},
-            uri: '/',
-            title: 'Home',
-        },
-        '/login': {
-            returnView: Login,
-            state: {},
-            uri: '/login',
-            title: "Login",
-            viewEvent: LoginEvent
+            uri: '/logout',
+            title: "Logout",
+            viewEvent: AccountEvent
         },
         '/logout': {
             returnView: Logout,
@@ -38,41 +38,19 @@ export default function router(URI) {
             title: "Logout",
             viewEvent: LogoutEvent
         },
-        '/register': {
-            returnView: Register,
+        '/meals': {
+            returnView: Meals,
             state: {},
-            uri: '/register',
-            title: 'Register',
-            viewEvent: RegisterEvent
+            uri: '/meals',
+            title: 'Meals',
+            viewEvent: MealsEvent
         },
-        '/me': {
-            returnView: prepareUserHTML,
-            state: {
-                me: '/api/users/me'
-            },
-            uri: '/me',
-            title: 'Account',
-            viewEvent: prepareUserJS
-        },
-        '/landing': {
-            returnView: Landing,
-            state: {},
-            uri: '/landing',
-            title: 'Landing',
-        },
-        // '/meals': {
-        //     returnView: Meals,
-        //     state: {},
-        //     uri: '/meals',
-        //     title: 'Meals',
-        // },
         '/about': {
             returnView: About,
             state: {},
             uri: '/about',
             title: 'About',
         },
-
         '/error': {
             returnView: Error404,
             state: {},
@@ -84,6 +62,13 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
+        },
+        '/dologin': {
+            returnView: DoLogin,
+            state: {},
+            uri: '/dologin',
+            title: 'DoLogin',
+            viewEvent: DoLoginEvents
         }
     };
 
