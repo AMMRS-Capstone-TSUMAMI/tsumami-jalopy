@@ -2,10 +2,7 @@ package tsumami.tsumamijalopy.web;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.User;
 import tsumami.tsumamijalopy.data.UserAuthInfoDTO;
 import tsumami.tsumamijalopy.data.UsersRepository;
@@ -26,7 +23,7 @@ public class UsersController {
         UserAuthInfoDTO userDTO = new UserAuthInfoDTO();
         userDTO.setEmail(loggedInUser.getEmail());
         //        userDTO.setRole(loggedInUser.getRole());
-        userDTO.setUserName(loggedInUser.getUserName());
+        userDTO.setUsername(loggedInUser.getUsername());
         //        userDTO.setProfilePic(loggedInUser.getProfilePic());
 
         return userDTO;

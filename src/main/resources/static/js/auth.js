@@ -74,7 +74,7 @@ export function isLoggedIn() {
 
 }
 
-//  returns an object with user_name and authority from the access_token
+//  returns an object with username and authority from the access_token
 export function getUser() {
     const accessToken = localStorage.getItem("access_token");
     if(!accessToken) {
@@ -85,7 +85,7 @@ export function getUser() {
     const decodedPayload = atob(payload);
     const payloadObject = JSON.parse(decodedPayload);
     const user = {
-        userName: payloadObject.user_name,
+        username: payloadObject.username,
         role: payloadObject.authorities[0]
     }
     return user;
