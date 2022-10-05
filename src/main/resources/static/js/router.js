@@ -4,9 +4,7 @@ import About from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
 import Login, {LoginEvent} from "./views/Login.js";
-// import LoginEvent from "./auth.js";
-import Register from "./views/Register.js"
-import {RegisterEvent} from "./views/Register.js";
+import Register, {RegisterEvent} from "./views/Register.js"
 import Account, {AccountEvent} from "./views/Account.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
 import Meals, {MealsEvent} from "./views/Meals.js";
@@ -46,6 +44,13 @@ export default function router(URI) {
             title: "Login",
             viewEvent: LoginEvent
         },
+        '/register': {
+            returnView: Register,
+            state: {},
+            uri: '/register',
+            title: "Register",
+            viewEvent: RegisterEvent
+        },
         '/logout': {
             returnView: Logout,
             state: {},
@@ -77,22 +82,8 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
-        },
-        // '/dologin': {
-        //     returnView: DoLogin,
-        //     state: {},
-        //     uri: '/dologin',
-        //     title: 'DoLogin',
-        //     viewEvent: DoLoginEvents
-        // }
-        // '/meals': {
-        //     returnView: Meals,
-        //     state: {},
-        //     uri: '/meals',
-        //     title: 'Meals',
-        //     viewEvent: MealsEvent
-        // },
-        };
+        }
+    };
     return routes[URI];
 }
 
