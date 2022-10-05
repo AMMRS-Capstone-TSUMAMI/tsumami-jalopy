@@ -2,6 +2,11 @@ import createView from './createView.js';
 
 
 export default function init() {
+    if(checkForLoginTokens(window.location.href)) {
+        setLoggedInUserInfo();
+        createView("/");
+        return;
+    }
     loadViewOnPageRequest();
     addListenerToNavLinks();
 }

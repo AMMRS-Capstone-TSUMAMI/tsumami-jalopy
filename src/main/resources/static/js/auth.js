@@ -108,3 +108,38 @@ export async function removeStaleTokens() {
             console.log("FETCH ERROR: " + error);
         });
 }
+
+export function setLoggedInUserInfo() {
+    const request = {
+        method: "GET",
+        headers: getHeaders()
+    }
+    const url = BACKEND_HOST_URL + "/api/users/authinfo";
+    fetch(url, request)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+        window.localStorage.setItem("user", JSON.stringify(data));
+    });
+}
+
+export function checkForLoginTokens(url) {
+    // console.log(url);
+    // access_token is given back from spring after #
+    let parts = url.split("#");
+    if(parts.length < 2)
+        return false;
+
+    parts = parts[1].split("&");
+    let tokens = [];
+    for (let i = 0; i < parts.length; i++) {
+        const pair = parts[i].split("=");
+        if(pair.length > 1 && (pair[0] === "access_token" || pair[0] === "refresh_token"))
+            tokens[pair[0]] = pair[1];
+    }
+    if(!tokens['access_token'])
+        return false;
+
+    setTokens(tokens);
+    return true;
+}
