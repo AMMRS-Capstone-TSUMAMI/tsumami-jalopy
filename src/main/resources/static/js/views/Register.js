@@ -212,7 +212,7 @@ export function RegisterEvent(){
         const passwordField = document.querySelector("#password");
 
         let newUser = {
-            userName: usernameField.value,
+            username: usernameField.value,
             email: emailField.value,
             password: passwordField.value
         }

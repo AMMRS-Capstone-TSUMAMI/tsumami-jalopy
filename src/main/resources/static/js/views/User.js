@@ -10,7 +10,7 @@ export default function prepareUserHTML(props) {
     // make the user's original pw available somewhere in here
     return `
         <h1>User Info</h1>
-        <h2>${props.me.userName}</h2>
+        <h2>${props.me.username}</h2>
         <h2>${props.me.email}</h2>
         
         <form>

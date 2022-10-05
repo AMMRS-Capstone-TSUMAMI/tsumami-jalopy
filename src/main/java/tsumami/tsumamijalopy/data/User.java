@@ -2,13 +2,8 @@ package tsumami.tsumamijalopy.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.util.Collection;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -23,7 +18,7 @@ public class User {
     private long id;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String userName;
+    private String username;
 
     @Email
     @NotEmpty
