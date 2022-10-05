@@ -2,15 +2,15 @@ export default function Landing(props) {
     console.log("The frontend did it. HER FAULT");
     return `
         <header>
-            <h1>HELLO TEST</h1>
+            <h1>GET PLANNIN' with TSUmami!</h1>
         </header>
         <main>
             <div>
                 <p>
-                <a href="/login" data-link class="my-link">Login via Google</a>
-                    This is the home page text.
+                
+                    This is the landing page!
                 </p>    
-                <button>View profile</button>
+                <button><a href="/login" data-link class="my-link">Login via Google</a></button>
             </div>
         </main>
     `;
