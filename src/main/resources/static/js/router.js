@@ -21,13 +21,13 @@ export default function router(URI) {
         '/landing': {
             returnView: Landing,
             state: {},
-            uri: '/',
+            uri: '/landing',
             title: 'Landing',
         },
         '/': {
             returnView: Home,
             state: {},
-            uri: '/Home',
+            uri: '/',
             title: 'Home',
         },
         '/me': {
