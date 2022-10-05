@@ -2,13 +2,18 @@ import render from './render.js';
 import router from './router.js';
 import fetchData from "./fetchData.js";
 import {getHeaders} from "./auth.js";
+import {isLoggedIn} from "./auth.js";
 
 /**
  * Finds the correct route for a given view, builds a loading view, fetches data and builds the final rendered view.
  * @param URI
  */
 export default function createView(URI) {
-
+    if(!isLoggedIn() && URI !== "/landing" && URI !== "/login") {
+        //redirect to landing if not logged in
+        window.location = "/landing";
+        return;
+    }
     let route = router(URI);
 
     // Store the title because the loading screen render overwrites it.
