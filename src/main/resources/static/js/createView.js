@@ -9,7 +9,8 @@ import {isLoggedIn} from "./auth.js";
  * @param URI
  */
 export default function createView(URI) {
-    if(!isLoggedIn() && URI !== "/landing") {
+    if(!isLoggedIn() && URI !== "/landing" && URI !== "/login") {
+        //redirect to landing if not logged in
         window.location = "/landing";
         return;
     }

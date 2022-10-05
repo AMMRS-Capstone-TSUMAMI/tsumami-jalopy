@@ -5,7 +5,7 @@ import {checkForLoginTokens, setLoggedInUserInfo} from "./auth.js";
 export default function init() {
     if(checkForLoginTokens(window.location.href)) {
         setLoggedInUserInfo();
-        createView("/landing");
+        createView("/meals");
         return;
     }
     loadViewOnPageRequest();
