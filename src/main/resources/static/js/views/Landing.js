@@ -7,6 +7,7 @@ export default function Landing(props) {
         <main>
             <div>
                 <p>
+                <a href="/login" data-link class="my-link">Login via Google</a>
                     This is the home page text.
                 </p>    
                 <button>View profile</button>
