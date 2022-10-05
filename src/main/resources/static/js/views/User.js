@@ -2,7 +2,7 @@ import CreateView from "../createView.js"
 
 
 let me;
-export default function Account(props) {
+export default function prepareUserHTML(props) {
     me = props.me;
 
     const userPostHTML = createPostHTML();
@@ -65,7 +65,7 @@ function createPostHTML() {
     return html;
 }
 
-export function AccountEvent() {
+export function prepareUserJS() {
     doTogglePasswordHandler();
     doSavePasswordHandler();
     // console.log(user.posts.length);

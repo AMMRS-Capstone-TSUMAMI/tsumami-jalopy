@@ -10,7 +10,7 @@ export function LogoutEvent() {
     window.setTimeout(function (){
         window.localStorage.removeItem("access_token");
         window.localStorage.removeItem("access_token");
-    createView("/login");
+    createView("/landing");
 },500)
 }
 
