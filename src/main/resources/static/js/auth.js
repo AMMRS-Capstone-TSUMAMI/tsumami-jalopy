@@ -56,12 +56,12 @@ export function getHeaders() {
  * @param responseData
  */
 function setTokens(responseData) {
-    if (responseData.route['access_token']) {
-        localStorage.setItem("access_token", responseData.route['access_token']);
+    if (responseData['access_token']) {
+        localStorage.setItem("access_token", responseData['access_token']);
         console.log("Access token set");
     }
-    if (responseData.route['refresh_token']) {
-        localStorage.setItem("refresh_token", responseData.route['refresh_token']);
+    if (responseData['refresh_token']) {
+        localStorage.setItem("refresh_token", responseData['refresh_token']);
         console.log("Refresh token set")
     }
 }
@@ -137,6 +137,7 @@ export function checkForLoginTokens(url) {
         if(pair.length > 1 && (pair[0] === "access_token" || pair[0] === "refresh_token"))
             tokens[pair[0]] = pair[1];
     }
+    console.log(tokens)
     if(!tokens['access_token'])
         return false;
 

@@ -10,20 +10,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Collection;
 
-public class User {
-}
-package ryanyoshimura.restfulblog.data;
-
-        import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-        import lombok.*;
-
-        import javax.persistence.*;
-        import javax.validation.constraints.Email;
-        import javax.validation.constraints.NotEmpty;
-        import javax.validation.constraints.NotNull;
-        import java.time.LocalDate;
-        import java.util.Collection;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -80,13 +66,4 @@ public class User {
 
     @NotEmpty
     private String protein_goal;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column
-    private UserRole role;
-
-    @OneToMany(mappedBy = "author")
-    @JsonIgnoreProperties("author")
-    private Collection<Post> posts;
 }
