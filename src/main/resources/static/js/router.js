@@ -18,7 +18,6 @@ import Meals, {MealsEvent} from "./views/Meals.js";
  * @returns {*}
  */
 
-
 export default function router(URI) {
     const routes = {
         '/landing': {
@@ -93,7 +92,6 @@ export default function router(URI) {
         //     title: 'Meals',
         //     viewEvent: MealsEvent
         // },
-
         };
     return routes[URI];
 }
