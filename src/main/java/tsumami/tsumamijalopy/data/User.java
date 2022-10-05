@@ -41,19 +41,45 @@ public class User {
 
     @Email
     @NotEmpty
-    @Column(nullable = false, length = 100)
+//    @Column(nullable = false, length = 100)
     private String email;
 
     @NotEmpty
-    @Column(nullable = false, length = 100)
+//    @Column(length = 100)
     private String gender;
 
-    @ToString.Exclude
-    @Column(nullable = false, length = 100)
-    private String password;
+    @NotEmpty
+//    @Column(length = 100)
+    private String birth_date;
 
-    @Column()
-    private LocalDate createdAt;
+    @NotEmpty
+//    @Column(length = 100)
+    private String height;
+
+    @NotEmpty
+//    @Column(length = 100)
+    private String weight;
+
+    @NotEmpty
+//    @Column(length = 100)
+    private String diet;
+
+    @NotEmpty
+//    @Column(length = 100)
+    private String activity_level;
+
+    @NotEmpty
+//    @Column(length = 100)
+    private String calorie_goal;
+
+    @NotEmpty
+    private String carb_goal;
+
+    @NotEmpty
+    private String fat_goal;
+
+    @NotEmpty
+    private String protein_goal;
 
     @NotNull
     @Enumerated(EnumType.STRING)
