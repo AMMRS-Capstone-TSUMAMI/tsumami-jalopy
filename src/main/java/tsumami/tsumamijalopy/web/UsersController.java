@@ -14,6 +14,11 @@ import tsumami.tsumamijalopy.services.AuthBuddy;
 public class UsersController {
     private UsersRepository usersRepository;
     private AuthBuddy authBuddy;
+    @GetMapping("/me")
+    private User getMe() {
+        User loggedInUser = usersRepository.findAll().get(0);
+        return loggedInUser;
+    }
 
     @GetMapping("/authinfo")
     private UserAuthInfoDTO getUserAuthInfo(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
