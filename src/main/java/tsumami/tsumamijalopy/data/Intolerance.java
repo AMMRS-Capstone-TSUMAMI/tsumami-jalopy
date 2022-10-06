@@ -22,6 +22,21 @@ import java.util.Collection;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
+        @ManyToMany(
+                fetch = FetchType.LAZY,
+                cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+                targetEntity = User.class)
+        @JoinTable(
+                name="user_intolerance",
+                joinColumns = {@JoinColumn(name = "intolerance_id", nullable = false, updatable = false)},
+                inverseJoinColumns = {@JoinColumn(name="user_id", nullable = false, updatable = false)},
+                foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+                inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+        )
+        @JsonIgnoreProperties("intolerances")
+        private Collection<User> users;
+
+
         @Column(nullable = false, length = 100)
         private String name;
 
