@@ -1,4 +1,6 @@
 package tsumami.tsumamijalopy.data;
 
-public interface MacroAllocationsRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MacroAllocationsRepository extends JpaRepository<MacroAllocation, Long> {
 }
