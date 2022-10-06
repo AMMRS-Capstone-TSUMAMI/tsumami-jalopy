@@ -1,4 +1,7 @@
 package tsumami.tsumamijalopy.data;
 
-public interface PlanDaysRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PlanDaysRepository extends JpaRepository<PlanDay, Long> {
+
 }
