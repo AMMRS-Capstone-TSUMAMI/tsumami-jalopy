@@ -9,14 +9,15 @@ export default function About(props) {
             <div class="row duh">
         <!-- card 1 start -->
                 <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="prp">
-                        <img src="../../img/miguel.jpg" class="ppl-img" alt="Matthew" id="matthew-pic">
+                    <div class="card">
+                        <img src="../../img/matthew.png" class="ppl-img" alt="Matthew" id="matthew-pic">
                         <div class="card-body profile-card">
                             <h5 class="card-title">
                                Matthew<br>Grayson
                             </h5>
                             <p>Full Stack Developer & Army Veteran</p>
                         </div>
+        
                         <div class="social-links">
                             <a href="www.linkedin.com/in/miguelguzmanwd"><i class="linkedin">L</i></a>
                             <a href="https://github.com/MiguelAGuzman"><i class="github">G</i></a>
@@ -28,8 +29,8 @@ export default function About(props) {
                     
                 <!--                card 2 start-->
                 <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="prp">
-                        <img src="../../img/miguel.jpg" class="ppl-img" alt="Shaquielle" id="shaquielle-pic">
+                    <div class="card">
+                        <img src="../../img/shaquielle.png" class="ppl-img" alt="Shaquielle" id="shaquielle-pic">
                         <div class="card-body profile-card">
                             <h5 class="card-title">
                                Shaquielle<br>Robbins
@@ -48,8 +49,8 @@ export default function About(props) {
         
                  <!--                card 3 start-->
                 <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="prp">
-                        <img src="../../img/ryan.jpeg" class="ppl-img" alt="Ryan" id="ryan-pic">
+                    <div class="card">
+                        <img src="../../img/ryan.png" class="ppl-img" alt="Ryan" id="ryan-pic">
         
                         <div class="card-body profile-card">
                             <h5 class="card-title">
@@ -68,8 +69,8 @@ export default function About(props) {
                 <!--                card 3 end-->
                 <!--                card 4 start-->
                 <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="prp">
-                        <img src="../../img/miguel.jpg" class="ppl-img" alt="Ashley" id="ashley-pic">
+                    <div class="card">
+                        <img src="../../img/ashley.png" class="ppl-img" alt="Ashley" id="ashley-pic">
                         <div class="card-body profile-card">
                             <h5 class="card-title">
                                 Ashley<br>Martinez
@@ -86,8 +87,8 @@ export default function About(props) {
                 <!--                card 4 end-->
                 <!--                card 5 start-->
                 <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="prp">
-                        <img src="../../img/miguel.jpg" class="ppl-img" alt="Miguel" id="miguel-pic">
+                    <div class="card">
+                        <img src="../../img/miguel.png" class="ppl-img" alt="Miguel" id="miguel-pic">
                         <div class="card-body profile-card">
                             <h5 class="card-title">
                                 Miguel<br>Guzman
