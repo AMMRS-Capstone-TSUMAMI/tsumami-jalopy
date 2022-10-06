@@ -1,4 +1,7 @@
 package tsumami.tsumamijalopy.data;
 
-public interface IngredientsRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IngredientsRepository extends JpaRepository<Ingredient, Long> {
+
 }
