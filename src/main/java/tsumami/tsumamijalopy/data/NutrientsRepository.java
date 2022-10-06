@@ -1,4 +1,7 @@
 package tsumami.tsumamijalopy.data;
 
-public interface NutrientsRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface NutrientsRepository extends JpaRepository<Nutrient, Long> {
+
 }

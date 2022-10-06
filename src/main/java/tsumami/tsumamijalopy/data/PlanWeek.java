@@ -20,7 +20,7 @@ import java.util.Date;
 public class PlanWeek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
 //    @Transient
     @NotEmpty
