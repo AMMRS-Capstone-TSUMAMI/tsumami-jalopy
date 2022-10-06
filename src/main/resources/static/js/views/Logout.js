@@ -9,7 +9,7 @@ export default function Logout(props) {
 export function LogoutEvent() {
     window.setTimeout(function (){
         window.localStorage.removeItem("access_token");
-        window.localStorage.removeItem("access_token");
+        window.localStorage.removeItem("tsumami_user");
     createView("/landing");
 },500)
 }

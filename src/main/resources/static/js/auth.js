@@ -119,7 +119,7 @@ export function setLoggedInUserInfo() {
         .then(function(response) {
             return response.json();
         }).then(function(data) {
-        window.localStorage.setItem("user", JSON.stringify(data));
+            window.localStorage.setItem("tsumami_user", JSON.stringify(data));
     });
 }
 
