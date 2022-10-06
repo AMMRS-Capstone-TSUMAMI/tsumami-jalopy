@@ -9,6 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IntolerancesRepository extends JpaRepository<Intolerance, Long> {
 //    IntolerancesRepository name(String name);
-
 }
 
