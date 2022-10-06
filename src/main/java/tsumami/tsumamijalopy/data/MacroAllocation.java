@@ -21,14 +21,14 @@ public class MacroAllocation {
     private long id;
 
     @NotNull
-    public String dietType;
+    private String dietType;
 
     @NotNull
-    public int carbPercent;
+    private int carbPercent;
 
     @NotNull
-    public int fatPercent;
+    private int fatPercent;
 
     @NotNull
-    public int proteinPercent;
+    private int proteinPercent;
 }

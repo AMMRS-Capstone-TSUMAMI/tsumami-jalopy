@@ -1,4 +1,7 @@
 package tsumami.tsumamijalopy.data;
 
-public interface PlanTimeslotsRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Long> {
+
 }
