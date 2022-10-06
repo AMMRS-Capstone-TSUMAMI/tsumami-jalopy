@@ -8,7 +8,9 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.ppl-img:first-child{
+    margin: auto;
+}
 .whole-card{
     background-color: whitesmoke;
     box-shadow: 5px 5px;
@@ -21,6 +23,9 @@
 }
 
 .card-body > h5{
+    display: flex;
+    justify-content: center;
+    text-align: center;
     font-size: 30px;
     color: #05386B;
     /*font-family: var(--body);*/
@@ -35,7 +40,7 @@
     margin: .25em;
 }
 
-.prp{
+.card{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,6 +54,7 @@
 }
 
 .card-title > p{
+    text-align: center;
     margin-top: .5em;
     font-size: 18px;
 }
@@ -66,4 +72,12 @@
 
 .duh{
     justify-content: center;
+}
+
+p {
+    text-align: center;
+}
+
+#matthew-pic {
+    margin-left: 6.5vw;
 }
