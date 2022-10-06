@@ -1,21 +1,30 @@
 package tsumami.tsumamijalopy.data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name="planWeek")
+@Table
 
 public class PlanWeek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Transient
+//    @Transient
     @NotEmpty
 //    @Column(length = 100)
-    private Date start_date;
-
+    private Date startDate;
 
 }
