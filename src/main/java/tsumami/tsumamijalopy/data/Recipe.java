@@ -30,6 +30,4 @@ public class Recipe {
     @Column(nullable = false, length = 1000)
     private Integer description;
 
-    private Integer unit;
-
 }
