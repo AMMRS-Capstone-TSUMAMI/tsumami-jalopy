@@ -21,5 +21,5 @@ public class PlanDay {
     private long id;
 
     @NotEmpty
-    public int dayNum;
+    private int dayNum;
 }
