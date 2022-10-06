@@ -13,22 +13,16 @@ import java.util.Collection;
 @Getter
 @Setter
 //@ToString
-@Entity(name="ingredients")
-@Table
+@Entity
+@Table(name="ingredients")
 public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//    @Column(nullable = false, length = 100)
     private String name;
-
-//    @Column(nullable = false, length = 100)
     private String photo;
-
-    private Integer price;
-
-    private Integer unit;
+    private Long price;
+    private Long unit;
 
 }
