@@ -32,6 +32,22 @@ public class User {
     @JsonIgnoreProperties("users")
     private Collection<Intolerance> intolerances;
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            targetEntity = User.class)
+    @JoinTable(
+            name="user_favorite_recipes",
+            joinColumns = {@JoinColumn(name = "users_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="recipes_id", nullable = false, updatable = false)},
+            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+    )
+    @JsonIgnoreProperties("users")
+    private Collection<Recipe> recipes;
+
+
+
     @Column(nullable = false, unique = true, length = 100)
     private String username;
 
