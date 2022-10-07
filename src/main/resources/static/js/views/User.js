@@ -2,68 +2,167 @@ import CreateView from "../createView.js"
 
 
 let me;
-export default function prepareUserHTML(props) {
+export default function prepareUser(props) {
     me = props.me;
 
-    const userPostHTML = createPostHTML();
 
     // make the user's original pw available somewhere in here
     return `
-        <h1>User Info</h1>
-        <h2>${props.me.username}</h2>
-        <h2>${props.me.email}</h2>
+        <h1>Update Info</h1>
         
-        <form>
-            <label for="oldpassword">Please enter your current password</label>
-            <input type="password" id="oldpassword" name="oldpassword">
-            <br>
-
-            <label for="newpassword">New password</label>
-            <input type="password" id="newpassword" name="newpassword">
-            <br>
-            <label for="confirmpassword">Confirm new password</label>
-            <input type="password" id="confirmpassword" name="confirmpassword">
+       <!--                    //FORM #1-->
+<!--                    //weight input-->
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputWeight">Weight</label>
+                    <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
+                    </div>
+<!--                    //submit button-->
+                     <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </div>
+                  </form>
+                  </div>
+                   </div>
+                </div>
+                </div>
+                  
+                  
+<!--                //FORM #2-->
+                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
+                <form>
+<!--                  //allergies input-->
+                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputAllergies">Allergies</label>
+                    <input type="text" class="form-control" id="inputAllergies" placeholder="Allergies">
+                    </div>
+<!--                    //dietary restrictions input-->
+                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputRestrictions">Restrictions</label>
+                    <input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">
+                    </div>
+<!--                    //food preferences input-->
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPreferences">Preferences</label>
+                    <input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
+                    </div>
+<!--                    //other input-->
+                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputOther">Other</label>
+                    <input type="text" class="form-control" id="inputOther" placeholder="Other">
+                    </div>
+<!--                    //submit button-->
+                   <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+                </div>
+               
+                   
+                  
+<!--                //FORM #3-->
+                 <h1 class="h3 mb-3 font-weight-normal">Fitness Level & Weight Goals</h1>
+                <form>
+<!--                    //fitness level input-->
+                      <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFitnessLevel">Fitness Level</label>
+                    <input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
+                    </div>
+<!--                    //weight goals input-->
+                       <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputWeightGoal">Weight Goal</label>
+                    <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
+                    </div>
+<!--                    //submit button-->
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                    </div>
+                  </form>
+                  </div>
+                  
+                   <!--                //FORM #4-->
+                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
+                <form>    
+<!--                body type input-->
+                   <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputBodyType">Body Type</label>
+                    <select id="inputBodyType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Ectomorph</option>
+                        <option>Endomorph</option>
+                        <option>Mesomorph</option>
+                        </select>
+                    </div>
+<!--                    diet type input-->
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDietType">Body Type</label>
+                    <select id="inputDietType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Paleo</option>
+                        <option>Keto</option>
+                        <option>Anything Else</option>
+                        </select>
+                    </div>
+<!--                    any other diet-->
+                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputOtherDiet">Other Diet</label>
+                    <input type="text" class="form-control" id="inputOtherDiet" placeholder="Other Diet">
+                    </div>
+                
+<!--                #FORM #5-->
+                 <h1 class="h3 mb-3 font-weight-normal">Recommended Calories/Macros</h1>
+                <form>
+<!--                    //calories information-->
+                      <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCalories">Calories</label>
+                    <input type="text" class="form-control" id="inputCalories" placeholder="Calories">
+                    </div>
+<!--                    //protein input-->
+                      <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputProtein">Protein</label>
+                    <input type="text" class="form-control" id="inputProtein" placeholder="Protein">
+                    </div>
+<!--                    //carbs input-->
+                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCarbs">Carbs</label>
+                    <input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
+                    </div>
+<!--                    //fat input-->
+                      <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFat">Fat</label>
+                    <input type="text" class="form-control" id="inputFat" placeholder="Fat">
+                    </div>
+<!--                    //submit button-->
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                    </div>
+                  </form>
+                  </div>
+                  </div>
+                </div>
             
-            <br>
-            <button id="toggleShowPassword" name="toggleShowPassword">Show Password?</button>
-            <button id="updatePassword" name="updatePassword">Save New Password</button>
-        </form>
+  </body>
+</html>
         
         <hr>
-        ${userPostHTML}
     `;
 }
 
-function createPostHTML() {
-    let html = `
-        <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Content</th>
-        </tr>
-        </thead>
-        <tbody>
-    `;
-
-    // add a row to the table for each user post
-    if(me.posts) {
-        for (let i = 0; i < me.posts.length; i++) {
-            const post = me.posts[i];
-            html += `<tr>
-            <td>${post.title}</td>
-            <td>${post.category}</td>
-            <td>${post.content}</td>
-            </tr>`;
-        }
-    }
-    // finish the table
-    html += `
-        </tbody>
-        </table>`;
-    return html;
-}
 
 export function prepareUserJS() {
     doTogglePasswordHandler();
