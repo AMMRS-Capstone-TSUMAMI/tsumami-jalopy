@@ -47,6 +47,10 @@ public class User {
     private Collection<Recipe> recipes;
 
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties({"user_id"})
+    private Collection<PlanWeek> planWeeks;
+
 
     @Column(nullable = false, unique = true, length = 100)
     private String username;
