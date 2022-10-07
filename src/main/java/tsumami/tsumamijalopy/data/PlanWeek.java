@@ -30,7 +30,15 @@ public class PlanWeek {
     private Date startDate;
 
     @ManyToOne
-    @JsonIgnoreProperties({"plan_week", "venue"})
+    @JsonIgnoreProperties({"plan_week"})
     private User user;
+
+
+
+
+
+    @OneToMany(mappedBy = "planWeek")
+    @JsonIgnoreProperties({"plan_week_id"})
+    private Collection<PlanDay> planDays;
 
 }
