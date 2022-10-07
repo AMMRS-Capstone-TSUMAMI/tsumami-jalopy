@@ -47,6 +47,17 @@ public class User {
     private Collection<Recipe> recipes;
 
 
+    @ManyToMany
+    @JoinTable(
+            name = "plan_weeks_fk",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "plan_week_id")
+    )
+    @JsonIgnoreProperties({"user_id"})
+    private Collection<User> users;
+
+
+
 
     @Column(nullable = false, unique = true, length = 100)
     private String username;
