@@ -23,6 +23,7 @@ public class UsersController {
     @GetMapping("/authinfo")
     private UserAuthInfoDTO getUserAuthInfo(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+//        System.out.println(authBuddy.getUserFromAuthHeader(authHeader).getBirth_date());
 
         // use email to lookup the user's info
         UserAuthInfoDTO userDTO = new UserAuthInfoDTO();
