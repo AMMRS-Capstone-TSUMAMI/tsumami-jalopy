@@ -36,6 +36,11 @@ public class PlanTimeslot {
     @JsonIgnoreProperties("plan_timeslots")
     private Collection<Recipe> recipes;
 
+//in progress!!!!
+    @ManyToOne
+    @JsonIgnoreProperties({"plan_timeslots"})
+    private  PlanDay planDay;
+
     @NotEmpty
     private String timeslot;
 }

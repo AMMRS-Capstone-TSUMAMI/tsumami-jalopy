@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -27,5 +28,10 @@ public class PlanDay {
     @ManyToOne
     @JsonIgnoreProperties({"plan_day"})
     private  PlanWeek planWeek;
+
+//    in progress
+    @OneToMany(mappedBy = "planDay")
+    @JsonIgnoreProperties({"plan_day_id"})
+    private Collection<PlanTimeslot> planTimeslots;
 
 }
