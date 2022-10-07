@@ -26,19 +26,6 @@ export default function Register(props) {
 </head>
 <body>
 
-        
-<!--      //carousels indicate the number of slides to show at a time-->
-<!--            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">-->
-<!--              <ol class="carousel-indicators">-->
-<!--    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>-->
-<!--    <li data-target="#carouselIndicators" data-slide-to="1"></li>-->
-<!--    <li data-target="#carouselIndicators" data-slide-to="2"></li>-->
-<!--    <li data-target="#carouselIndicators" data-slide-to="3"></li>-->
-<!--  </ol>-->
-<!--            //building the beginning of the carousel-->
-<!--              <div class="carousel-inner">-->
-<!--                <div class="carousel-item active">-->
-               
 <!--                    //FORM #1-->
                 <h1 class="h3 mb-3 font-weight-normal">Personal Info</h1>
                 <form>
@@ -81,10 +68,8 @@ export default function Register(props) {
                 </div>
                 </div>
                   
-                    
-<!--                -->
+                  
 <!--                //FORM #2-->
-<!--                <div class="carousel-item">-->
                  <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
                 <form>
 <!--                  //allergies input-->
@@ -123,7 +108,6 @@ export default function Register(props) {
                    
                   
 <!--                //FORM #3-->
-<!--                 <div class="carousel-item">-->
                  <h1 class="h3 mb-3 font-weight-normal">Fitness Level & Weight Goals</h1>
                 <form>
 <!--                    //fitness level input-->
@@ -144,9 +128,40 @@ export default function Register(props) {
                     </div>
                   </form>
                   </div>
+                  
+                   <!--                //FORM #4-->
+                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
+                <form>    
+<!--                body type input-->
+                   <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputBodyType">Body Type</label>
+                    <select id="inputBodyType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Ectomorph</option>
+                        <option>Endomorph</option>
+                        <option>Mesomorph</option>
+                        </select>
+                    </div>
+<!--                    diet type input-->
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDietType">Body Type</label>
+                    <select id="inputDietType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Paleo</option>
+                        <option>Keto</option>
+                        <option>Anything Else</option>
+                        </select>
+                    </div>
+<!--                    any other diet-->
+                     <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputOtherDiet">Other Diet</label>
+                    <input type="text" class="form-control" id="inputOtherDiet" placeholder="Other Diet">
+                    </div>
                 
-<!--                #FORM #4-->
-<!--                <div class="carousel-item">-->
+<!--                #FORM #5-->
                  <h1 class="h3 mb-3 font-weight-normal">Recommended Calories/Macros</h1>
                 <form>
 <!--                    //calories information-->
@@ -182,25 +197,10 @@ export default function Register(props) {
                   </div>
                 </div>
             
-<!--//buttons to move through the carousel-->
-<!--             <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">-->
-<!--       <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--    <span class="sr-only">Previous</span>-->
-<!--    </a>-->
-<!--    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">-->
-<!--    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--    <span class="sr-only">Next</span>-->
-<!--  </a>-->
-<!--  </div>-->
-
-           
-  
   </body>
 </html>
 `;
 }
-
-
 
 
 export function RegisterEvent(){
