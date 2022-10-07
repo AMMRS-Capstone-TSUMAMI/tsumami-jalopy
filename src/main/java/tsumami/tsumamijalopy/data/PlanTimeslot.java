@@ -38,4 +38,10 @@ public class PlanTimeslot {
 
     @NotEmpty
     private String timeslot;
+
+    @ManyToOne
+    @JsonIgnoreProperties({"plan_week"})
+    private PlanDay planDay;
+
+
 }

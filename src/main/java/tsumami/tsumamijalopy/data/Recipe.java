@@ -35,6 +35,17 @@ public class Recipe {
     @JsonIgnoreProperties("plan_timeslots")
     private Collection<PlanTimeslot> planTimeslots;
 
+//    @ManyToMany
+//    @JoinTable(
+//            name = "user_favorite_recipe",
+//            joinColumns = @JoinColumn(name = "recipes_id"),
+//            inverseJoinColumns = @JoinColumn(name = "users_id")
+//            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+//            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+//    )
+//    @JsonIgnoreProperties({"recipe", "venue"})
+//    private Collection<User> users;
+
     private String name;
     private String photo;
     @Column(nullable = false, length = 1000)
