@@ -1,0 +1,26 @@
+.timeslot-name {
+    transform: rotate(-90deg);
+    width: 3rem;
+}
+
+.meals-calendar-row {
+    height: 6rem;
+}
+#meals-calendar ul {
+    width: 100%;
+    display: table;
+    table-layout: fixed; /* optional, for equal spacing */
+    border-collapse: collapse;
+    margin: 0;
+}
+#meals-calendar li {
+    display: table-cell;
+    text-align: center;
+    border: 1px solid black;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.tn {
+    line-height: 6rem;
+}
