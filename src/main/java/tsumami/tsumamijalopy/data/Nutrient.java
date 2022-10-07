@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="nutrient")
+@Entity(name="nutrients")
 @Table
 
 public class Nutrient {
