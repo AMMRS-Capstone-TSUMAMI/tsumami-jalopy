@@ -1,5 +1,6 @@
 package tsumami.tsumamijalopy.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,13 +29,8 @@ public class PlanWeek {
 //    @Column(length = 100)
     private Date startDate;
 
-    @ManyToMany
-    @JoinTable(
-            name = "plan_weeks_fk",
-            joinColumns = @JoinColumn(name = "plan_week_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
+    @ManyToOne
     @JsonIgnoreProperties({"plan_week", "venue"})
-    private Collection<User> users;
+    private User user;
 
 }
