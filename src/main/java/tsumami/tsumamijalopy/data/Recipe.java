@@ -20,6 +20,21 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            targetEntity = PlanTimeslot.class)
+    @JoinTable(
+            name="plan_timeslot_recipe",
+            joinColumns = {@JoinColumn(name = "recipe_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="plan_timeslot_id", nullable = false, updatable = false)},
+            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+    )
+    @JsonIgnoreProperties("plan_timeslots")
+    private Collection<PlanTimeslot> planTimeslots;
+
     private String name;
     private String photo;
     @Column(nullable = false, length = 1000)
