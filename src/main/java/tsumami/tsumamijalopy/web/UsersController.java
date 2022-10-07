@@ -34,4 +34,12 @@ public class UsersController {
 
         return userDTO;
     }
+
+    @PostMapping("/create")
+    public void createUser(@RequestBody User newUser) {
+        usersRepository.save(newUser);
+    }
+
+
+
 }
