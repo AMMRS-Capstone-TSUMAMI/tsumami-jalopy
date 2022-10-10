@@ -72,12 +72,12 @@ export function isLoggedIn() {
     }
 }
 
-export function redirectUnregisteredUser() {
+export function isRegistered() {
     let user = getUser()
-    if(user.username === null) {
-        createView("/register")
+    if(user.calorie_goal === null) {
+        return false
     } else {
-        createView("/meals")
+        return true
     }
 }
 
