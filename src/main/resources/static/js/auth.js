@@ -69,7 +69,35 @@ export function isLoggedIn() {
     } else {
         return false;
     }
+}
 
+export async function isRegistered() {
+    const request = {
+        method: "GET",
+        headers: getHeaders()
+    };
+    let email = await fetch(`/api/users/authinfo`, request)
+        .then((response) => {
+            return response.json();
+        }).then(data => {
+            return data.email
+        }).catch(error => {
+            console.log("FETCH ERROR: " + error);
+            //    return data.email or similar
+        });
+
+    //create endpoint to access email from db
+    const request2 = {
+        method: "GET",
+        headers: getHeaders()
+    }
+
+    await fetch(`/api/users/findByEmail/${email}`, request)
+        .then((response) => {
+            if (response.status === 401) {
+                return false;
+            } else return true;
+        })
 }
 
 //  returns an object with user_name and authority from the access_token

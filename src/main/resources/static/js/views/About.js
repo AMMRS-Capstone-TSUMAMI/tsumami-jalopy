@@ -1,109 +1,86 @@
 export default function About(props) {
-    return `
-        <header>
-            <h1>About Page things</h1>
-        </header>
+    let Person = [
+        {
+            "pictures": "../../img/matthew.png",
+            "vetStatus": "Full Stack Developer & Army Veteran",
+            "firstName": "Matthew",
+            "lastName": "Grayson",
+            "linkedIn": "matthewagrayson",
+            "github": "Matthew-Grayson",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "matthewgrayson"
+        },
+        {
+            "pictures": "../../img/shaquielle.png",
+            "vetStatus": "Full Stack Developer & Army Veteran",
+            "firstName": "Shaquielle",
+            "lastName": "Robbins",
+            "linkedIn": "shaquiellerobbins",
+            "github": "shaquiellerobbins",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "shaquiellerobbins"
 
-        <div class="container wrapper">
-<!--            ////column for the center-->
-            <div class="row duh">
-        <!-- card 1 start -->
-                <section class="about-card shadow-lg" style="width: 18rem;">
+        },
+        {
+            "pictures": "../../img/ryan.png",
+            "vetStatus": "Full Stack Developer & Air Force Veteran",
+            "firstName": "Ryan",
+            "lastName": "Yoshimura",
+            "linkedIn": "ryanskyoshimura",
+            "github": "RSKYoshi",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "ryanyoshimura"
+        },
+        {
+            "pictures": "../../img/ashley.png",
+            "vetStatus": "Full Stack Developer & Army Veteran",
+            "firstName": "Ashley",
+            "lastName": "Martinez",
+            "linkedIn": "ashmar32",
+            "github": "ashmar32",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "ashleymartinez"
+        },
+        {
+            "pictures": "../../img/miguel.png",
+            "vetStatus": "Full Stack Developer & Army Veteran",
+            "firstName": "Miguel",
+            "lastName": "Guzman",
+            "linkedIn": "miguelguzmanwd",
+            "github": "MiguelAGuzman",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "miguelguzman"
+        }
+    ]
+    let html = `<header>
+        <h1>About Page things</h1>
+    </header>
+    <div class="container wrapper">
+        <div class="row duh">`;
+
+    for (let i = 0; i <= 4; i++) {
+    html += `
+                <section class="about-card shadow-1">
                     <div class="card">
-                        <img src="../../img/matthew.png" class="ppl-img" alt="Matthew" id="matthew-pic">
+                        <img src="${Person[i].pictures}" class="ppl-img" alt="img">
                         <div class="card-body profile-card">
-                            <h5 class="card-title">
-                               Matthew<br>Grayson
-                            </h5>
-                            <p>Full Stack Developer & Army Veteran</p>
-                        </div>
-        
-                        <div class="social-links">
-                            <a href="www.linkedin.com/in/miguelguzmanwd"><i class="linkedin">L</i></a>
-                            <a href="https://github.com/MiguelAGuzman"><i class="github">G</i></a>
-                            <a href="alumni-link"><i class="alumni">A</i></a>
-                        </div>
-                    </div>
-                </section>
-                <!-- card 1 end -->
-                    
-                <!--                card 2 start-->
-                <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="card">
-                        <img src="../../img/shaquielle.png" class="ppl-img" alt="Shaquielle" id="shaquielle-pic">
-                        <div class="card-body profile-card">
-                            <h5 class="card-title">
-                               Shaquielle<br>Robbins
-                            </h5>
-                            <p>Full Stack Developer & Army Veteran</p>
-                        </div>
-        
-                        <div class="social-links">
-                            <a href="www.linkedin.com/in/miguelguzmanwd"><i class="linkedin">L</i></a>
-                            <a href="https://github.com/MiguelAGuzman"><i class="github">G</i></a>
-                            <a href="alumni-link"><i class="alumni">A</i></a>
-                        </div>
-                    </div>
-                </section>
-                 <!--                card 2 end-->
-        
-                 <!--                card 3 start-->
-                <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="card">
-                        <img src="../../img/ryan.png" class="ppl-img" alt="Ryan" id="ryan-pic">
-        
-                        <div class="card-body profile-card">
-                            <h5 class="card-title">
-                                Ryan<br>Yoshimura
-                            </h5>
-                            <p>Full Stack Developer & Air Force Veteran</p>
-                        </div>
-        
-                        <div class="social-links">
-                            <a href="www.linkedin.com/in/miguelguzmanwd"><i class="linkedin">L</i></a>
-                            <a href="https://github.com/MiguelAGuzman"><i class="github">G</i></a>
-                            <a href="alumni-link"><i class="alumni">A</i></a>
-                        </div>
-                    </div>
-                </section>
-                <!--                card 3 end-->
-                <!--                card 4 start-->
-                <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="card">
-                        <img src="../../img/ashley.png" class="ppl-img" alt="Ashley" id="ashley-pic">
-                        <div class="card-body profile-card">
-                            <h5 class="card-title">
-                                Ashley<br>Martinez
-                            </h5>
-                            <p>Full Stack Developer & Army Veteran</p>
+                            <h4 class="card-title">
+                               ${Person[i].firstName}<br>${Person[i].lastName}
+                            </h4>
                         </div>
                         <div class="social-links">
-                            <a href="www.linkedin.com/in/miguelguzmanwd"><i class="linkedin">L</i></a>
-                            <a href="https://github.com/MiguelAGuzman"><i class="github">G</i></a>
-                            <a href="alumni-link"><i class="alumni">A</i></a>
+                            <a href="www.linkedin.com/in/${Person[i].linkedIn}"><i class="linkedin">L</i></a>
+                            <a href="https://github.com/${Person[i].github}"><i class="github">G</i></a>
+                            <a href="${Person[i].alumniLink}"><i class="alumni">A</i></a>
+                            <a href="${Person[i].resume}.venuscohort.com"><em>R</em></a>
                         </div>
                     </div>
+                                        <span>${Person[i].vetStatus}</span>
+
                 </section>
-                <!--                card 4 end-->
-                <!--                card 5 start-->
-                <section class="about-card shadow-lg" style="width: 18rem;">
-                    <div class="card">
-                        <img src="../../img/miguel.png" class="ppl-img" alt="Miguel" id="miguel-pic">
-                        <div class="card-body profile-card">
-                            <h5 class="card-title">
-                                Miguel<br>Guzman
-                            </h5>
-                            <p>Full Stack Developer & Army Veteran</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="www.linkedin.com/in/miguelguzmanwd"><i class="linkedin">L</i></a>
-                            <a href="https://github.com/MiguelAGuzman"><i class="github">G</i></a>
-                            <a href="alumni-link"><i class="alumni">A</i></a>
-                        </div>
-                    </div>
-                </section>
-                <!--                card 5 end-->
-            </div>
+    `}
+    html += `   
         </div>
-    `;
+        </div>`;
+        return html;
 }

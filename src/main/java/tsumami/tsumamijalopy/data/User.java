@@ -18,34 +18,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
-            targetEntity = Intolerance.class)
-    @JoinTable(
-            name="user_intolerance",
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name="intolerance_id", nullable = false, updatable = false)},
-            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
-            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
-    )
-    @JsonIgnoreProperties("users")
-    private Collection<Intolerance> intolerances;
+//    @ManyToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+//            targetEntity = Intolerance.class)
+//    @JoinTable(
+//            name="user_intolerance",
+//            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name="intolerance_id", nullable = false, updatable = false)},
+//            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+//            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+//    )
+//    @JsonIgnoreProperties("users")
+//    private Collection<Intolerance> intolerances;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
-            targetEntity = User.class)
-    @JoinTable(
-            name="user_favorite_recipes",
-            joinColumns = {@JoinColumn(name = "users_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name="recipes_id", nullable = false, updatable = false)},
-            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
-            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
-    )
-    @JsonIgnoreProperties("users")
-    private Collection<Recipe> recipes;
-
+//    @ManyToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+//            targetEntity = User.class)
+//    @JoinTable(
+//            name="user_favorite_recipes",
+//            joinColumns = {@JoinColumn(name = "users_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name="recipes_id", nullable = false, updatable = false)},
+//            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+//            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+//    )
+//    @JsonIgnoreProperties("users")
+//    private Collection<Recipe> recipes;
+//
 
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user_id"})
@@ -60,44 +60,44 @@ public class User {
     private String username;
 
     @Email
-    @NotEmpty
+//    @NotEmpty
 //    @Column(nullable = false, length = 100)
     private String email;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String gender;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String birth_date;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String height;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String weight;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String diet;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String activity_level;
 
-    @NotEmpty
+//    @NotEmpty
 //    @Column(length = 100)
     private String calorie_goal;
 
-    @NotEmpty
+//    @NotEmpty
     private String carb_goal;
 
-    @NotEmpty
+//    @NotEmpty
     private String fat_goal;
 
-    @NotEmpty
+//    @NotEmpty
     private String protein_goal;
 }
