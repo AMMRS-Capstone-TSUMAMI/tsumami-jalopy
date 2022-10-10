@@ -10,13 +10,29 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@ToString
 @Entity
 @Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Email
+    private String email;
+
+    @Column(unique = true)
+    private String username;
+
+    private String gender;
+    private String birth_date;
+    private String height;
+    private String weight;
+    private String diet;
+    private String activity_level;
+    private String calorie_goal;
+    private String carb_goal;
+    private String fat_goal;
+    private String protein_goal;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -46,7 +62,6 @@ public class User {
     @JsonIgnoreProperties("users")
     private Collection<Recipe> recipes;
 
-
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user_id"})
     private Collection<PlanWeek> planWeeks;
@@ -54,50 +69,4 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user_id"})
     private Collection<Recipe> recipe;
-
-
-    @Column(nullable = false, unique = true, length = 100)
-    private String username;
-
-    @Email
-    @NotEmpty
-//    @Column(nullable = false, length = 100)
-    private String email;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String gender;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String birth_date;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String height;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String weight;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String diet;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String activity_level;
-
-    @NotEmpty
-//    @Column(length = 100)
-    private String calorie_goal;
-
-    @NotEmpty
-    private String carb_goal;
-
-    @NotEmpty
-    private String fat_goal;
-
-    @NotEmpty
-    private String protein_goal;
 }
