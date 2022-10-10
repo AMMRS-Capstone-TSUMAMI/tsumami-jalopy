@@ -13,9 +13,8 @@ import java.util.Collection;
     @AllArgsConstructor
     @Getter
     @Setter
-//@ToString
-    @Entity(name="intolerances")
-    @Table
+    @Entity
+    @Table(name="intolerances")
     public class Intolerance {
 
         @Id

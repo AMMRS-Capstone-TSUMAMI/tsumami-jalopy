@@ -21,6 +21,14 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
+    @Column(length = 1000)
+    private String photo;
+
+    @Column(length = 1000)
+    private String description;
+
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH},
@@ -38,11 +46,4 @@ public class Recipe {
     @ManyToOne
     @JsonIgnoreProperties({"recipe"})
     private User user;
-
-
-    private String name;
-    private String photo;
-    @Column(nullable = false, length = 1000)
-    private String description;
-
 }

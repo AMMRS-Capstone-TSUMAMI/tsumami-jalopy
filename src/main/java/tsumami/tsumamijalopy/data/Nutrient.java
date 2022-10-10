@@ -13,24 +13,15 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="nutrients")
-@Table
-
+@Entity
+@Table(name="nutrients")
 public class Nutrient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @NotEmpty
-    @NotNull
     private String name;
-
-    @NotEmpty
-    private double amount;
-
-    @NotEmpty
-    private long unit;
-
-    @NotEmpty
-    private long percentDailyValue;
+    private Double amount;
+    private String unit;
+    private Long percentDailyValue;
 }

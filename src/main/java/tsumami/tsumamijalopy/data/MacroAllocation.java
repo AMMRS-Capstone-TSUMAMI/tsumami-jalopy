@@ -18,17 +18,17 @@ import javax.validation.constraints.NotNull;
 public class MacroAllocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     private String dietType;
 
     @NotNull
-    private int carbPercent;
+    private Long carbPercent;
 
     @NotNull
-    private int fatPercent;
+    private Long fatPercent;
 
     @NotNull
-    private int proteinPercent;
+    private Long proteinPercent;
 }
