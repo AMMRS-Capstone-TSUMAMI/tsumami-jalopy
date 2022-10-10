@@ -1,7 +1,6 @@
 package tsumami.tsumamijalopy.web;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.User;
@@ -20,12 +19,7 @@ public class UsersController {
         User loggedInUser = usersRepository.findAll().get(0);
         return loggedInUser;
     }
-    @GetMapping("/findByEmail/{email}")
-    private User findByEmail(@PathVariable String email){
-        return usersRepository.findByEmail(email);
-    }
-    
-    
+
     @GetMapping("/authinfo")
     private UserAuthInfoDTO getUserAuthInfo(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);

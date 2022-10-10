@@ -1,5 +1,3 @@
-
-
 .ppl-img{
     width: 150px;
     height: 150px;
@@ -22,7 +20,6 @@
     background-color: lightsteelblue;
     margin: 2em;
     padding: 1em;
-    width: 18rem;
 }
 
 .card-body > h5{
@@ -81,7 +78,6 @@ p {
     text-align: center;
 }
 
-/*#matthew-pic {*/
-/*    margin-left: 6.5vw;*/
-/*}*/
-
+#matthew-pic {
+    margin-left: 6.5vw;
+}
