@@ -15,5 +15,6 @@ public class UserAuthInfoDTO {
     private String profilePic;
     private String birthday;
     private String gender;
+    private Long calorie_goal;
 
 }
