@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Collection;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,15 +25,15 @@ public class User {
     private String username;
 
     private String gender;
-    private String birth_date;
-    private String height;
-    private String weight;
+    private Date birth_date;
+    private Long height;
+    private Long weight;
     private String diet;
     private String activity_level;
-    private String calorie_goal;
-    private String carb_goal;
-    private String fat_goal;
-    private String protein_goal;
+    private Long calorie_goal;
+    private Long carb_goal;
+    private Long fat_goal;
+    private Long protein_goal;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
