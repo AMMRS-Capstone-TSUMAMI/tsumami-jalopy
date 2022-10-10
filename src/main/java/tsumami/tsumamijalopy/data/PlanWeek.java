@@ -22,20 +22,13 @@ import java.util.Date;
 public class PlanWeek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-//    @Transient
-    @NotEmpty
-//    @Column(length = 100)
     private Date startDate;
 
     @ManyToOne
     @JsonIgnoreProperties({"plan_week"})
     private User user;
-
-
-
-
 
     @OneToMany(mappedBy = "planWeek")
     @JsonIgnoreProperties({"plan_week_id"})

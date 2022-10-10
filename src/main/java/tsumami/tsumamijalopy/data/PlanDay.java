@@ -14,16 +14,14 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="planDay")
-@Table
+@Entity
+@Table(name="planDay")
 
 public class PlanDay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @NotEmpty
-    private int dayNum;
+    private Long id;
+    private Long dayNum;
 
     @ManyToOne
     @JsonIgnoreProperties({"plan_day"})

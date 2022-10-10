@@ -14,13 +14,13 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="planTimeslot")
-@Table
+@Entity
+@Table(name="planTimeslot")
 
 public class PlanTimeslot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
