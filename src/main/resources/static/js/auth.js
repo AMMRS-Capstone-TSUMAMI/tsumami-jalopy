@@ -10,7 +10,8 @@ export function setLoggedInUserInfo() {
         .then(function(response) {
             return response.json();
         }).then(function(data) {
-        window.localStorage.setItem("tsumami_user", JSON.stringify(data));
+            window.localStorage.setItem("tsumami_user", JSON.stringify(data));
+            createView("/register");
     });
 }
 
@@ -74,7 +75,8 @@ export function isLoggedIn() {
 
 export function isRegistered() {
     let user = getUser()
-    if(user.calorie_goal === null) {
+    console.log(user);
+    if(user.username === null) {
         return false
     } else {
         return true
