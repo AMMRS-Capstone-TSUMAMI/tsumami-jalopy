@@ -52,6 +52,23 @@ export default function About(props) {
             "resume": "miguelguzman"
         }
     ]
+    let devCustomizations = [
+        {
+            "background": ""
+        },
+        {
+            "background": ""
+        },
+        {
+            "background": ""
+        },
+        {
+            "background": ""
+        },
+        {
+            "background": ""
+        }
+    ]
     let html = `<header>
         <h1>About Page things</h1>
 </header>
