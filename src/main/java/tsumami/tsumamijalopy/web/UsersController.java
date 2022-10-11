@@ -30,7 +30,8 @@ public class UsersController {
         userDTO.setEmail(loggedInUser.getEmail());
         //        userDTO.setRole(loggedInUser.getRole());
         userDTO.setUsername(loggedInUser.getUsername());
-        //        userDTO.setProfilePic(loggedInUser.getProfilePic());
+        userDTO.setCalorie_goal(loggedInUser.getCalorie_goal());
+                userDTO.setPhoto(loggedInUser.getPhoto());
 
         return userDTO;
     }

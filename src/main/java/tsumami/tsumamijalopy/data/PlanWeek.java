@@ -1,30 +1,26 @@
 package tsumami.tsumamijalopy.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="planWeek")
-@Table
+@Entity
+@Table(name="planWeek")
 
 public class PlanWeek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date startDate;
+    private LocalDate startDate;
 
     @ManyToOne
     @JsonIgnoreProperties({"plan_week"})
