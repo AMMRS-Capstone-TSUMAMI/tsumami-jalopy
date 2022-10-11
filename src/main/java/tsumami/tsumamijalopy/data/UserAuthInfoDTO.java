@@ -17,6 +17,6 @@ public class UserAuthInfoDTO {
     private String photo;
     private LocalDate birthdate;
     private String gender;
-    private Long calorie_goal;
+    private Long calorieGoal;
 
 }
