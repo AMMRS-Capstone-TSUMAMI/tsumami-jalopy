@@ -103,14 +103,14 @@ p {
 
 /* body */
 body {
-    min-height: 100vh;
-    padding: 40px;
-    display: flex;
-    flex-wrap: wrap;
+    /*min-height: 100vh;*/
+    /*padding: 40px;*/
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
     /*justify-content: center;*/
-    align-items: center;
+    /*align-items: center;*/
     /*background: hsl(220, 10%, 12%);*/
-    font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
+    /*font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;*/
 }
 
 /* .flip-card-container */
