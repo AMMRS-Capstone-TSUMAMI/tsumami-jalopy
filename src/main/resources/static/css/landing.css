@@ -1,0 +1,58 @@
+#leftHalf {
+    top: 0;
+    background-image: url("/img/pexels-photo-255501.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    position: fixed;
+    left: 0px;
+    height: 100%;
+}
+
+#rightHalf {
+    top: 0;
+    background-color: #202A25;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    padding: 10px;
+    background-color: #228B22;
+    border-radius: 2px;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #B4E4B6 !important;
+    color: #228B22 !important;
+    border: 2px solid #228B22 !important;
+}
+
+.underline:after {
+    content: "";
+    display:block;
+    border-bottom: 6px solid #228B22;
+    width: 70px;
+    margin-top: 5px;
+}
+
+.aboutTSU {
+    width: 50%;
+}
+
+.landingAboutText {
+    text-align: left;
+}
+.card-header, .landingAboutText{
+    margin-bottom: 30px;
+}
