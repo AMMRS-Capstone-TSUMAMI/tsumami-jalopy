@@ -99,8 +99,8 @@ export default function About(props) {
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
       </figure>
       <button> 
-          <a href="www.linkedin.com/in/${Person[i].linkedIn}" target="_blank"><i class="linkedin">L</i></a>
-          <a href="https://github.com/${Person[i].github}" target="_blank"><i class="github">G</i></a>
+          <a href="www.linkedin.com/in/${Person[i].linkedIn}" target="_blank" data-bypass><i class="linkedin">L</i></a>
+          <a href="https://github.com/${Person[i].github}" target="_blank" ><i class="github">G</i></a>
           <a href="${Person[i].alumniLink}" target="_blank"><i class="alumni">A</i></a>
           <a href="${Person[i].resume}.venuscohort.com" target="_blank"><em>R</em></a>
       </button>
