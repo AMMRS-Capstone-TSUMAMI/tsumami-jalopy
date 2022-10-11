@@ -75,8 +75,8 @@ export function isLoggedIn() {
 
 export function isRegistered() {
     let user = getUser()
-    console.log(user);
-    if(user.username === null) {
+    console.log(user.calorie_goal);
+    if(user.calorie_goal === null) {
         return false
     } else {
         return true
