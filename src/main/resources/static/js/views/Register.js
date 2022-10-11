@@ -1,14 +1,13 @@
-import CreateView from "../createView.js"
-import {isLoggedIn} from "../auth.js";
-import createView from "../createView.js";
+import createView from "../createView.js"
+import {isRegistered} from "../auth.js";
 
 
 
 
 export default function Register(props) {
 
-    if(isLoggedIn()){
-        createView("/");
+    if(isRegistered()){
+        createView("/meals");
         return;
     }
 
