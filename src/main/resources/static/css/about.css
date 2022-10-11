@@ -90,16 +90,16 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */
-*,
-*::after,
-*::before {
+.flip-card-container *,
+.flip-card-container *::after,
+.flip-card-container *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 /* body */
-body {
+.flip-card-container body {
     /*min-height: 100vh;*/
     /*padding: 40px;*/
     /*display: flex;*/
@@ -175,12 +175,12 @@ body {
 }
 
 /* figure */
-figure {
+.flip-card-container figure {
     z-index: -1;
 }
 
 /* figure, .img-bg */
-figure,
+.flip-card-container figure,
 .img-bg {
     position: absolute;
     top: 0;
@@ -197,7 +197,7 @@ img {
 }
 
 /* figcaption */
-figcaption {
+.flip-card-container figcaption {
     display: flex;
     width: auto;
     margin-top: 12%;
@@ -252,7 +252,7 @@ figcaption {
 }
 
 /* ul */
-ul {
+.flip-card-container ul {
     padding-top: 50%;
     margin: 0 auto;
     width: 70%;
@@ -266,7 +266,7 @@ ul {
 }
 
 /* li */
-li {
+.flip-card-container li {
     width: 100%;
     margin-top: 12px;
     padding-bottom: 12px;
@@ -275,11 +275,11 @@ li {
     position: relative;
 }
 
-li:nth-child(2n) {
+.flip-card-container li:nth-child(2n) {
     color: var(--white-2);
 }
 
-li:not(:last-child)::after {
+.flip-card-container li:not(:last-child)::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -291,7 +291,7 @@ li:not(:last-child)::after {
 }
 
 /* button */
-button {
+.flip-card-container button {
     font-family: inherit;
     font-weight: bold;
     color: var(--white-1);
@@ -304,14 +304,14 @@ button {
     cursor: zoom-in;
 }
 
-button:hover,
-button:focus {
+.flip-card-container button:hover,
+.flip-card-container button:focus {
     color: var(--primary);
     background: hsla(var(--hue), 25%, 10%, .2);
     border-color: currentColor;
 }
 
-button:active {
+.flip-card-container button:active {
     transform: translate(2px);
 }
 
@@ -410,9 +410,9 @@ button:active {
 }
 
 /* states */
-button:hover+.design-container,
-button:active+.design-container,
-button:focus+.design-container {
+.flip-card-container button:hover+.design-container,
+.flip-card-container button:active+.design-container,
+.flip-card-container button:focus+.design-container {
     --tr: 20;
     --op: .7;
 }
