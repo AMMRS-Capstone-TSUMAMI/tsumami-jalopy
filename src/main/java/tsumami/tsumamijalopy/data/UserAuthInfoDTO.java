@@ -2,6 +2,8 @@ package tsumami.tsumamijalopy.data;
 
 import lombok.*;
 
+import java.util.Date;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +15,7 @@ public class UserAuthInfoDTO {
     private String username;
     private String email;
     private String profilePic;
-    private String birthday;
+    private Date birthday;
     private String gender;
     private Long calorie_goal;
 

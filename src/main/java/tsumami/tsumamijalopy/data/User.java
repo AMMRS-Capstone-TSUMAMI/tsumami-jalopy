@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -25,7 +26,7 @@ public class User {
     private String username;
 
     private String gender;
-    private Date birth_date;
+    private LocalDate birthdate;
     private Long height;
     private Long weight;
     private String diet;
@@ -34,6 +35,7 @@ public class User {
     private Long carb_goal;
     private Long fat_goal;
     private Long protein_goal;
+    private String photo;
 
     @ManyToMany(
             fetch = FetchType.LAZY,

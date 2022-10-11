@@ -11,8 +11,10 @@ import org.springframework.web.server.ResponseStatusException;
 import tsumami.tsumamijalopy.data.User;
 import tsumami.tsumamijalopy.data.UsersRepository;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 
 @Service
 public class AuthBuddy {
@@ -39,8 +41,17 @@ public class AuthBuddy {
         System.out.println(Arrays.toString(fields));
         User user = usersRepository.findByEmail(email);
         if(user == null) {
-            System.out.println("User not found: " + email);
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized");
+//            String photo = fields[1];
+//            LocalDate birthdate = LocalDate.parse(fields[2]);
+//            String gender = fields[3];
+            User newUser = new User();
+            newUser.setEmail(email);
+//            newUser.setGender(gender);
+//            newUser.setBirthdate(birthdate);
+//            newUser.setPhoto(photo);
+            newUser = usersRepository.save(newUser);
+            System.out.println("New user added");
+//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized");
         }
 
 //        user.setProfilePic(fields[1]);
@@ -72,14 +83,14 @@ public class AuthBuddy {
         JsonObject jo = JsonParser.parseString(result.getBody().toString()).getAsJsonObject();
 //        System.out.println(jo.toString());
         String email = jo.get("emailAddresses").getAsJsonArray().get(0).getAsJsonObject().get("value").toString().replaceAll("\"", "");
-        String photo = jo.get("photos").getAsJsonArray().get(0).getAsJsonObject().get("url").toString().replaceAll("\"", "");
-        String birthday = jo.get("birthdays").getAsJsonArray().get(0).getAsJsonObject().get("date").toString().replaceAll("\"", "");
-        String gender = jo.get("genders").getAsJsonArray().get(0).getAsJsonObject().get("date").toString().replaceAll("\"", "");
+//        String photo = jo.get("photos").getAsJsonArray().get(0).getAsJsonObject().get("url").toString().replaceAll("\"", "");
+//        String birthday = jo.get("birthdays").getAsJsonArray().get(0).getAsJsonObject().get("date").toString().replaceAll("\"", "");
+//        String gender = jo.get("genders").getAsJsonArray().get(0).getAsJsonObject().get("date").toString().replaceAll("\"", "");
 
         fields[0] = email;
-        fields[1] = photo;
-        fields[2] = birthday;
-        fields[3] = gender;
+//        fields[1] = photo;
+//        fields[2] = birthday;
+//        fields[3] = gender;
 
         return fields;
 
