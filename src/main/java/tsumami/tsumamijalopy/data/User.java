@@ -30,11 +30,11 @@ public class User {
     private Long height;
     private Long weight;
     private String diet;
-    private String activity_level;
-    private Long calorie_goal;
-    private Long carb_goal;
-    private Long fat_goal;
-    private Long protein_goal;
+    private String activityLevel;
+    private Long calorieGoal;
+    private Long carbGoal;
+    private Long fatGoal;
+    private Long proteinGoal;
     private String photo;
 
     @ManyToMany(
