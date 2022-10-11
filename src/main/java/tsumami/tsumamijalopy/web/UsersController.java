@@ -40,6 +40,11 @@ public class UsersController {
     public void createUser(@RequestBody User newUser) {
         usersRepository.save(newUser);
     }
+    @PatchMapping("/{id}")
+    public void updateUser(@RequestBody User update, @PathVariable long id) {
+        update.setId(id);
+        usersRepository.save(update);
+    }
 
 
 
