@@ -19,7 +19,6 @@ export default function About(props) {
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins"
-
         },
         {
             "pictures": "../../img/ryan.png",
@@ -69,6 +68,10 @@ export default function About(props) {
             "background": ""
         }
     ]
+
+
+
+
     let html = `<header>
         <h1>About Page things</h1>
 </header>
@@ -76,8 +79,8 @@ export default function About(props) {
         <div class="row duh">`;
 
             for (let i = 0; i <= 4; i++) {
+
                 html += `
-           
 <div class="flip-card-container" style="--hue: 220">
   <div class="flip-card">
   </a>
@@ -99,10 +102,14 @@ export default function About(props) {
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
       </figure>
       <button> 
-          <a href="www.linkedin.com/in/${Person[i].linkedIn}" target="_blank" data-bypass><i class="linkedin">L</i></a>
-          <a href="https://github.com/${Person[i].github}" target="_blank" ><i class="github">G</i></a>
-          <a href="${Person[i].alumniLink}" target="_blank"><i class="alumni">A</i></a>
-          <a href="${Person[i].resume}.venuscohort.com" target="_blank"><em>R</em></a>
+      
+      
+          <a data-link href="https://linkedin.com/in/${Person[i].linkedIn}"><i data-passthru class="linkedin">L</i></a>
+          <a data-link href="https://github.com/${Person[i].github}"><i data-passthru class="linkedin">G</i></a>
+          <a data-link href="${Person[i].alumniLink}"><i data-passthru class="linkedin">A</i></a>
+          <a data-link href="https://${Person[i].resume}.venuscohort.com"><i data-passthru class="linkedin">R</i></a>
+
+          
       </button>
       <div class="design-container">
         <span class="design design--1"></span>
@@ -122,4 +129,10 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
+
+
+
+
 }
+
+

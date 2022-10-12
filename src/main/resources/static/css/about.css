@@ -118,11 +118,9 @@
     --white-2: hsl(0, 0%, 80%);
     --dark: hsl(var(--hue), 25%, 10%);
     --grey: hsl(0, 0%, 50%);
-
     width: 310px;
     height: 500px;
     margin: 40px;
-
     perspective: 1000px;
 }
 
@@ -225,18 +223,15 @@ img {
 
 .card-front .img-bg::before {
     content: "";
-
     position: absolute;
     top: 34%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(18deg);
-
     width: 100%;
     height: 6px;
     border: 1px solid var(--primary);
     border-left-color: transparent;
     border-right-color: transparent;
-
     transition: .1s;
 }
 
