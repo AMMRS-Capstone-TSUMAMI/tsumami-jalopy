@@ -206,7 +206,6 @@ img {
     text-align: right;
     position: absolute;
     top: 0;
-    right: 3.2vw;
     color: var(--white-1);
     /*background: hsla(var(--hue), 25%, 10%, .5);*/
 }
@@ -295,7 +294,7 @@ img {
     border-radius: 1000px;
     background: transparent;
     transition: .3s;
-    cursor: zoom-in;
+    cursor: pointer;
 }
 
 .flip-card-container button:hover,

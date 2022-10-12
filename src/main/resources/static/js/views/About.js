@@ -9,7 +9,9 @@ export default function About(props) {
             "github": "Matthew-Grayson",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "matthewgrayson",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
+
 
         },
         {
@@ -21,7 +23,9 @@ export default function About(props) {
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
+
 
         },
         {
@@ -33,7 +37,9 @@ export default function About(props) {
             "github": "RSKYoshi",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ryanyoshimura",
-            "background": "img/kanagawa-pic.jpeg"
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
+
 
         },
         {
@@ -45,20 +51,20 @@ export default function About(props) {
             "github": "ashmar32",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
-
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
         },
         {
             "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Snack Developer & Coast Guard Veteran",
             "firstName": "Miguel",
             "lastName": "Guzman",
             "linkedIn": "miguelguzmanwd",
             "github": "MiguelAGuzman",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "miguelguzman",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
-
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "quotes": '"Wooh"' + '-Rick Flair'
         }
     ]
 
@@ -95,6 +101,8 @@ export default function About(props) {
         <figcaption> <img src="${Developer[i].pictures}" class="ppl-img" alt="img"></figcaption>
         <li> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
         <li> <span>${Developer[i].vetStatus}</span></li>
+        <li> <span>${Developer[i].quotes}</span></li>
+
       </ul>
     </div>
     <div class="card-back">
