@@ -12,7 +12,7 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/shaquielle.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Stack Developer & AirForce Veteran",
             "firstName": "Shaquielle",
             "lastName": "Robbins",
             "linkedIn": "shaquiellerobbins",
@@ -32,7 +32,7 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/ashley.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Stack Developer & AirForce Veteran",
             "firstName": "Ashley",
             "lastName": "Martinez",
             "linkedIn": "ashmar32",
@@ -42,7 +42,7 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Stack Developer & Coast Guardsmen",
             "firstName": "Miguel",
             "lastName": "Guzman",
             "linkedIn": "miguelguzmanwd",
@@ -93,12 +93,13 @@ export default function About(props) {
   <div class="flip-card">
   </a>
     <div class="card-front">
-      <figure>
+      
+      <ul>
+        <figure>
         <div class="img-bg"></div>
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
-        <figcaption> <img src="${Person[i].pictures}" class="ppl-img" alt="img"></figcaption>
       </figure>
-      <ul>
+        <figcaption> <img src="${Person[i].pictures}" class="ppl-img" alt="img"></figcaption>
         <li> ${Person[i].firstName}<br>${Person[i].lastName}</li>
         <li> <span>${Person[i].vetStatus}</span></li>
       </ul>
@@ -109,7 +110,7 @@ export default function About(props) {
         <div class="img-bg"></div>
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
       </figure>
-      <button id="about-card-cardback-btn"> 
+      <button id="about-card-cardback-btn">
           <a data-link href="https://linkedin.com/in/${Person[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
           <a data-link href="https://github.com/${Person[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
           <a data-link href="${Person[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
