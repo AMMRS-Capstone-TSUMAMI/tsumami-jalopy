@@ -72,7 +72,7 @@ export default function router(URI) {
             state: {},
             uri: '/about',
             title: 'About',
-            backgroundColor: 'Blue'
+            backgroundColor: 'black'
         },
         '/error': {
             returnView: Error404,
