@@ -19,38 +19,51 @@ export default function Register(props) {
 <h1>Register:</h1>
 
 <!-- One "tab" for each step in the form: -->
-<div class="form-tab">Name:
-                        <label for="inputBirthday">Birthday</label>
-                    <input type="text" class="form-control" id="inputBirthday" placeholder="MM/DD/YYY">
-  <p><input placeholder="Last name..." oninput="this.className = ''"></p>
+<label for="inputHeight">Height</label>
+<input type="text" class="form-control" id="inputHeight" placeholder="Height">
+<label for="inputWeight">Height</label>
+<input type="text" class="form-control" id="inputWeight" placeholder="Weight">
 </div>
 
-<!--                  <div class="form-row">-->
-<!--                        <label for="inputBirthday">Birthday</label>-->
-<!--                    <input type="text" class="form-control" id="inputBirthday" placeholder="MM/DD/YYY">-->
-<!--                    </div>-->
-
-<div class="tab">Contact Info:
-  <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
-  <p><input placeholder="Phone..." oninput="this.className = ''"></p>
+<div class="tab">Restrictions & Preferences:
+<label for="inputAllergies">Allergies</label>
+<input type="text" class="form-control" id="inputAllergies"  placeholder="Allergies">
+<label for="inputRestrictions">Restrictions</label>
+<input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">
+<label for="inputPreferences">Preferences</label>
+<input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
 </div>
 
-<div class="tab">Birthday:
-  <p><input placeholder="dd" oninput="this.className = ''"></p>
-  <p><input placeholder="mm" oninput="this.className = ''"></p>
-  <p><input placeholder="yyyy" oninput="this.className = ''"></p>
+<div class="tab">Fitness Level & Weight Goals:
+<label for="inputFitnessLevel">Fitness Level</label>
+<input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
+<label for="inputWeightGoal">Weight Goal</label>
+<input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
 </div>
 
-<div class="tab">Login Info:
-  <p><input placeholder="Username..." oninput="this.className = ''"></p>
-  <p><input placeholder="Password..." oninput="this.className = ''"></p>
+<div class="tab">Body Type & Diet Type:
+<label for="inputBodyType">Body Type</label>
+<input type="text" class="form-control" id="inputBodyType" placeholder="Body Type">
+<label for="inputDietType">Diet Type</label>
+<input type="text" class="form-control" id="inputDietType" placeholder="Diet Type">
+</div>
+
+<div class="tab">Recommended Values:
+<label for="inputCalories">Calories</label>
+<input type="text" class="form-control" id="inputCalories" placeholder="Calories">
+<label for="inputProtein">Protein</label>
+<input type="text" class="form-control" id="inputProtein" placeholder="Protein">
+<label for="inputCarbs">Carbs</label>
+<input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
+<label for="inputFat">Fat</label>
+<input type="text" class="form-control" id="inputFat" placeholder="Fat">
 </div>
 
 <div style="overflow:auto;">
-  <div style="float:right;">
-    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-  </div>
+<div style="float:right;">
+<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+</div>
 </div>
 
 <!-- Circles which indicates the steps of the form: -->
@@ -59,191 +72,10 @@ export default function Register(props) {
   <span class="step"></span>
   <span class="step"></span>
   <span class="step"></span>
+  <span class="step"></span>
 </div>
 
 </form>
-
-
-
-
-
-
-
-
-
-
-<!--&lt;!&ndash;                    //FORM #1&ndash;&gt;-->
-<!--                <h1 class="h3 mb-3 font-weight-normal">Personal Info</h1>-->
-<!--                <form>-->
-<!--&lt;!&ndash;                  //birthday input&ndash;&gt;-->
-<!--                  <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputBirthday">Birthday</label>-->
-<!--                    <input type="text" class="form-control" id="inputBirthday" placeholder="MM/DD/YYY">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //gender input &ndash;&gt;-->
-<!--                  <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputGender">Gender</label>-->
-<!--                    <select id="inputGender" class="form-control">-->
-<!--                        <option selected>Choose...</option>-->
-<!--                        <option>Male</option>-->
-<!--                        <option>Female</option>-->
-<!--                        <option>Other</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //height input&ndash;&gt;-->
-<!--                    <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputHeight">Height</label>-->
-<!--                    <input type="text" class="form-control" id="inputHeight" placeholder="Height">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //weight input&ndash;&gt;-->
-<!--                    <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputWeight">Weight</label>-->
-<!--                    <input type="text" class="form-control" id="inputWeight" placeholder="Weight">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //submit button&ndash;&gt;-->
-<!--                     <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--                    </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                  </div>-->
-<!--                   </div>-->
-<!--                </div>-->
-<!--                </div>-->
-<!--                  -->
-<!--                  -->
-<!--&lt;!&ndash;                //FORM #2&ndash;&gt;-->
-<!--                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>-->
-<!--                <form>-->
-<!--&lt;!&ndash;                  //allergies input&ndash;&gt;-->
-<!--                     <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputAllergies">Allergies</label>-->
-<!--                    <input type="text" class="form-control" id="inputAllergies" placeholder="Allergies">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //dietary restrictions input&ndash;&gt;-->
-<!--                     <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputRestrictions">Restrictions</label>-->
-<!--                    <input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //food preferences input&ndash;&gt;-->
-<!--                    <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputPreferences">Preferences</label>-->
-<!--                    <input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //other input&ndash;&gt;-->
-<!--                     <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputOther">Other</label>-->
-<!--                    <input type="text" class="form-control" id="inputOther" placeholder="Other">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //submit button&ndash;&gt;-->
-<!--                   <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--                  </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                </div>-->
-<!--               -->
-<!--                   -->
-<!--                  -->
-<!--&lt;!&ndash;                //FORM #3&ndash;&gt;-->
-<!--                 <h1 class="h3 mb-3 font-weight-normal">Fitness Level & Weight Goals</h1>-->
-<!--                <form>-->
-<!--&lt;!&ndash;                    //fitness level input&ndash;&gt;-->
-<!--                      <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputFitnessLevel">Fitness Level</label>-->
-<!--                    <input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //weight goals input&ndash;&gt;-->
-<!--                       <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputWeightGoal">Weight Goal</label>-->
-<!--                    <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //submit button&ndash;&gt;-->
-<!--                  <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--                  </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                  </div>-->
-<!--                  -->
-<!--                   &lt;!&ndash;                //FORM #4&ndash;&gt;-->
-<!--                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>-->
-<!--                <form>    -->
-<!--&lt;!&ndash;                body type input&ndash;&gt;-->
-<!--                   <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputBodyType">Body Type</label>-->
-<!--                    <select id="inputBodyType" class="form-control">-->
-<!--                        <option selected>Choose...</option>-->
-<!--                        <option>Ectomorph</option>-->
-<!--                        <option>Endomorph</option>-->
-<!--                        <option>Mesomorph</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    diet type input&ndash;&gt;-->
-<!--                    <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputDietType">Body Type</label>-->
-<!--                    <select id="inputDietType" class="form-control">-->
-<!--                        <option selected>Choose...</option>-->
-<!--                        <option>Paleo</option>-->
-<!--                        <option>Keto</option>-->
-<!--                        <option>Anything Else</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    any other diet&ndash;&gt;-->
-<!--                     <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputOtherDiet">Other Diet</label>-->
-<!--                    <input type="text" class="form-control" id="inputOtherDiet" placeholder="Other Diet">-->
-<!--                    </div>-->
-<!--                -->
-<!--&lt;!&ndash;                #FORM #5&ndash;&gt;-->
-<!--                 <h1 class="h3 mb-3 font-weight-normal">Recommended Calories/Macros</h1>-->
-<!--                <form>-->
-<!--&lt;!&ndash;                    //calories information&ndash;&gt;-->
-<!--                      <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputCalories">Calories</label>-->
-<!--                    <input type="text" class="form-control" id="inputCalories" placeholder="Calories">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //protein input&ndash;&gt;-->
-<!--                      <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputProtein">Protein</label>-->
-<!--                    <input type="text" class="form-control" id="inputProtein" placeholder="Protein">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //carbs input&ndash;&gt;-->
-<!--                     <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputCarbs">Carbs</label>-->
-<!--                    <input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //fat input&ndash;&gt;-->
-<!--                      <div class="form-row">-->
-<!--                    <div class="form-group col-md-6">-->
-<!--                        <label for="inputFat">Fat</label>-->
-<!--                    <input type="text" class="form-control" id="inputFat" placeholder="Fat">-->
-<!--                    </div>-->
-<!--&lt;!&ndash;                    //submit button&ndash;&gt;-->
-<!--                  <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--                  </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                  </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--            -->
-
 
 `;
 }
