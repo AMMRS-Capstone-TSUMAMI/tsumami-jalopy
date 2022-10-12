@@ -71,6 +71,15 @@ export default function About(props) {
 
 
 
+    console.log(`
+          <a href="https://www.flaticon.com/free-icons/resume" title="resume icons">Resume icons created by nawicon - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by Freepik - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/rubber-duck" title="rubber duck icons">Rubber duck icons created by Talha Dogar - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Dave Gandy - Flaticon</a>
+    `)
+
+
+
 
     let html = `<header>
         <h1>About Page things</h1>
@@ -79,7 +88,6 @@ export default function About(props) {
         <div class="row duh">`;
 
             for (let i = 0; i <= 4; i++) {
-
                 html += `
 <div class="flip-card-container" style="--hue: 220">
   <div class="flip-card">
@@ -101,15 +109,11 @@ export default function About(props) {
         <div class="img-bg"></div>
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
       </figure>
-      <button> 
-      
-      
-          <a data-link href="https://linkedin.com/in/${Person[i].linkedIn}"><i data-passthru class="linkedin">L</i></a>
-          <a data-link href="https://github.com/${Person[i].github}"><i data-passthru class="linkedin">G</i></a>
-          <a data-link href="${Person[i].alumniLink}"><i data-passthru class="linkedin">A</i></a>
-          <a data-link href="https://${Person[i].resume}.venuscohort.com"><i data-passthru class="linkedin">R</i></a>
-
-          
+      <button id="about-card-cardback-btn"> 
+          <a data-link href="https://linkedin.com/in/${Person[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
+          <a data-link href="https://github.com/${Person[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
+          <a data-link href="${Person[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
+          <a data-link href="https://${Person[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
       </button>
       <div class="design-container">
         <span class="design design--1"></span>
@@ -129,7 +133,6 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
-
 
 
 
