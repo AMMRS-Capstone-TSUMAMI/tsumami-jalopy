@@ -6,6 +6,12 @@ import Navbar from "./views/partials/Navbar.js";
  * @param route - the object containing information for the given endpoint
  */
 export default function render(props, route) {
+    const body = document.querySelector("#indexBody");
+    if(route.backgroundColor) {
+        body.setAttribute("style", `background-color: ${route.backgroundColor};`);
+    } else {
+        body.setAttribute("style", `background-color: white`);
+    }
     const app = document.querySelector('#app');
     const title = `REST Blog - ${route.title}`;
     document.title = title;
