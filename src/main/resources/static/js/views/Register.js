@@ -13,194 +13,149 @@ export default function Register(props) {
 
     return `
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Registration Page</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
 
-<!--                    //FORM #1-->
-                <h1 class="h3 mb-3 font-weight-normal">Personal Info</h1>
-                <form>
-<!--                  //birthday input-->
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputBirthday">Birthday</label>
-                    <input type="text" class="form-control" id="inputBirthday" placeholder="MM/DD/YYY">
-                    </div>
-<!--                    //gender input -->
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputGender">Gender</label>
-                    <select id="inputGender" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                        </select>
-                    </div>
-<!--                    //height input-->
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputHeight">Height</label>
-                    <input type="text" class="form-control" id="inputHeight" placeholder="Height">
-                    </div>
-<!--                    //weight input-->
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputWeight">Weight</label>
-                    <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
-                    </div>
-<!--                    //submit button-->
-                     <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </div>
-                  </form>
-                  </div>
-                   </div>
-                </div>
-                </div>
-                  
-                  
-<!--                //FORM #2-->
-                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
-                <form>
-<!--                  //allergies input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputAllergies">Allergies</label>
-                    <input type="text" class="form-control" id="inputAllergies" placeholder="Allergies">
-                    </div>
-<!--                    //dietary restrictions input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputRestrictions">Restrictions</label>
-                    <input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">
-                    </div>
-<!--                    //food preferences input-->
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputPreferences">Preferences</label>
-                    <input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
-                    </div>
-<!--                    //other input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputOther">Other</label>
-                    <input type="text" class="form-control" id="inputOther" placeholder="Other">
-                    </div>
-<!--                    //submit button-->
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                    </div>
-                  </form>
-                  </div>
-                </div>
-                </div>
-               
-                   
-                  
-<!--                //FORM #3-->
-                 <h1 class="h3 mb-3 font-weight-normal">Fitness Level & Weight Goals</h1>
-                <form>
-<!--                    //fitness level input-->
-                      <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputFitnessLevel">Fitness Level</label>
-                    <input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
-                    </div>
-<!--                    //weight goals input-->
-                       <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputWeightGoal">Weight Goal</label>
-                    <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
-                    </div>
-<!--                    //submit button-->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                    </div>
-                  </form>
-                  </div>
-                  
-                   <!--                //FORM #4-->
-                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
-                <form>    
-<!--                body type input-->
-                   <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputBodyType">Body Type</label>
-                    <select id="inputBodyType" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Ectomorph</option>
-                        <option>Endomorph</option>
-                        <option>Mesomorph</option>
-                        </select>
-                    </div>
-<!--                    diet type input-->
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputDietType">Body Type</label>
-                    <select id="inputDietType" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Paleo</option>
-                        <option>Keto</option>
-                        <option>Anything Else</option>
-                        </select>
-                    </div>
-<!--                    any other diet-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputOtherDiet">Other Diet</label>
-                    <input type="text" class="form-control" id="inputOtherDiet" placeholder="Other Diet">
-                    </div>
-                
-<!--                #FORM #5-->
-                 <h1 class="h3 mb-3 font-weight-normal">Recommended Calories/Macros</h1>
-                <form>
-<!--                    //calories information-->
-                      <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCalories">Calories</label>
-                    <input type="text" class="form-control" id="inputCalories" placeholder="Calories">
-                    </div>
-<!--                    //protein input-->
-                      <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputProtein">Protein</label>
-                    <input type="text" class="form-control" id="inputProtein" placeholder="Protein">
-                    </div>
-<!--                    //carbs input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCarbs">Carbs</label>
-                    <input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
-                    </div>
-<!--                    //fat input-->
-                      <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputFat">Fat</label>
-                    <input type="text" class="form-control" id="inputFat" placeholder="Fat">
-                    </div>
-<!--                    //submit button-->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                    </div>
-                  </form>
-                  </div>
-                  </div>
-                </div>
-            
-  </body>
-</html>
+<form id="regForm" action="">
+
+<h1>Register:</h1>
+
+<!-- One "tab" for each step in the form: -->
+<label for="inputHeight">Height</label>
+<input type="text" class="form-control" id="inputHeight" placeholder="Height">
+<label for="inputWeight">Height</label>
+<input type="text" class="form-control" id="inputWeight" placeholder="Weight">
+</div>
+
+<div class="tab">Restrictions & Preferences:
+<label for="inputAllergies">Allergies</label>
+<input type="text" class="form-control" id="inputAllergies"  placeholder="Allergies">
+<label for="inputRestrictions">Restrictions</label>
+<input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">
+<label for="inputPreferences">Preferences</label>
+<input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
+</div>
+
+<div class="tab">Fitness Level & Weight Goals:
+<label for="inputFitnessLevel">Fitness Level</label>
+<input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
+<label for="inputWeightGoal">Weight Goal</label>
+<input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
+</div>
+
+<div class="tab">Body Type & Diet Type:
+<label for="inputBodyType">Body Type</label>
+<input type="text" class="form-control" id="inputBodyType" placeholder="Body Type">
+<label for="inputDietType">Diet Type</label>
+<input type="text" class="form-control" id="inputDietType" placeholder="Diet Type">
+</div>
+
+<div class="tab">Recommended Values:
+<label for="inputCalories">Calories</label>
+<input type="text" class="form-control" id="inputCalories" placeholder="Calories">
+<label for="inputProtein">Protein</label>
+<input type="text" class="form-control" id="inputProtein" placeholder="Protein">
+<label for="inputCarbs">Carbs</label>
+<input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
+<label for="inputFat">Fat</label>
+<input type="text" class="form-control" id="inputFat" placeholder="Fat">
+</div>
+
+<div style="overflow:auto;">
+<div style="float:right;">
+<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+</div>
+</div>
+
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;">
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+</div>
+
+</form>
+
 `;
 }
 
+let currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+    // This function will display the specified tab of the form ...
+    let x = document.getElementsByClassName("tab");
+    console.log(x[n]);
+    if (!x[n]) {
+        return;
+    }
+    x[n].style.display = "block";
+    // ... and fix the Previous/Next buttons:
+    if (n === 0) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n === (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+    }
+    // ... and run a function that displays the correct step indicator:
+    fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+    // This function will figure out which tab to display
+    const x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n === 1 && !validateForm()) return false;
+    // Hide the current tab:
+    x[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form... :
+    if (currentTab >= x.length) {
+        //...the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+}
+
+function validateForm() {
+    // This function deals with validation of the form fields
+    let x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value === "") {
+            // add an "invalid" class to the field:
+            y[i].className += " invalid";
+            // and set the current valid status to false:
+            valid = false;
+        }
+    }
+    // If the valid status is true, mark the step as finished and valid:
+    if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+    // This function removes the "active" class of all steps...
+    let i, x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+    }
+    //... and adds the "active" class to the current step:
+    x[n].className += " active";
+}
 
 export function RegisterEvent(){
     const registerButton = document.querySelector("#register-btn");
