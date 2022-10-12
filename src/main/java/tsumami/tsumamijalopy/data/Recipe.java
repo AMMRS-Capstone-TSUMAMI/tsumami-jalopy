@@ -46,4 +46,5 @@ public class Recipe {
     @ManyToOne
     @JsonIgnoreProperties({"recipe"})
     private User user;
+
 }

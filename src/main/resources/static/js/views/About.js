@@ -12,14 +12,13 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/shaquielle.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Stack Developer & AirForce Veteran",
             "firstName": "Shaquielle",
             "lastName": "Robbins",
             "linkedIn": "shaquiellerobbins",
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins"
-
         },
         {
             "pictures": "../../img/ryan.png",
@@ -33,7 +32,7 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/ashley.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Stack Developer & AirForce Veteran",
             "firstName": "Ashley",
             "lastName": "Martinez",
             "linkedIn": "ashmar32",
@@ -43,7 +42,7 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
+            "vetStatus": "Full Stack Developer & Coast Guardsmen",
             "firstName": "Miguel",
             "lastName": "Guzman",
             "linkedIn": "miguelguzmanwd",
@@ -69,6 +68,19 @@ export default function About(props) {
             "background": ""
         }
     ]
+
+
+
+    console.log(`
+          <a href="https://www.flaticon.com/free-icons/resume" title="resume icons">Resume icons created by nawicon - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by Freepik - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/rubber-duck" title="rubber duck icons">Rubber duck icons created by Talha Dogar - Flaticon</a>
+          <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Dave Gandy - Flaticon</a>
+    `)
+
+
+
+
     let html = `<header>
         <h1>About Page things</h1>
 </header>
@@ -77,17 +89,17 @@ export default function About(props) {
 
             for (let i = 0; i <= 4; i++) {
                 html += `
-           
 <div class="flip-card-container" style="--hue: 220">
   <div class="flip-card">
   </a>
     <div class="card-front">
-      <figure>
+      
+      <ul>
+        <figure>
         <div class="img-bg"></div>
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
-        <figcaption> <img src="${Person[i].pictures}" class="ppl-img" alt="img"></figcaption>
       </figure>
-      <ul>
+        <figcaption> <img src="${Person[i].pictures}" class="ppl-img" alt="img"></figcaption>
         <li> ${Person[i].firstName}<br>${Person[i].lastName}</li>
         <li> <span>${Person[i].vetStatus}</span></li>
       </ul>
@@ -98,11 +110,11 @@ export default function About(props) {
         <div class="img-bg"></div>
         <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
       </figure>
-      <button> 
-          <a href="www.linkedin.com/in/${Person[i].linkedIn}" target="_blank"><i class="linkedin">L</i></a>
-          <a href="https://github.com/${Person[i].github}" target="_blank"><i class="github">G</i></a>
-          <a href="${Person[i].alumniLink}" target="_blank"><i class="alumni">A</i></a>
-          <a href="${Person[i].resume}.venuscohort.com" target="_blank"><em>R</em></a>
+      <button id="about-card-cardback-btn">
+          <a data-link href="https://linkedin.com/in/${Person[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
+          <a data-link href="https://github.com/${Person[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
+          <a data-link href="${Person[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
+          <a data-link href="https://${Person[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
       </button>
       <div class="design-container">
         <span class="design design--1"></span>
@@ -122,4 +134,9 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
+
+
+
 }
+
+
