@@ -425,3 +425,10 @@ img {
     background-color: rgba(211, 211, 211, 0.24);
     opacity: 1;
 }
+
+#about-card-cardback-btn:hover {
+    transform: translate(0, -10px);
+    box-shadow: 0 0 20px 0 aqua;
+    border-radius: 10px;
+    transition: 1s ease;
+}
