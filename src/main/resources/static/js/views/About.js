@@ -85,12 +85,12 @@ export default function About(props) {
         <h1>About Us (rename to something cool)</h1>
 </header>
     <div class="container wrapper">
-        <div class="row duh">`;
+        <div class="row duh ">`;
 
             for (let i = 0; i <= 4; i++) {
                 html += `
 <div class="flip-card-container" style="--hue: 220">
-  <div class="flip-card">
+  <div class="flip-card col-sm-2">
     <div class="card-front">
       
       <ul>
