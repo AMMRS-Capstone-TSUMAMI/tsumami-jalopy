@@ -9,8 +9,8 @@ export default function Home(props) {
                     <div class="h-container">
                         <h1 class="home-brand">Search Recipe</h1>
                         <form>
-                            <input type="text" placeholder="Search Your Recipe...">
-                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" class="search-input" id="search-input" placeholder="Search Your Recipe...">
+                            <i class="fa-solid fa-magnifying-glass search-icon" id="search-icon"></i>
                         </form>
                         <div class="home-search-result">
                             <div class="home-item">
