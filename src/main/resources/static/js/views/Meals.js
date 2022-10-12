@@ -1,12 +1,17 @@
 import createView from "../createView.js";
 // TODO: create breakpoints
+// TODO: create event listener for search boxes
+// TODO: create API Request for
+// TODO:
+// TODO:
+
 export default function Meals(props) {
     return `
 <div class="container g-0">
     <div id="meals-header" class="container g-0">
         <div class="row g-0">
-            <div class="col d-flex mx-0 my-3" style="justify-content: center">
-                <h1>Meal Planner Page</h1>
+            <div class="col d-flex mx-0 my-3" style="justify-content: left">
+                <h1>Meal Planner</h1>
             </div>
         </div>
     </div>
@@ -20,7 +25,7 @@ export default function Meals(props) {
                             <input type="text" class="form-control" id="meals-recipe-search" placeholder="Ex. Keto Sushi">
                         </div>
                         <div class="mb-3">
-                            <label for="meals-favorite-search" class="form-label">Search Favorites</label>
+                            <label for="meals-favorite-recipe-search" class="form-label">Search Favorites</label>
                             <input type="text" class="form-control" id="meals-favorite-search" placeholder="Favorites">
                         </div>
 
@@ -46,8 +51,8 @@ export default function Meals(props) {
                             <li class="meals-calendar-border">Sunday</li>
                         </ul>
                         <ul class="meals-calendar-row">
-                            <li class="tn timeslot-name">
-                                Morning
+                            <li class="timeslot-name morning">
+                                <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
                             <li class="meals-calendar-border" id="day1-slot1"></li>
                             <li class="meals-calendar-border" id="day2-slot1"></li>
@@ -58,8 +63,8 @@ export default function Meals(props) {
                             <li class="meals-calendar-border" id="day7-slot1"></li>
                         </ul>
                         <ul class="meals-calendar-row">
-                            <li class="timeslot-name">
-                                Noon
+                            <li class="timeslot-name noon">
+                                <i class="bi bi-brightness-high-fill"></i>
                             </li>
                             <li class="meals-calendar-border" id="day1-slot2"></li>
                             <li class="meals-calendar-border" id="day2-slot2"></li>
@@ -70,8 +75,8 @@ export default function Meals(props) {
                             <li class="meals-calendar-border" id="day7-slot2"></li>
                         </ul>
                         <ul class="meals-calendar-row">
-                            <li class="timeslot-name">
-                                Evening
+                            <li class="timeslot-name evening">
+                                <i class="bi bi-moon-fill evening"></i>
                             </li>
                             <li class="meals-calendar-border" id="day1-slot3"></li>
                             <li class="meals-calendar-border" id="day2-slot3"></li>
@@ -91,5 +96,34 @@ export default function Meals(props) {
 }
 
 export function MealsEvent() {
+}
+
+function prepareSearchFields() {
+    const recipeField = document.querySelector("#meals-recipe-search");
+    const favoriteRecipeField = document.querySelector("#meals-favorite-recipe-search");
+}
+
+function searchRecipes() {
+
+}
+function populateResults(results) {
+    let html = "";
+    let id,
+        title,
+        image;
+    results.forEach(result => {
+            id = result.id;
+            title = result.title;
+            image = result.image;
+    })
+
+}
+
+function addResultListeners(results) {
+
+}
+
+function searchFavoriteRecipes() {
+
 }
 
