@@ -1,5 +1,5 @@
 export default function About(props) {
-    let Person = [
+    let Developer = [
         {
             "pictures": "../../img/matthew.png",
             "vetStatus": "Full Stack Developer & Army Veteran",
@@ -8,7 +8,9 @@ export default function About(props) {
             "linkedIn": "matthewagrayson",
             "github": "Matthew-Grayson",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "matthewgrayson"
+            "resume": "matthewgrayson",
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
+
         },
         {
             "pictures": "../../img/shaquielle.png",
@@ -18,7 +20,9 @@ export default function About(props) {
             "linkedIn": "shaquiellerobbins",
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "shaquiellerobbins"
+            "resume": "shaquiellerobbins",
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
+
         },
         {
             "pictures": "../../img/ryan.png",
@@ -28,7 +32,9 @@ export default function About(props) {
             "linkedIn": "ryanskyoshimura",
             "github": "RSKYoshi",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "ryanyoshimura"
+            "resume": "ryanyoshimura",
+            "background": "img/kanagawa-pic.jpeg"
+
         },
         {
             "pictures": "../../img/ashley.png",
@@ -38,36 +44,24 @@ export default function About(props) {
             "linkedIn": "ashmar32",
             "github": "ashmar32",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "ashleymartinez"
+            "resume": "ashleymartinez",
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
+
         },
         {
             "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Stack Developer & Coast Guardsmen",
+            "vetStatus": "Full Stack Developer & Army Veteran",
             "firstName": "Miguel",
             "lastName": "Guzman",
             "linkedIn": "miguelguzmanwd",
             "github": "MiguelAGuzman",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "miguelguzman"
+            "resume": "miguelguzman",
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake"
+
         }
     ]
-    let devCustomizations = [
-        {
-            "background": ""
-        },
-        {
-            "background": ""
-        },
-        {
-            "background": ""
-        },
-        {
-            "background": ""
-        },
-        {
-            "background": ""
-        }
-    ]
+
 
 
 
@@ -82,7 +76,7 @@ export default function About(props) {
 
 
     let html = `<header>
-        <h1>About Page things</h1>
+        <h1>About Us (rename to something cool)</h1>
 </header>
     <div class="container wrapper">
         <div class="row duh">`;
@@ -91,30 +85,28 @@ export default function About(props) {
                 html += `
 <div class="flip-card-container" style="--hue: 220">
   <div class="flip-card">
-  </a>
     <div class="card-front">
       
       <ul>
         <figure>
         <div class="img-bg"></div>
-        <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
+        <img src="${Developer[i].background}" alt="img">
       </figure>
-        <figcaption> <img src="${Person[i].pictures}" class="ppl-img" alt="img"></figcaption>
-        <li> ${Person[i].firstName}<br>${Person[i].lastName}</li>
-        <li> <span>${Person[i].vetStatus}</span></li>
+        <figcaption> <img src="${Developer[i].pictures}" class="ppl-img" alt="img"></figcaption>
+        <li> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
+        <li> <span>${Developer[i].vetStatus}</span></li>
       </ul>
     </div>
-    <a>
     <div class="card-back">
       <figure>
         <div class="img-bg"></div>
-        <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
+        <img src="${Developer[i].background}" alt="img">
       </figure>
       <button id="about-card-cardback-btn">
-          <a data-link href="https://linkedin.com/in/${Person[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
-          <a data-link href="https://github.com/${Person[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
-          <a data-link href="${Person[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
-          <a data-link href="https://${Person[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
+          <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
+          <a data-link href="https://github.com/${Developer[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
+          <a data-link href="${Developer[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
+          <a data-link href="https://${Developer[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
       </button>
       <div class="design-container">
         <span class="design design--1"></span>

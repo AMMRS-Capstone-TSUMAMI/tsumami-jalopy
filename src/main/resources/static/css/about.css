@@ -8,9 +8,11 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .ppl-img:first-child{
     margin: auto;
 }
+
 .whole-card{
     background-color: whitesmoke;
     box-shadow: 5px 5px;
