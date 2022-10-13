@@ -2,9 +2,10 @@
 #indexBody{
     /*background-image: url(img/norway_fjord_2000x1200.jpeg);*/
     background-repeat: no-repeat;
-    overflow-y: hidden;
-    min-height: 100vh;
-    max-height: 100vh;
+    /*overflow-y: hidden;*/
+    /*min-width: 100vh;*/
+    /*max-height: 120vh;*/
     background-size: 100vw 100vh;
+    /*position: absolute;*/
 }
 
