@@ -147,8 +147,13 @@ export function RegisterEvent(){
     const nextBtn = document.querySelector("#nextBtn")
     nextBtn.addEventListener("click",function (){
         nextPrev(1)})
-    const registerButton = document.querySelector("#register-btn");
-    registerButton.addEventListener("click", function() {
+    if (currentTab === 5){
+        const submitBtn = document.querySelector("#nextBtn")
+        submitBtn.addEventListener("click",function (){
+            nextPrev(1)})
+
+    // const registerButton = document.querySelector("#register-btn");
+    // registerButton.addEventListener("click", function() {
 
         const heightField = document.querySelector("#height");
         const weightField = document.querySelector("#weight");
@@ -196,5 +201,5 @@ export function RegisterEvent(){
                 CreateView("/");
             })
 
-    })
+    }
 }
