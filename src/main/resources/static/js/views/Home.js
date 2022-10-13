@@ -5,7 +5,7 @@ export default function Home(props) {
     return `
         <main>
             <div class="home-container">
-                <h1 class="home-brand">Search Recipe</h1>
+                <h1 class="home-title">Search Recipe</h1>
                 <form>
                     <input type="text" id="search-bar" placeholder="Search Your Recipe...">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -49,10 +49,7 @@ function getAPI(userSearch) {
                     <div class="home-card-image">
                         <img src="${recipe.image}" class="home-card-img" alt="Recipe Image">
                     </div>
-                    <div class="home-card-body">
-                        <h3 data-id="${recipe.id}" class="home-card-title">${recipe.title}
-                        </h3>                 
-                    </div>
+                    <h3 data-id="${recipe.id}" class="home-card-title">${recipe.title}</h3>
                 </div>
             `
         })
