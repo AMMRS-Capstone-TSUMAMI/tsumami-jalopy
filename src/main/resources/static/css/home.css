@@ -1,36 +1,4 @@
-.home-container * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.home-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.home-container html {
-    font-size: 12px;
-}
-
-.home-container section {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 0;
-}
-
-.h-container {
-    width: 90%;
-    height: auto;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.home-brand {
+.home-title {
     text-align: center;
     font-size: 4rem;
     margin-bottom: 30px;
@@ -56,58 +24,21 @@
     font-size: 3rem;
     margin: -9px;
 }
-.home-search-result {
-    margin-top: 50px;
-    width: 100%;
-    display: grid;
-    grid-gap: 25px;
-    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
-}
 
-.home-item {
-    width: 100%;
-    border-radius: 8px;
-    background-color: rgb(37, 37, 37);
-    padding: 15px;
-    overflow: hidden;
-}
-
-.home-item img {
-    width: 100%;
-    height: 300px;
-    border-radius: 4px;
-}
-
-.home-item .home-flex-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.home-item .home-title {
-    color: whitesmoke;
-    margin: 20px 10px 0 0;
-    font-size: 1.8rem;
-    font-weight: 400;
-}
-
-.home-view-button {
-    text-decoration: none;
-    text-align: center;
-    width: 130px;
-    padding: 10px 0;
-    background-color: #404041;
-    color: white;
-    font-size: 1.4rem;
-    margin-top: 20px;
-    align-self: flex-start;
-}
-
-.home-item-data {
-    color: whitesmoke;
+#search-results {
     display: block;
-    margin-top: 10px;
-    font-size: 1.4rem;
-    letter-spacing: .05rem;
-    line-height: 2rem;
+    justify-content: space-between;
+
+}
+
+.home-recipe-card {
+    width: 100px;
+    height: 200px;
+    padding: 10px;
+
+}
+
+.home-card-image {
+    width: 100px;
+    height: auto;
 }
