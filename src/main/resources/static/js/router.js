@@ -72,7 +72,8 @@ export default function router(URI) {
             state: {},
             uri: '/about',
             title: 'About',
-            backgroundColor: 'rgb(29, 29, 29)'
+            // backgroundColor: 'rgb(29, 29, 29)'
+            backgroundImage: "url('https://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg');"
         },
         '/error': {
             returnView: Error404,

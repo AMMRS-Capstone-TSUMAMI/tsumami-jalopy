@@ -9,6 +9,8 @@ export default function render(props, route) {
     const body = document.querySelector("#indexBody");
     if(route.backgroundColor) {
         body.setAttribute("style", `background-color: ${route.backgroundColor};`);
+    } else if(route.backgroundImage){
+        body.setAttribute("style", `background-image: ${route.backgroundImage};`);
     } else {
         body.setAttribute("style", `background-color: white`);
     }
