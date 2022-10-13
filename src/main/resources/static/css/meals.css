@@ -12,6 +12,22 @@
     vertical-align: middle;
     margin: 0;
 }
+.meal-card {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 10vh;
+    border: 0;
+}
+
+.meal-card .card-footer {
+    color: white;
+    background-color: darkslategrey;
+    width: 100%;
+    font-size: .5rem;
+    opacity: 75%;
+    border: 0;
+}
 
 .meals-calendar-row {
     height: 20vh;

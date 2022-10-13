@@ -4,7 +4,7 @@ import createView from "../createView.js";
 // TODO: create API Request for
 // TODO:
 // TODO:
-
+let results;
 export default function Meals(props) {
     return `
 <div class="container g-0">
@@ -20,15 +20,21 @@ export default function Meals(props) {
             <div class="col-2">
                 <div id="meals-search-recipes" class="row">
                     <div class="col">
+                    <form>
                         <div class="mb-3">
                             <label for="meals-recipe-search" class="form-label">Search Recipes</label>
-                            <input type="text" class="form-control" id="meals-recipe-search" placeholder="Ex. Keto Sushi">
+                            <input type="search" class="form-control" id="meals-recipe-search" placeholder="Ex. Keto Sushi">
                         </div>
+                         <div id="recipe-button" class="mb-3">
+                            <button class="btn btn-secondary d-none">Search</button>
+                        </div>
+                    </form>
+                     <form>
                         <div class="mb-3">
                             <label for="meals-favorite-recipe-search" class="form-label">Search Favorites</label>
-                            <input type="text" class="form-control" id="meals-favorite-search" placeholder="Favorites">
+                            <input type="search" class="form-control" id="meals-favorite-search" placeholder="Favorites">
                         </div>
-
+                    </form>
                         <!--                        TODO: Collapsible-->
                         <!--                            TODO: Search Recipes-->
                         <!--                                TODO: Search Results data-recipe-id-->
@@ -54,7 +60,17 @@ export default function Meals(props) {
                             <li class="timeslot-name morning">
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
-                            <li class="meals-calendar-border" id="day1-slot1"></li>
+                            <li class="meals-calendar-border" id="day1-slot1">
+<!--                                id = 649280-->
+<!--                                title = "Lasagna Silvia"-->
+<!--                                image = "https://spoonacular.com/recipeImages/649280-312x231.jpg"-->
+                                    <div class="card meal-card" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">
+                                        <div class="card-body"></div>
+                                        <div class="card-footer">Lasagna Silvia</div>
+                                    </div>
+<!--                                    <div class="recipe-card" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">Lasagna Silvia</div>-->
+<!--                                    <div class="recipe-card" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">Lasagna Silvia</div>-->
+                            </li>
                             <li class="meals-calendar-border" id="day2-slot1"></li>
                             <li class="meals-calendar-border" id="day3-slot1"></li>
                             <li class="meals-calendar-border" id="day4-slot1"></li>
@@ -96,30 +112,58 @@ export default function Meals(props) {
 }
 
 export function MealsEvent() {
+    prepareSearchFields();
+    console.log("MealsEvent Complete");
 }
 
 function prepareSearchFields() {
     const recipeField = document.querySelector("#meals-recipe-search");
+    const recipeBtn = document.querySelector("#recipe-button")
     const favoriteRecipeField = document.querySelector("#meals-favorite-recipe-search");
+    recipeBtn.addEventListener("click", (event) => {
+        console.log("submitted");
+        console.log(recipeField.value);
+        fetchRecipes(recipeField.value);
+    })
 }
 
-function searchRecipes() {
-
+async function fetchRecipes(query) {
+    const request = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_TOKEN}`, request)
+        .then(function(response) {
+            if(!response.ok) {
+                console.log("Error Finding Recipe: " + response.status);
+            } else {
+                console.log("Search Complete");
+                return response.json()
+            }
+        });
+    console.log(data.results);
+    results = data.results;
+    populateResults();
 }
-function populateResults(results) {
+
+function populateResults() {
     let html = "";
     let id,
         title,
         image;
     results.forEach(result => {
-            id = result.id;
-            title = result.title;
-            image = result.image;
+        id = result.id;
+        title = result.title;
+        image = result.image;
+        console.log(id);
+        console.log(title);
+        console.log(image);
     })
-
 }
 
-function addResultListeners(results) {
+function addResultListeners() {
 
 }
 
