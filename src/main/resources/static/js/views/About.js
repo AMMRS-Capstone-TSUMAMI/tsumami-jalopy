@@ -82,7 +82,7 @@ export default function About(props) {
 
 
     let html = `<header>
-        <h1>About Us (rename to something cool)</h1>
+        <h1 id="about-page-h1">About Us (rename to something cool)</h1>
 </header>
     <div class="container wrapper">
         <div class="row duh ">`;
