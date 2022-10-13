@@ -183,8 +183,6 @@ export function RegisterEvent(){
             protein: proteinField.value,
             carbs: carbsField.value,
             fat: fatField.value,
-
-
         }
 
         // console.log(newUser);
