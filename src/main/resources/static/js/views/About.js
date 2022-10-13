@@ -10,8 +10,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "matthewgrayson",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
-
+            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
 
         },
         {
@@ -24,8 +23,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
-
+            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
 
         },
         {
@@ -38,8 +36,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ryanyoshimura",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
-
+            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
 
         },
         {
@@ -52,7 +49,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '― Miyamoto Musashi'
+            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
         },
         {
             "pictures": "../../img/miguel.png",
@@ -64,7 +61,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "miguelguzman",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"Wooh"' + '-Rick Flair'
+            "quotes": '"Wooh"' + '<p>' + '-Rick Flair'
         }
     ]
 
