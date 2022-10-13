@@ -433,7 +433,7 @@ img {
 }
 
 #about-card-cardback-btn:hover {
-    transform: translate(0, -15px);
+    transform: translate(0, -10px);
     box-shadow: 0 0 20px 0 aqua;
     border-radius: 10px;
     transition: 1s ease;
