@@ -2,7 +2,7 @@ import createView from "../createView.js"
 import {isRegistered} from "../auth.js";
 
 
-
+let currentTab = 0; // Current tab is set to be the first tab (0)
 
 export default function Register(props) {
 
@@ -19,13 +19,14 @@ export default function Register(props) {
 <h1>Register:</h1>
 
 <!-- One "tab" for each step in the form: -->
+<div class="tab">
 <label for="inputHeight">Height</label>
 <input type="text" class="form-control" id="inputHeight" placeholder="Height">
-<label for="inputWeight">Height</label>
+<label for="inputWeight">Weight</label>
 <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
 </div>
 
-<div class="tab">Restrictions & Preferences:
+<div class="tab">
 <label for="inputAllergies">Allergies</label>
 <input type="text" class="form-control" id="inputAllergies"  placeholder="Allergies">
 <label for="inputRestrictions">Restrictions</label>
@@ -34,21 +35,21 @@ export default function Register(props) {
 <input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
 </div>
 
-<div class="tab">Fitness Level & Weight Goals:
+<div class="tab">
 <label for="inputFitnessLevel">Fitness Level</label>
 <input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
 <label for="inputWeightGoal">Weight Goal</label>
 <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
 </div>
 
-<div class="tab">Body Type & Diet Type:
+<div class="tab">
 <label for="inputBodyType">Body Type</label>
 <input type="text" class="form-control" id="inputBodyType" placeholder="Body Type">
 <label for="inputDietType">Diet Type</label>
 <input type="text" class="form-control" id="inputDietType" placeholder="Diet Type">
 </div>
 
-<div class="tab">Recommended Values:
+<div class="tab">
 <label for="inputCalories">Calories</label>
 <input type="text" class="form-control" id="inputCalories" placeholder="Calories">
 <label for="inputProtein">Protein</label>
@@ -61,8 +62,8 @@ export default function Register(props) {
 
 <div style="overflow:auto;">
 <div style="float:right;">
-<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+<button type="button" id="prevBtn">Previous</button>
+<button type="button" id="nextBtn">Next</button>
 </div>
 </div>
 
@@ -79,9 +80,6 @@ export default function Register(props) {
 
 `;
 }
-
-let currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
 
 function showTab(n) {
     // This function will display the specified tab of the form ...
@@ -107,6 +105,7 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
+    console.log("n")
     // This function will figure out which tab to display
     const x = document.getElementsByClassName("tab");
     // Exit the function if any field in the current tab is invalid:
@@ -126,25 +125,8 @@ function nextPrev(n) {
 }
 
 function validateForm() {
-    // This function deals with validation of the form fields
-    let x, y, i, valid = true;
-    x = document.getElementsByClassName("tab");
-    y = x[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value === "") {
-            // add an "invalid" class to the field:
-            y[i].className += " invalid";
-            // and set the current valid status to false:
-            valid = false;
-        }
-    }
-    // If the valid status is true, mark the step as finished and valid:
-    if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
-    }
-    return valid; // return the valid status
+
+    return true; // return the true status
 }
 
 function fixStepIndicator(n) {
@@ -158,17 +140,46 @@ function fixStepIndicator(n) {
 }
 
 export function RegisterEvent(){
+    showTab(currentTab); // Display the current tab
+    const prevBtn = document.querySelector("#prevBtn")
+    prevBtn.addEventListener("click",function (){
+        nextPrev(-1)})
+    const nextBtn = document.querySelector("#nextBtn")
+    nextBtn.addEventListener("click",function (){
+        nextPrev(1)})
     const registerButton = document.querySelector("#register-btn");
-    registerButton.addEventListener("click", function(event) {
+    registerButton.addEventListener("click", function() {
 
-        const usernameField = document.querySelector("#username");
-        const emailField = document.querySelector("#email");
-        const passwordField = document.querySelector("#password");
+        const heightField = document.querySelector("#height");
+        const weightField = document.querySelector("#weight");
+        const allergiesField = document.querySelector("#allergies");
+        const restrictionsField = document.querySelector("#restrictions");
+        const preferencesField = document.querySelector("#preferences");
+        const fitnessLevelField = document.querySelector("#fitnessLevel");
+        const weightGoalField = document.querySelector("#weightGoal");
+        const bodyTypeField = document.querySelector("#bodyType");
+        const dietTypeField = document.querySelector("#dietType");
+        const caloriesField = document.querySelector("#calories");
+        const proteinField = document.querySelector("#protein");
+        const carbsField = document.querySelector("#carbs");
+        const fatField = document.querySelector("#fat");
 
         let newUser = {
-            username: usernameField.value,
-            email: emailField.value,
-            password: passwordField.value
+            height: heightField.value,
+            weight: weightField.value,
+            allergies: allergiesField.value,
+            restrictions: restrictionsField.value,
+            preferences: preferencesField.value,
+            fitnessLevel: fitnessLevelField.value,
+            weightGoal: weightGoalField.value,
+            bodyType: bodyTypeField.value,
+            dietType: dietTypeField.value,
+            calories: caloriesField.value,
+            protein: proteinField.value,
+            carbs: carbsField.value,
+            fat: fatField.value,
+
+
         }
 
         // console.log(newUser);
