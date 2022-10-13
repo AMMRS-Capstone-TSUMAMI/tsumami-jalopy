@@ -33,6 +33,10 @@
     /*font-family: var(--body);*/
 }
 
+#about-page-h1{
+    color: whitesmoke;
+}
+
 .social-links {
     margin-top: 2em;
     justify-content: end;
@@ -75,7 +79,6 @@
 .duh{
     justify-content: center;
 }
-
 
 /*#matthew-pic {*/
 /*    margin-left: 6.5vw;*/
@@ -133,6 +136,11 @@
     position: relative;
     transform-style: preserve-3d;
     transition: .6s .1s;
+    border-radius: 24px;
+}
+
+.flip-card:hover{
+    box-shadow: 0 0 25px 0 rgba(0, 178, 255, 0.63);
 }
 
 /* hover and focus-within states */
@@ -326,6 +334,7 @@ img {
     position: absolute;
     opacity: var(--op);
     transition: .3s;
+    z-index: 1;
 }
 
 .design--1,
@@ -418,8 +427,9 @@ img {
 }
 
 #about-card-cardback-btn{
-    background-color: rgba(91, 86, 86, 0.7);
-    opacity: 0.9;
+    background-color: rgba(107, 107, 107, 0.16);
+    z-index: 100;
+    opacity: 1;
 }
 
 #about-card-cardback-btn:hover {
@@ -427,6 +437,12 @@ img {
     box-shadow: 0 0 20px 0 aqua;
     border-radius: 10px;
     transition: 1s ease;
+    /*background-color: rgba(52, 50, 50, 0.95);*/
+    /*background-color: rgb(4, 65, 46);*/
+    /*background-color: rgba(117, 94, 25, 0.98);*/
+    background-color: rgba(241, 238, 231, 0.49);
+    /*opacity: 1;*/
 }
+
 
 
