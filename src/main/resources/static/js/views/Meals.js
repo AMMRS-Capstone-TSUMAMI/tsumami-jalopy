@@ -124,6 +124,32 @@ function addResultListeners(results) {
 }
 
 function searchFavoriteRecipes() {
+    const userInput = document.querySelector('#meals-favorite-search');
 
+    userInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            const data = fetchMe();
+            return findFavoriteRecipe(data)
+        }
+    })
 }
 
+function findFavoriteRecipe(data) {
+    data.recipes.forEach(element => {
+        return element;
+    })
+}
+
+// TODO: Create a fetch from localhost:8080/api/users/me
+// TODO: Return said fetch data
+
+function fetchMe () {
+    let fetcher = fetch("http://localhost:8080/api/users/me")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            return data
+        })
+
+}
