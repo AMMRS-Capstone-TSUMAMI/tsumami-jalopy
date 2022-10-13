@@ -1,5 +1,4 @@
 
-
 export default function Home(props) {
     console.log("The frontend did it. HER FAULT");
 
@@ -27,43 +26,34 @@ function searchBarHandler(e) {
 
     userInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
+            e.preventDefault()
             let userInput2 = userInput.value;
             getAPI(userInput2);
         }
+    })
+}
+
+function getAPI(userSearch) {
+    return fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=d2ecbe1149a34180a752204407a10c5b&query=${userSearch}&number=5`).then(resp => {
+        return resp.json();
+    }).then(food => {
+        let recipeArray = [];
+        for (let i = 0; i < 5; i++) {
+            recipeArray.push(food.results[i])
+        }
+        console.log(recipeArray)
+        let html = "";
+        recipeArray.forEach(function (recipe, index) {
+            html += `
+        <h3 data-id="${recipe.id}" class="card-title">${recipe.title}</h3>`
+        })
+        const recipesContainer = document.querySelector("#search-results");
+        recipesContainer.innerHTML = html;
+
+        return Promise.resolve();
+        //dont delete this
+    }).catch(erre => {
+        console.log(erre);
+        return Promise.reject();
     });
-
-    function getAPI(userSearch) {
-        return fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=d2ecbe1149a34180a752204407a10c5b&query=${userWant}&number=5`).then(resp => resp.json()).then(food => {
-            let recipeArray = [];
-            for (let i = 0; i < 5; i++) {
-                recipeArray.push(food.results[i])
-            }
-            console.log(recipeArray)
-            let html = "";
-            recipeArray.forEach(function (recipe, index) {
-                html += `
-            <h3 food-data-id="${recipe.id}" classname="card-title">${recipe.title}</h3>`
-            })
-            const recipesContainer = document.querySelector("#search-results");
-            recipesContainer.innerHTML = html;
-
-            //dont delete this
-        }).catch(erre => console.log(erre));
-    }
-
-// id
-//     :
-//     637876
-// image
-//     :
-//     "https://spoonacular.com/recipeImages/637876-312x231.jpg"
-// imageType
-//     :
-//     "jpg"
-// title
-//     :
-//     "Chicken 65"
-//         [[Prototype]]
-// :
-// Object
 }
