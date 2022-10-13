@@ -11,7 +11,6 @@ export default function About(props) {
             "resume": "matthewgrayson",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
             "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
-
         },
         {
             "pictures": "../../img/shaquielle.png",
@@ -24,7 +23,6 @@ export default function About(props) {
             "resume": "shaquiellerobbins",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
             "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
-
         },
         {
             "pictures": "../../img/ryan.png",
@@ -37,7 +35,6 @@ export default function About(props) {
             "resume": "ryanyoshimura",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
             "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
-
         },
         {
             "pictures": "../../img/ashley.png",
@@ -64,19 +61,13 @@ export default function About(props) {
             "quotes": '"Wooh"' + '<p>' + '-Rick Flair'
         }
     ]
-
-
-
-
+    // icon credits
     console.log(`
           <a href="https://www.flaticon.com/free-icons/resume" title="resume icons">Resume icons created by nawicon - Flaticon</a>
           <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by Freepik - Flaticon</a>
           <a href="https://www.flaticon.com/free-icons/rubber-duck" title="rubber duck icons">Rubber duck icons created by Talha Dogar - Flaticon</a>
           <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Dave Gandy - Flaticon</a>
     `)
-
-
-
 
     let html = `<header>
         <h1 id="about-page-h1">About Us (rename to something cool)</h1>
@@ -89,7 +80,6 @@ export default function About(props) {
 <div class="flip-card-container" style="--hue: 220">
   <div class="flip-card col-sm-2">
     <div class="card-front">
-      
       <ul>
         <figure>
         <div class="img-bg"></div>
@@ -99,7 +89,6 @@ export default function About(props) {
         <li> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
         <li> <span>${Developer[i].vetStatus}</span></li>
         <li> <span>${Developer[i].quotes}</span></li>
-
       </ul>
     </div>
     <div class="card-back">
@@ -131,9 +120,6 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
-
-
-
 }
 
 
