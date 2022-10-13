@@ -20,22 +20,25 @@ export default function Meals(props) {
             <div class="col-2 gs-0 ge-3">
                 <div id="meals-search-recipes" class="row">
                     <div class="col px-0">
-                        <div></div>
-                        <form>
+                        <div class="meals-recipe-pane">
+                            <div class="meals-recipe-search-pane"></div>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="meals-recipe-search-field" class="form-label">Search Recipes</label>
+                                        <input type="search" class="form-control" id="meals-recipe-search-field" placeholder="Ex. Keto Sushi">
+                                    </div>
+                                     <div id="recipe-button" class="mb-3">
+                                        <button class="btn btn-secondary d-none">Search</button>
+                                    </div>
+                                </form>
+                                <div id="meals-recipe-search-results"></div> 
+                        </div>
+                         <form>
                             <div class="mb-3">
-                                <label for="meals-recipe-search" class="form-label">Search Recipes</label>
-                                <input type="search" class="form-control" id="meals-recipe-search" placeholder="Ex. Keto Sushi">
-                            </div>
-                             <div id="recipe-button" class="mb-3">
-                                <button class="btn btn-secondary d-none">Search</button>
+                                <label for="meals-favorite-recipe-search" class="form-label">Search Favorites</label>
+                                <input type="search" class="form-control" id="meals-favorite-search" placeholder="Favorites">
                             </div>
                         </form>
-                     <form>
-                        <div class="mb-3">
-                            <label for="meals-favorite-recipe-search" class="form-label">Search Favorites</label>
-                            <input type="search" class="form-control" id="meals-favorite-search" placeholder="Favorites">
-                        </div>
-                    </form>
                         <!--                        TODO: Collapsible-->
                         <!--                            TODO: Search Recipes-->
                         <!--                                TODO: Search Results data-recipe-id-->
@@ -62,15 +65,10 @@ export default function Meals(props) {
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
                             <li class="meals-calendar timeslot" id="day1-slot1">
-<!--                                id = 649280-->
-<!--                                title = "Lasagna Silvia"-->
-<!--                                image = "https://spoonacular.com/recipeImages/649280-312x231.jpg"-->
                                     <div class="card meal-card" id="649280" draggable="true" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">
                                         <div class="card-body"></div>
                                         <div class="card-footer">Lasagna Silvia</div>
                                     </div>
-<!--                                    <div class="recipe-card" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">Lasagna Silvia</div>-->
-<!--                                    <div class="recipe-card" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">Lasagna Silvia</div>-->
                             </li>
                             <li class="meals-calendar timeslot" id="day2-slot1"></li>
                             <li class="meals-calendar timeslot" id="day3-slot1"></li>
@@ -115,14 +113,16 @@ export default function Meals(props) {
 export function MealsEvent() {
     prepareSearchFields();
     addTimeslotListeners();
+    addMealCardListeners()
     console.log("MealsEvent Complete");
 }
 
 function prepareSearchFields() {
-    const recipeField = document.querySelector("#meals-recipe-search");
+    const recipeField = document.querySelector("#meals-recipe-search-field");
     const recipeBtn = document.querySelector("#recipe-button")
-    const favoriteRecipeField = document.querySelector("#meals-favorite-recipe-search");
-    recipeBtn.addEventListener("click", (event) => {
+    const favoriteRecipeField = document.querySelector("#meals-favorite-recipe-field");
+    recipeBtn.addEventListener("click", (e) => {
+        e.preventDefault()
         console.log("submitted");
         console.log(recipeField.value);
         fetchRecipes(recipeField.value);
@@ -136,7 +136,7 @@ async function fetchRecipes(query) {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_TOKEN}`, request)
+    let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -151,6 +151,7 @@ async function fetchRecipes(query) {
 }
 
 function populateResults() {
+    const recipeResults = document.querySelector("#meals-recipe-search-results")
     let html = "";
     let id,
         title,
@@ -162,7 +163,16 @@ function populateResults() {
         console.log(id);
         console.log(title);
         console.log(image);
+
+        html += `
+<div class="card meal-card" id="${id}" draggable="true" style="background-image: url(${image})">
+    <div class="card-body"></div>
+    <div class="card-footer">${title}</div>
+</div>
+        `
     })
+    recipeResults.innerHTML = html;
+    addMealCardListeners()
 }
 
 function addResultListeners() {
@@ -171,23 +181,14 @@ function addResultListeners() {
 function addTimeslotListeners() {
     const timeslots = document.querySelectorAll(".timeslot");
     timeslots.forEach(function(timeslot) {
-        timeslot.addEventListener("drop", function(e) {
-            e.preventDefault();
-            let data = e.dataTransfer.getData("text");
-            e.target.appendChild(document.getElementById(data));
-            console.log("data = " + data);
-        })
-        timeslot.addEventListener("dragover", function(e) {
-            e.preventDefault();
-            console.log("dragging");
-        })
+        timeslot.addEventListener("drop", drop)
+        timeslot.addEventListener("dragover", allowDrop)
     })
+}
+function addMealCardListeners() {
     let mealCards = document.querySelectorAll(".meal-card");
     mealCards.forEach(function(mealCard) {
-        mealCard.addEventListener("dragstart", function(e) {
-            e.dataTransfer.setData("text", e.target.id);
-            console.log("Data is set.");
-        })
+        mealCard.addEventListener("dragstart", drag)
     })
 }
 function searchFavoriteRecipes() {
