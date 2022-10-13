@@ -45,7 +45,16 @@ function getAPI(userSearch) {
         let html = "";
         recipeArray.forEach(function (recipe, index) {
             html += `
-        <h3 data-id="${recipe.id}" class="card-title">${recipe.title}</h3>`
+                <div class="home-recipe-card">
+                    <div class="home-card-image">
+                        <img src="${recipe.image}" class="home-card-img" alt="Recipe Image">
+                    </div>
+                    <div class="home-card-body">
+                        <h3 data-id="${recipe.id}" class="home-card-title">${recipe.title}
+                        </h3>                 
+                    </div>
+                </div>
+            `
         })
         const recipesContainer = document.querySelector("#search-results");
         recipesContainer.innerHTML = html;
