@@ -12,11 +12,28 @@
     vertical-align: middle;
     margin: 0;
 }
+.meal-card {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 6rem;
+    border: 0;
+}
+
+.meal-card .card-footer {
+    color: white;
+    background-color: darkslategrey;
+    width: 100%;
+    font-size: .6rem;
+    opacity: 75%;
+    border: 0;
+    text-shadow: 1px 1px black;
+}
 
 .meals-calendar-row {
     height: 20vh;
 }
-.meals-calendar-border {
+.meals-calendar {
     border: 1px solid black;
 }
 .timeslot-name {

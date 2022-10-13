@@ -8,6 +8,7 @@ import Register, {RegisterEvent} from "./views/Register.js"
 import prepareUserHTML, {prepareUserJS} from "./views/User.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
 import Meals, {MealsEvent} from "./views/Meals.js";
+import recipesHTML, {recipesEvent} from "./views/Recipes.js";
 // import User from "./views/User.js";
 
 /**
@@ -88,6 +89,13 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
+        },
+        '/recipes': {
+            returnView: recipesHTML,
+            state: {},
+            uri: '/recipes',
+            title: 'Recipes',
+            viewEvent: recipesEvent
         }
     };
     return routes[URI];
