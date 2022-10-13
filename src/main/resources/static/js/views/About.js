@@ -50,7 +50,7 @@ export default function About(props) {
         },
         {
             "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Snack Developer & Coast Guard Veteran",
+            "vetStatus": "Full Stack Developer & Army Veteran",
             "firstName": "Miguel",
             "lastName": "Guzman",
             "linkedIn": "miguelguzmanwd",
