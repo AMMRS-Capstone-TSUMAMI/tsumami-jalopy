@@ -1,12 +1,18 @@
 package tsumami.tsumamijalopy.web;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import tsumami.tsumamijalopy.data.User;
 import tsumami.tsumamijalopy.data.UserAuthInfoDTO;
 import tsumami.tsumamijalopy.data.UsersRepository;
 import tsumami.tsumamijalopy.services.AuthBuddy;
+import tsumami.tsumamijalopy.services.FieldHelper;
+
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -14,6 +20,7 @@ import tsumami.tsumamijalopy.services.AuthBuddy;
 public class UsersController {
     private UsersRepository usersRepository;
     private AuthBuddy authBuddy;
+
     @GetMapping("/me")
     private User getMe() {
         User loggedInUser = usersRepository.findAll().get(0);
@@ -40,12 +47,16 @@ public class UsersController {
     public void createUser(@RequestBody User newUser) {
         usersRepository.save(newUser);
     }
+
     @PatchMapping("/{id}")
-    public void updateUser(@RequestBody User update, @PathVariable long id) {
-        update.setId(id);
-        usersRepository.save(update);
+    public void updateUser(@RequestBody User updateUser, @PathVariable long id) {
+        Optional<User> optionalUser = usersRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + id + " not found");
+        }
+        User originalUser = optionalUser.get();
+        updateUser.setId(id);
+        BeanUtils.copyProperties(updateUser, originalUser, FieldHelper.getNullPropertyNames(updateUser));
+        usersRepository.save(originalUser);
     }
-
-
-
 }

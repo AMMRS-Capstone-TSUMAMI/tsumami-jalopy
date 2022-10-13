@@ -84,7 +84,7 @@ export default function Register(props) {
 function showTab(n) {
     // This function will display the specified tab of the form ...
     let x = document.getElementsByClassName("tab");
-    console.log(x[n]);
+    // console.log(x[n]);
     if (!x[n]) {
         return;
     }
@@ -105,7 +105,7 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-    console.log("n")
+    // console.log("n")
     // This function will figure out which tab to display
     const x = document.getElementsByClassName("tab");
     // Exit the function if any field in the current tab is invalid:
@@ -160,7 +160,7 @@ export function RegisterEvent(){
         const allergiesField = document.querySelector("#allergies");
         const restrictionsField = document.querySelector("#restrictions");
         const preferencesField = document.querySelector("#preferences");
-        const fitnessLevelField = document.querySelector("#fitnessLevel");
+        const activityLevelField = document.querySelector("#activityLevel");
         const weightGoalField = document.querySelector("#weightGoal");
         const bodyTypeField = document.querySelector("#bodyType");
         const dietTypeField = document.querySelector("#dietType");
@@ -175,7 +175,7 @@ export function RegisterEvent(){
             allergies: allergiesField.value,
             restrictions: restrictionsField.value,
             preferences: preferencesField.value,
-            fitnessLevel: fitnessLevelField.value,
+            activityLevel: activityLevelField.value,
             weightGoal: weightGoalField.value,
             bodyType: bodyTypeField.value,
             dietType: dietTypeField.value,
@@ -188,7 +188,7 @@ export function RegisterEvent(){
         // console.log(newUser);
 
         let request = {
-            method: "POST",
+            method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newUser)
         }
@@ -196,7 +196,7 @@ export function RegisterEvent(){
         fetch(USER_API_BASE_URL + "/create", request)
             .then(response => {
                 console.log(response.status);
-                CreateView("/");
+                createView("/");
             })
 
     }
