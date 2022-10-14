@@ -136,6 +136,7 @@ async function fetchRecipes(query) {
             'Content-Type': 'application/json'
         }
     }
+
     let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_TOKEN}`, request)
         .then(function(response) {
             if(!response.ok) {
@@ -208,7 +209,6 @@ function findFavoriteRecipe(data) {
     })
 }
 
-
 // TODO: Create a fetch from localhost:8080/api/users/me
 // TODO: Return said fetch data
 
@@ -220,16 +220,17 @@ function fetchMe () {
             return data
         })
 
+    function allowDrop(e) {
+        e.preventDefault();
+    }
 
-function allowDrop(e) {
-    e.preventDefault();
-}
-function drag(e) {
-    e.dataTransfer.setData("text", e.target.id);
-}
-function drop(e) {
-    e.preventDefault();
-    let data = e.dataTransfer.getData("text");
-    e.target.appendChild(document.getElementById(data));
+    function drag(e) {
+        e.dataTransfer.setData("text", e.target.id);
+    }
 
+    function drop(e) {
+        e.preventDefault();
+        let data = e.dataTransfer.getData("text");
+        e.target.appendChild(document.getElementById(data));
+    }
 }
