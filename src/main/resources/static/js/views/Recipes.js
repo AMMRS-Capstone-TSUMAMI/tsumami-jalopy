@@ -60,30 +60,43 @@ function getAPI(userSelectedID) {
     fetch(request_url).then(resp => {
         return resp.json();
     }).then(food => {
+        console.log(food);
+        console.log(food?.image);
         let recipeSlot = [];
-        for (let i = 0; i < 5; i++) {
-            recipeSlot.push(food.results[i])
-        }
+        // for (let i = 0; i < food.length; i++) {
+            recipeSlot.push(food.results)
+        // }
         console.log(recipeSlot)
         let html = "";
-        recipeSlot.forEach(function (recipe, index) {
-            html += `
+        for (let i = 0; i < recipeSlot.length; i++) {
+            html = `
                 <div class="home-recipe-card">
                     <div class="home-card-image">
-                        <img src="${recipe.image}" class="home-card-img" alt="Recipe Image">
+                        <img src="${recipeSlot[i]?.image}" class="home-card-img" alt="Recipe Image">
                     </div>
-                    <h3 data-id="${recipe.id}" class="home-card-title">${recipe.title}</h3>
+                    <h3 data-id="${recipeSlot[i]?.id}" class="home-card-title">${recipeSlot[i]?.title}</h3>
                 </div>
             `
-        })
+        }
+        //
+        // recipeSlot.forEach(function (recipe, index) {
+        //     html += `
+        //         <div class="home-recipe-card">
+        //             <div class="home-card-image">
+        //                 <img src="${recipe?.image}" class="home-card-img" alt="Recipe Image">
+        //             </div>
+        //             <h3 data-id="${recipe?.id}" class="home-card-title">${recipe?.title}</h3>
+        //         </div>
+        //     `
+        // })
 
         const recipesContainer = document.querySelector("#recipe-results");
         recipesContainer.innerHTML = html;
 
         // Promise.resolve();
         //dont delete this
-    }).catch(error => {
-        console.log(error);
+    // }).catch(erre => {
+        // console.log(erre);
         // Promise.reject();
     });
 }
