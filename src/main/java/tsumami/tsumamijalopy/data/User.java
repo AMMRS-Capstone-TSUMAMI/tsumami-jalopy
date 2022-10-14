@@ -70,9 +70,9 @@ public class User {
     @JsonIgnoreProperties({"user_id"})
     private Collection<PlanWeek> planWeeks;
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties({"user_id"})
-    private Collection<Recipe> recipe;
+//    @OneToMany(mappedBy = "user")
+//    @JsonIgnoreProperties({"user_id"})
+//    private Collection<Recipe> recipe;
 
 
 //    creating many to many association between user and trophy
