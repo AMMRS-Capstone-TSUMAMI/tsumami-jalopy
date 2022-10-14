@@ -1,80 +1,72 @@
-import createView from "../createView.js"
-let data;
+// import {recipeID} from './Meals.js'
+// let recipeId;
 
+// let data;
+// let testURL = `https://api.spoonacular.com/recipes/716429/ingredients?apiKey=2b85441825dc47a797c0f3291e25f1a5`
 
 
 // let apiRecipeImg = [];
 // let apiRecipeIngredients = [];
 // let apiCookingInstructions = [];
 
-
-//
-// export default function recipesHTML(props) {
-//     data = props.data;
-//
-//
-//     return `
-//           <div>Recipes</div>-->
-//         fetch using recipe id result from user query below&ndash;&gt;-->
-//          <img src="${apiRecipeImg}" alt="img">-->
-//          <div id="recipeIngredients">-->
-//          fetch using recipe id result from user query below&ndash;&gt;-->
-//              ${apiRecipeIngredients}-->
-//          </div>-->
-//          <div id="api-cookingInstructions">-->
-//          &lt;!&ndash;        fetch using recipe id result from user query below&ndash;&gt;-->
-//          ${apiCookingInstructions}
-//      </div>
-//  `;
-// }
-
-
-console.log("test");
 export default function recipesHTML(props) {
-    data=props.data;
-
+    // data = props.data;
     return `
-        <main>
-            <div class="home-container">
-                <h1 class="home-title">Search Recipe</h1>
-                <form>
-                    <input type="text" id="search-bar" placeholder="Search Your Recipe...">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                </form>
-                <div id="search-results"></div>
+         <main>
+            <div>
+                <h1>Recipe</h1>
+                <div id="recipe-results"></div>
             </div>
         </main>
-    `;
+ `;
 }
 
 export function recipesEvent() {
-    searchBarHandler()
+    // perhaps this is where I can call the recipe ID from meals.js
+    recipeSelectedHandler();
+    console.log("Hello recipesEvent");
+    // console.log("${response.json}");
 }
 
+function recipeSelectedHandler(e) {
+    // this is where I call the user ID from the other page
+    // const userInput = document.querySelector('#search-bar');
+    // userInput.addEventListener('keypress', function (e) {
+    //     if (e.key === 'Enter') {
+    //         e.preventDefault()
+    // e.preventDefault()
+    // let userSelectedID = recipeID;
+    // getAPI(userSelectedID);
+    // let recipeID = 716429;
+    // recipeId = 716429;
+    getAPI(716429);
 
-function searchBarHandler(e) {
-    const userInput = document.querySelector('#search-bar');
+    // at this point getAPI will have finished
 
-    userInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault()
-            let userInput2 = userInput.value;
-            getAPI(userInput2);
-        }
-    })
+    console.log("Hello recipeSelectedHandler");
+    // alert("stuffs")
+    // }
+    // })
 }
 
-function getAPI(userSearch) {
-    return fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=5`).then(resp => {
+function getAPI(userSelectedID) {
+
+    console.log("Hello getAPI");
+
+    // the ID below will instead be called recipeID and be pulled from meals.js
+    let SERVICE_URL = `https://api.spoonacular.com/recipes/`+userSelectedID+`/information`;
+    const request_url = SERVICE_URL + "?" + "apiKey=" + SPOONACULAR_API;
+
+    fetch(request_url).then(resp => {
         return resp.json();
     }).then(food => {
-        let recipeArray = [];
+        let recipeSlot = [];
         for (let i = 0; i < 5; i++) {
-            recipeArray.push(food.results[i])
+            recipeSlot.push(food.results[i])
         }
-        console.log(recipeArray)
+        console.log(recipeSlot)
         let html = "";
-        recipeArray.forEach(function (recipe, index) {
+        recipeSlot.forEach(function (recipe, index) {
             html += `
                 <div class="home-recipe-card">
                     <div class="home-card-image">
@@ -84,13 +76,14 @@ function getAPI(userSearch) {
                 </div>
             `
         })
-        const recipesContainer = document.querySelector("#search-results");
+
+        const recipesContainer = document.querySelector("#recipe-results");
         recipesContainer.innerHTML = html;
 
-        return Promise.resolve();
+        // Promise.resolve();
         //dont delete this
-    }).catch(erre => {
-        console.log(erre);
-        return Promise.reject();
+    }).catch(error => {
+        console.log(error);
+        // Promise.reject();
     });
 }
