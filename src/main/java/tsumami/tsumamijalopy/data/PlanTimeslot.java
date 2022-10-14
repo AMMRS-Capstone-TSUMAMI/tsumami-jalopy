@@ -39,8 +39,8 @@ public class PlanTimeslot {
 //in progress!!!!
     @ManyToOne
     @JsonIgnoreProperties({"planTimeslots"})
-    private  PlanDay planDay;
+    private PlanDay planDay;
 
     @NotEmpty
-    private String timeslot;
+    private Long timeslot;
 }

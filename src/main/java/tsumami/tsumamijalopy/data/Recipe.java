@@ -44,8 +44,8 @@ public class Recipe {
     @JsonIgnoreProperties("plan_timeslots")
     private Collection<PlanTimeslot> planTimeslots;
 
-    @ManyToOne
-    @JsonIgnoreProperties({"recipe"})
-    private User user;
+//    @ManyToOne
+//    @JsonIgnoreProperties({"recipe"})
+//    private User user;
 
 }
