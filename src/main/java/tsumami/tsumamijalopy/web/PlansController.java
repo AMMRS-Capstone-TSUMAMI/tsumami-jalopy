@@ -26,8 +26,4 @@ public class PlansController {
     public List<PlanTimeslot> getAllTimeslots() {
         return planTimeslotsRepository.findAll();
     }
-    @PostMapping("/create")
-    public void createWeek(@RequestBody PlanWeek planWeek) {
-        usersRepository.save(newUser);
-    }
 }
