@@ -15,7 +15,7 @@ public class PlansController {
     private PlanTimeslotsRepository planTimeslotsRepository;
 
     @GetMapping("/timeslot")
-    public PlanTimeslot getPlanTimeslotIdByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Integer timeslot) {
+    public PlanTimeslot getPlanTimeslotIdByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
         return planTimeslotsRepository.getPlanTimeslotByDayWeekStart(startDate, dayNum, timeslot, 1L);
         //replace 1L with userId pulled from auth header
         //add a PostMapping
