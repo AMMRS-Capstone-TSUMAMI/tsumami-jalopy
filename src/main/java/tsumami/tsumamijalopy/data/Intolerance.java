@@ -32,7 +32,7 @@ import java.util.Collection;
                 foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
                 inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
         )
-        @JsonIgnoreProperties("intolerances")
+        @JsonIgnoreProperties({"intolerances", "planWeeks", "recipes", "trophies", "chefLevels"})
         private Collection<User> users;
 
         @Column(nullable = false, length = 100)

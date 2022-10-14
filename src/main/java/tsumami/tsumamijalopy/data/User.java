@@ -63,11 +63,11 @@ public class User {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("users")
+    @JsonIgnoreProperties({"users", "planTimeslots"})
     private Collection<Recipe> recipes;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties({"user_id"})
+    @JsonIgnoreProperties("planDays")
     private Collection<PlanWeek> planWeeks;
 
 //    @OneToMany(mappedBy = "user")
