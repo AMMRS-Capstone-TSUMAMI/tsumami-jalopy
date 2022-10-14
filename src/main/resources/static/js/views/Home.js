@@ -20,7 +20,6 @@ export function HomeEvents() {
     searchBarHandler()
 }
 
-
 function searchBarHandler(e) {
     const userInput = document.querySelector('#search-bar');
 
