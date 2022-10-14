@@ -40,11 +40,9 @@ public class Recipe {
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
     //"plan_timeslots" isn't right
-    @JsonIgnoreProperties("plan_timeslots")
+    @JsonIgnoreProperties("recipes")
     private Collection<PlanTimeslot> planTimeslots;
 
-//    @ManyToOne
-//    @JsonIgnoreProperties({"recipe"})
-//    private User user;
+//TODO add ManyToMany
 
 }

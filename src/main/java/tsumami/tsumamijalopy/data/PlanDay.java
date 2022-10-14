@@ -29,7 +29,7 @@ public class PlanDay {
 
 //    in progress
     @OneToMany(mappedBy = "planDay")
-    @JsonIgnoreProperties({"plan_day_id"})
+    @JsonIgnoreProperties("planDay")
     private Collection<PlanTimeslot> planTimeslots;
 
 }
