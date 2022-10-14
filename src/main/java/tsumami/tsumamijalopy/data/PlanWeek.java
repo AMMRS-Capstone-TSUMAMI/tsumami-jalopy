@@ -23,7 +23,7 @@ public class PlanWeek {
     private LocalDate startDate;
 
     @ManyToOne
-    @JsonIgnoreProperties({"plan_week"})
+    @JsonIgnoreProperties({"planWeek"})
     private User user;
 
     @OneToMany(mappedBy = "planWeek")

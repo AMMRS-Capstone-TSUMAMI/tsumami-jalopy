@@ -24,7 +24,7 @@ public class PlanDay {
     private Long dayNum;
 
     @ManyToOne
-    @JsonIgnoreProperties({"plan_day"})
+    @JsonIgnoreProperties({"planDay"})
     private  PlanWeek planWeek;
 
 //    in progress

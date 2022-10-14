@@ -13,8 +13,8 @@ import java.util.Collection;
 @Getter
 @Setter
 //@ToString
-@Entity(name="recipes")
-@Table
+@Entity
+@Table(name="recipes")
 public class Recipe {
 
     @Id
@@ -40,11 +40,12 @@ public class Recipe {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
+    //"plan_timeslots" isn't right
     @JsonIgnoreProperties("plan_timeslots")
     private Collection<PlanTimeslot> planTimeslots;
 
-    @ManyToOne
-    @JsonIgnoreProperties({"recipe"})
-    private User user;
+//    @ManyToOne
+//    @JsonIgnoreProperties({"recipe"})
+//    private User user;
 
 }

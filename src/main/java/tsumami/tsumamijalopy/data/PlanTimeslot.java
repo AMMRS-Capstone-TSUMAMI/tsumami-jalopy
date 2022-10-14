@@ -33,14 +33,14 @@ public class PlanTimeslot {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("plan_timeslots")
+    @JsonIgnoreProperties("planTimeslots")
     private Collection<Recipe> recipes;
 
 //in progress!!!!
     @ManyToOne
-    @JsonIgnoreProperties({"plan_timeslots"})
-    private  PlanDay planDay;
+    @JsonIgnoreProperties({"planTimeslots"})
+    private PlanDay planDay;
 
     @NotEmpty
-    private String timeslot;
+    private Long timeslot;
 }
