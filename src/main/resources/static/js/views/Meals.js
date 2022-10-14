@@ -1,9 +1,10 @@
 import createView from "../createView.js";
-// TODO: create breakpoints
-// TODO: create event listener for search boxes
-// TODO: create API Request for
+// TODO: use UTC date
+// TODO: transmit date to backend when meal is added
 // TODO:
 // TODO:
+let today = new Date;
+
 let results;
 export default function Meals(props) {
     return `
@@ -17,7 +18,7 @@ export default function Meals(props) {
     </div>
     <div id="meals-main" class="container g-0">
         <div class="row">
-            <div class="col-2 gs-0 ge-3">
+            <div class="col-2 gs-0 ge-3 ps-0">
                 <div id="meals-search-recipes" class="row">
                     <div class="col px-0">
                         <div class="meals-recipe-pane">
@@ -25,7 +26,7 @@ export default function Meals(props) {
                                 <form>
                                     <div class="mb-3">
                                         <label for="meals-recipe-search-field" class="form-label">Search Recipes</label>
-                                        <input type="search" class="form-control" id="meals-recipe-search-field" placeholder="Ex. Keto Sushi">
+                                        <input type="search" class="form-control" id="meals-recipe-search-field" placeholder="ex. korean bbq">
                                     </div>
                                      <div id="recipe-button" class="mb-3">
                                         <button class="btn btn-secondary d-none">Search</button>
@@ -47,9 +48,14 @@ export default function Meals(props) {
                     </div>
                 </div>
             </div>
-            <div class="col-10 gs-3 ge-0">
+            <div class="col-10 gs-3 ge-0 pe-0">
                 <div id="meals-calendar" class="row">
                     <div class="col ps-1 pe-0">
+                        <div id="meals-calendar-header">
+                            <i id="week-prev" class="bi bi-caret-left-fill"></i>
+                            <span id="meals-calendar-week" data-week-start="${getStartDay(today)}">${generateCalendarWeek(getStartDay(today))}</span>
+                            <i id="week-next" class="bi bi-caret-right-fill"></i>
+                        </div>
                         <ul>
                             <li class="timeslot-name"></li>
                             <li class="meals-calendar">Monday</li>
@@ -65,10 +71,10 @@ export default function Meals(props) {
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
                             <li class="meals-calendar timeslot" id="day1-slot1">
-                                    <div class="card meal-card" id="649280" draggable="true" style="background-image: url(https://spoonacular.com/recipeImages/649280-312x231.jpg)">
-                                        <div class="card-body"></div>
-                                        <div class="card-footer">Lasagna Silvia</div>
-                                    </div>
+                                <div class="card meal-card" id="641208" draggable="true" style="background-image: url(https://spoonacular.com/recipeImages/641208-312x231.jpg)">
+                                    <div class="card-body"></div>
+                                    <div class="card-footer">Dak Bulgogi - Korean BBQ Chicken</div>
+                                </div>
                             </li>
                             <li class="meals-calendar timeslot" id="day2-slot1"></li>
                             <li class="meals-calendar timeslot" id="day3-slot1"></li>
@@ -112,8 +118,8 @@ export default function Meals(props) {
 
 export function MealsEvent() {
     prepareSearchFields();
-    addTimeslotListeners();
-    addMealCardListeners()
+    addCalendarListeners();
+    addMealCardListeners();
     console.log("MealsEvent Complete");
 }
 
@@ -178,12 +184,16 @@ function populateResults() {
 function addResultListeners() {
 
 }
-function addTimeslotListeners() {
+function addCalendarListeners() {
     const timeslots = document.querySelectorAll(".timeslot");
     timeslots.forEach(function(timeslot) {
         timeslot.addEventListener("drop", drop)
         timeslot.addEventListener("dragover", allowDrop)
     })
+    const weekNextBtn = document.querySelector("#week-next")
+    weekNextBtn.addEventListener("click", incrementWeek)
+    const weekPrevBtn = document.querySelector("#week-prev")
+    weekPrevBtn.addEventListener("click", decrementWeek)
 }
 function addMealCardListeners() {
     let mealCards = document.querySelectorAll(".meal-card");
@@ -195,6 +205,47 @@ function searchFavoriteRecipes() {
 
 }
 
+function getStartDay(date) {
+    let day = date.getDay()
+    if(day === 0) {
+        return today.addDays(-6);
+    }
+    if(day === 1) {
+        return today;
+    }
+    if(day >= 2) {
+        return today.addDays(1 - day);
+    }
+}
+
+function generateCalendarWeek(start) {
+    let end = start.addDays(6);
+    return `${start.toDateString()} - ${end.toDateString()}`
+}
+function updateCalendarWeek(newStart) {
+    document.querySelector("#meals").innerHTML = generateCalendarWeek(getStartDay(newStart))
+}
+function incrementWeek() {
+    let displayedWeek = document.querySelector("#meals-calendar-week");
+    let displayedWeekStart = new Date(displayedWeek.getAttribute("data-week-start"));
+    let newWeekStart = displayedWeekStart.addDays(7);
+    displayedWeek.innerHTML = generateCalendarWeek(newWeekStart);
+    displayedWeek.setAttribute("data-week-start", newWeekStart);
+}
+function decrementWeek() {
+    let displayedWeek = document.querySelector("#meals-calendar-week");
+    let displayedWeekStart = new Date(displayedWeek.getAttribute("data-week-start"));
+    let newWeekStart = displayedWeekStart.addDays(-7);
+    displayedWeek.innerHTML = generateCalendarWeek(newWeekStart);
+    displayedWeek.setAttribute("data-week-start", newWeekStart);
+}
+
+Date.prototype.addDays = function(days) {
+    let date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 function allowDrop(e) {
     e.preventDefault();
 }
@@ -204,5 +255,5 @@ function drag(e) {
 function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
-    e.target.appendChild(document.getElementById(data));
+    e.currentTarget.appendChild(document.getElementById(data));
 }
