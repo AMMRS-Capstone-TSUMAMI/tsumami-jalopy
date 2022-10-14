@@ -14,7 +14,7 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="planTimeslot")
+@Entity(name="plan_timeslots")
 @Table
 
 public class PlanTimeslot {

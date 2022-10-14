@@ -15,7 +15,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="planDay")
+@Table(name="plan_days")
 
 public class PlanDay {
     @Id

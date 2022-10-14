@@ -13,7 +13,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="planWeek")
+@Table(name="plan_weeks")
 
 public class PlanWeek {
     @Id
