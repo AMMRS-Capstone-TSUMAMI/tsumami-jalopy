@@ -36,6 +36,7 @@ public class User {
     private Long fatGoal;
     private Long proteinGoal;
     private String photo;
+    private Integer experiencePoints;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -72,4 +73,37 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user_id"})
     private Collection<Recipe> recipe;
+
+
+//    creating many to many association between user and trophy
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            targetEntity = Trophy.class)
+    @JoinTable(
+            name="user_trophy",
+            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="trophy_id", nullable = false, updatable = false)},
+            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+    )
+//    @JsonIgnore avoids infinite recursion
+    @JsonIgnoreProperties("users")
+//    creating a collection of trophies for each user
+    private Collection<Trophy> trophies;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            targetEntity = ChefLevel.class)
+    @JoinTable(
+            name="user_chef_levels",
+            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="chef_levels", nullable = false, updatable = false)},
+            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+    )
+    @JsonIgnoreProperties("users")
+    private Collection<ChefLevel> chefLevels;
+
 }

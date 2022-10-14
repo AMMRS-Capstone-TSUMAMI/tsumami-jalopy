@@ -12,6 +12,7 @@ import tsumami.tsumamijalopy.data.UsersRepository;
 import tsumami.tsumamijalopy.services.AuthBuddy;
 import tsumami.tsumamijalopy.services.FieldHelper;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -59,4 +60,10 @@ public class UsersController {
         BeanUtils.copyProperties(updateUser, originalUser, FieldHelper.getNullPropertyNames(updateUser));
         usersRepository.save(originalUser);
     }
+
+    @GetMapping("/getAll")
+    public Collection<User> getAllUsers() {
+        return usersRepository.findAll();
+    }
+
 }
