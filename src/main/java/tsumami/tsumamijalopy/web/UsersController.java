@@ -13,6 +13,7 @@ import tsumami.tsumamijalopy.services.AuthBuddy;
 import tsumami.tsumamijalopy.services.FieldHelper;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -26,6 +27,15 @@ public class UsersController {
     private User getMe() {
         User loggedInUser = usersRepository.findAll().get(0);
         return loggedInUser;
+    }
+    @GetMapping("")
+    public List<User> getAll() {
+        return usersRepository.findAll();
+    }
+    @GetMapping("/{id}")
+    private Optional<User> getById(Long id) {
+        return usersRepository.findById(id);
+
     }
 
     @GetMapping("/authinfo")
