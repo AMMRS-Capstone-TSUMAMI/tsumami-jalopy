@@ -22,7 +22,8 @@ export default function recipesHTML(props) {
 
 export function recipesEvent() {
     // perhaps this is where I can call the recipe ID from meals.js
-    recipeSelectedHandler();
+    //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call
+    // recipeSelectedHandler();
     console.log("Hello recipesEvent");
     // console.log("${response.json}");
 }
