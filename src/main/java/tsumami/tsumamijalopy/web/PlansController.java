@@ -14,17 +14,17 @@ public class PlansController {
     private PlanDaysRepository planDaysRepository;
     private PlanTimeslotsRepository planTimeslotsRepository;
 
-    @GetMapping("/timeslots")
+    @GetMapping("")
     public List<PlanTimeslot> getAllTimeslots() {
         return planTimeslotsRepository.findAll();
     }
 
     @GetMapping("/timeslot")
-    public PlanTimeslot getPlanTimeslotIdByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
+    public PlanTimeslot getPlanTimeslotByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
         return planTimeslotsRepository.getPlanTimeslotByDayWeekStart(startDate, dayNum, timeslot, 1L);
-        //replace 1L with userId pulled from auth header
-        //add a PostMapping
-        //add recipe{id}
-        //post request in frontend; parameters passed in url}
+        //TODO replace 1L with userId pulled from auth header
+        //TODO add a PostMapping
+        //TODO add recipe{id}
+        //TODO post request in frontend; parameters passed in url}
     }
 }
