@@ -20,8 +20,7 @@ public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Lon
 //            "AND plan_weeks.user_id = :user_id", nativeQuery = true)
 //    PlanTimeslot getPlanTimeslotByDayWeekStart(@Param("start_date") String startDate, @Param("day_num") Long dayNum, @Param("timeslot") Long timeslot, @Param("user_id") Long userId);
 
-    @Query(value = "SELECT pd.day_num AS day, " +
-            "pt.timeslot AS timeslot, " +
+    @Query(value = "SELECT CONCAT(pd.day_num, pt.timeslot) AS slot, " +
             "ptr.recipe_id, " +
             "r.name AS recipe, " +
             "r. photo " +
@@ -33,5 +32,5 @@ public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Lon
             "WHERE pw.start_date = :start_date " +
             "AND pw.user_id = :user_id", nativeQuery = true)
     String[][] getRecipesByPlanWeek(@Param("start_date") String startDate,
-                                 @Param("user_id") Long userId);
+                                    @Param("user_id") Long userId);
 }

@@ -18,10 +18,10 @@
 }
 .meal-card {
     width: 100%;
-    background-size: cover;
+    background-size: 12rem;
     background-position: center;
     height: 6rem;
-    border: 0;
+    border: 1px solid darkslategrey;
 }
 
 .meal-card .card-footer {
