@@ -4,7 +4,6 @@
 // let data;
 // let testURL = `https://api.spoonacular.com/recipes/716429/ingredients?apiKey=2b85441825dc47a797c0f3291e25f1a5`
 
-
 // let apiRecipeImg = [];
 // let apiRecipeIngredients = [];
 // let apiCookingInstructions = [];
@@ -15,7 +14,7 @@ export default function recipesHTML(props) {
          <main>
             <div>
                 <h1>Recipe</h1>
-                <div id="recipe-results"></div>
+                <div id="recipe-apiData"></div>
             </div>
         </main>
  `;
@@ -50,34 +49,50 @@ function recipeSelectedHandler(e) {
 }
 
 function getAPI(userSelectedID) {
-
     console.log("Hello getAPI");
-
     // the ID below will instead be called recipeID and be pulled from meals.js
     let SERVICE_URL = `https://api.spoonacular.com/recipes/`+userSelectedID+`/information`;
     const request_url = SERVICE_URL + "?" + "apiKey=" + SPOONACULAR_API;
+    // let recipeSlot = [];
 
+    //request_url is our full api call url
     fetch(request_url).then(resp => {
+        //the resp is the data and below is the json format of the data from the api
         return resp.json();
+        //food at this point is the usable json data. Can name whatever
     }).then(food => {
         console.log(food);
+        //? means look for this thing if exists as a key (needs further research)
         console.log(food?.image);
-        let recipeSlot = [];
         // for (let i = 0; i < food.length; i++) {
-            recipeSlot.push(food.results)
+        //     recipeSlot.push(food.results)
         // }
-        console.log(recipeSlot)
+        // console.log("logging recipeSlot here");
+        // console.log(recipeSlot)
         let html = "";
-        for (let i = 0; i < recipeSlot.length; i++) {
+        let id,
+            title,
+            image;
+
+        // food.forEach(apiData2 => {
+
+            id = food.id;
+            title = food.title;
+            image = food.image;
+            console.log(id);
+            console.log(title);
+            console.log(image);
+        // for (let i = 0; i < 5; i++) {
             html = `
                 <div class="home-recipe-card">
                     <div class="home-card-image">
-                        <img src="${recipeSlot[i]?.image}" class="home-card-img" alt="Recipe Image">
+                        <img src="${image}" class="home-card-img" alt="Recipe Image">
                     </div>
-                    <h3 data-id="${recipeSlot[i]?.id}" class="home-card-title">${recipeSlot[i]?.title}</h3>
+                    <h3 data-id="${id}" class="home-card-title">${title}</h3>
                 </div>
             `
-        }
+        // }
+
         //
         // recipeSlot.forEach(function (recipe, index) {
         //     html += `
@@ -90,7 +105,7 @@ function getAPI(userSelectedID) {
         //     `
         // })
 
-        const recipesContainer = document.querySelector("#recipe-results");
+        const recipesContainer = document.querySelector("#recipe-apiData");
         recipesContainer.innerHTML = html;
 
         // Promise.resolve();
@@ -98,5 +113,5 @@ function getAPI(userSelectedID) {
     // }).catch(erre => {
         // console.log(erre);
         // Promise.reject();
-    });
-}
+    // });
+})}
