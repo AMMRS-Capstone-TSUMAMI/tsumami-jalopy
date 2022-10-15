@@ -23,7 +23,7 @@ export default function recipesHTML(props) {
 export function recipesEvent() {
     // perhaps this is where I can call the recipe ID from meals.js
     //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call
-    // recipeSelectedHandler();
+    recipeSelectedHandler();
     console.log("Hello recipesEvent");
     // console.log("${response.json}");
 }
@@ -37,9 +37,11 @@ function recipeSelectedHandler(e) {
     // e.preventDefault()
     // let userSelectedID = recipeID;
     // getAPI(userSelectedID);
-    // let recipeID = 716429;
+    let recipeID = 654072;
     // recipeId = 716429;
-    getAPI(716429);
+    // getAPI(654072);
+    getAPI(recipeID);
+
 
     // at this point getAPI will have finished
 
@@ -85,11 +87,11 @@ function getAPI(userSelectedID) {
             console.log(image);
         // for (let i = 0; i < 5; i++) {
             html = `
-                <div class="home-recipe-card">
-                    <div class="home-card-image">
+                <div>
+                    <div>
+                        <h3 id="recipes-home-card-title" data-id="${id}">${title}</h3>
                         <img src="${image}" class="home-card-img" alt="Recipe Image">
                     </div>
-                    <h3 data-id="${id}" class="home-card-title">${title}</h3>
                 </div>
             `
         // }

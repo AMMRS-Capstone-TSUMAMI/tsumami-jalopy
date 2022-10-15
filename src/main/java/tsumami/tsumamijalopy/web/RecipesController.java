@@ -1,10 +1,7 @@
 package tsumami.tsumamijalopy.web;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.Recipe;
 import tsumami.tsumamijalopy.data.RecipesRepository;
 
@@ -17,4 +14,11 @@ public class RecipesController {
     public void createRecipe(@RequestBody Recipe newRecipe) {
         recipesRepository.save(newRecipe);
     }
+
+
+
+
+
+
+
 }

@@ -97,7 +97,45 @@ export default function router(URI) {
             title: 'Recipes',
             viewEvent: recipesEvent
         }
+        // below is for routing the id
+        // '/meals/{id}': {
+        //     returnView: recipesHTML,
+        //     state: {
+        //         post: '/api/meals/{id}',
+        //     },
+        //     uri: '/meals/{id}',
+        //     title: 'Selected recipe ID',
+        //     viewEvent: recipesEvent
+        // }
     };
+    // if URI does not match precisely then we need to try harder to find a match
+    if(!routes[URI]) {
+        for(const routeKey in routes) {
+            const pattern = new URLPattern({ pathname: routeKey });
+            if(pattern.test(BACKEND_HOST_URL + URI)) {
+                // console.log(`${URI} MATCHES ${routeKey}`);
+                const newPath = pattern.exec(BACKEND_HOST_URL + URI);
+                // console.log(newPath);
+                const foundRoute = routes[routeKey];
+                for(const statePiece in foundRoute.state) {
+                    let stateVal = foundRoute.state[statePiece];
+                    // replace any found group pieces from newPath
+                    for(const pathVar in newPath.pathname.groups) {
+                        stateVal = stateVal.replaceAll(`:${pathVar}`, newPath.pathname.groups[pathVar]);
+                    }
+                    foundRoute.state[statePiece] = stateVal;
+                    // console.log("Checking state piece: " + foundRoute.state[statePiece]);
+                }
+                // modify route.uri
+                for(const pathVar in newPath.pathname.groups) {
+                    foundRoute.uri = foundRoute.uri.replaceAll(`:${pathVar}`, newPath.pathname.groups[pathVar]);
+                }
+                console.log(foundRoute);
+                return foundRoute;
+            }
+        }
+        // did not find a route matching the URI so let jalopy determine the error route
+    }
     return routes[URI];
 }
 
