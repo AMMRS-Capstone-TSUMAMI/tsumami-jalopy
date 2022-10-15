@@ -24,12 +24,12 @@ public class PlanDay {
     private Long dayNum;
 
     @ManyToOne
-    @JsonIgnoreProperties({"planDay"})
+    @JsonIgnoreProperties({"planDays", "users"})
     private  PlanWeek planWeek;
 
 //    in progress
     @OneToMany(mappedBy = "planDay")
-    @JsonIgnoreProperties("planDay")
+    @JsonIgnoreProperties({"planDay", "recipe"})
     private Collection<PlanTimeslot> planTimeslots;
 
 }

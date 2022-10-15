@@ -14,7 +14,7 @@ public class PlansController {
     private PlanDaysRepository planDaysRepository;
     private PlanTimeslotsRepository planTimeslotsRepository;
 
-    @GetMapping("")
+    @GetMapping("/timeslots")
     public List<PlanTimeslot> getAllTimeslots() {
         return planTimeslotsRepository.findAll();
     }

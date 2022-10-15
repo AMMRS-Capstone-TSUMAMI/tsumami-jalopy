@@ -67,7 +67,7 @@ public class User {
     private Collection<Recipe> recipes;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("planDays")
+    @JsonIgnoreProperties({"planDay", "user"})
     private Collection<PlanWeek> planWeeks;
 
 
@@ -102,5 +102,4 @@ public class User {
     )
     @JsonIgnoreProperties("users")
     private Collection<ChefLevel> chefLevels;
-
 }

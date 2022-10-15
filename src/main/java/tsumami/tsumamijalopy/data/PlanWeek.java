@@ -27,7 +27,7 @@ public class PlanWeek {
     private User user;
 
     @OneToMany(mappedBy = "planWeek")
-    @JsonIgnoreProperties("planTimeslots")
+    @JsonIgnoreProperties({"planTimeslot", "planWeek"})
     private Collection<PlanDay> planDays;
 
 }
