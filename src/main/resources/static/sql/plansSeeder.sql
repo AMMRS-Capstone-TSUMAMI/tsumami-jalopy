@@ -24,3 +24,11 @@ VALUES
     (3,	2,	2),
     (4,	3,	2),
     (5,	1,	3);
+
+INSERT INTO `plan_timeslot_recipe` (`recipe_id`, `plan_timeslot_id`)
+VALUES
+    (634476,  1),
+    (634486,  2),
+    (641208,  3),
+    (634486,  4),
+    (634476,  5);

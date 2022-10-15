@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.*;
 
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
@@ -12,6 +14,7 @@ import java.util.List;
 public class PlansController {
     private PlanWeeksRepository planWeeksRepository;
     private PlanDaysRepository planDaysRepository;
+    private RecipesRepository recipesRepository;
     private PlanTimeslotsRepository planTimeslotsRepository;
 
     @GetMapping("")
@@ -25,6 +28,10 @@ public class PlansController {
         //TODO replace 1L with userId pulled from auth header
         //TODO add a PostMapping
         //TODO add recipe{id}
-        //TODO post request in frontend; parameters passed in url}
+        //TODO post request in frontend; parameters passed in url
+    }
+    @GetMapping("/planweek")
+    public Collection<String> getRecipesByPlanWeek(@RequestParam String startDate) {
+        return planTimeslotsRepository.getRecipesByPlanWeek(startDate, 1L);
     }
 }
