@@ -239,13 +239,11 @@ function decrementWeek() {
     displayedWeek.innerHTML = generateCalendarWeek(newWeekStart);
     displayedWeek.setAttribute("data-week-start", newWeekStart);
 }
-
 Date.prototype.addDays = function(days) {
     let date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
     return date;
 }
-
 function allowDrop(e) {
     e.preventDefault();
 }
