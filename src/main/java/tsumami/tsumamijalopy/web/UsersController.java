@@ -24,10 +24,12 @@ public class UsersController {
     private AuthBuddy authBuddy;
 
     @GetMapping("/me")
-    private User getMe() {
-        User loggedInUser = usersRepository.findAll().get(0);
+    private User fetchMe(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+
         return loggedInUser;
     }
+
     @GetMapping("")
     public List<User> getAll() {
         return usersRepository.findAll();
