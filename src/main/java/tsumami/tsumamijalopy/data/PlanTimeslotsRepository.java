@@ -22,13 +22,16 @@ public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Lon
 
     @Query(value = "SELECT pd.day_num AS day, " +
             "pt.timeslot AS timeslot, " +
-            "ptr.recipe_id AS recipe " +
+            "ptr.recipe_id, " +
+            "r.name AS recipe, " +
+            "r. photo " +
             "FROM plan_timeslot_recipe ptr " +
+            "LEFT JOIN recipes r on r.id = ptr.recipe_id " +
             "LEFT JOIN plan_timeslots pt on pt.id = ptr.plan_timeslot_id " +
             "LEFT JOIN plan_days pd on pt.plan_day_id = pd.id " +
             "LEFT JOIN plan_weeks pw on pd.plan_week_id = pw.id " +
             "WHERE pw.start_date = :start_date " +
             "AND pw.user_id = :user_id", nativeQuery = true)
-    Long[][] getRecipesByPlanWeek(@Param("start_date") String startDate,
+    String[][] getRecipesByPlanWeek(@Param("start_date") String startDate,
                                  @Param("user_id") Long userId);
 }

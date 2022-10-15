@@ -32,7 +32,7 @@ public class PlansController {
         //TODO post request in frontend; parameters passed in url
 //    }
     @GetMapping("/planweek")
-    public Long[][] getRecipesByPlanWeek(@RequestParam String startDate, @RequestParam Long userId) {
+    public String[][] getRecipesByPlanWeek(@RequestParam String startDate, @RequestParam Long userId) {
         return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
     }
 }
