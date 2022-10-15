@@ -14,9 +14,9 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="plan_timeslots")
-@Table
 
+@Entity
+@Table(name="plan_timeslots")
 public class PlanTimeslot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +36,8 @@ public class PlanTimeslot {
     @JsonIgnoreProperties("planTimeslots")
     private Collection<Recipe> recipes;
 
-//in progress!!!!
     @ManyToOne
-    @JsonIgnoreProperties({"planTimeslots"})
+    @JsonIgnoreProperties("planTimeslots")
     private PlanDay planDay;
 
     @NotEmpty

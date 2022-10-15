@@ -14,6 +14,11 @@ public class PlansController {
     private PlanDaysRepository planDaysRepository;
     private PlanTimeslotsRepository planTimeslotsRepository;
 
+    @GetMapping("/timeslots")
+    public List<PlanTimeslot> getAllTimeslots() {
+        return planTimeslotsRepository.findAll();
+    }
+
     @GetMapping("/timeslot")
     public PlanTimeslot getPlanTimeslotIdByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
         return planTimeslotsRepository.getPlanTimeslotByDayWeekStart(startDate, dayNum, timeslot, 1L);

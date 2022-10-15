@@ -63,16 +63,13 @@ public class User {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("users")
+    @JsonIgnoreProperties({"users", "planTimeslots"})
     private Collection<Recipe> recipes;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties({"user_id"})
+    @JsonIgnoreProperties({"planDay", "user"})
     private Collection<PlanWeek> planWeeks;
 
-//    @OneToMany(mappedBy = "user")
-//    @JsonIgnoreProperties({"user_id"})
-//    private Collection<Recipe> recipe;
 
 
 //    creating many to many association between user and trophy
@@ -105,5 +102,4 @@ public class User {
     )
     @JsonIgnoreProperties("users")
     private Collection<ChefLevel> chefLevels;
-
 }

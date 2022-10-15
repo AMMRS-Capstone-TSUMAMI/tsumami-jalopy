@@ -1,5 +1,6 @@
 package tsumami.tsumamijalopy.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +37,5 @@ public class Trophy {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    private Collection<User> users;
-}
+    @JsonIgnoreProperties({"intolerances", "planWeeks", "recipes", "trophies", "chefLevels"})
+    private Collection<User> users;}
