@@ -8,12 +8,16 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
+import tsumami.tsumamijalopy.data.ChefLevel;
+import tsumami.tsumamijalopy.data.ChefLevelRepository;
 import tsumami.tsumamijalopy.data.User;
 import tsumami.tsumamijalopy.data.UsersRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 
 @Service
@@ -21,6 +25,8 @@ public class AuthBuddy {
 
     @Autowired
     private UsersRepository usersRepository;
+    @Autowired
+    private ChefLevelRepository chefLevelRepository;
 // method to getAndSaveUserFromAuthHeader
     public User getUserFromAuthHeader(String authHeader) {
         //checking for data needed to call api
@@ -76,6 +82,12 @@ public class AuthBuddy {
             newUser.setEmail(email);
             newUser.setGender(gender);
             newUser.setBirthdate(birthdate);
+
+            //Sets starting level for new created user
+            Collection<ChefLevel> chefLevels = new ArrayList<>();
+            chefLevels.add(chefLevelRepository.findById(1L).get());
+            newUser.setChefLevels(chefLevels);
+
 //            newUser.setPhoto(photo);
 
             //save record to the database
