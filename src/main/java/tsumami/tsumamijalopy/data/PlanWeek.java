@@ -13,16 +13,19 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="plan_weeks")
+@Table(name="plan_weeks",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"start_date", "user_id"}))
 
 public class PlanWeek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "start_date")
     private LocalDate startDate;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"intolerances", "planWeeks", "recipes", "trophies", "chefLevels"})
     private User user;
 

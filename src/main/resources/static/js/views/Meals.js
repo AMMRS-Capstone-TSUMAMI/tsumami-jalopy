@@ -4,7 +4,7 @@ import createView from "../createView.js";
 // TODO:
 // TODO:
 let today = new Date;
-
+let plan;
 let results;
 export default function Meals(props) {
     return `
@@ -70,45 +70,40 @@ export default function Meals(props) {
                             <li class="timeslot-name morning">
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
-                            <li class="meals-calendar timeslot" id="day1-slot1">
-                                <div class="card meal-card" id="641208" draggable="true" style="background-image: url(https://spoonacular.com/recipeImages/641208-312x231.jpg)">
-                                    <div class="card-body"></div>
-                                    <div class="card-footer">Dak Bulgogi - Korean BBQ Chicken</div>
-                                </div>
-                            </li>
-                            <li class="meals-calendar timeslot" id="day2-slot1"></li>
-                            <li class="meals-calendar timeslot" id="day3-slot1"></li>
-                            <li class="meals-calendar timeslot" id="day4-slot1"></li>
-                            <li class="meals-calendar timeslot" id="day5-slot1"></li>
-                            <li class="meals-calendar timeslot" id="day6-slot1"></li>
-                            <li class="meals-calendar timeslot" id="day7-slot1"></li>
+                            <li class="meals-calendar timeslot" data-slot="11"></li>
+                            <li class="meals-calendar timeslot" data-slot="21"></li>
+                            <li class="meals-calendar timeslot" data-slot="31"></li>
+                            <li class="meals-calendar timeslot" data-slot="41"></li>
+                            <li class="meals-calendar timeslot" data-slot="51"></li>
+                            <li class="meals-calendar timeslot" data-slot="61"></li>
+                            <li class="meals-calendar timeslot" data-slot="71"></li>
                         </ul>
                         <ul class="meals-calendar-row">
                             <li class="timeslot-name noon">
                                 <i class="bi bi-brightness-high-fill"></i>
                             </li>
-                            <li class="meals-calendar timeslot" id="day1-slot2"></li>
-                            <li class="meals-calendar timeslot" id="day2-slot2"></li>
-                            <li class="meals-calendar timeslot" id="day3-slot2"></li>
-                            <li class="meals-calendar timeslot" id="day4-slot2"></li>
-                            <li class="meals-calendar timeslot" id="day5-slot2"></li>
-                            <li class="meals-calendar timeslot" id="day6-slot2"></li>
-                            <li class="meals-calendar timeslot" id="day7-slot2"></li>
+                            <li class="meals-calendar timeslot" data-slot="12"></li>
+                            <li class="meals-calendar timeslot" data-slot="22"></li>
+                            <li class="meals-calendar timeslot" data-slot="32"></li>
+                            <li class="meals-calendar timeslot" data-slot="42"></li>
+                            <li class="meals-calendar timeslot" data-slot="52"></li>
+                            <li class="meals-calendar timeslot" data-slot="62"></li>
+                            <li class="meals-calendar timeslot" data-slot="72"></li>
                         </ul>
                         <ul class="meals-calendar-row">
                             <li class="timeslot-name evening">
                                 <i class="bi bi-moon-fill evening"></i>
                             </li>
-                            <li class="meals-calendar timeslot" id="day1-slot3"></li>
-                            <li class="meals-calendar timeslot" id="day2-slot3"></li>
-                            <li class="meals-calendar timeslot" id="day3-slot3"></li>
-                            <li class="meals-calendar timeslot" id="day4-slot3"></li>
-                            <li class="meals-calendar timeslot" id="day5-slot3"></li>
-                            <li class="meals-calendar timeslot" id="day6-slot3"></li>
-                            <li class="meals-calendar timeslot" id="day7-slot3"></li>
+                            <li class="meals-calendar timeslot" data-slot="13"></li>
+                            <li class="meals-calendar timeslot" data-slot="23"></li>
+                            <li class="meals-calendar timeslot" data-slot="33"></li>
+                            <li class="meals-calendar timeslot" data-slot="43"></li>
+                            <li class="meals-calendar timeslot" data-slot="53"></li>
+                            <li class="meals-calendar timeslot" data-slot="63"></li>
+                            <li class="meals-calendar timeslot" data-slot="73"></li>
                         </ul>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
@@ -116,10 +111,10 @@ export default function Meals(props) {
     `;
 }
 
-export function MealsEvent() {
+export async function MealsEvent() {
     prepareSearchFields();
     addCalendarListeners();
-    addMealCardListeners();
+    await fetchCalendarEntries().then(() => addMealCardListeners())
     console.log("MealsEvent Complete");
 }
 
@@ -160,10 +155,12 @@ function populateResults() {
     const recipeResults = document.querySelector("#meals-recipe-search-results")
     let html = "";
     let id,
+        recipeId,
         title,
         image;
     results.forEach(result => {
-        id = result.id;
+        id = Math.random().toString(36).slice(2);
+        recipeId = result.id;
         title = result.title;
         image = result.image;
         console.log(id);
@@ -171,7 +168,7 @@ function populateResults() {
         console.log(image);
 
         html += `
-<div class="card meal-card" id="${id}" draggable="true" style="background-image: url(${image})">
+<div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
     <div class="card-body"></div>
     <div class="card-footer">${title}</div>
 </div>
@@ -181,26 +178,6 @@ function populateResults() {
     addMealCardListeners()
 }
 
-function addResultListeners() {
-
-}
-function addCalendarListeners() {
-    const timeslots = document.querySelectorAll(".timeslot");
-    timeslots.forEach(function(timeslot) {
-        timeslot.addEventListener("drop", drop)
-        timeslot.addEventListener("dragover", allowDrop)
-    })
-    const weekNextBtn = document.querySelector("#week-next")
-    weekNextBtn.addEventListener("click", incrementWeek)
-    const weekPrevBtn = document.querySelector("#week-prev")
-    weekPrevBtn.addEventListener("click", decrementWeek)
-}
-function addMealCardListeners() {
-    let mealCards = document.querySelectorAll(".meal-card");
-    mealCards.forEach(function(mealCard) {
-        mealCard.addEventListener("dragstart", drag)
-    })
-}
 function searchFavoriteRecipes() {
 
 }
@@ -216,6 +193,44 @@ function getStartDay(date) {
     if(day >= 2) {
         return today.addDays(1 - day);
     }
+}
+async function fetchCalendarEntries() {
+    const request = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/planweek?startDate=2022-10-10&userId=1`, request)
+        .then(function(response) {
+            if(!response.ok) {
+                console.log("Error Finding Recipe: " + response.status);
+            } else {
+                console.log("Populated Recipes");
+                return response.json()
+            }
+        });
+    plan = data;
+    populateCalendar();
+}
+
+function populateCalendar() {
+    for(let i = 0; i < plan.length; i++) {
+        let target = document.querySelector(`[data-slot="${plan[i][0]}"]`),
+            recipeId = plan[i][1],
+            id = Math.random().toString(36).slice(2),
+            title = plan[i][2],
+            image = plan[i][3];
+        target.innerHTML += `
+        <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" draggable="true" style="background-image: url(${image})">
+            <div class="card-body"></div>
+            <div class="card-footer">${title}</div>
+        </div>
+        `
+    }
+
+
+
 }
 
 function generateCalendarWeek(start) {
@@ -244,6 +259,25 @@ Date.prototype.addDays = function(days) {
     date.setDate(date.getDate() + days);
     return date;
 }
+
+function addCalendarListeners() {
+    const timeslots = document.querySelectorAll(".timeslot");
+    timeslots.forEach(function(timeslot) {
+        timeslot.addEventListener("drop", drop)
+        timeslot.addEventListener("dragover", allowDrop)
+    })
+    const weekNextBtn = document.querySelector("#week-next")
+    weekNextBtn.addEventListener("click", incrementWeek)
+    const weekPrevBtn = document.querySelector("#week-prev")
+    weekPrevBtn.addEventListener("click", decrementWeek)
+}
+function addMealCardListeners() {
+    let mealCards = document.querySelectorAll(".meal-card");
+    mealCards.forEach(function(mealCard) {
+        mealCard.addEventListener("dragstart", drag)
+    })
+}
+
 function allowDrop(e) {
     e.preventDefault();
 }
