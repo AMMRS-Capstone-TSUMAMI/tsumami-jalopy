@@ -4,9 +4,11 @@ import createView from "../createView.js";
 // TODO:
 // TODO:
 let today = new Date;
+let startDay;
 let plan;
 let results;
 export default function Meals(props) {
+    getStartDay(today)
     return `
 <div class="container g-0">
     <div id="meals-header" class="container g-0">
@@ -53,7 +55,7 @@ export default function Meals(props) {
                     <div class="col ps-1 pe-0">
                         <div id="meals-calendar-header">
                             <i id="week-prev" class="bi bi-caret-left-fill"></i>
-                            <span id="meals-calendar-week" data-week-start="${getStartDay(today)}">${generateCalendarWeek(getStartDay(today))}</span>
+                            <span id="meals-calendar-week" data-week-start="${startDay}">${generateCalendarWeek(startDay)}</span>
                             <i id="week-next" class="bi bi-caret-right-fill"></i>
                         </div>
                         <ul>
@@ -163,7 +165,7 @@ function populateResults() {
         recipeId = result.id;
         title = result.title;
         image = result.image;
-        console.log(id);
+        console.log(recipeId);
         console.log(title);
         console.log(image);
 
@@ -185,14 +187,16 @@ function searchFavoriteRecipes() {
 function getStartDay(date) {
     let day = date.getDay()
     if(day === 0) {
-        return today.addDays(-6);
+        startDay = date.addDays(-6);
     }
     if(day === 1) {
-        return today;
+        startDay = date;
     }
     if(day >= 2) {
-        return today.addDays(1 - day);
+        startDay = date.addDays(1 - day);
     }
+    return startDay
+
 }
 async function fetchCalendarEntries() {
     const request = {
@@ -201,7 +205,7 @@ async function fetchCalendarEntries() {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/planweek?startDate=2022-10-10&userId=1`, request)
+    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/planweek?startDate=${startDay.ISO()}&userId=1`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -228,37 +232,45 @@ function populateCalendar() {
         </div>
         `
     }
-
-
-
 }
 
 function generateCalendarWeek(start) {
     let end = start.addDays(6);
-    return `${start.toDateString()} - ${end.toDateString()}`
+    return `${start.toDateString()} - ${end.toDateString()}`;
 }
 function updateCalendarWeek(newStart) {
-    document.querySelector("#meals").innerHTML = generateCalendarWeek(getStartDay(newStart))
+    let timeslots = document.querySelectorAll(".timeslot");
+    timeslots.forEach(slot => slot.innerHTML = "");
+    fetchCalendarEntries().then(() => addMealCardListeners());
+
 }
 function incrementWeek() {
     let displayedWeek = document.querySelector("#meals-calendar-week");
     let displayedWeekStart = new Date(displayedWeek.getAttribute("data-week-start"));
-    let newWeekStart = displayedWeekStart.addDays(7);
-    displayedWeek.innerHTML = generateCalendarWeek(newWeekStart);
-    displayedWeek.setAttribute("data-week-start", newWeekStart);
+    startDay = displayedWeekStart.addDays(7);
+    displayedWeek.innerHTML = generateCalendarWeek(startDay);
+    displayedWeek.setAttribute("data-week-start", startDay);
+    updateCalendarWeek(startDay)
 }
 function decrementWeek() {
     let displayedWeek = document.querySelector("#meals-calendar-week");
     let displayedWeekStart = new Date(displayedWeek.getAttribute("data-week-start"));
-    let newWeekStart = displayedWeekStart.addDays(-7);
-    displayedWeek.innerHTML = generateCalendarWeek(newWeekStart);
-    displayedWeek.setAttribute("data-week-start", newWeekStart);
+    startDay = displayedWeekStart.addDays(-7);
+    displayedWeek.innerHTML = generateCalendarWeek(startDay);
+    displayedWeek.setAttribute("data-week-start", startDay);
+    updateCalendarWeek(startDay);
 }
 Date.prototype.addDays = function(days) {
     let date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
     return date;
 }
+Date.prototype.ISO = function() {
+    let date = new Date(this.valueOf());
+    date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+    return date;
+}
+
 
 function addCalendarListeners() {
     const timeslots = document.querySelectorAll(".timeslot");
@@ -283,9 +295,12 @@ function allowDrop(e) {
 }
 function drag(e) {
     e.dataTransfer.setData("text", e.target.id);
+    console.log(`Drag ${e.dataTransfer}`);
+
 }
 function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
+    console.log(data);
     e.currentTarget.appendChild(document.getElementById(data));
 }
