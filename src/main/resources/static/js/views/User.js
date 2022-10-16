@@ -4,7 +4,11 @@ import CreateView from "../createView.js"
 let me;
 export default function prepareUser(props) {
     me = props.me;
-
+    // console.log(props);
+    let trophies = props.me.trophies;
+    let chefLevels = props.me.chefLevels
+    console.log(trophies);
+    console.log(chefLevels);
 
     // make the user's original pw available somewhere in here
     return `
@@ -160,6 +164,16 @@ export default function prepareUser(props) {
 </html>
         
         <hr>
+<!--    working on achievement displays-->
+        ${trophies.map(trophy => `
+            <div class = "trophy">
+            <i class="bi bi-trophy-fill"></i>
+            <h1 class="trophy-title" value="${trophy}">${trophies}</h1>
+        `)
+        .join("")}
+        
+        
+        </div>
     `;
 }
 
