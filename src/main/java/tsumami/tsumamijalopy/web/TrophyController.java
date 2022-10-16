@@ -16,7 +16,7 @@ import java.util.Collection;
 public class TrophyController {
     private TrophyRepository trophyRepository;
     @GetMapping("/getAllTrophies")
-    public Collection<Trophy> getAllUsers() {
+    public Collection<Trophy> getAllTrophies() {
         return trophyRepository.findAll();
     }
 }

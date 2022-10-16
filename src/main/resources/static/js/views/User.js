@@ -4,11 +4,18 @@ import CreateView from "../createView.js"
 let me;
 export default function prepareUser(props) {
     me = props.me;
-    // console.log(props);
+    console.log(props);
     let trophies = props.me.trophies;
-    let chefLevels = props.me.chefLevels
-    console.log(trophies);
-    console.log(chefLevels);
+    let chefLevels = props.me.chefLevels;
+    let allTrophies = props.allTrophies;
+    let userTrophiesIds = [];
+
+    for (let trophy of trophies) {
+        userTrophiesIds.push(trophy.id)
+    }
+    console.log(userTrophiesIds)
+    // console.log(trophies);
+    // console.log(chefLevels);
 
     // make the user's original pw available somewhere in here
     return `
@@ -165,23 +172,62 @@ export default function prepareUser(props) {
         
         <hr>
 <!--    working on achievement displays-->
-        ${trophies.map(trophy => `
-            <div class = "trophy">
-            <i class="bi bi-trophy-fill"></i>
-            <h1 class="trophy-title" value="${trophy}">${trophies}</h1>
-        `)
-        .join("")}
+        <div class="trophy-row row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <div class="trophy-container d-flex flex-wrap justify-content-center">
+                    ${allTrophies.map(trophy => `
+                    
+                         ${appendTrophyHTML(userTrophiesIds, trophy)}
+                    
+                    `).join("")}
+                <div class="trophy-container">
+            </div>
+        </div>
+        
+        
+        
         
         
         </div>
     `;
 }
-
+function appendTrophyHTML (usersTrophies, currentTrophy){
+    if (usersTrophies.includes(currentTrophy.id)) {
+        return `
+                    
+                        <div class="card trophy-card m-2 tt" data-bs-placment="bottom" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+                          <div class="card-body">
+                            <i class="bi bi-trophy-fill color-gold trophy-icon"></i> 
+                          </div>
+                          <div class="card-body">
+                            <h6 class="trophy-title">${currentTrophy.title}</h6>
+                          </div>
+                        </div>      
+          `
+    }
+    return `<div class="card trophy-card m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+                      <div class="card-body">
+                        <i class="bi bi-trophy-fill color-grey trophy-icon"></i> 
+                      </div>
+                      <div class="card-body">
+                        <h6 class="trophy-title">${currentTrophy.title}</h6>
+                      </div>
+                    </div>`
+}
 
 export function prepareUserJS() {
-    doTogglePasswordHandler();
-    doSavePasswordHandler();
+    // doTogglePasswordHandler();
+    // doSavePasswordHandler();
+    trophyCardEventListener();
     // console.log(user.posts.length);
+}
+
+function trophyCardEventListener() {
+    const tooltips = document.querySelectorAll('.tt')
+    tooltips.forEach(t => {
+        new bootstrap.Tooltip(t)
+    })
 }
 
 function doSavePasswordHandler() {
