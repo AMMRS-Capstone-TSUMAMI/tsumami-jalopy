@@ -90,24 +90,39 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
+
+
+
+
         '/recipes': {
             returnView: recipesHTML,
-            state: {},
+            state: {
+                get: '/api/meals/:data-recipe-id',
+            },
             uri: '/recipes',
             title: 'Recipes',
             viewEvent: recipesEvent
-        }
+        },
+
+
+
+
         // below is for routing the id
-        // '/meals/{id}': {
-        //     returnView: recipesHTML,
-        //     state: {
-        //         post: '/api/meals/{id}',
-        //     },
-        //     uri: '/meals/{id}',
-        //     title: 'Selected recipe ID',
-        //     viewEvent: recipesEvent
-        // }
+        '/meals/:recipeId': {
+            returnView: recipesHTML,
+            state: {
+                post: '/api/meals/:data-recipe-id',
+            },
+            uri: '/meals/:recipeId',
+            title: 'Selected recipe ID',
+            viewEvent: recipesEvent
+        }
     };
+
+
+
+
+
     // if URI does not match precisely then we need to try harder to find a match
     if(!routes[URI]) {
         for(const routeKey in routes) {
