@@ -35,11 +35,12 @@ export default function router(URI) {
         '/me': {
             returnView: prepareUserHTML,
             state: {
-                me: '/api/users/me'
+                me: '/api/users/me',
+                allTrophies: '/api/trophies/getAllTrophies'
             },
             uri: '/me',
             title: 'User Info',
-            viewEvent: 'prepareUserJS'
+            viewEvent: prepareUserJS
         },
         '/login': {
             returnView: Login,
