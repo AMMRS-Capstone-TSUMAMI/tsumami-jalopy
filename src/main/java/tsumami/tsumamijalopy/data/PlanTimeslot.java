@@ -16,11 +16,19 @@ import java.util.Collection;
 @AllArgsConstructor
 
 @Entity
-@Table(name="plan_timeslots")
+@Table(name="plan_timeslots",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"timeslot", "plan_day_id"}))
 public class PlanTimeslot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
+    private Long timeslot;
+    @ManyToOne
+    @JoinColumn(name = "plan_day_id")
+    @JsonIgnoreProperties("planTimeslots")
+    private PlanDay planDay;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -36,10 +44,4 @@ public class PlanTimeslot {
     @JsonIgnoreProperties("planTimeslots")
     private Collection<Recipe> recipes;
 
-    @ManyToOne
-    @JsonIgnoreProperties("planTimeslots")
-    private PlanDay planDay;
-
-    @NotEmpty
-    private Long timeslot;
 }

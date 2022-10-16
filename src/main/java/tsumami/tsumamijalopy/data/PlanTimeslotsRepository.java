@@ -1,15 +1,23 @@
 package tsumami.tsumamijalopy.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import javax.transaction.Transactional;
 
 public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Long> {
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT IGNORE INTO plan_timeslots (timeslot, plan_day_id) " +
+            "VALUES " +
+            "    (:timeslot, :plan_day_id)", nativeQuery = true)
+    void insertTimeslot(@Param("timeslot") Long timeslot, @Param("plan_day_id") Long planDayId);
+    @Query(value = "SELECT id FROM plan_timeslots " +
+            "WHERE timeslot = :timeslot " +
+            "AND plan_day_id = :plan_day_id", nativeQuery = true)
+    Long getPlanTimeslotId(@Param("timeslot") Long timeslot, @Param("plan_day_id") Long planDayId);
 
 //    @Query(value = "SELECT plan_timeslots.* FROM plan_timeslots " +
 //            "LEFT JOIN plan_days ON plan_timeslots.plan_day_id = plan_days.id " +

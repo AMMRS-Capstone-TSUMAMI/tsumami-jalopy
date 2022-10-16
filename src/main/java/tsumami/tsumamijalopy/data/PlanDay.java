@@ -15,15 +15,19 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="plan_days")
+@Table(name="plan_days",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"day_num", "plan_week_id"}))
 
 public class PlanDay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "day_num")
     private Long dayNum;
 
     @ManyToOne
+    @JoinColumn(name = "plan_week_id")
     @JsonIgnoreProperties({"planDays", "users"})
     private  PlanWeek planWeek;
 
