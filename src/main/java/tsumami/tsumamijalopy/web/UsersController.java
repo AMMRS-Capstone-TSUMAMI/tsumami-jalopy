@@ -6,9 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import tsumami.tsumamijalopy.data.User;
-import tsumami.tsumamijalopy.data.UserAuthInfoDTO;
-import tsumami.tsumamijalopy.data.UsersRepository;
+import tsumami.tsumamijalopy.data.*;
 import tsumami.tsumamijalopy.services.AuthBuddy;
 import tsumami.tsumamijalopy.services.FieldHelper;
 
@@ -22,6 +20,7 @@ import java.util.Optional;
 public class UsersController {
     private UsersRepository usersRepository;
     private AuthBuddy authBuddy;
+    private TrophyRepository trophyRepository;
 
     @GetMapping("/me")
     private User fetchMe(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
@@ -76,6 +75,24 @@ public class UsersController {
     @GetMapping("/getAll")
     public Collection<User> getAllUsers() {
         return usersRepository.findAll();
+    }
+
+    @PatchMapping("/addTrophy/{trophyId}")
+    public void addTrophyAndXp(@PathVariable Long trophyId, @RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Trophy newTrophy = trophyRepository.findById(trophyId).get();
+
+        Collection<Trophy> usersTrophies = loggedInUser.getTrophies();
+
+        usersTrophies.add(newTrophy);
+
+        loggedInUser.setTrophies(usersTrophies);
+
+        Integer usersXp = loggedInUser.getExperiencePoints();
+        usersXp = usersXp + 10;
+        loggedInUser.setExperiencePoints(usersXp);
+
+        usersRepository.save(loggedInUser);
     }
 
 }
