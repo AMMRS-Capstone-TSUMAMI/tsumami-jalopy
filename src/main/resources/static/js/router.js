@@ -97,7 +97,7 @@ export default function router(URI) {
             state: {
                 post: '/api/recipes/:id',
             },
-            uri: '/recipes{recipeID}',
+            uri: '/recipes/{recipeID}',
             title: 'Recipes',
             viewEvent: recipesEvent
         }
