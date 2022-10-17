@@ -9,6 +9,9 @@ import tsumami.tsumamijalopy.data.MealsRepository;
 import tsumami.tsumamijalopy.data.Recipe;
 import tsumami.tsumamijalopy.data.RecipesRepository;
 
+import javax.persistence.Id;
+import java.util.Optional;
+
 
 @AllArgsConstructor
 @RestController
@@ -25,4 +28,11 @@ public class MealsController {
 //
 //        return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
 //    }
+
+    @Id
+    @PostMapping ("/recipes/{id}")
+
+    public Optional<Recipe> getRecipeById(@PathVariable("id") Long id) {
+        return recipesRepository.findById(id);
+    }
 }
