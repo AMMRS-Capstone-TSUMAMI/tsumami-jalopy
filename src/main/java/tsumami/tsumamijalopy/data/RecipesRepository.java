@@ -22,4 +22,8 @@ public interface RecipesRepository extends JpaRepository<Recipe, Long> {
     void insertRecipe(@Param("id") Long recipeId, @Param("name") String recipeName, @Param("photo") String image);
 
 
+//    In progress for recipes view
+//    need to getRecipeById here
+
+
 }

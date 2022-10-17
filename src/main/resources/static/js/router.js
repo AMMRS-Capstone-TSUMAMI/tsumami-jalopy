@@ -63,10 +63,12 @@ export default function router(URI) {
             title: "Logout",
             viewEvent: LogoutEvent
         },
-        '/meals': {
+        '/meals{id}': {
             returnView: Meals,
-            state: {},
-            uri: '/meals',
+            state: {
+                recipe: '/api/recipes/{id}',
+            },
+            uri: '/meals{id}',
             title: 'Meals',
             viewEvent: MealsEvent
         },
@@ -92,12 +94,12 @@ export default function router(URI) {
             title: 'Loading...',
         },
         // to add recipe Id to route path
-        '/recipes/{recipeID}': {
+        '/recipes/{id}': {
             returnView: recipesHTML,
             state: {
-                post: '/api/recipes/:id',
+                recipe: '/api/recipes/{id}',
             },
-            uri: '/recipes/{recipeID}',
+            uri: '/recipes/{id}',
             title: 'Recipes',
             viewEvent: recipesEvent
         }

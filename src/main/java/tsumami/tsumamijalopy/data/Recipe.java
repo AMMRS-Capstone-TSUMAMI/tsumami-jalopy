@@ -54,8 +54,7 @@ public class Recipe {
 
 //TODO add ManyToMany
 
-//    public Recipe getRecipeById(Long id) {
-//        Optional<Recipe> recipe = repository.findById(id);
-//        return
-//    }
+
+//    In progress for recipes view:
+
 }

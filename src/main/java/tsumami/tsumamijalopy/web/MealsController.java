@@ -9,6 +9,9 @@ import tsumami.tsumamijalopy.data.MealsRepository;
 import tsumami.tsumamijalopy.data.Recipe;
 import tsumami.tsumamijalopy.data.RecipesRepository;
 
+import javax.persistence.Id;
+import java.util.Optional;
+
 
 @AllArgsConstructor
 @RestController
@@ -19,10 +22,23 @@ public class MealsController {
     private MealsRepository mealsRepository;
     private RecipesRepository recipesRepository;
 
+
+//    In progress for recipes view:
+
+
+
+
 //    @GetMapping("/meals/{id}")
 //    public ResponseEntity<Recipe>getRecipeById(@PathVariable("id") Recipe id) {
 //        Recipe entity = data.Recipe.getRecipeById(Recipe id);
 //
 //        return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
 //    }
+    @Id
+    @PostMapping ("/recipes/{id}")
+
+    public Optional<Recipe> getRecipeById(@PathVariable("id") Long id) {
+        return recipesRepository.findById(id);
+    }
+
 }
