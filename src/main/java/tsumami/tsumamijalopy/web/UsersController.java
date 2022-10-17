@@ -43,9 +43,11 @@ public class UsersController {
     private UserAuthInfoDTO getUserAuthInfo(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
 //        System.out.println(authBuddy.getUserFromAuthHeader(authHeader).getBirth_date());
-
         // use email to lookup the user's info
         UserAuthInfoDTO userDTO = new UserAuthInfoDTO();
+        userDTO.setBirthdate(loggedInUser.getBirthdate());
+        userDTO.setGender(loggedInUser.getGender());
+        userDTO.setId(loggedInUser.getId());
         userDTO.setEmail(loggedInUser.getEmail());
         //        userDTO.setRole(loggedInUser.getRole());
         userDTO.setUsername(loggedInUser.getUsername());

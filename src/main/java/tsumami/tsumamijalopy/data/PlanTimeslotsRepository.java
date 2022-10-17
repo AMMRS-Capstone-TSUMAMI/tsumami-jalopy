@@ -29,6 +29,7 @@ public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Lon
 //    PlanTimeslot getPlanTimeslotByDayWeekStart(@Param("start_date") String startDate, @Param("day_num") Long dayNum, @Param("timeslot") Long timeslot, @Param("user_id") Long userId);
 
     @Query(value = "SELECT CONCAT(pd.day_num, pt.timeslot) AS slot, " +
+            "ptr.plan_timeslot_id, " +
             "ptr.recipe_id, " +
             "r.name AS recipe, " +
             "r. photo " +

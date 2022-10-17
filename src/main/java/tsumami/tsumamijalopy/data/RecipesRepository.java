@@ -20,6 +20,10 @@ public interface RecipesRepository extends JpaRepository<Recipe, Long> {
             "VALUES " +
             "    (:id, :name, :photo)", nativeQuery = true)
     void insertRecipe(@Param("id") Long recipeId, @Param("name") String recipeName, @Param("photo") String image);
-
-
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM plan_timeslot_recipe " +
+            "WHERE recipe_id = :recipe_id AND plan_timeslot_id = :plan_timeslot_id " +
+            "LIMIT 1", nativeQuery = true)
+    void deleteRecipe(@Param("recipe_id") Long recipeId, @Param("plan_timeslot_id") Long planTimeslotId);
 }
