@@ -1,8 +1,10 @@
 package tsumami.tsumamijalopy.web;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.*;
+import tsumami.tsumamijalopy.services.AuthBuddy;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class PlansController {
     private PlanDaysRepository planDaysRepository;
     private RecipesRepository recipesRepository;
     private PlanTimeslotsRepository planTimeslotsRepository;
-    private UsersRepository usersRepository;
+    private AuthBuddy authBuddy;
 
     @GetMapping("")
     public List<PlanTimeslot> getAllTimeslots() {
@@ -30,7 +32,9 @@ public class PlansController {
         //TODO post request in frontend; parameters passed in url
 //    }
     @GetMapping("/get")
-    public String[][] getRecipesByPlanWeek(@RequestParam String startDate, @RequestParam Long userId) {
+    public String[][] getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
         return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
     }
 //    @PostMapping("/recipeslot")
@@ -38,9 +42,11 @@ public class PlansController {
 //        planWeeksRepository.addRecipeToSlot(id, name, image, startDate, userId, dayNum, timeslot);
 //    }
     @PostMapping("/post")
-    public Long insertRecipe(@RequestParam Long recipeId, @RequestParam String recipeName, @RequestParam String image, @RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
-        planWeeksRepository.insertWeek(startDate, 1L);
-        Long planWeekId = planWeeksRepository.getPlanWeekId(startDate, 1L);
+    public Long insertRecipe(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam Long recipeId, @RequestParam String recipeName, @RequestParam String image, @RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
+        planWeeksRepository.insertWeek(startDate, userId);
+        Long planWeekId = planWeeksRepository.getPlanWeekId(startDate, userId);
         planDaysRepository.insertDay(dayNum, planWeekId);
         Long planDayId = planDaysRepository.getPlanDayId(dayNum, planWeekId);
         planTimeslotsRepository.insertTimeslot(timeslot, planDayId);

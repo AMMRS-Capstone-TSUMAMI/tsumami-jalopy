@@ -240,7 +240,7 @@ async function fetchCalendarEntries() {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}&userId=1`, request)
+    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
