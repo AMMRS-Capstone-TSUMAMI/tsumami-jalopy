@@ -8,6 +8,7 @@ let today = new Date;
 let startDay;
 let plan;
 let results;
+let timeslotId;
 export default function Meals(props) {
     getStartDay(today)
     return `
@@ -117,7 +118,11 @@ export default function Meals(props) {
 export async function MealsEvent() {
     prepareSearchFields();
     addCalendarListeners();
-    await fetchCalendarEntries().then(() => addMealCardListeners())
+    await fetchCalendarEntries().then(() => {
+        populateCalendar()
+    }).then(() => {
+        addMealCardListeners()
+    })
     console.log("MealsEvent Complete");
 }
 
@@ -140,7 +145,7 @@ async function fetchRecipes(query) {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
+    let data = await fetch(`${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -199,8 +204,7 @@ async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslo
         }).then(function(jata) {
             return jata
         })
-    console.log(data);
-
+    timeslotId = data;
 }
 async function deleteRecipe(planTimeslotId, recipeId) {
     const request = {
@@ -338,7 +342,7 @@ function drag(e) {
         console.log("This doesn't have a slotId");
     }
 }
-function drop(e) {
+async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
     console.log(data);
@@ -350,8 +354,8 @@ function drop(e) {
     let startDate = startDay.ISO()
     let dayNum = el.parentElement.dataset.slot[0];
     let timeslot = el.parentElement.dataset.slot[1];
-    let timeslotId;
-    el.dataset.slotId
-    addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot)
+    await addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot).then(() => {
+        el.dataset.slotId = timeslotId;
+    })
     //todo update data-slot-id in html
 }
