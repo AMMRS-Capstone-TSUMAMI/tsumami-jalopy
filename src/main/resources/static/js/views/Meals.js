@@ -118,8 +118,8 @@ export default function Meals(props) {
 export async function MealsEvent() {
     prepareSearchFields();
     addCalendarListeners();
-    await fetchCalendarEntries().then(() => {
-        populateCalendar()
+    await fetchCalendarEntries().then(async() => {
+        await populateCalendar()
     }).then(() => {
         addMealCardListeners()
     })
@@ -263,7 +263,7 @@ function populateCalendar() {
             title = plan[i][3],
             image = plan[i][4];
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-recipe="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
             <div class="card-body"></div>
             <div class="card-footer">${title}</div>
         </div>
@@ -349,7 +349,7 @@ async function drop(e) {
     let el = document.querySelector(`#${data}`)
     e.currentTarget.appendChild(document.getElementById(data));
     let recipeId = el.dataset.recipeId;
-    let recipeName = el.dataset.recipe;
+    let recipeName = el.dataset.title;
     let image = el.dataset.image;
     let startDate = startDay.ISO()
     let dayNum = el.parentElement.dataset.slot[0];
