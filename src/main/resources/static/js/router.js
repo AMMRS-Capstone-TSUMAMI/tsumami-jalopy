@@ -100,7 +100,6 @@ export default function router(URI) {
             title: 'Recipes',
             viewEvent: recipesEvent
         },
-
         // to add recipe Id to route path
         '/recipes/{recipeID}': {
             returnView: PostDetail,
@@ -111,7 +110,15 @@ export default function router(URI) {
             title: "Post Detail",
             viewEvent: PostDetailEvents
         }
-
+        // '/posts/:id': {
+        //     returnView: PostDetail,
+        //     state: {
+        //         post: '/api/posts/:id',
+        //     },
+        //     uri: '/posts/:id',
+        //     title: "Post Detail",
+        //     viewEvent: PostDetailEvents
+        // }
     };
     // if URI does not match precisely then we need to try harder to find a match
     if(!routes[URI]) {
