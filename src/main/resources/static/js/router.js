@@ -93,11 +93,23 @@ export default function router(URI) {
         },
         '/recipes': {
             returnView: recipesHTML,
-            state: {},
+            state: {
+
+            },
             uri: '/recipes',
             title: 'Recipes',
             viewEvent: recipesEvent
         },
+        // to add recipe Id to route path
+        '/recipes/{recipeID}': {
+            returnView: PostDetail,
+            state: {
+                post: '/api/posts/:id',
+            },
+            uri: '/posts/:id',
+            title: "Post Detail",
+            viewEvent: PostDetailEvents
+        }
         // '/posts/:id': {
         //     returnView: PostDetail,
         //     state: {
