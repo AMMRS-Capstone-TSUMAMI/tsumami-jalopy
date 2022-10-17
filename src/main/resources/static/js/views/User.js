@@ -1,4 +1,5 @@
 import CreateView from "../createView.js"
+import {getHeaders} from "../auth.js";
 
 
 let me;
@@ -6,14 +7,22 @@ export default function prepareUser(props) {
     me = props.me;
     console.log(props);
     let trophies = props.me.trophies;
-    let chefLevels = props.me.chefLevels;
     let allTrophies = props.allTrophies;
     let userTrophiesIds = [];
+    let chefLevels = props.me.chefLevels;
+    console.log(chefLevels);
+    let allChefLevels = props.allChefLevels;
+    let userChefLevelsIds = [];
 
     for (let trophy of trophies) {
         userTrophiesIds.push(trophy.id)
     }
-    console.log(userTrophiesIds)
+
+    for (let chefLevel of chefLevels) {
+        userChefLevelsIds.push(chefLevel.id)
+    }
+
+    // console.log(userTrophiesIds)
     // console.log(trophies);
     // console.log(chefLevels);
 
@@ -172,8 +181,16 @@ export default function prepareUser(props) {
         
         <hr>
 <!--    working on achievement displays-->
-        <div class="trophy-row row">
-            <div class="col-6"></div>
+        <div class="achievement-row row">
+            <div class="col-6">
+                <div class="chef-container">
+                    ${allChefLevels.map(chefLevel => `
+                    
+                         ${appendChefHTML(userChefLevelsIds, chefLevel, me.experiencePoints)}
+                    
+                    `).join("")}
+                </div>
+            </div>
             <div class="col-6">
                 <div class="trophy-container d-flex flex-wrap justify-content-center">
                     ${allTrophies.map(trophy => `
@@ -181,15 +198,32 @@ export default function prepareUser(props) {
                          ${appendTrophyHTML(userTrophiesIds, trophy)}
                     
                     `).join("")}
-                <div class="trophy-container">
+                </div> 
             </div>
+            
+<!--testing toast-->
+<!--<div class="toast-container position-fixed bottom-0 end-0 p-3">-->
+<!--  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">-->
+<!--    <div class="toast-header">-->
+<!--          <img src="https://cdn-icons-png.flaticon.com/512/6951/6951856.png" class="rounded me-2" alt="...">-->
+
+<!--      <strong class="me-auto">Bootstrap</strong>-->
+<!--      <small>11 mins ago</small>-->
+<!--      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>-->
+<!--    </div>-->
+<!--    <div class="toast-body">-->
+<!--      Hello, world! This is a toast message.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+            
         </div>
         
         
         
         
         
-        </div>
+      
     `;
 }
 function appendTrophyHTML (usersTrophies, currentTrophy){
@@ -216,11 +250,63 @@ function appendTrophyHTML (usersTrophies, currentTrophy){
                     </div>`
 }
 
+function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
+    let usersCurrentXp = usersXp
+    let currentChefLevelXpThreshold = currentChefLevel.requiredXp;
+
+    let xpBarPercent = ((usersCurrentXp / currentChefLevelXpThreshold) * 100).toFixed(0) + "%";
+    console.log(xpBarPercent)
+    if (usersCurrentXp / currentChefLevelXpThreshold * 100 > 100) {
+        xpBarPercent = "100%"
+    }
+    if (usersChefLevels.includes(currentChefLevel.id)) {
+        return `
+                <div class="chef-card m-2 p-2 tt" data-bs-title=${JSON.stringify(currentChefLevel.description)} data-desc=${JSON.stringify(currentChefLevel.description)}">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex">
+                        <img src=${JSON.stringify(currentChefLevel.photo)} alt="chef level" class="chef-level-img">                  
+                        <h6 class="chef-title mx-3">${currentChefLevel.title} </h6>
+                      </div>
+                      <div class="w-65">
+                          <div class="bar-container">
+                              <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
+                          </div>
+                          <div class="d-flex justify-content-between">
+                            <div>123 / 4930</div>
+                            <div>${currentChefLevel.description}</div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+        `
+    }
+    return `<div class="chef-card m-2 p-2 tt" data-bs-title=${JSON.stringify(currentChefLevel.description)} data-desc=${JSON.stringify(currentChefLevel.description)}">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex">
+                        <img src=${JSON.stringify(currentChefLevel.photo)} alt="chef level" class="chef-level-img">                  
+                        <h6 class="chef-title mx-3">${currentChefLevel.title} </h6>
+                      </div>
+                      <div class="w-65">
+                          <div class="bar-container">
+                              <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
+                          </div>
+                          <div class="d-flex justify-content-between">
+                            <div>123 / 4930</div>
+                            <div>${currentChefLevel.description}</div>
+                          </div>
+                      </div>
+                  </div>
+                </div>`
+}
+
+
 export function prepareUserJS() {
     // doTogglePasswordHandler();
     // doSavePasswordHandler();
     trophyCardEventListener();
     // console.log(user.posts.length);
+    // awardUserATrophy(2);
+    moreToast();
 }
 
 function trophyCardEventListener() {
@@ -228,6 +314,8 @@ function trophyCardEventListener() {
     tooltips.forEach(t => {
         new bootstrap.Tooltip(t)
     })
+
+
 }
 
 function doSavePasswordHandler() {
@@ -270,4 +358,28 @@ function doTogglePasswordHandler() {
             newPassword.setAttribute("type", "password");
         }
     });
+}
+
+function awardUserATrophy(trophyId) {
+    let requestHeader = {
+        method: 'PATCH',
+        headers: getHeaders()
+    }
+
+    fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
+        console.log(response)
+    }).finally(function (){
+        //function that will append a toast to the body on page
+        // moreToast()
+    })
+}
+
+function moreToast() {
+
+    var newElement = document. createElement("div"); newElement. innerHTML = ``
+
+    const toastLiveExample = document.getElementById('liveToast')
+    const toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
 }

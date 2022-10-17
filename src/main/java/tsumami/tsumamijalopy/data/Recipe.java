@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Collection;
+import java.util.Optional;
+import tsumami.tsumamijalopy.data.RecipesRepository;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +18,13 @@ import java.util.Collection;
 @Entity
 @Table(name="recipes")
 public class Recipe {
+
+//    private RecipesRepository repository;
+//
+//    public Recipe(RecipesRepository recipesRepository) {
+//        this.repository = recipesRepository;
+//    }
+
 
     @Id
     private Long id;
@@ -27,6 +36,7 @@ public class Recipe {
 
     @Column(length = 1000)
     private String description;
+
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -44,4 +54,8 @@ public class Recipe {
 
 //TODO add ManyToMany
 
+//    public Recipe getRecipeById(Long id) {
+//        Optional<Recipe> recipe = repository.findById(id);
+//        return
+//    }
 }

@@ -14,3 +14,36 @@
 .trophy-icon {
     font-size: 5em;
 }
+
+.chef-level-img {
+    height: 50px;
+    width: 50px;
+}
+
+.chef-card {
+    border: 1px solid black;
+}
+
+/* Make sure that padding behaves as expected */
+* {box-sizing:border-box}
+
+/* Container for skill bars */
+.bar-container {
+    width: 100%; /* Full width */
+    height: 50%;
+    background-color: #ddd; /* Grey background */
+    align-self: start;
+}
+
+.skills {
+    text-align: right; /* Right-align text */
+    /*padding-top: 10px; !* Add top padding *!*/
+    /*padding-bottom: 10px; !* Add bottom padding *!*/
+    color: white; /* White text color */
+}
+
+.w-65 {
+    width: 65%;
+}
+
+.html {width: 40%; background-color: #04AA6D;}
