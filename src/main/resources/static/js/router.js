@@ -65,10 +65,8 @@ export default function router(URI) {
         },
         '/meals': {
             returnView: Meals,
-            state: {
-                recipe: '/api/recipes/{id}',
-            },
-            uri: '/meals{id}',
+            state: {},
+            uri: '/meals',
             title: 'Meals',
             viewEvent: MealsEvent
         },

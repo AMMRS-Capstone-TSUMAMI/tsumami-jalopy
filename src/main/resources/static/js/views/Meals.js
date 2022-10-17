@@ -1,4 +1,5 @@
 import createView from "../createView.js";
+import {getHeaders} from "../auth.js";
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
@@ -184,9 +185,7 @@ async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslo
     //todo update data-slot-id in html
     const request = {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     }
     let data = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}`, request)
         .then(function(response) {
@@ -236,11 +235,9 @@ function getStartDay(date) {
 async function fetchCalendarEntries() {
     const request = {
         method: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     }
-    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`, request)
+    plan = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -248,10 +245,9 @@ async function fetchCalendarEntries() {
                 console.log("Populated Recipes");
                 return response.json()
             }
-        });
-    plan = data;
-    console.log(plan);
-    populateCalendar();
+        }).then(function(data) {
+            return data
+        })
 }
 
 function populateCalendar() {
@@ -278,7 +274,10 @@ function generateCalendarWeek(start) {
 function updateCalendarWeek(newStart) {
     let timeslots = document.querySelectorAll(".timeslot");
     timeslots.forEach(slot => slot.innerHTML = "");
-    fetchCalendarEntries().then(() => addMealCardListeners());
+    fetchCalendarEntries().then(() =>
+        populateCalendar()).then(() =>
+        addMealCardListeners());
+    console.log(plan);
 
 }
 function incrementWeek() {
@@ -344,15 +343,15 @@ function drop(e) {
     let data = e.dataTransfer.getData("text");
     console.log(data);
     let el = document.querySelector(`#${data}`)
-    console.log(el.innerHTML);
     e.currentTarget.appendChild(document.getElementById(data));
     let recipeId = el.dataset.recipeId;
-    let recipeName = el.dataset.title;
+    let recipeName = el.dataset.recipe;
     let image = el.dataset.image;
     let startDate = startDay.ISO()
     let dayNum = el.parentElement.dataset.slot[0];
     let timeslot = el.parentElement.dataset.slot[1];
+    let timeslotId;
+    el.dataset.slotId
     addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot)
     //todo update data-slot-id in html
-
 }
