@@ -37,7 +37,6 @@ public class Recipe {
     @Column(length = 1000)
     private String description;
 
-
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH},
@@ -54,8 +53,6 @@ public class Recipe {
 
 //TODO add ManyToMany
 
-//    public Recipe getRecipeById(Long id) {
-//        Optional<Recipe> recipe = repository.findById(id);
-//        return
-//    }
+//    In progress for recipes view:
+
 }

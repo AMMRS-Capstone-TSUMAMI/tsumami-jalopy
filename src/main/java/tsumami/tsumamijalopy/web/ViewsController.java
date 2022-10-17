@@ -18,4 +18,12 @@ public class ViewsController {
     public String showView() {
         return "forward:/index.html";
     }
+
+//    @RequestMapping({ "/meals{id}","/recipes/{id}"})
+//    method = RequestMethod.GET)
+//    public Long (@PathVariable Integer id) {
+//        return brandService.getOne(id);
+//    }
+
+
 }

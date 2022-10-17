@@ -36,8 +36,7 @@ export default function router(URI) {
             returnView: prepareUserHTML,
             state: {
                 me: '/api/users/me',
-                allTrophies: '/api/trophies/getAllTrophies',
-                allChefLevels: '/api/chefLevels/getAllChefLevels'
+                allTrophies: '/api/trophies/getAllTrophies'
             },
             uri: '/me',
             title: 'User Info',
@@ -93,18 +92,16 @@ export default function router(URI) {
             title: 'Loading...',
         },
         // to add recipe Id to route path
-        '/recipes': {
+        '/recipes/:id': {
             returnView: recipesHTML,
             state: {
-                recipe: '/api/recipes/{id}',
+                recipe: '/api/recipes/:id',
             },
-            uri: '/recipes/{id}',
+            uri: '/recipes/:id',
             title: 'Recipes',
             viewEvent: recipesEvent
         }
     };
-
-
 
     // if URI does not match precisely then we need to try harder to find a match
     if(!routes[URI]) {
@@ -136,3 +133,4 @@ export default function router(URI) {
     }
     return routes[URI];
 }
+
