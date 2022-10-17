@@ -21,9 +21,7 @@ public class RecipesController {
     public void createRecipe(@RequestBody Recipe newRecipe) {
         recipesRepository.save(newRecipe);
     }
-
 //    In progress for recipes view:
-
         @Id
         @GetMapping("/meals/{id}")
 

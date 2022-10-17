@@ -11,13 +11,12 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="meals")
+@Entity(name="meals")
+@Table
 public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String steps;
 }

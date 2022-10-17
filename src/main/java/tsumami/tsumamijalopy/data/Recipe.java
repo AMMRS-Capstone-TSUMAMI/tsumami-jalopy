@@ -37,7 +37,6 @@ public class Recipe {
     @Column(length = 1000)
     private String description;
 
-
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH},
@@ -53,7 +52,6 @@ public class Recipe {
     private Collection<PlanTimeslot> planTimeslots;
 
 //TODO add ManyToMany
-
 
 //    In progress for recipes view:
 

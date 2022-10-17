@@ -63,12 +63,10 @@ export default function router(URI) {
             title: "Logout",
             viewEvent: LogoutEvent
         },
-        '/meals{id}': {
+        '/meals': {
             returnView: Meals,
-            state: {
-                recipe: '/api/recipes/{id}',
-            },
-            uri: '/meals{id}',
+            state: {},
+            uri: '/meals',
             title: 'Meals',
             viewEvent: MealsEvent
         },
@@ -94,18 +92,16 @@ export default function router(URI) {
             title: 'Loading...',
         },
         // to add recipe Id to route path
-        '/recipes/{id}': {
+        '/recipes/:id': {
             returnView: recipesHTML,
             state: {
-                recipe: '/api/recipes/{id}',
+                recipe: '/api/recipes/:id',
             },
-            uri: '/recipes/{id}',
+            uri: '/recipes/:id',
             title: 'Recipes',
             viewEvent: recipesEvent
         }
     };
-
-
 
     // if URI does not match precisely then we need to try harder to find a match
     if(!routes[URI]) {

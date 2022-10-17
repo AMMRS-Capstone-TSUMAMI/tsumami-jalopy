@@ -22,16 +22,12 @@ public class MealsController {
     private MealsRepository mealsRepository;
     private RecipesRepository recipesRepository;
 
-
 //    In progress for recipes view:
-
-
-
 
 //    @GetMapping("/meals/{id}")
 //    public ResponseEntity<Recipe>getRecipeById(@PathVariable("id") Recipe id) {
 //        Recipe entity = data.Recipe.getRecipeById(Recipe id);
-//
+
 //        return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
 //    }
     @Id

@@ -8,8 +8,10 @@
 // let apiRecipeIngredients = [];
 // let apiCookingInstructions = [];
 
+let recipe;
+
 export default function recipesHTML(props) {
-    // props.recipe
+    recipe=props.recipe
     // data = props.data;
     return `
          <main>
@@ -24,7 +26,7 @@ export default function recipesHTML(props) {
 export function recipesEvent() {
     // perhaps this is where I can call the recipe ID from meals.js
     //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call
-    recipeSelectedHandler();
+    // recipeSelectedHandler();
     console.log("Hello recipesEvent");
     // console.log("${response.json}");
 }
@@ -40,7 +42,9 @@ function recipeSelectedHandler(e) {
     // getAPI(userSelectedID);
     // let recipeID = 716429;
     // recipeId = 716429;
-    getAPI(716429);
+    // getAPI(716429);
+    getAPI(recipe.id);
+
 
     // at this point getAPI will have finished
 
@@ -50,7 +54,7 @@ function recipeSelectedHandler(e) {
     // })
 }
 
-function getAPI(userSelectedID) {
+export function getAPI(userSelectedID) {
     console.log("Hello getAPI");
     // the ID below will instead be called recipeID and be pulled from meals.js
     let SERVICE_URL = `https://api.spoonacular.com/recipes/`+userSelectedID+`/information`;
