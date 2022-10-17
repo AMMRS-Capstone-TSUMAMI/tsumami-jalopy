@@ -36,7 +36,8 @@ export default function router(URI) {
             returnView: prepareUserHTML,
             state: {
                 me: '/api/users/me',
-                allTrophies: '/api/trophies/getAllTrophies'
+                allTrophies: '/api/trophies/getAllTrophies',
+                allChefLevels: '/api/chefLevels/getAllChefLevels'
             },
             uri: '/me',
             title: 'User Info',

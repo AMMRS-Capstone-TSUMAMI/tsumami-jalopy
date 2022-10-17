@@ -1,5 +1,6 @@
 package tsumami.tsumamijalopy.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class ChefLevel {
     private String title;
     private String photo;
     private String description;
+    private Integer requiredXp;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -37,7 +39,7 @@ public class ChefLevel {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties({"intolerances", "planWeeks", "recipes", "trophies", "chefLevels"})
+    @JsonIgnore
     private Collection<User> users;
 
 }
