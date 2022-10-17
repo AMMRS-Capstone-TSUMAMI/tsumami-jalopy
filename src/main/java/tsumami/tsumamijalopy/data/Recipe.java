@@ -19,11 +19,11 @@ import tsumami.tsumamijalopy.data.RecipesRepository;
 @Table(name="recipes")
 public class Recipe {
 
-    private RecipesRepository repository;
-
-    public Recipe(RecipesRepository recipesRepository) {
-        this.repository = recipesRepository;
-    }
+//    private RecipesRepository repository;
+//
+//    public Recipe(RecipesRepository recipesRepository) {
+//        this.repository = recipesRepository;
+//    }
 
 
     @Id
@@ -54,8 +54,8 @@ public class Recipe {
 
 //TODO add ManyToMany
 
-    public Recipe getRecipeById(Long id) {
-        Optional<Recipe> recipe = repository.findById(id);
-        return
-    }
+//    public Recipe getRecipeById(Long id) {
+//        Optional<Recipe> recipe = repository.findById(id);
+//        return
+//    }
 }
