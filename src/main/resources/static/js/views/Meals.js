@@ -1,4 +1,5 @@
 import createView from "../createView.js";
+import {getHeaders} from "../auth.js";
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
@@ -7,6 +8,7 @@ let today = new Date;
 let startDay;
 let plan;
 let results;
+let timeslotId;
 export default function Meals(props) {
     getStartDay(today)
     return `
@@ -116,7 +118,11 @@ export default function Meals(props) {
 export async function MealsEvent() {
     prepareSearchFields();
     addCalendarListeners();
-    await fetchCalendarEntries().then(() => addMealCardListeners())
+    await fetchCalendarEntries().then(() => {
+        populateCalendar()
+    }).then(() => {
+        addMealCardListeners()
+    })
     console.log("MealsEvent Complete");
 }
 
@@ -139,7 +145,7 @@ async function fetchRecipes(query) {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
+    let data = await fetch(`${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -184,9 +190,7 @@ async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslo
     //todo update data-slot-id in html
     const request = {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     }
     let data = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}`, request)
         .then(function(response) {
@@ -200,8 +204,7 @@ async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslo
         }).then(function(jata) {
             return jata
         })
-    console.log(data);
-
+    timeslotId = data;
 }
 async function deleteRecipe(planTimeslotId, recipeId) {
     const request = {
@@ -236,11 +239,9 @@ function getStartDay(date) {
 async function fetchCalendarEntries() {
     const request = {
         method: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     }
-    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}&userId=1`, request)
+    plan = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -248,10 +249,9 @@ async function fetchCalendarEntries() {
                 console.log("Populated Recipes");
                 return response.json()
             }
-        });
-    plan = data;
-    console.log(plan);
-    populateCalendar();
+        }).then(function(data) {
+            return data
+        })
 }
 
 function populateCalendar() {
@@ -278,7 +278,10 @@ function generateCalendarWeek(start) {
 function updateCalendarWeek(newStart) {
     let timeslots = document.querySelectorAll(".timeslot");
     timeslots.forEach(slot => slot.innerHTML = "");
-    fetchCalendarEntries().then(() => addMealCardListeners());
+    fetchCalendarEntries().then(() =>
+        populateCalendar()).then(() =>
+        addMealCardListeners());
+    console.log(plan);
 
 }
 function incrementWeek() {
@@ -339,20 +342,20 @@ function drag(e) {
         console.log("This doesn't have a slotId");
     }
 }
-function drop(e) {
+async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
     console.log(data);
     let el = document.querySelector(`#${data}`)
-    console.log(el.innerHTML);
     e.currentTarget.appendChild(document.getElementById(data));
     let recipeId = el.dataset.recipeId;
-    let recipeName = el.dataset.title;
+    let recipeName = el.dataset.recipe;
     let image = el.dataset.image;
     let startDate = startDay.ISO()
     let dayNum = el.parentElement.dataset.slot[0];
     let timeslot = el.parentElement.dataset.slot[1];
-    addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot)
+    await addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot).then(() => {
+        el.dataset.slotId = timeslotId;
+    })
     //todo update data-slot-id in html
-
 }
