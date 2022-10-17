@@ -36,5 +36,4 @@ public class MealsController {
     public Optional<Recipe> getRecipeById(@PathVariable("id") Long id) {
         return recipesRepository.findById(id);
     }
-
 }

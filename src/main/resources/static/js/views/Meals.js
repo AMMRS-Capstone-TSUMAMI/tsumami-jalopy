@@ -1,4 +1,5 @@
 import createView from "../createView.js";
+import {getHeaders} from "../auth.js";
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
@@ -7,6 +8,7 @@ let today = new Date;
 let startDay;
 let plan;
 let results;
+let timeslotId;
 export default function Meals(props) {
     getStartDay(today)
     return `
@@ -116,7 +118,11 @@ export default function Meals(props) {
 export async function MealsEvent() {
     prepareSearchFields();
     addCalendarListeners();
-    await fetchCalendarEntries().then(() => addMealCardListeners())
+    await fetchCalendarEntries().then(() => {
+        populateCalendar()
+    }).then(() => {
+        addMealCardListeners()
+    })
     console.log("MealsEvent Complete");
 }
 
@@ -139,7 +145,7 @@ async function fetchRecipes(query) {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${SEARCH_RECIPES}?&query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
+    let data = await fetch(`${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -161,7 +167,7 @@ function populateResults() {
         title,
         image;
     results.forEach(result => {
-        id = Math.random().toString(36).slice(2);
+        id = `r${Math.random().toString(36).slice(2)}`;
         recipeId = result.id;
         title = result.title;
         image = result.image;
@@ -180,8 +186,40 @@ function populateResults() {
     addMealCardListeners()
 }
 
-function searchFavoriteRecipes() {
-
+async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot) {
+    //todo update data-slot-id in html
+    const request = {
+        method: "POST",
+        headers: getHeaders()
+    }
+    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}`, request)
+        .then(function(response) {
+            if(response.status !== 200) {
+                console.log(`fetch returned status code: ${response.status}`);
+                console.log(response.statusText);
+            } else {
+                console.log("Entry removed.");
+                return response.json();
+            }
+        }).then(function(jata) {
+            return jata
+        })
+    timeslotId = data;
+}
+async function deleteRecipe(planTimeslotId, recipeId) {
+    const request = {
+        method: "DELETE"
+    }
+    await fetch(`${BACKEND_HOST_URL}/api/plans/delete?planTimeslotId=${planTimeslotId}&recipeId=${recipeId}`, request)
+        .then(function(response) {
+            if(response.status !== 200) {
+                console.log(`fetch returned status code: ${response.status}`);
+                console.log(response.statusText);
+            } else {
+                console.log("Entry removed.");
+                return response.text();
+            }
+        })
 }
 
 function getStartDay(date) {
@@ -201,11 +239,9 @@ function getStartDay(date) {
 async function fetchCalendarEntries() {
     const request = {
         method: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
     }
-    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/planweek?startDate=${startDay.ISO()}&userId=1`, request)
+    plan = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -213,20 +249,21 @@ async function fetchCalendarEntries() {
                 console.log("Populated Recipes");
                 return response.json()
             }
-        });
-    plan = data;
-    populateCalendar();
+        }).then(function(data) {
+            return data
+        })
 }
 
 function populateCalendar() {
     for(let i = 0; i < plan.length; i++) {
         let target = document.querySelector(`[data-slot="${plan[i][0]}"]`),
-            recipeId = plan[i][1],
-            id = Math.random().toString(36).slice(2),
-            title = plan[i][2],
-            image = plan[i][3];
+            id = "r" + Math.random().toString(36).slice(2),
+            slotId = plan[i][1],
+            recipeId = plan[i][2],
+            title = plan[i][3],
+            image = plan[i][4];
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" draggable="true" style="background-image: url(${image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-recipe="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
             <div class="card-body"></div>
             <div class="card-footer">${title}</div>
         </div>
@@ -241,7 +278,10 @@ function generateCalendarWeek(start) {
 function updateCalendarWeek(newStart) {
     let timeslots = document.querySelectorAll(".timeslot");
     timeslots.forEach(slot => slot.innerHTML = "");
-    fetchCalendarEntries().then(() => addMealCardListeners());
+    fetchCalendarEntries().then(() =>
+        populateCalendar()).then(() =>
+        addMealCardListeners());
+    console.log(plan);
 
 }
 function incrementWeek() {
@@ -295,12 +335,27 @@ function allowDrop(e) {
 }
 function drag(e) {
     e.dataTransfer.setData("text", e.target.id);
-    console.log(`Drag ${e.dataTransfer}`);
-
+    if(this.dataset.slotId) {
+        console.log(`The slotId is ${this.dataset.slotId}`);
+        deleteRecipe(this.dataset.slotId, this.dataset.recipeId)
+    } else {
+        console.log("This doesn't have a slotId");
+    }
 }
-function drop(e) {
+async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
     console.log(data);
+    let el = document.querySelector(`#${data}`)
     e.currentTarget.appendChild(document.getElementById(data));
+    let recipeId = el.dataset.recipeId;
+    let recipeName = el.dataset.recipe;
+    let image = el.dataset.image;
+    let startDate = startDay.ISO()
+    let dayNum = el.parentElement.dataset.slot[0];
+    let timeslot = el.parentElement.dataset.slot[1];
+    await addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot).then(() => {
+        el.dataset.slotId = timeslotId;
+    })
+    //todo update data-slot-id in html
 }
