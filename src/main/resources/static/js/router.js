@@ -91,35 +91,20 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
-        '/recipes': {
-            returnView: recipesHTML,
-            state: {
-
-            },
-            uri: '/recipes',
-            title: 'Recipes',
-            viewEvent: recipesEvent
-        },
         // to add recipe Id to route path
         '/recipes/{recipeID}': {
-            returnView: PostDetail,
+            returnView: recipesHTML,
             state: {
-                post: '/api/posts/:id',
+                post: '/api/recipes/:id',
             },
-            uri: '/posts/:id',
-            title: "Post Detail",
-            viewEvent: PostDetailEvents
+            uri: '/recipes{recipeID}',
+            title: 'Recipes',
+            viewEvent: recipesEvent
         }
-        // '/posts/:id': {
-        //     returnView: PostDetail,
-        //     state: {
-        //         post: '/api/posts/:id',
-        //     },
-        //     uri: '/posts/:id',
-        //     title: "Post Detail",
-        //     viewEvent: PostDetailEvents
-        // }
     };
+
+
+
     // if URI does not match precisely then we need to try harder to find a match
     if(!routes[URI]) {
         for(const routeKey in routes) {
