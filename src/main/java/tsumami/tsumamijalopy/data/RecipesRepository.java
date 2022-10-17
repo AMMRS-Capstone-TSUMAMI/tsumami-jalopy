@@ -20,4 +20,6 @@ public interface RecipesRepository extends JpaRepository<Recipe, Long> {
             "VALUES " +
             "    (:id, :name, :photo)", nativeQuery = true)
     void insertRecipe(@Param("id") Long recipeId, @Param("name") String recipeName, @Param("photo") String image);
+
+
 }
