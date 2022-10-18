@@ -9,6 +9,7 @@
 // let apiCookingInstructions = [];
 
 let recipe;
+let recipeInfo;
 
 export default function recipesHTML(props) {
     recipe=props.recipe
@@ -26,7 +27,7 @@ export default function recipesHTML(props) {
 export function recipesEvent() {
     // perhaps this is where I can call the recipe ID from meals.js
     //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call
-    // recipeSelectedHandler();
+    recipeSelectedHandler();
     console.log("Hello recipesEvent");
     // console.log("${response.json}");
 }
@@ -45,7 +46,6 @@ function recipeSelectedHandler(e) {
     // getAPI(716429);
     getAPI(recipe.id);
 
-
     // at this point getAPI will have finished
 
     console.log("Hello recipeSelectedHandler");
@@ -62,19 +62,27 @@ export function getAPI(userSelectedID) {
     // let recipeSlot = [];
 
     //request_url is our full api call url
-    fetch(request_url).then(resp => {
+    recipeInfo  =
+        fetch(request_url).then(resp => {
         //the resp is the data and below is the json format of the data from the api
         return resp.json();
         //food at this point is the usable json data. Can name whatever
     }).then(food => {
-        console.log(food);
-        //? means look for this thing if exists as a key (needs further research)
-        console.log(food?.image);
-        // for (let i = 0; i < food.length; i++) {
-        //     recipeSlot.push(food.results)
-        // }
-        // console.log("logging recipeSlot here");
-        // console.log(recipeSlot)
+            console.log(food);
+            //? means look for this thing if exists as a key (needs further research)
+            console.log(food?.image);
+            // for (let i = 0; i < food.length; i++) {
+            //     recipeSlot.push(food.results)
+            // }
+            // console.log("logging recipeSlot here");
+            // console.log(recipeSlot)
+            recipeInfo = food;
+                populateRecipeInfo();
+        }
+        )}
+
+    function populateRecipeInfo(){
+
         let html = "";
         let id,
             title,
@@ -82,9 +90,9 @@ export function getAPI(userSelectedID) {
 
         // food.forEach(apiData2 => {
 
-            id = food.id;
-            title = food.title;
-            image = food.image;
+            id = recipeInfo.id;
+            title = recipeInfo.title;
+            image = recipeInfo.image;
             console.log(id);
             console.log(title);
             console.log(image);
@@ -95,10 +103,31 @@ export function getAPI(userSelectedID) {
                         <h3 id="recipes-home-card-title" data-id="${id}">${title}</h3>
                         <img src="${image}" class="home-card-img" alt="Recipe Image">
                     </div>
-                </div>
-            `
+                    `
+
+        // for (let i = 0; i < ; i++) {
+        //
+        //
+        //     html += `
+        //             <div>
+        //                 <div>Ingredients Here</div>
+        //             </div>
+        //             `
+        // }
+        //
+        // for (let i = 0; i < ; i++) {
+        //
+        //     html += `
+        //              <div>
+        //                 <div>Instructions Here</div>
+        //             </div>
+        //         </div>
+        //     `
         // }
 
+
+
+        // }
         //
         // recipeSlot.forEach(function (recipe, index) {
         //     html += `
@@ -120,4 +149,4 @@ export function getAPI(userSelectedID) {
         // console.log(erre);
         // Promise.reject();
     // });
-})}
+}
