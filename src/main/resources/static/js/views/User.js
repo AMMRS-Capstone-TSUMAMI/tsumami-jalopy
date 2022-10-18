@@ -1,4 +1,3 @@
-import CreateView from "../createView.js"
 import {getHeaders} from "../auth.js";
 import createView from "../createView.js";
 
@@ -87,8 +86,8 @@ export default function prepareUser(props) {
 <!--                    //fitness level input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputFitnessLevel">Fitness Level</label>
-                    <input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
+                        <label for="inputActivityLevel">Fitness Level</label>
+                    <input type="text" class="form-control" id="inputActivityLevel" placeholder="Activity Level">
                     </div>
 <!--                    //weight goals input-->
                        <div class="form-row">
@@ -160,7 +159,7 @@ export default function prepareUser(props) {
                     <input type="text" class="form-control" id="inputFat" placeholder="Fat">
                     </div>
 <!--                    //submit button-->
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="submitBtn">Submit</button>
                   </div>
                     </div>
                   </form>
@@ -294,10 +293,10 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
 
 export function prepareUserJS() {
     // doToggleUserInfoHandler();
-    // doSaveUserInfo();
+    updateUserInfo();
     trophyCardEventListener();
     // console.log(user.posts.length);
-    awardUserATrophy(2);
+    // awardUserATrophy(2);
     // moreToast();
 }
 
@@ -310,80 +309,76 @@ function trophyCardEventListener() {
 
 }
 
-function doSaveUserInfo() {
-let submitBtn = document.querySelector("#submit")
-submitBtn.addEventListener("click", function (event) {
-
+function updateUserInfo() {
+    // let updateUser = {
+    //     height: "",
+    //     weight: "",
+    //     allergies: "",
+    //     restrictions: "",
+    //     preferences: "",
+    //     activityLevel: "",
+    //     weightGoal: "",
+    //     bodyType: "",
+    //     dietType: "",
+    //     calories: "",
+    //     protein: "",
+    //     carbs: "",
+    //     fat: ""
+    // }
+    let submitBtn = document.querySelector("#submitBtn")
+    console.log(submitBtn);
+    submitBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log("is this working?")
 //     const button = document.querySelector("#updateUserInfo");
 //     button.addEventListener("click", function(event) {
         // grab the 3 password field values
-        const oldHeightField = document.querySelector('#oldheight');
-        const newHeightField = document.querySelector('#newheight');
-        const oldWeightField = document.querySelector('#oldweight');
-        const newWeightField = document.querySelector('#newweight');
-        const oldAllergiesField = document.querySelector('#oldallergies');
-        const newAllergiesField = document.querySelector('#newallergies');
-        const oldRestrictionsField = document.querySelector('#oldrestrictions');
-        const newRestrictionsField = document.querySelector('#newrestictions');
-        const oldPreferencesField = document.querySelector('#oldpreferences');
-        const newPreferencesField = document.querySelector('#newpreferences');
-        const oldActivityLevelField = document.querySelector('#oldactivitylevel');
-        const newActivityLevelField = document.querySelector('#newactivitylevel');
-        const oldWeightGoalField = document.querySelector('#oldweightgoal');
-        const newWeightGoalField = document.querySelector('#newweightgoal');
-        const oldBodyTypeField = document.querySelector('#oldbodytype');
-        const newBodyTypeField = document.querySelector('#newbpdytype');
-        const oldDietTypeField = document.querySelector('#olddiettype');
-        const newDietTypeField = document.querySelector('#newdiettype');
-        const oldCaloriesField = document.querySelector('#oldcalories');
-        const newCaloriesField = document.querySelector('#newcalories');
-        const oldProteinField = document.querySelector('#oldprotein');
-        const newProteinField = document.querySelector('#newprotein');
-        const oldCarbsField = document.querySelector('#oldcarbs');
-        const newCarbsField = document.querySelector('#newcarbs');
-        const oldFatField = document.querySelector('#oldfat');
-        const newFatField = document.querySelector('#newfat');
-        // const confirmPasswordField = document.querySelector('#confirmpassword');
-        const oldHeight = oldHeightField.value;
-        const newHeight= newHeightField.value;
-        const oldWeight = oldWeightField.value;
-        const newWeight = newWeightField.value;
-        const oldAllergies = oldAllergiesField.value;
-        const newAllergies = newAllergiesField.value;
-        const oldRestrictions = oldRestrictionsField.value;
-        const newRestrictions = newRestrictionsField.value;
-        const oldPreferences = oldPreferencesField.value;
-        const newPreferences = newPreferencesField.value;
-        const oldActivityLevel  = oldActivityLevelField.value;
-        const newActivityLevel  = newActivityLevelField.value;
-        const oldWeightGoal = oldWeightGoalField.value;
-        const newWeightGoal = newWeightGoalField.value;
-        const oldBodyType = oldBodyTypeField.value;
-        const newBodyType = newBodyTypeField.value;
-        const oldDietType = oldDietTypeField.value;
-        const newDietType = newDietTypeField.value;
-        const oldCalories = oldCaloriesField.value;
-        const newCalories = newCaloriesField.value;
-        const oldProtein = oldProteinField.value;
-        const newProtein= newProteinField.value;
-        const oldCarbs = oldCarbsField.value;
-        const newCarbs = newCarbsField.value;
-        const oldFat = oldFatField.value;
-        const newFat = newFatField.value;
 
-let request = {
-    method: "PATCH",
-    headers: getHeaders(),
-    body: JSON.stringify(newUser)
-}
+        // const heightField = document.querySelector("#inputHeight");
+        const weightField = document.querySelector("#inputWeight");
+        const allergiesField = document.querySelector("#inputAllergies");
+        // const restrictionsField = document.querySelector("#inputRestrictions");
+        // const preferencesField = document.querySelector("#inputPreferences");
+        const activityLevelField = document.querySelector("#inputActivityLevel");
+        const weightGoalField = document.querySelector("#inputWeightGoal");
+        // const bodyTypeField = document.querySelector("#inputBodyType");
+        // const dietTypeField = document.querySelector("#inputDietType");
+        const caloriesField = document.querySelector("#inputCalories");
+        const proteinField = document.querySelector("#inputProtein");
+        const carbsField = document.querySelector("#inputCarbs");
+        const fatField = document.querySelector("#inputFat");
+        // changed names of fields to match database
+        let updateUser = {
+            // height: heightField.value,
+            weight: weightField.value,
+            allergies: allergiesField.value,
+            // restrictions: restrictionsField.value,
+            // preferences: preferencesField.value,
+            activityLevel: activityLevelField.value,
+            weightGoal: weightGoalField.value,
+            // bodyType: bodyTypeField.value,
+            // diet: dietTypeField.value,
+            calorieGoal: caloriesField.value,
+            proteinGoal: proteinField.value,
+            carbGoal: carbsField.value,
+            fatGoal: fatField.value,
+        }
+
+        let request = {
+            method: "PATCH",
+            headers: getHeaders(),
+            body: JSON.stringify(updateUser)
+        }
 //changed endpoint name
-fetch(USER_API_BASE_URL + "/updateUser", request)
-    .then(response => {
-        console.log(response.status);
-        createView("/meals");
+        fetch(USER_API_BASE_URL + "/updateUser", request)
+            .then(response => {
+                console.log(response.status);
+                // createView("/");
+            })
     })
-})
 }
+
+// }
 
 // function doTogglePasswordHandler() {
 //     const button = document.querySelector("#toggleShowPassword");
@@ -404,20 +399,22 @@ fetch(USER_API_BASE_URL + "/updateUser", request)
 //     });
 // }
 //changed to export to be used elsewhere
-export function awardUserATrophy(trophyId) {
+// export function awardUserATrophy(trophyId) {
+//
+//     let requestHeader = {
+//         method: 'PATCH',
+//         headers: getHeaders()
+//     }
 
-    let requestHeader = {
-        method: 'PATCH',
-        headers: getHeaders()
-    }
+    // fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
+    //     console.log(response)
+    // }).finally(function (){
+    //     //function that will append a toast to the body on page
+    //     // moreToast()
+    // })
+// }}
+//     )}
 
-    fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
-        console.log(response)
-    }).finally(function (){
-        //function that will append a toast to the body on page
-        // moreToast()
-    })
-}
 
 // function moreToast() {
 //
