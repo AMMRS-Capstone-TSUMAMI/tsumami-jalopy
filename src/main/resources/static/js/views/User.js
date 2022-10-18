@@ -380,91 +380,27 @@ function doSaveUserInfoHandler() {
     });
 }
 
-// function doToggleUserInfoHandler() {
-//     const button = document.querySelector("#toggleShowUserInfo");
-//     button.addEventListener("click", function(event) {
-//         // grab a reference to confirm password
-//         const oldHeight= document.querySelector("#oldheight");
-//         const newHeight = document.querySelector("#newheight");
-//         const oldWeight = document.querySelector("#oldweight");
-//         const newWeight = document.querySelector("#newweight");
-//         const oldAllergies = document.querySelector("#oldallergies");
-//         const newAllergies = document.querySelector("#newallergies");
-//         const oldRestrictions = document.querySelector("#oldrestrictions");
-//         const newRestrictions = document.querySelector("#newrestrictions");
-//         const oldPreferences  = document.querySelector("#oldpreferences");
-//         const newPreferences  = document.querySelector("#newpreferences");
-//         const oldActivityLevel = document.querySelector("#oldactivitylevel");
-//         const newActivityLevel = document.querySelector("#newactivitylevel");
-//         const oldWeightGoal = document.querySelector("#oldweightgoal");
-//         const newWeightGoal = document.querySelector("#newweightgoal");
-//         const oldBodyType = document.querySelector("#oldbodytype");
-//         const newBodyType = document.querySelector("#newbodytype");
-//         const oldDietType = document.querySelector("#olddiettype");
-//         const newDietType = document.querySelector("#newdeittype");
-//         const oldCalories= document.querySelector("#oldcalories");
-//         const newCalories= document.querySelector("#newcalories");
-//         const oldProtein = document.querySelector("#oldprotein");
-//         const newProtein= document.querySelector("#newpreotein");
-//         const oldCarbs = document.querySelector("#oldcarbs");
-//         const newCarbs = document.querySelector("#newcarbs");
-//         const oldFat = document.querySelector("#oldfat");
-//         const newFat = document.querySelector("#newfat");
-//
-//         if(oldHeight.getAttribute("type") === "height") {
-//             newHeight.setAttribute("type", "text");
-//             oldWeight.setAttribute("type", "text");
-//             newWeight.setAttribute("type", "text");
-//             oldAllergies.setAttribute("type", "text");
-//             newAllergies.setAttribute("type", "text");
-//             oldRestrictions.setAttribute("type", "text");
-//             newRestrictions.setAttribute("type", "text");
-//             oldPreferences .setAttribute("type", "text");
-//             newPreferences .setAttribute("type", "text");
-//             oldActivityLevel.setAttribute("type", "text");
-//             newActivityLevel.setAttribute("type", "text");
-//             oldWeightGoal.setAttribute("type", "text");
-//             newWeightGoal.setAttribute("type", "text");
-//             oldBodyType.setAttribute("type", "text");
-//             newBodyType.setAttribute("type", "text");
-//             oldDietType.setAttribute("type", "text");
-//             newDietType.setAttribute("type", "text");
-//             oldCalories.setAttribute("type", "text");
-//             newCalories.setAttribute("type", "text");
-//             oldProtein.setAttribute("type", "text");
-//             newProtein.setAttribute("type", "text");
-//             oldCarbs.setAttribute("type", "text");
-//             newCarbs.setAttribute("type", "text");
-//             oldFat.setAttribute("type", "text");
-//             newFat.setAttribute("type", "text");
-//         } else {
-//             oldHeight.setAttribute("type", "height");
-//             newHeight.setAttribute("type", "height");
-//             oldWeight.setAttribute("type", "weight");
-//             newWeight.setAttribute("type", "weight");
-//             oldRestrictions.setAttribute("type", "restrictions");
-//             newRestrictions.setAttribute("type", "restrictions");
-//             oldPreferences.setAttribute("type", "preferences ");
-//             newPreferences.setAttribute("type", "preferences ");
-//             oldActivityLevel.setAttribute("type", "activitylevel");
-//             newActivityLevel.setAttribute("type", "activitylevel");
-//             oldWeightGoal.setAttribute("type", "weightgoal");
-//             newWeightGoal.setAttribute("type", "weightgoal");
-//             oldBodyType.setAttribute("type", "bodytype");
-//             newBodyType.setAttribute("type", "bodytype");
-//             oldDietType.setAttribute("type", "diettype");
-//             newDietType.setAttribute("type", "diettype");
-//             oldCalories.setAttribute("type", "calories");
-//             newCalories.setAttribute("type", "calories");
-//             oldProtein.setAttribute("type", "protein");
-//             newProtein.setAttribute("type", "protein");
-//             oldCarbs.setAttribute("type", "carbs");
-//             newCarbs.setAttribute("type", "carbs");
-//             oldFat.setAttribute("type", "fat");
-//             newFat.setAttribute("type", "fat");
-//         }
-//     });
-// }
+function doTogglePasswordHandler() {
+    const button = document.querySelector("#toggleShowPassword");
+    button.addEventListener("click", function(event) {
+        // grab a reference to confirm password
+        const oldPassword = document.querySelector("#oldpassword");
+        const newPassword = document.querySelector("#newpassword");
+        const confirmPassword = document.querySelector("#confirmpassword");
+        if(confirmPassword.getAttribute("type") === "password") {
+            confirmPassword.setAttribute("type", "text");
+            oldPassword.setAttribute("type", "text");
+            newPassword.setAttribute("type", "text");
+        } else {
+            confirmPassword.setAttribute("type", "password");
+            oldPassword.setAttribute("type", "password");
+            newPassword.setAttribute("type", "password");
+        }
+    });
+}
+//changed to export to be used elsewhere
+export function awardUserATrophy(trophyId) {
+
 
 function awardUserATrophy(trophyId) {
     let requestHeader = {

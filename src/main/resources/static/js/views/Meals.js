@@ -1,15 +1,21 @@
 import {getHeaders} from "../auth.js";
+import {awardUserATrophy} from "./User.js";
 import createView from "../createView.js";
+
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
 // TODO:
+// setting up variables for props and trophyId
+let me;
+let trophyId;
 let today = new Date;
 let startDay;
 let plan;
 let results;
 let timeslotId;
 export default function Meals(props) {
+    me = props.me
     getStartDay(today)
     return `
 <div class="container g-0">
@@ -115,7 +121,10 @@ export default function Meals(props) {
     `;
 }
 
+
 export async function MealsEvent() {
+    //created checkand add trophy
+    checkAndAddTrophy(me.trophies, 1);
     prepareSearchFields();
     addCalendarListeners();
     await fetchCalendarEntries().then(async() => {
@@ -125,6 +134,16 @@ export async function MealsEvent() {
     })
     console.log("MealsEvent Complete");
 }
+//function for checking if 1st trophy for registering has been award, if not award
+export function checkAndAddTrophy(trophyArray, trophyId) {
+    for (let i = 0; i < trophyArray.length; i++) {
+        if (trophyArray[i].id === trophyId) {
+            return;
+        }
+    }
+    awardUserATrophy(trophyId);
+}
+
 
 function prepareSearchFields() {
     const recipeField = document.querySelector("#meals-recipe-search-field");
