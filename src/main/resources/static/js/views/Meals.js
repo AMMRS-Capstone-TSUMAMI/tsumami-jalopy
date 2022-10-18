@@ -196,9 +196,10 @@ function populateResults() {
 
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
-    <div class="meal-overlay">
-        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+    <div class="meal-overlay" style="display: none">
         <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
+        <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}"></i>
     </div>
     <div class="card-body"></div>
     <div class="card-footer p-1">${title}</div>
@@ -286,9 +287,10 @@ function populateCalendar() {
             image = plan[i][4];
         target.innerHTML += `
         <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
-            <div class="meal-overlay">
-                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+            <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
+                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
             </div>
             <div class="card-body"></div>
             <div class="card-footer p-1">${title}</div>
@@ -351,19 +353,28 @@ function addCalendarListeners() {
 }
 function addMealCardListeners() {
     let mealCards = document.querySelectorAll(".meal-card");
+    let overlay;
     mealCards.forEach(card => {
         card.addEventListener("dragstart", drag)
+        card.children[1].addEventListener("click", () => {
+            card.children[0].style.display = "flex";
+        })
+        card.children[0].addEventListener("click", () => {
+            card.children[0].style.display = "none";
+        })
     })
     let infoBtns = document.querySelectorAll(".info")
     infoBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            let recipeId = btn.dataset.recipeId
+            let recipeId = btn.dataset.recipeId;
             console.log(recipeId);
             createView(`/recipes/${recipeId}`)
         })
     })
 }
-
+function toggleOverlay(element) {
+    element.children[0].style = "flex";
+}
 
 function allowDrop(e) {
     e.preventDefault();
@@ -377,6 +388,7 @@ function drag(e) {
         console.log("This doesn't have a slotId");
     }
 }
+
 async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
