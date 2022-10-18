@@ -37,9 +37,6 @@ export default function prepareUser(props) {
                         <label for="inputWeight">Weight</label>
                     <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
                     </div>
-<!--                    //submit button-->
-                     <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
                     </div>
                   </form>
                   </div>
@@ -75,9 +72,6 @@ export default function prepareUser(props) {
                         <label for="inputOther">Other</label>
                     <input type="text" class="form-control" id="inputOther" placeholder="Other">
                     </div>
-<!--                    //submit button-->
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
                     </div>
                   </form>
                   </div>
@@ -101,9 +95,6 @@ export default function prepareUser(props) {
                         <label for="inputWeightGoal">Weight Goal</label>
                     <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
                     </div>
-<!--                    //submit button-->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
                     </div>
                   </form>
                   </div>
@@ -185,9 +176,9 @@ export default function prepareUser(props) {
             <div class="col-6">
                 <div class="chef-container">
                     ${allChefLevels.map(chefLevel => `
-                    
+
                          ${appendChefHTML(userChefLevelsIds, chefLevel, me.experiencePoints)}
-                    
+
                     `).join("")}
                 </div>
             </div>
@@ -301,8 +292,8 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
 
 
 export function prepareUserJS() {
-    // doTogglePasswordHandler();
-    // doSavePasswordHandler();
+    // doToggleUserInfoHandler();
+    doSaveUserInfoHandler();
     trophyCardEventListener();
     // console.log(user.posts.length);
     // awardUserATrophy(2);
@@ -318,21 +309,69 @@ function trophyCardEventListener() {
 
 }
 
-function doSavePasswordHandler() {
-    const button = document.querySelector("#updatePassword");
+function doSaveUserInfoHandler() {
+    const button = document.querySelector("#updateUserInfo");
     button.addEventListener("click", function(event) {
         // grab the 3 password field values
-        const oldPasswordField = document.querySelector('#oldpassword');
-        const newPasswordField = document.querySelector('#newpassword');
+        const oldHeightField = document.querySelector('#oldheight');
+        const newHeightField = document.querySelector('#newheight');
+        const oldWeightField = document.querySelector('#oldweight');
+        const newWeightField = document.querySelector('#newweight');
+        const oldAllergiesField = document.querySelector('#oldallergies');
+        const newAllergiesField = document.querySelector('#newallergies');
+        const oldRestrictionsField = document.querySelector('#oldrestrictions');
+        const newRestrictionsField = document.querySelector('#newrestictions');
+        const oldPreferencesField = document.querySelector('#oldpreferences');
+        const newPreferencesField = document.querySelector('#newpreferences');
+        const oldActivityLevelField = document.querySelector('#oldactivitylevel');
+        const newActivityLevelField = document.querySelector('#newactivitylevel');
+        const oldWeightGoalField = document.querySelector('#oldweightgoal');
+        const newWeightGoalField = document.querySelector('#newweightgoal');
+        const oldBodyTypeField = document.querySelector('#oldbodytype');
+        const newBodyTypeField = document.querySelector('#newbpdytype');
+        const oldDietTypeField = document.querySelector('#olddiettype');
+        const newDietTypeField = document.querySelector('#newdiettype');
+        const oldCaloriesField = document.querySelector('#oldcalories');
+        const newCaloriesField = document.querySelector('#newcalories');
+        const oldProteinField = document.querySelector('#oldprotein');
+        const newProteinField = document.querySelector('#newprotein');
+        const oldCarbsField = document.querySelector('#oldcarbs');
+        const newCarbsField = document.querySelector('#newcarbs');
+        const oldFatField = document.querySelector('#oldfat');
+        const newFatField = document.querySelector('#newfat');
         // const confirmPasswordField = document.querySelector('#confirmpassword');
-        const oldPassword = oldPasswordField.value;
-        const newPassword = newPasswordField.value;
+        const oldHeight = oldHeightField.value;
+        const newHeight= newHeightField.value;
+        const oldWeight = oldWeightField.value;
+        const newWeight = newWeightField.value;
+        const oldAllergies = oldAllergiesField.value;
+        const newAllergies = newAllergiesField.value;
+        const oldRestrictions = oldRestrictionsField.value;
+        const newRestrictions = newRestrictionsField.value;
+        const oldPreferences = oldPreferencesField.value;
+        const newPreferences = newPreferencesField.value;
+        const oldActivityLevel  = oldActivityLevelField.value;
+        const newActivityLevel  = newActivityLevelField.value;
+        const oldWeightGoal = oldWeightGoalField.value;
+        const newWeightGoal = newWeightGoalField.value;
+        const oldBodyType = oldBodyTypeField.value;
+        const newBodyType = newBodyTypeField.value;
+        const oldDietType = oldDietTypeField.value;
+        const newDietType = newDietTypeField.value;
+        const oldCalories = oldCaloriesField.value;
+        const newCalories = newCaloriesField.value;
+        const oldProtein = oldProteinField.value;
+        const newProtein= newProteinField.value;
+        const oldCarbs = oldCarbsField.value;
+        const newCarbs = newCarbsField.value;
+        const oldFat = oldFatField.value;
+        const newFat = newFatField.value;
         // const confirmPassword = confirmPasswordField.value;
 
         const request = {
-            method: "PUT",
+            method: "PATCH",
         }
-        const url = `${USER_API_BASE_URL}/${me.id}/updatePassword?oldPassword=${oldPassword}&newPassword=${newPassword}`
+        const url = `${USER_API_BASE_URL}/${me.id}`
 
         fetch(url, request)
             .then(function(response) {
@@ -341,24 +380,91 @@ function doSavePasswordHandler() {
     });
 }
 
-function doTogglePasswordHandler() {
-    const button = document.querySelector("#toggleShowPassword");
-    button.addEventListener("click", function(event) {
-        // grab a reference to confirm password
-        const oldPassword = document.querySelector("#oldpassword");
-        const newPassword = document.querySelector("#newpassword");
-        const confirmPassword = document.querySelector("#confirmpassword");
-        if(confirmPassword.getAttribute("type") === "password") {
-            confirmPassword.setAttribute("type", "text");
-            oldPassword.setAttribute("type", "text");
-            newPassword.setAttribute("type", "text");
-        } else {
-            confirmPassword.setAttribute("type", "password");
-            oldPassword.setAttribute("type", "password");
-            newPassword.setAttribute("type", "password");
-        }
-    });
-}
+// function doToggleUserInfoHandler() {
+//     const button = document.querySelector("#toggleShowUserInfo");
+//     button.addEventListener("click", function(event) {
+//         // grab a reference to confirm password
+//         const oldHeight= document.querySelector("#oldheight");
+//         const newHeight = document.querySelector("#newheight");
+//         const oldWeight = document.querySelector("#oldweight");
+//         const newWeight = document.querySelector("#newweight");
+//         const oldAllergies = document.querySelector("#oldallergies");
+//         const newAllergies = document.querySelector("#newallergies");
+//         const oldRestrictions = document.querySelector("#oldrestrictions");
+//         const newRestrictions = document.querySelector("#newrestrictions");
+//         const oldPreferences  = document.querySelector("#oldpreferences");
+//         const newPreferences  = document.querySelector("#newpreferences");
+//         const oldActivityLevel = document.querySelector("#oldactivitylevel");
+//         const newActivityLevel = document.querySelector("#newactivitylevel");
+//         const oldWeightGoal = document.querySelector("#oldweightgoal");
+//         const newWeightGoal = document.querySelector("#newweightgoal");
+//         const oldBodyType = document.querySelector("#oldbodytype");
+//         const newBodyType = document.querySelector("#newbodytype");
+//         const oldDietType = document.querySelector("#olddiettype");
+//         const newDietType = document.querySelector("#newdeittype");
+//         const oldCalories= document.querySelector("#oldcalories");
+//         const newCalories= document.querySelector("#newcalories");
+//         const oldProtein = document.querySelector("#oldprotein");
+//         const newProtein= document.querySelector("#newpreotein");
+//         const oldCarbs = document.querySelector("#oldcarbs");
+//         const newCarbs = document.querySelector("#newcarbs");
+//         const oldFat = document.querySelector("#oldfat");
+//         const newFat = document.querySelector("#newfat");
+//
+//         if(oldHeight.getAttribute("type") === "height") {
+//             newHeight.setAttribute("type", "text");
+//             oldWeight.setAttribute("type", "text");
+//             newWeight.setAttribute("type", "text");
+//             oldAllergies.setAttribute("type", "text");
+//             newAllergies.setAttribute("type", "text");
+//             oldRestrictions.setAttribute("type", "text");
+//             newRestrictions.setAttribute("type", "text");
+//             oldPreferences .setAttribute("type", "text");
+//             newPreferences .setAttribute("type", "text");
+//             oldActivityLevel.setAttribute("type", "text");
+//             newActivityLevel.setAttribute("type", "text");
+//             oldWeightGoal.setAttribute("type", "text");
+//             newWeightGoal.setAttribute("type", "text");
+//             oldBodyType.setAttribute("type", "text");
+//             newBodyType.setAttribute("type", "text");
+//             oldDietType.setAttribute("type", "text");
+//             newDietType.setAttribute("type", "text");
+//             oldCalories.setAttribute("type", "text");
+//             newCalories.setAttribute("type", "text");
+//             oldProtein.setAttribute("type", "text");
+//             newProtein.setAttribute("type", "text");
+//             oldCarbs.setAttribute("type", "text");
+//             newCarbs.setAttribute("type", "text");
+//             oldFat.setAttribute("type", "text");
+//             newFat.setAttribute("type", "text");
+//         } else {
+//             oldHeight.setAttribute("type", "height");
+//             newHeight.setAttribute("type", "height");
+//             oldWeight.setAttribute("type", "weight");
+//             newWeight.setAttribute("type", "weight");
+//             oldRestrictions.setAttribute("type", "restrictions");
+//             newRestrictions.setAttribute("type", "restrictions");
+//             oldPreferences.setAttribute("type", "preferences ");
+//             newPreferences.setAttribute("type", "preferences ");
+//             oldActivityLevel.setAttribute("type", "activitylevel");
+//             newActivityLevel.setAttribute("type", "activitylevel");
+//             oldWeightGoal.setAttribute("type", "weightgoal");
+//             newWeightGoal.setAttribute("type", "weightgoal");
+//             oldBodyType.setAttribute("type", "bodytype");
+//             newBodyType.setAttribute("type", "bodytype");
+//             oldDietType.setAttribute("type", "diettype");
+//             newDietType.setAttribute("type", "diettype");
+//             oldCalories.setAttribute("type", "calories");
+//             newCalories.setAttribute("type", "calories");
+//             oldProtein.setAttribute("type", "protein");
+//             newProtein.setAttribute("type", "protein");
+//             oldCarbs.setAttribute("type", "carbs");
+//             newCarbs.setAttribute("type", "carbs");
+//             oldFat.setAttribute("type", "fat");
+//             newFat.setAttribute("type", "fat");
+//         }
+//     });
+// }
 
 function awardUserATrophy(trophyId) {
     let requestHeader = {
