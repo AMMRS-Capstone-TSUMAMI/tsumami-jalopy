@@ -1,5 +1,5 @@
 import createView from "../createView.js"
-import {isRegistered} from "../auth.js";
+import {getHeaders, isRegistered} from "../auth.js";
 
 
 let currentTab = 0; // Current tab is set to be the first tab (0)
@@ -37,7 +37,7 @@ export default function Register(props) {
 
 <div class="tab">
 <label for="inputFitnessLevel">Fitness Level</label>
-<input type="text" class="form-control" id="inputFitnessLevel" placeholder="Fitness Level">
+<input type="text" class="form-control" id="inputActivityLevel" placeholder="Fitness Level">
 <label for="inputWeightGoal">Weight Goal</label>
 <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
 </div>
@@ -77,6 +77,8 @@ export default function Register(props) {
 </div>
 
 </form>
+
+<button id="test">test button</button>
 
 `;
 }
@@ -140,6 +142,7 @@ function fixStepIndicator(n) {
 }
 
 export function RegisterEvent(){
+    testButtonListener();
     showTab(currentTab); // Display the current tab
     const prevBtn = document.querySelector("#prevBtn")
     prevBtn.addEventListener("click",function (){
@@ -150,54 +153,71 @@ export function RegisterEvent(){
     if (currentTab === 5){
         const submitBtn = document.querySelector("#nextBtn")
         submitBtn.addEventListener("click",function (){
+            console.log("is this thing on?")
             nextPrev(1)})
 
     // const registerButton = document.querySelector("#register-btn");
     // registerButton.addEventListener("click", function() {
 
-        const heightField = document.querySelector("#height");
-        const weightField = document.querySelector("#weight");
-        const allergiesField = document.querySelector("#allergies");
-        const restrictionsField = document.querySelector("#restrictions");
-        const preferencesField = document.querySelector("#preferences");
-        const activityLevelField = document.querySelector("#activityLevel");
-        const weightGoalField = document.querySelector("#weightGoal");
-        const bodyTypeField = document.querySelector("#bodyType");
-        const dietTypeField = document.querySelector("#dietType");
-        const caloriesField = document.querySelector("#calories");
-        const proteinField = document.querySelector("#protein");
-        const carbsField = document.querySelector("#carbs");
-        const fatField = document.querySelector("#fat");
 
-        let newUser = {
-            height: heightField.value,
-            weight: weightField.value,
-            allergies: allergiesField.value,
-            restrictions: restrictionsField.value,
-            preferences: preferencesField.value,
-            activityLevel: activityLevelField.value,
-            weightGoal: weightGoalField.value,
-            bodyType: bodyTypeField.value,
-            dietType: dietTypeField.value,
-            calories: caloriesField.value,
-            protein: proteinField.value,
-            carbs: carbsField.value,
-            fat: fatField.value,
-        }
+
+
 
         // console.log(newUser);
 
+
+
+    }
+}
+
+function testButtonListener() {
+    let testBtn = document.querySelector("#test")
+    testBtn.addEventListener("click", function (event) {
+        console.log("our function for testbtn")
+
+
+
+        const heightField = document.querySelector("#inputHeight");
+        const weightField = document.querySelector("#inputWeight");
+        const allergiesField = document.querySelector("#inputAllergies");
+        const restrictionsField = document.querySelector("#inputRestrictions");
+        const preferencesField = document.querySelector("#inputPreferences");
+        const activityLevelField = document.querySelector("#inputActivityLevel");
+        const weightGoalField = document.querySelector("#inputWeightGoal");
+        const bodyTypeField = document.querySelector("#inputBodyType");
+        const dietTypeField = document.querySelector("#inputDietType");
+        const caloriesField = document.querySelector("#inputCalories");
+        const proteinField = document.querySelector("#inputProtein");
+        const carbsField = document.querySelector("#inputCarbs");
+        const fatField = document.querySelector("#inputFat");
+        // changed names of fields to match database
+        let newUser = {
+            height: heightField.value,
+            weight: weightField.value,
+            // allergies: allergiesField.value,
+            // restrictions: restrictionsField.value,
+            // preferences: preferencesField.value,
+            activityLevel: activityLevelField.value,
+            weightGoal: weightGoalField.value,
+            // bodyType: bodyTypeField.value,
+            diet: dietTypeField.value,
+            calorieGoal: caloriesField.value,
+            proteinGoal: proteinField.value,
+            carbGoal: carbsField.value,
+            fatGoal: fatField.value,
+        }
+        console.log(newUser);
+
         let request = {
             method: "PATCH",
-            headers: {"Content-Type": "application/json"},
+            headers: getHeaders(),
             body: JSON.stringify(newUser)
         }
-
-        fetch(USER_API_BASE_URL + "/create", request)
+        //changed endpoint name
+        fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
                 console.log(response.status);
                 createView("/");
             })
-
-    }
+    })
 }
