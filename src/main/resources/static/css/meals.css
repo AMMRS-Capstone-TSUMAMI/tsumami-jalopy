@@ -53,10 +53,9 @@
 .evening i {
     font-size: 1.2vw;
 }
-
 .meal-overlay {
     position: absolute;
-    display: none;
+    display: none; /*toggle between flex and none*/
     width: 100%;
     height: 100%;
     justify-content: space-around;
