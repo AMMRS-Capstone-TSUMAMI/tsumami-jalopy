@@ -99,7 +99,7 @@ export default function router(URI) {
         '/recipes/:id': {
             returnView: recipesHTML,
             state: {
-                recipe: '/api/recipes/:id',
+                recipe: `https://api.spoonacular.com/recipes/:id/information?apiKey=${SPOONACULAR_API}`,
             },
             uri: '/recipes/:id',
             title: 'Recipes',
@@ -111,10 +111,11 @@ export default function router(URI) {
     if(!routes[URI]) {
         for(const routeKey in routes) {
             const pattern = new URLPattern({ pathname: routeKey });
+            console.log(pattern)
             if(pattern.test(BACKEND_HOST_URL + URI)) {
-                // console.log(`${URI} MATCHES ${routeKey}`);
+                console.log(`${URI} MATCHES ${routeKey}`);
                 const newPath = pattern.exec(BACKEND_HOST_URL + URI);
-                // console.log(newPath);
+                console.log(newPath);
                 const foundRoute = routes[routeKey];
                 for(const statePiece in foundRoute.state) {
                     let stateVal = foundRoute.state[statePiece];
@@ -123,7 +124,7 @@ export default function router(URI) {
                         stateVal = stateVal.replaceAll(`:${pathVar}`, newPath.pathname.groups[pathVar]);
                     }
                     foundRoute.state[statePiece] = stateVal;
-                    // console.log("Checking state piece: " + foundRoute.state[statePiece]);
+                    console.log("Checking state piece: " + foundRoute.state[statePiece]);
                 }
                 // modify route.uri
                 for(const pathVar in newPath.pathname.groups) {
