@@ -1,21 +1,20 @@
 import {getHeaders} from "../auth.js";
 // import {awardUserATrophy} from "./User.js";
 import createView from "../createView.js";
-
+import {awardUserATrophy} from "./User.js";
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
 // TODO:
-// setting up variables for props and trophyId
 let me;
-let trophyId;
 let today = new Date;
+let trophyId;
 let startDay;
 let plan;
 let results;
 let timeslotId;
 export default function Meals(props) {
-    me = props.me
+    me = props.me;
     getStartDay(today)
     return `
 <div class="container g-0">
@@ -121,10 +120,7 @@ export default function Meals(props) {
     `;
 }
 
-
 export async function MealsEvent() {
-    //created checkand add trophy
-    checkAndAddTrophy(me.trophies, 1);
     prepareSearchFields();
     addCalendarListeners();
     await fetchCalendarEntries().then(async() => {
@@ -132,9 +128,10 @@ export async function MealsEvent() {
     }).then(() => {
         addMealCardListeners()
     })
+    checkAndAddTrophy(me.trophies, 1);
     console.log("MealsEvent Complete");
 }
-//function for checking if 1st trophy for registering has been award, if not award
+
 export function checkAndAddTrophy(trophyArray, trophyId) {
     for (let i = 0; i < trophyArray.length; i++) {
         if (trophyArray[i].id === trophyId) {
@@ -143,7 +140,6 @@ export function checkAndAddTrophy(trophyArray, trophyId) {
     }
     awardUserATrophy(trophyId);
 }
-
 
 function prepareSearchFields() {
     const recipeField = document.querySelector("#meals-recipe-search-field");
@@ -196,9 +192,10 @@ function populateResults() {
 
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
-    <div class="meal-overlay">
-        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+    <div class="meal-overlay" style="display: none">
         <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
+        <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}"></i>
     </div>
     <div class="card-body"></div>
     <div class="card-footer p-1">${title}</div>
@@ -286,9 +283,10 @@ function populateCalendar() {
             image = plan[i][4];
         target.innerHTML += `
         <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
-            <div class="meal-overlay">
-                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+            <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
+                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
             </div>
             <div class="card-body"></div>
             <div class="card-footer p-1">${title}</div>
@@ -351,19 +349,28 @@ function addCalendarListeners() {
 }
 function addMealCardListeners() {
     let mealCards = document.querySelectorAll(".meal-card");
+    let overlay;
     mealCards.forEach(card => {
         card.addEventListener("dragstart", drag)
+        card.children[1].addEventListener("click", () => {
+            card.children[0].style.display = "flex";
+        })
+        card.children[0].addEventListener("click", () => {
+            card.children[0].style.display = "none";
+        })
     })
     let infoBtns = document.querySelectorAll(".info")
     infoBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            let recipeId = btn.dataset.recipeId
+            let recipeId = btn.dataset.recipeId;
             console.log(recipeId);
             createView(`/recipes/${recipeId}`)
         })
     })
 }
-
+function toggleOverlay(element) {
+    element.children[0].style = "flex";
+}
 
 function allowDrop(e) {
     e.preventDefault();
@@ -377,6 +384,7 @@ function drag(e) {
         console.log("This doesn't have a slotId");
     }
 }
+
 async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
