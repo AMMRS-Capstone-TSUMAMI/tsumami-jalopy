@@ -105,25 +105,25 @@ export function getAPI(userSelectedID) {
                     </div>
                     `
 
-        for (let i = 0; i < ; i++) {
-
-
-            html += `   
-                    <div>
-                        <div>Ingredients Here</div>
-                    </div>
-                    `
-        }
-
-        for (let i = 0; i < ; i++) {
-
-            html += `        
-                     <div>
-                        <div>Instructions Here</div>
-                    </div>
-                </div>
-            `
-        }
+        // for (let i = 0; i < ; i++) {
+        //
+        //
+        //     html += `
+        //             <div>
+        //                 <div>Ingredients Here</div>
+        //             </div>
+        //             `
+        // }
+        //
+        // for (let i = 0; i < ; i++) {
+        //
+        //     html += `
+        //              <div>
+        //                 <div>Instructions Here</div>
+        //             </div>
+        //         </div>
+        //     `
+        // }
 
 
 
