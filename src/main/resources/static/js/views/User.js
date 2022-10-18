@@ -37,9 +37,6 @@ export default function prepareUser(props) {
                         <label for="inputWeight">Weight</label>
                     <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
                     </div>
-<!--                    //submit button-->
-                     <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
                     </div>
                   </form>
                   </div>
@@ -75,9 +72,6 @@ export default function prepareUser(props) {
                         <label for="inputOther">Other</label>
                     <input type="text" class="form-control" id="inputOther" placeholder="Other">
                     </div>
-<!--                    //submit button-->
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
                     </div>
                   </form>
                   </div>
@@ -101,9 +95,6 @@ export default function prepareUser(props) {
                         <label for="inputWeightGoal">Weight Goal</label>
                     <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
                     </div>
-<!--                    //submit button-->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
                     </div>
                   </form>
                   </div>
@@ -185,9 +176,9 @@ export default function prepareUser(props) {
             <div class="col-6">
                 <div class="chef-container">
                     ${allChefLevels.map(chefLevel => `
-                    
+
                          ${appendChefHTML(userChefLevelsIds, chefLevel, me.experiencePoints)}
-                    
+
                     `).join("")}
                 </div>
             </div>
@@ -301,8 +292,8 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
 
 
 export function prepareUserJS() {
-    // doTogglePasswordHandler();
-    // doSavePasswordHandler();
+    // doToggleUserInfoHandler();
+    doSaveUserInfoHandler();
     trophyCardEventListener();
     // console.log(user.posts.length);
     // awardUserATrophy(2);
@@ -318,21 +309,69 @@ function trophyCardEventListener() {
 
 }
 
-function doSavePasswordHandler() {
-    const button = document.querySelector("#updatePassword");
+function doSaveUserInfoHandler() {
+    const button = document.querySelector("#updateUserInfo");
     button.addEventListener("click", function(event) {
         // grab the 3 password field values
-        const oldPasswordField = document.querySelector('#oldpassword');
-        const newPasswordField = document.querySelector('#newpassword');
+        const oldHeightField = document.querySelector('#oldheight');
+        const newHeightField = document.querySelector('#newheight');
+        const oldWeightField = document.querySelector('#oldweight');
+        const newWeightField = document.querySelector('#newweight');
+        const oldAllergiesField = document.querySelector('#oldallergies');
+        const newAllergiesField = document.querySelector('#newallergies');
+        const oldRestrictionsField = document.querySelector('#oldrestrictions');
+        const newRestrictionsField = document.querySelector('#newrestictions');
+        const oldPreferencesField = document.querySelector('#oldpreferences');
+        const newPreferencesField = document.querySelector('#newpreferences');
+        const oldActivityLevelField = document.querySelector('#oldactivitylevel');
+        const newActivityLevelField = document.querySelector('#newactivitylevel');
+        const oldWeightGoalField = document.querySelector('#oldweightgoal');
+        const newWeightGoalField = document.querySelector('#newweightgoal');
+        const oldBodyTypeField = document.querySelector('#oldbodytype');
+        const newBodyTypeField = document.querySelector('#newbpdytype');
+        const oldDietTypeField = document.querySelector('#olddiettype');
+        const newDietTypeField = document.querySelector('#newdiettype');
+        const oldCaloriesField = document.querySelector('#oldcalories');
+        const newCaloriesField = document.querySelector('#newcalories');
+        const oldProteinField = document.querySelector('#oldprotein');
+        const newProteinField = document.querySelector('#newprotein');
+        const oldCarbsField = document.querySelector('#oldcarbs');
+        const newCarbsField = document.querySelector('#newcarbs');
+        const oldFatField = document.querySelector('#oldfat');
+        const newFatField = document.querySelector('#newfat');
         // const confirmPasswordField = document.querySelector('#confirmpassword');
-        const oldPassword = oldPasswordField.value;
-        const newPassword = newPasswordField.value;
+        const oldHeight = oldHeightField.value;
+        const newHeight= newHeightField.value;
+        const oldWeight = oldWeightField.value;
+        const newWeight = newWeightField.value;
+        const oldAllergies = oldAllergiesField.value;
+        const newAllergies = newAllergiesField.value;
+        const oldRestrictions = oldRestrictionsField.value;
+        const newRestrictions = newRestrictionsField.value;
+        const oldPreferences = oldPreferencesField.value;
+        const newPreferences = newPreferencesField.value;
+        const oldActivityLevel  = oldActivityLevelField.value;
+        const newActivityLevel  = newActivityLevelField.value;
+        const oldWeightGoal = oldWeightGoalField.value;
+        const newWeightGoal = newWeightGoalField.value;
+        const oldBodyType = oldBodyTypeField.value;
+        const newBodyType = newBodyTypeField.value;
+        const oldDietType = oldDietTypeField.value;
+        const newDietType = newDietTypeField.value;
+        const oldCalories = oldCaloriesField.value;
+        const newCalories = newCaloriesField.value;
+        const oldProtein = oldProteinField.value;
+        const newProtein= newProteinField.value;
+        const oldCarbs = oldCarbsField.value;
+        const newCarbs = newCarbsField.value;
+        const oldFat = oldFatField.value;
+        const newFat = newFatField.value;
         // const confirmPassword = confirmPasswordField.value;
 
         const request = {
-            method: "PUT",
+            method: "PATCH",
         }
-        const url = `${USER_API_BASE_URL}/${me.id}/updatePassword?oldPassword=${oldPassword}&newPassword=${newPassword}`
+        const url = `${USER_API_BASE_URL}/${me.id}`
 
         fetch(url, request)
             .then(function(response) {
@@ -361,6 +400,9 @@ function doTogglePasswordHandler() {
 }
 //changed to export to be used elsewhere
 export function awardUserATrophy(trophyId) {
+
+
+function awardUserATrophy(trophyId) {
     let requestHeader = {
         method: 'PATCH',
         headers: getHeaders()

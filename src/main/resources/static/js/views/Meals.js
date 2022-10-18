@@ -1,6 +1,7 @@
-import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import {awardUserATrophy} from "./User.js";
+import createView from "../createView.js";
+
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
@@ -126,8 +127,8 @@ export async function MealsEvent() {
     checkAndAddTrophy(me.trophies, 1);
     prepareSearchFields();
     addCalendarListeners();
-    await fetchCalendarEntries().then(() => {
-        populateCalendar()
+    await fetchCalendarEntries().then(async() => {
+        await populateCalendar()
     }).then(() => {
         addMealCardListeners()
     })
@@ -195,8 +196,12 @@ function populateResults() {
 
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+    <div class="meal-overlay">
+        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+        <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
+    </div>
     <div class="card-body"></div>
-    <div class="card-footer">${title}</div>
+    <div class="card-footer p-1">${title}</div>
 </div>
         `
     })
@@ -210,19 +215,18 @@ async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslo
         method: "POST",
         headers: getHeaders()
     }
-    let data = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}`, request)
-        .then(function(response) {
-            if(response.status !== 200) {
+    timeslotId = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}`, request)
+        .then(function (response) {
+            if (response.status !== 200) {
                 console.log(`fetch returned status code: ${response.status}`);
                 console.log(response.statusText);
             } else {
                 console.log("Entry removed.");
                 return response.json();
             }
-        }).then(function(jata) {
-            return jata
-        })
-    timeslotId = data;
+        }).then(function (data) {
+            return data
+        });
 }
 async function deleteRecipe(planTimeslotId, recipeId) {
     const request = {
@@ -252,8 +256,8 @@ function getStartDay(date) {
         startDay = date.addDays(1 - day);
     }
     return startDay
-
 }
+
 async function fetchCalendarEntries() {
     const request = {
         method: "GET",
@@ -281,9 +285,13 @@ function populateCalendar() {
             title = plan[i][3],
             image = plan[i][4];
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-recipe="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+            <div class="meal-overlay">
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+                <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
+            </div>
             <div class="card-body"></div>
-            <div class="card-footer">${title}</div>
+            <div class="card-footer p-1">${title}</div>
         </div>
         `
     }
@@ -300,8 +308,8 @@ function updateCalendarWeek(newStart) {
         populateCalendar()).then(() =>
         addMealCardListeners());
     console.log(plan);
-
 }
+
 function incrementWeek() {
     let displayedWeek = document.querySelector("#meals-calendar-week");
     let displayedWeekStart = new Date(displayedWeek.getAttribute("data-week-start"));
@@ -343,10 +351,19 @@ function addCalendarListeners() {
 }
 function addMealCardListeners() {
     let mealCards = document.querySelectorAll(".meal-card");
-    mealCards.forEach(function(mealCard) {
-        mealCard.addEventListener("dragstart", drag)
+    mealCards.forEach(card => {
+        card.addEventListener("dragstart", drag)
+    })
+    let infoBtns = document.querySelectorAll(".info")
+    infoBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let recipeId = btn.dataset.recipeId
+            console.log(recipeId);
+            createView(`/recipes/${recipeId}`)
+        })
     })
 }
+
 
 function allowDrop(e) {
     e.preventDefault();
@@ -367,7 +384,7 @@ async function drop(e) {
     let el = document.querySelector(`#${data}`)
     e.currentTarget.appendChild(document.getElementById(data));
     let recipeId = el.dataset.recipeId;
-    let recipeName = el.dataset.recipe;
+    let recipeName = el.dataset.title;
     let image = el.dataset.image;
     let startDate = startDay.ISO()
     let dayNum = el.parentElement.dataset.slot[0];
