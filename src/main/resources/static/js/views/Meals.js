@@ -177,8 +177,9 @@ function populateResults() {
 
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+<!--    <div class="meal-overlay"></div>-->
     <div class="card-body"></div>
-    <div class="card-footer">${title}</div>
+    <div class="card-footer p-1">${title}</div>
 </div>
         `
     })
@@ -264,8 +265,12 @@ function populateCalendar() {
             image = plan[i][4];
         target.innerHTML += `
         <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+            <div class="meal-overlay">
+                <i class="bi bi-trash3-fill" data-recipe-id="${recipeId}"></i>
+                <i class="bi bi-info-circle-fill"></i>
+            </div>
             <div class="card-body"></div>
-            <div class="card-footer">${title}</div>
+            <div class="card-footer p-1">${title}</div>
         </div>
         `
     }

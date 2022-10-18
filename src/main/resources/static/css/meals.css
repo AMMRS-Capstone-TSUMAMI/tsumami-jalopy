@@ -28,7 +28,7 @@
     color: white;
     background-color: darkslategrey;
     width: 100%;
-    font-size: .6rem;
+    font-size: .7vw;
     opacity: 75%;
     border: 0;
     text-shadow: 1px 1px black;
@@ -52,4 +52,33 @@
 }
 .evening i {
     font-size: 1.2vw;
+}
+
+.meal-overlay {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    line-height: 100%;
+    font-size: 2vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.25);
+    z-index: 2;
+}
+.meal-overlay .bi {
+    margin: auto;
+}
+.meal-overlay .bi:hover {
+    color: #228B22;
+    cursor: pointer;
+}
+.meal-overlay .bi-trash3-fill {
+    color: red;
+}
+.meal-overlay .bi-info-circle-fill {
+    color: white;
 }
