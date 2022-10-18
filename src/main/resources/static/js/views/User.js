@@ -359,8 +359,8 @@ function doTogglePasswordHandler() {
         }
     });
 }
-
-function awardUserATrophy(trophyId) {
+//changed to export to be used elsewhere
+export function awardUserATrophy(trophyId) {
     let requestHeader = {
         method: 'PATCH',
         headers: getHeaders()

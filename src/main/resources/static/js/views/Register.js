@@ -142,6 +142,7 @@ function fixStepIndicator(n) {
 }
 
 export function RegisterEvent(){
+    //button from prev code wasn't working used test and functional
     testButtonListener();
     showTab(currentTab); // Display the current tab
     const prevBtn = document.querySelector("#prevBtn")
@@ -150,30 +151,22 @@ export function RegisterEvent(){
     const nextBtn = document.querySelector("#nextBtn")
     nextBtn.addEventListener("click",function (){
         nextPrev(1)})
-    if (currentTab === 5){
-        const submitBtn = document.querySelector("#nextBtn")
-        submitBtn.addEventListener("click",function (){
-            console.log("is this thing on?")
-            nextPrev(1)})
+
+    //this if statement wasn't working
+    // if (currentTab === 5){
+    //     const submitBtn = document.querySelector("#nextBtn")
+    //     submitBtn.addEventListener("click",function (){
+    //         console.log("is this thing on?")
+    //         nextPrev(1)})
 
     // const registerButton = document.querySelector("#register-btn");
     // registerButton.addEventListener("click", function() {
-
-
-
-
-
-        // console.log(newUser);
-
-
-
-    }
 }
 
 function testButtonListener() {
     let testBtn = document.querySelector("#test")
     testBtn.addEventListener("click", function (event) {
-        console.log("our function for testbtn")
+        // console.log("our function for testbtn")
 
 
 
@@ -194,12 +187,12 @@ function testButtonListener() {
         let newUser = {
             height: heightField.value,
             weight: weightField.value,
-            // allergies: allergiesField.value,
-            // restrictions: restrictionsField.value,
-            // preferences: preferencesField.value,
+            allergies: allergiesField.value,
+            restrictions: restrictionsField.value,
+            preferences: preferencesField.value,
             activityLevel: activityLevelField.value,
             weightGoal: weightGoalField.value,
-            // bodyType: bodyTypeField.value,
+            bodyType: bodyTypeField.value,
             diet: dietTypeField.value,
             calorieGoal: caloriesField.value,
             proteinGoal: proteinField.value,
@@ -217,7 +210,7 @@ function testButtonListener() {
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
                 console.log(response.status);
-                createView("/");
+                createView("/meals");
             })
     })
 }

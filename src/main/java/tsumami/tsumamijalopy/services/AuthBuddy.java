@@ -82,6 +82,8 @@ public class AuthBuddy {
             newUser.setEmail(email);
             newUser.setGender(gender);
             newUser.setBirthdate(birthdate);
+//            set xp points to 0 for  level threshold initialization
+            newUser.setExperiencePoints(0);
 
             //Sets starting level for new created user
             Collection<ChefLevel> chefLevels = new ArrayList<>();
