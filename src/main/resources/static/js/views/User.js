@@ -1,5 +1,6 @@
 import CreateView from "../createView.js"
 import {getHeaders} from "../auth.js";
+import createView from "../createView.js";
 
 
 let me;
@@ -293,11 +294,11 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
 
 export function prepareUserJS() {
     // doToggleUserInfoHandler();
-    doSaveUserInfoHandler();
+    // doSaveUserInfo();
     trophyCardEventListener();
     // console.log(user.posts.length);
-    // awardUserATrophy(2);
-    moreToast();
+    awardUserATrophy(2);
+    // moreToast();
 }
 
 function trophyCardEventListener() {
@@ -309,9 +310,12 @@ function trophyCardEventListener() {
 
 }
 
-function doSaveUserInfoHandler() {
-    const button = document.querySelector("#updateUserInfo");
-    button.addEventListener("click", function(event) {
+function doSaveUserInfo() {
+let submitBtn = document.querySelector("#submit")
+submitBtn.addEventListener("click", function (event) {
+
+//     const button = document.querySelector("#updateUserInfo");
+//     button.addEventListener("click", function(event) {
         // grab the 3 password field values
         const oldHeightField = document.querySelector('#oldheight');
         const newHeightField = document.querySelector('#newheight');
@@ -366,43 +370,42 @@ function doSaveUserInfoHandler() {
         const newCarbs = newCarbsField.value;
         const oldFat = oldFatField.value;
         const newFat = newFatField.value;
-        // const confirmPassword = confirmPasswordField.value;
 
-        const request = {
-            method: "PATCH",
-        }
-        const url = `${USER_API_BASE_URL}/${me.id}`
-
-        fetch(url, request)
-            .then(function(response) {
-                CreateView("/");
-            });
-    });
+let request = {
+    method: "PATCH",
+    headers: getHeaders(),
+    body: JSON.stringify(newUser)
+}
+//changed endpoint name
+fetch(USER_API_BASE_URL + "/updateUser", request)
+    .then(response => {
+        console.log(response.status);
+        createView("/meals");
+    })
+})
 }
 
-function doTogglePasswordHandler() {
-    const button = document.querySelector("#toggleShowPassword");
-    button.addEventListener("click", function(event) {
-        // grab a reference to confirm password
-        const oldPassword = document.querySelector("#oldpassword");
-        const newPassword = document.querySelector("#newpassword");
-        const confirmPassword = document.querySelector("#confirmpassword");
-        if(confirmPassword.getAttribute("type") === "password") {
-            confirmPassword.setAttribute("type", "text");
-            oldPassword.setAttribute("type", "text");
-            newPassword.setAttribute("type", "text");
-        } else {
-            confirmPassword.setAttribute("type", "password");
-            oldPassword.setAttribute("type", "password");
-            newPassword.setAttribute("type", "password");
-        }
-    });
-}
+// function doTogglePasswordHandler() {
+//     const button = document.querySelector("#toggleShowPassword");
+//     button.addEventListener("click", function(event) {
+//         // grab a reference to confirm password
+//         const oldPassword = document.querySelector("#oldpassword");
+//         const newPassword = document.querySelector("#newpassword");
+//         const confirmPassword = document.querySelector("#confirmpassword");
+//         if(confirmPassword.getAttribute("type") === "password") {
+//             confirmPassword.setAttribute("type", "text");
+//             oldPassword.setAttribute("type", "text");
+//             newPassword.setAttribute("type", "text");
+//         } else {
+//             confirmPassword.setAttribute("type", "password");
+//             oldPassword.setAttribute("type", "password");
+//             newPassword.setAttribute("type", "password");
+//         }
+//     });
+// }
 //changed to export to be used elsewhere
 export function awardUserATrophy(trophyId) {
 
-
-function awardUserATrophy(trophyId) {
     let requestHeader = {
         method: 'PATCH',
         headers: getHeaders()
@@ -416,12 +419,12 @@ function awardUserATrophy(trophyId) {
     })
 }
 
-function moreToast() {
-
-    var newElement = document. createElement("div"); newElement. innerHTML = ``
-
-    const toastLiveExample = document.getElementById('liveToast')
-    const toast = new bootstrap.Toast(toastLiveExample)
-
-    toast.show()
-}
+// function moreToast() {
+//
+//     var newElement = document. createElement("div"); newElement. innerHTML = ``
+//
+//     const toastLiveExample = document.getElementById('liveToast')
+//     const toast = new bootstrap.Toast(toastLiveExample)
+//
+//     toast.show()
+// }}
