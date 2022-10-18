@@ -1,5 +1,5 @@
 import {getHeaders} from "../auth.js";
-import {awardUserATrophy} from "./User.js";
+// import {awardUserATrophy} from "./User.js";
 import createView from "../createView.js";
 
 // TODO: use UTC date
