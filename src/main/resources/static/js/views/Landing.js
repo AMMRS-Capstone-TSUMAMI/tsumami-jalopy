@@ -14,22 +14,23 @@ export default function Landing(props) {
             <div class="container">
               <div class="row">
                 <div class="col-sm-6" id="leftHalf">
-                    
+                    <div class="leftHalfOverlay">
+                        <img src="/img/logo.png" alt="logo" class="logo">
+                    </div>
                 </div>
                 <div class="col-sm-6" id="rightHalf">
                     <!--  This is the sign up card              -->
                     <div class="aboutTSU">
-                      <h3 class="card-header underline">About TSUmami</h3>
+<!--                      <h3 class="card-header underline">About tsUmami</h3>-->
                       <div class="">
 <!--                      TODO: get p tag renamed in about.css so that we can style other p tags-->
-                        <p class="landingAboutText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aliquid corporis cum cumque cupiditate debitis impedit, inventore itaque libero nihil nobis numquam obcaecati, odio odit omnis optio porro possimus praesentium, provident ratione repellat rerum sed tenetur vero vitae voluptate voluptatem. Alias eius ipsa pariatur perferendis veniam vero voluptas, voluptatem.</p>
-                        <a href="/login" data-link className="my-link" class="btn btn-primary">Signup with Google!</a>
+                        <p class="landingAboutText">Fall into a wave of flavor with tsUmami. Let us help you plan  your weekly meals. With a press of a button find every day recipes  at your fingertips and in one location! </p>
+                        <a href="/login" data-link className="my-link" class="btn btn-primary">Sign in with Google!</a>
                       </div>
                     </div>
-<!--                <button><a href="/login" data-link className="my-link">Signup via Google!</a></button>-->
-                    </div>
-                  </div>
                 </div>
+               </div>
+             </div>
           </body>
     `;
 }
