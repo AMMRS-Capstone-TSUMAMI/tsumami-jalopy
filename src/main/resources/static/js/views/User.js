@@ -169,10 +169,11 @@ export default function prepareUser(props) {
             
   </body>
 </html>
-        
-        <hr>
 <!--    working on achievement displays-->
+        <div class="container-fluid achievement-background">
+            <h2 class="underline achievement-header">My Achievements</h2>
         <div class="achievement-row row">
+        
             <div class="col-6">
                 <div class="chef-container">
                     ${allChefLevels.map(chefLevel => `
@@ -191,7 +192,7 @@ export default function prepareUser(props) {
                     `).join("")}
                 </div> 
             </div>
-            
+        </div>    
 <!--testing toast-->
 <!--<div class="toast-container position-fixed bottom-0 end-0 p-3">-->
 <!--  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">-->
@@ -221,24 +222,27 @@ function appendTrophyHTML (usersTrophies, currentTrophy){
     if (usersTrophies.includes(currentTrophy.id)) {
         return `
                     
-                        <div class="card trophy-card m-2 tt" data-bs-placment="bottom" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+                        <div class="card trophy-card trophy-earned m-2 tt" data-bs-placment="bottom" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
                           <div class="card-body">
-                            <i class="bi bi-trophy-fill color-gold trophy-icon"></i> 
+                            <img src="/img/earnedTrophy.png" class="trophy-icon"> 
                           </div>
                           <div class="card-body">
-                            <h6 class="trophy-title">${currentTrophy.title}</h6>
+                            <h6 class="trophy-title text-center">${currentTrophy.title}</h6>
                           </div>
                         </div>      
           `
     }
-    return `<div class="card trophy-card m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+    return `<div class="card trophy-card trophy-unearned m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+                    <div class="trophy-unearned-overlay">
                       <div class="card-body">
-                        <i class="bi bi-trophy-fill color-grey trophy-icon"></i> 
+                        <img src="/img/newunearned.png" class="trophy-icon"> 
                       </div>
                       <div class="card-body">
-                        <h6 class="trophy-title">${currentTrophy.title}</h6>
+                        <h6 class="trophy-title text-center">${currentTrophy.title}</h6>
                       </div>
+                    </div>
                     </div>`
+
 }
 
 function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
