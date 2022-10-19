@@ -65,8 +65,10 @@ p{
 .bar-container {
     width: 100%; /* Full width */
     height: 50%;
-    background-color: #ddd; /* Grey background */
+    background-color: #FFF; /* Grey background */
     align-self: start;
+    border: 3px solid #000;
+    border-radius: 8px;
 }
 
 .skills {
