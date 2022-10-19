@@ -82,9 +82,10 @@ export default function About(props) {
         <div class="card-front">
           <ul>
             <figure>
-            <div class="img-bg"></div>
-            <img src="${Developer[i].background}" alt="img">
+            <div class="img-bg imgAbout"></div>
+            <img class="imgAbout" src="${Developer[i].background}" alt="img">
           </figure>
+
             <figcaption> <img src="${Developer[i].pictures}" class="ppl-img" alt="img"></figcaption>
             <li id="card-name"> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
             <li> <span>${Developer[i].vetStatus}</span></li>
@@ -102,9 +103,10 @@ export default function About(props) {
         </div>
         <div class="card-back">
           <figure>
-            <div class="img-bg"></div>
+            <div class="img-bg imgAbout"></div>
             <img src="${Developer[i].background}" alt="img">
           </figure>
+
           <div class="design-container">
             <span class="design design--1"></span>
             <span class="design design--2"></span>
