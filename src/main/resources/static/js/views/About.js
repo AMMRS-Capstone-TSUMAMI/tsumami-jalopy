@@ -105,12 +105,6 @@ export default function About(props) {
             <div class="img-bg"></div>
             <img src="${Developer[i].background}" alt="img">
           </figure>
-          <button id="about-card-cardback-btn">
-              <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
-              <a data-link href="https://github.com/${Developer[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
-              <a data-link href="${Developer[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
-              <a data-link href="https://${Developer[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
-          </button>
           <div class="design-container">
             <span class="design design--1"></span>
             <span class="design design--2"></span>
