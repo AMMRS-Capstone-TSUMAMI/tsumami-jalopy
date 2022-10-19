@@ -178,7 +178,7 @@ function populateResults() {
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
     <div class="meal-overlay">
-        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+        <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}"></i>
         <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
     </div>
     <div class="card-body"></div>

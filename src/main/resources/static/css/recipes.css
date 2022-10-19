@@ -1,3 +1,9 @@
 #recipes-home-card-title{
     width: 54rem;
 }
+
+.justify-content-evenly {
+    position: relative;
+    justify-content: space-evenly!important;
+    margin-top: 3rem;
+}
