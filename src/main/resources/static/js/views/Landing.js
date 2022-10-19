@@ -5,6 +5,9 @@ export default function Landing(props) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Landing Page</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400;500&display=swap" rel="stylesheet">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
             <link href="/css/landing.css" rel="stylesheet">
           </head>
@@ -14,22 +17,23 @@ export default function Landing(props) {
             <div class="container">
               <div class="row">
                 <div class="col-sm-6" id="leftHalf">
-                    
+                    <div class="leftHalfOverlay">
+                        <img src="/img/logo.png" alt="logo" class="logo">
+                    </div>
                 </div>
                 <div class="col-sm-6" id="rightHalf">
                     <!--  This is the sign up card              -->
                     <div class="aboutTSU">
-                      <h3 class="card-header underline">About TSUmami</h3>
+<!--                      <h3 class="card-header underline">About tsUmami</h3>-->
                       <div class="">
 <!--                      TODO: get p tag renamed in about.css so that we can style other p tags-->
-                        <p class="landingAboutText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aliquid corporis cum cumque cupiditate debitis impedit, inventore itaque libero nihil nobis numquam obcaecati, odio odit omnis optio porro possimus praesentium, provident ratione repellat rerum sed tenetur vero vitae voluptate voluptatem. Alias eius ipsa pariatur perferendis veniam vero voluptas, voluptatem.</p>
-                        <a href="/login" data-link className="my-link" class="btn btn-primary">Signup with Google!</a>
+                        <p class="landingAboutText">Fall into a wave of flavor with tsUmami. Let us help you plan  your weekly meals. With a press of a button find every day recipes  at your fingertips and in one location! </p>
+                        <a href="/login" data-link className="my-link" class="btn btn-primary">Sign in with Google!</a>
                       </div>
                     </div>
-<!--                <button><a href="/login" data-link className="my-link">Signup via Google!</a></button>-->
-                    </div>
-                  </div>
                 </div>
+               </div>
+             </div>
           </body>
     `;
 }
