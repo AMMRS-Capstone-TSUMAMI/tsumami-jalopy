@@ -95,11 +95,8 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
-        // to add recipe Id to route path
-        '/recipes': {
-        //    uncomment below after done testing
-        // '/recipes/:id': {
-                returnView: recipesHTML,
+        '/recipes/:id': {
+            returnView: recipesHTML,
             state: {
                 recipes: `https://api.spoonacular.com/recipes/:id/information?apiKey=${SPOONACULAR_API}`,
             },
