@@ -2,7 +2,7 @@
 // let recipeId;
 
 // let data;
-// let testURL = `https://api.spoonacular.com/recipes/716429/ingredients?apiKey=2b85441825dc47a797c0f3291e25f1a5`
+// let testURL = `https://api.spoonacular.com/recipes/716429/ingredients?apiKey=808d821061f04a7789e651ba3ac9bb5f`
 
 // let apiRecipeImg = [];
 // let apiRecipeIngredients = [];
@@ -14,13 +14,14 @@ let recipeInfo;
 // let html2;
 
 export default function recipesHTML(props) {
-    recipe=props.recipe
+    recipe=props.recipes
     // data = props.data;
     return `
          <main>
                 <h1>Recipe</h1>
                 <div id="recipe-apiData" class="d-flex flex-row justify-content-evenly">header code here</div>
                 <div id="recipe-apiData2" class="d-flex flex-row justify-content-evenly"></div>
+                <div id="recipe-apiData3" class="d-flex flex-column justify-content-evenly"></div>
         </main>
  `;
 }
@@ -61,7 +62,8 @@ function recipeSelectedHandler(e) {
 
 export function getAPI(userSelectedID) {
     console.log("Hello getAPI");
-    // the ID below will instead be called recipeID and be pulled from meals.js
+
+        // the ID below will instead be called recipeID and be pulled from meals.js
     let SERVICE_URL = `https://api.spoonacular.com/recipes/`+userSelectedID+`/information`;
     const request_url = SERVICE_URL + "?" + "apiKey=" + SPOONACULAR_API;
     // let recipeSlot = [];
@@ -90,6 +92,7 @@ export function getAPI(userSelectedID) {
 
         let html = "";
         let html2 = "";
+        let html3 = "";
 
         let headerRecipeid,
             headerRecipetitle,
@@ -145,28 +148,36 @@ export function getAPI(userSelectedID) {
             // ingredientImage += recipeIngredientList[j].image;
             //populate recipe ingredients here:
 
+            let imgR = `https://spoonacular.com/cdn/ingredients_100x100/${recipeIngredientList[j].image}`
+
+            if (recipeIngredientList[j].image == null){
+                imgR = "/img/frying-panResized.png"
+                // imgR = "/img/sauteResized.png"
+            }
+
             html2 += `
                 <div>
                     <div>
                         <div>${recipeIngredientList[j].amount} ${recipeIngredientList[j].measures.us.unitLong}</div>
-                        <img src="https://spoonacular.com/cdn/ingredients_100x100/${recipeIngredientList[j].image}" alt="img">
+                        <img id="recipeIngredientImg" src="${imgR}" alt="img">
                         <div>${recipeIngredientList[j].name}</div>
                     </div>
                 </div>
-                <br><br><br>
+                <br><br><br> 
                 `
         }
 
 
         for (let i = 0; i < recipeInstructionsList.length; i++) {
-            html2 += `
+            for (let j = 0; j <recipeInstructionsList[i].steps.length; j++) {
+
+                html3 += `
                 <br><br><br>
-                <div>
                     <div>
-                        <div>${recipeInstructionsList[i].steps.step}</div>
+                        <div>${recipeInstructionsList[i].steps[j].step}</div>
                     </div>
-                </div>
                     `
+            }
         }
 
         console.log(recipeIngredientList)
@@ -177,6 +188,9 @@ export function getAPI(userSelectedID) {
 
         const recipesContainer2 = document.querySelector("#recipe-apiData2");
         recipesContainer2.innerHTML = html2;
+
+        const recipesContainer3 = document.querySelector("#recipe-apiData3");
+        recipesContainer3.innerHTML = html3;
 
 
 
