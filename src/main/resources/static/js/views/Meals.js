@@ -1,7 +1,8 @@
 import {getHeaders} from "../auth.js";
-// import {awardUserATrophy} from "./User.js";
 import createView from "../createView.js";
+// import {getAPI} from "./Recipes.js";
 // import {awardUserATrophy} from "./User.js";
+
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
 // TODO:
@@ -365,6 +366,7 @@ function addMealCardListeners() {
             let recipeId = btn.dataset.recipeId;
             console.log(recipeId);
             createView(`/recipes/${recipeId}`)
+            // getAPI(recipeId)
         })
     })
 }
