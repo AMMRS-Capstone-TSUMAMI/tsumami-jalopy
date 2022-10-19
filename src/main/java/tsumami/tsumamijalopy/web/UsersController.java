@@ -62,14 +62,18 @@ public class UsersController {
         usersRepository.save(newUser);
     }
 
-    @PatchMapping("/{id}")
-    public void updateUser(@RequestBody User updateUser, @PathVariable long id) {
-        Optional<User> optionalUser = usersRepository.findById(id);
+    @PatchMapping("/updateUser")
+//    updated @RequestHeader to be able to use loggedInUser and authbuddy
+    public void updateUser(@RequestBody User updateUser, @RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+//        System.out.println("Is this working?");
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Optional<User> optionalUser = usersRepository.findById(loggedInUser.getId());
+//        System.out.println(optionalUser.get().getId());
         if (optionalUser.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + id + " not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + loggedInUser.getId() + " not found");
         }
         User originalUser = optionalUser.get();
-        updateUser.setId(id);
+        updateUser.setId(loggedInUser.getId());
         BeanUtils.copyProperties(updateUser, originalUser, FieldHelper.getNullPropertyNames(updateUser));
         usersRepository.save(originalUser);
     }

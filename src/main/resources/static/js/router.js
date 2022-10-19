@@ -36,7 +36,9 @@ export default function router(URI) {
             returnView: prepareUserHTML,
             state: {
                 me: '/api/users/me',
-                allTrophies: '/api/trophies/getAllTrophies'
+                allTrophies: '/api/trophies/getAllTrophies',
+                allChefLevels: '/api/chefLevels/getAllChefLevels'
+
             },
             uri: '/me',
             title: 'User Info',
@@ -65,7 +67,9 @@ export default function router(URI) {
         },
         '/meals': {
             returnView: Meals,
-            state: {},
+            state: {
+                me: '/api/users/me'
+            },
             uri: '/meals',
             title: 'Meals',
             viewEvent: MealsEvent
@@ -97,7 +101,7 @@ export default function router(URI) {
         // '/recipes/:id': {
                 returnView: recipesHTML,
             state: {
-                recipe: '/api/recipes/:id',
+                recipes: `https://api.spoonacular.com/recipes/:id/information?apiKey=${SPOONACULAR_API}`,
             },
             uri: '/recipes/:id',
             title: 'Recipes',
@@ -105,33 +109,23 @@ export default function router(URI) {
         }
     };
 
-    // if URI does not match precisely then we need to try harder to find a match
     if(!routes[URI]) {
-        for(const routeKey in routes) {
-            const pattern = new URLPattern({ pathname: routeKey });
-            if(pattern.test(BACKEND_HOST_URL + URI)) {
-                // console.log(`${URI} MATCHES ${routeKey}`);
-                const newPath = pattern.exec(BACKEND_HOST_URL + URI);
-                // console.log(newPath);
-                const foundRoute = routes[routeKey];
-                for(const statePiece in foundRoute.state) {
-                    let stateVal = foundRoute.state[statePiece];
-                    // replace any found group pieces from newPath
-                    for(const pathVar in newPath.pathname.groups) {
-                        stateVal = stateVal.replaceAll(`:${pathVar}`, newPath.pathname.groups[pathVar]);
+        for (const routeKey in routes) {
+            let keyPieces = routeKey.split("/")
+            if (keyPieces.length > 2) {
+                let pathVar = keyPieces[2];
+                let pathInput = URI.split("/")[2];
+                let baseURI = new RegExp(keyPieces[1])
+                if (baseURI.test(BACKEND_HOST_URL + URI)) {
+                    let foundRoute = routes[routeKey]
+                    foundRoute.uri = URI;
+                    for (let statePiece in foundRoute.state) {
+                        foundRoute.state[statePiece] = foundRoute.state[statePiece].replaceAll(pathVar, pathInput);
                     }
-                    foundRoute.state[statePiece] = stateVal;
-                    // console.log("Checking state piece: " + foundRoute.state[statePiece]);
+                    return foundRoute
                 }
-                // modify route.uri
-                for(const pathVar in newPath.pathname.groups) {
-                    foundRoute.uri = foundRoute.uri.replaceAll(`:${pathVar}`, newPath.pathname.groups[pathVar]);
-                }
-                console.log(foundRoute);
-                return foundRoute;
             }
         }
-        // did not find a route matching the URI so let jalopy determine the error route
     }
     return routes[URI];
 }
