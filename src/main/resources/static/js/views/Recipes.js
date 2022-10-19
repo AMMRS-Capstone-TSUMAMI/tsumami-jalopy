@@ -2,7 +2,7 @@
 // let recipeId;
 
 // let data;
-// let testURL = `https://api.spoonacular.com/recipes/716429/ingredients?apiKey=2b85441825dc47a797c0f3291e25f1a5`
+// let testURL = `https://api.spoonacular.com/recipes/716429/ingredients?apiKey=808d821061f04a7789e651ba3ac9bb5f`
 
 // let apiRecipeImg = [];
 // let apiRecipeIngredients = [];
@@ -10,16 +10,18 @@
 
 let recipe;
 let recipeInfo;
+// let html;
+// let html2;
 
 export default function recipesHTML(props) {
-    recipe=props.recipe
+    recipe=props.recipes
     // data = props.data;
     return `
          <main>
-            <div>
                 <h1>Recipe</h1>
-                <div id="recipe-apiData"></div>
-            </div>
+                <div id="recipe-apiData" class="d-flex flex-row justify-content-evenly">header code here</div>
+                <div id="recipe-apiData2" class="d-flex flex-row justify-content-evenly"></div>
+                <div id="recipe-apiData3" class="d-flex flex-column justify-content-evenly"></div>
         </main>
  `;
 }
@@ -42,9 +44,13 @@ function recipeSelectedHandler(e) {
     // let userSelectedID = recipeID;
     // getAPI(userSelectedID);
     // let recipeID = 716429;
-    // recipeId = 716429;
-    // getAPI(716429);
-    getAPI(recipe.id);
+
+    //comment out line below after testing
+    getAPI(918034
+    );
+
+    //uncomment below after testing
+    // getAPI(recipe.id);
 
     // at this point getAPI will have finished
 
@@ -56,11 +62,12 @@ function recipeSelectedHandler(e) {
 
 export function getAPI(userSelectedID) {
     console.log("Hello getAPI");
-    // the ID below will instead be called recipeID and be pulled from meals.js
+
+        // the ID below will instead be called recipeID and be pulled from meals.js
     let SERVICE_URL = `https://api.spoonacular.com/recipes/`+userSelectedID+`/information`;
     const request_url = SERVICE_URL + "?" + "apiKey=" + SPOONACULAR_API;
     // let recipeSlot = [];
-
+    https://api.spoonacular.com/food/jokes/random + SPOONACULAR_API;
     //request_url is our full api call url
     recipeInfo  =
         fetch(request_url).then(resp => {
@@ -84,64 +91,108 @@ export function getAPI(userSelectedID) {
     function populateRecipeInfo(){
 
         let html = "";
-        let id,
-            title,
-            image;
+        let html2 = "";
+        let html3 = "";
+
+        let headerRecipeid,
+            headerRecipetitle,
+            headerRecipeImage;
 
         // food.forEach(apiData2 => {
 
-            id = recipeInfo.id;
-            title = recipeInfo.title;
-            image = recipeInfo.image;
-            console.log(id);
-            console.log(title);
-            console.log(image);
+            headerRecipeid = recipeInfo.id;
+            headerRecipetitle = recipeInfo.title;
+            headerRecipeImage = recipeInfo.image;
+            console.log(recipeInfo.id);
+            console.log(recipeInfo.title);
+            console.log(recipeInfo.image);
         // for (let i = 0; i < 5; i++) {
             html = `
+            <div>
                 <div>
                     <div>
-                        <h3 id="recipes-home-card-title" data-id="${id}">${title}</h3>
-                        <img src="${image}" class="home-card-img" alt="Recipe Image">
+                        <h3 id="recipes-home-card-title" data-id="${headerRecipeid}">${headerRecipetitle}</h3>
+                        <img src="${headerRecipeImage}" class="home-card-img" alt="Recipe Image">
                     </div>
+                </div>
+            </div>
                     `
 
-        // for (let i = 0; i < ; i++) {
-        //
-        //
-        //     html += `
-        //             <div>
-        //                 <div>Ingredients Here</div>
-        //             </div>
-        //             `
-        // }
-        //
-        // for (let i = 0; i < ; i++) {
-        //
-        //     html += `
-        //              <div>
-        //                 <div>Instructions Here</div>
-        //             </div>
-        //         </div>
-        //     `
-        // }
+        let recipeIngredientList = [];
+
+       let recipeInstructionsList = [];
+
+        // recipeIngredientList = recipeInfo.extendedIngredients;
+        // recipeInstructions = recipeInfo.analyzedInstructions;
+        // recipeInfo;
+        // recipeInfo;
+        //recipeInfo = json data fetched from API
+
+        console.log(recipeInfo);
+
+        // let ingredientName = "";
+        // let ingredientAmount = "";
+        // let ingredientImage = "";
+
+        for (let i = 0; i < recipeInfo.extendedIngredients.length; i++) {
+            recipeIngredientList.push(recipeInfo.extendedIngredients[i])
+        }
+
+        for (let i = 0; i < recipeInfo.analyzedInstructions.length; i++) {
+            recipeInstructionsList.push(recipeInfo.analyzedInstructions[i])
+        }
+
+        for (let j = 0; j <recipeIngredientList.length ; j++) {
+            // ingredientName += recipeIngredientList[j].name;
+            // ingredientAmount += recipeIngredientList[j].amount;
+            // ingredientImage += recipeIngredientList[j].image;
+            //populate recipe ingredients here:
+
+            let imgR = `https://spoonacular.com/cdn/ingredients_100x100/${recipeIngredientList[j].image}`
+
+            if (recipeIngredientList[j].image == null){
+                imgR = "/img/frying-panResized.png"
+                // imgR = "/img/sauteResized.png"
+            }
+
+            html2 += `
+                <div>
+                    <div>
+                        <div>${recipeIngredientList[j].amount} ${recipeIngredientList[j].measures.us.unitLong}</div>
+                        <img id="recipeIngredientImg" src="${imgR}" alt="img">
+                        <div>${recipeIngredientList[j].name}</div>
+                    </div>
+                </div>
+                <br><br><br> 
+                `
+        }
 
 
+        for (let i = 0; i < recipeInstructionsList.length; i++) {
+            for (let j = 0; j <recipeInstructionsList[i].steps.length; j++) {
 
-        // }
-        //
-        // recipeSlot.forEach(function (recipe, index) {
-        //     html += `
-        //         <div class="home-recipe-card">
-        //             <div class="home-card-image">
-        //                 <img src="${recipe?.image}" class="home-card-img" alt="Recipe Image">
-        //             </div>
-        //             <h3 data-id="${recipe?.id}" class="home-card-title">${recipe?.title}</h3>
-        //         </div>
-        //     `
-        // })
+                html3 += `
+                <br><br><br>
+                    <div>
+                        <div>${recipeInstructionsList[i].steps[j].step}</div>
+                    </div>
+                    `
+            }
+        }
 
-        const recipesContainer = document.querySelector("#recipe-apiData");
-        recipesContainer.innerHTML = html;
+        console.log(recipeIngredientList)
+        console.log(recipeInstructionsList)
+
+        const recipesContainer1 = document.querySelector("#recipe-apiData");
+        recipesContainer1.innerHTML = html;
+
+        const recipesContainer2 = document.querySelector("#recipe-apiData2");
+        recipesContainer2.innerHTML = html2;
+
+        const recipesContainer3 = document.querySelector("#recipe-apiData3");
+        recipesContainer3.innerHTML = html3;
+
+
 
         // Promise.resolve();
         //dont delete this
