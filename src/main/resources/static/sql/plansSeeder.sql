@@ -39,11 +39,11 @@ VALUES
     (634486,  4),
     (634476,  5);
 
-INSERT IGNORE INTO `chef_levels` (`id`, `description`, `photo`, `title`)
+INSERT IGNORE INTO `chef_levels` (`id`, `description`, `photo`, `required_xp`, `title`)
 VALUES
-    (1, 'Beginner, but not for long...',  '/img/stationChef.png', 'Station Chef'),
-    (2, 'Choppin\' + 'calories and taking names!', '/img/sousChef.png', 'Sous Chef'),
-    (3, 'Head Honcho, Keep cookin!',  '/img/exChef.png', 'Executive Chef');
+    (1, 'Beginner, but not for long...',  '/img/stationChef.png', '10', 'Station Chef'),
+    (2, 'Choppin\' + 'calories and taking names!', '/img/sousChef.png', '20', 'Sous Chef'),
+    (3, 'Head Honcho, Keep cookin!',  '/img/exChef.png', '30', 'Executive Chef');
 
 INSERT IGNORE INTO `trophies` (`id`, `description`, `photo`, `title`)
 VALUES
