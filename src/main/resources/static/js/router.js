@@ -9,7 +9,6 @@ import prepareUserHTML, {prepareUserJS} from "./views/User.js";
 import Logout, {LogoutEvent} from "./views/Logout.js";
 import Meals, {MealsEvent} from "./views/Meals.js";
 import recipesHTML, {recipesEvent} from "./views/Recipes.js";
-// import User from "./views/User.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -37,8 +36,8 @@ export default function router(URI) {
             state: {
                 me: '/api/users/me',
                 allTrophies: '/api/trophies/getAllTrophies',
-                allChefLevels: '/api/chefLevels/getAllChefLevels'
-
+                allChefLevels: '/api/chefLevels/getAllChefLevels',
+                macros: 'api/macros'
             },
             uri: '/me',
             title: 'User Info',
