@@ -26,28 +26,24 @@ export default function Register(props) {
 <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
 </div>
 
-<div class="tab">
-<label for="inputAllergies">Allergies</label>
-<input type="text" class="form-control" id="inputAllergies"  placeholder="Allergies">
-<label for="inputRestrictions">Restrictions</label>
-<input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">
-<label for="inputPreferences">Preferences</label>
-<input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
-</div>
 
 <div class="tab">
 <label for="inputFitnessLevel">Fitness Level</label>
-<input type="text" class="form-control" id="inputActivityLevel" placeholder="Fitness Level">
-<label for="inputWeightGoal">Weight Goal</label>
-<input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
+ <select id="inputDietType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Paleo</option>
+                        <option>Keto</option>
+                        <option>Anything Else</option>
+                        </select>
+<label for="inputDietType">Diet Type</label>
+                    <select id="inputActivityLevel" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>A Little</option>
+                        <option>Middle</option>
+                        <option>A Ton</option>
+                        </select>
 </div>
 
-<div class="tab">
-<label for="inputBodyType">Body Type</label>
-<input type="text" class="form-control" id="inputBodyType" placeholder="Body Type">
-<label for="inputDietType">Diet Type</label>
-<input type="text" class="form-control" id="inputDietType" placeholder="Diet Type">
-</div>
 
 <div class="tab">
 <label for="inputCalories">Calories</label>
@@ -69,8 +65,6 @@ export default function Register(props) {
 
 <!-- Circles which indicates the steps of the form: -->
 <div style="text-align:center;margin-top:40px;">
-  <span class="step"></span>
-  <span class="step"></span>
   <span class="step"></span>
   <span class="step"></span>
   <span class="step"></span>
@@ -172,12 +166,12 @@ function testButtonListener() {
 
         const heightField = document.querySelector("#inputHeight");
         const weightField = document.querySelector("#inputWeight");
-        const allergiesField = document.querySelector("#inputAllergies");
-        const restrictionsField = document.querySelector("#inputRestrictions");
-        const preferencesField = document.querySelector("#inputPreferences");
+        // const allergiesField = document.querySelector("#inputAllergies");
+        // const restrictionsField = document.querySelector("#inputRestrictions");
+        // const preferencesField = document.querySelector("#inputPreferences");
         const activityLevelField = document.querySelector("#inputActivityLevel");
-        const weightGoalField = document.querySelector("#inputWeightGoal");
-        const bodyTypeField = document.querySelector("#inputBodyType");
+        // const weightGoalField = document.querySelector("#inputWeightGoal");
+        // const bodyTypeField = document.querySelector("#inputBodyType");
         const dietTypeField = document.querySelector("#inputDietType");
         const caloriesField = document.querySelector("#inputCalories");
         const proteinField = document.querySelector("#inputProtein");
@@ -187,12 +181,12 @@ function testButtonListener() {
         let newUser = {
             height: heightField.value,
             weight: weightField.value,
-            allergies: allergiesField.value,
-            restrictions: restrictionsField.value,
-            preferences: preferencesField.value,
+            // allergies: allergiesField.value,
+            // restrictions: restrictionsField.value,
+            // preferences: preferencesField.value,
             activityLevel: activityLevelField.value,
-            weightGoal: weightGoalField.value,
-            bodyType: bodyTypeField.value,
+            // weightGoal: weightGoalField.value,
+            // bodyType: bodyTypeField.value,
             diet: dietTypeField.value,
             calorieGoal: caloriesField.value,
             proteinGoal: proteinField.value,
