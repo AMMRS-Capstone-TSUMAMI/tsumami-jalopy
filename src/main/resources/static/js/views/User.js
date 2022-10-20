@@ -316,7 +316,7 @@ function updateUserInfo() {
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
                 console.log(response.status);
-                // createView("/");
+                createView("/");
             })
     })
 }

@@ -28,14 +28,14 @@ export default function Register(props) {
 
 
 <div class="tab">
-<label for="inputFitnessLevel">Fitness Level</label>
+<label for="inputDietType">Diet Type</label>
  <select id="inputDietType" class="form-control">
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
                         <option>Anything Else</option>
                         </select>
-<label for="inputDietType">Diet Type</label>
+<label for="inputActivityLevel">Activity Level</label>
                     <select id="inputActivityLevel" class="form-control">
                         <option selected>Choose...</option>
                         <option>A Little</option>
@@ -167,12 +167,12 @@ function testButtonListener() {
 
         const heightField = document.querySelector("#inputHeight");
         const weightField = document.querySelector("#inputWeight");
-        const allergiesField = document.querySelector("#inputAllergies");
-        const restrictionsField = document.querySelector("#inputRestrictions");
-        const preferencesField = document.querySelector("#inputPreferences");
+        // const allergiesField = document.querySelector("#inputAllergies");
+        // const restrictionsField = document.querySelector("#inputRestrictions");
+        // const preferencesField = document.querySelector("#inputPreferences");
         const activityLevelField = document.querySelector("#inputActivityLevel");
-        const weightGoalField = document.querySelector("#inputWeightGoal");
-        const bodyTypeField = document.querySelector("#inputBodyType");
+        // const weightGoalField = document.querySelector("#inputWeightGoal");
+        // const bodyTypeField = document.querySelector("#inputBodyType");
         const dietTypeField = document.querySelector("#inputDietType");
         const caloriesField = document.querySelector("#inputCalories");
         const proteinField = document.querySelector("#inputProtein");
@@ -182,12 +182,12 @@ function testButtonListener() {
         let newUser = {
             height: heightField.value,
             weight: weightField.value,
-            allergies: allergiesField.value,
-            restrictions: restrictionsField.value,
-            preferences: preferencesField.value,
+            // allergies: allergiesField.value,
+            // restrictions: restrictionsField.value,
+            // preferences: preferencesField.value,
             activityLevel: activityLevelField.value,
-            weightGoal: weightGoalField.value,
-            bodyType: bodyTypeField.value,
+            // weightGoal: weightGoalField.value,
+            // bodyType: bodyTypeField.value,
             diet: dietTypeField.value,
             calorieGoal: caloriesField.value,
             proteinGoal: proteinField.value,
