@@ -32,87 +32,31 @@ export default function prepareUser(props) {
         
        <!--                    //FORM #1-->
 <!--                    //weight input-->
+                    <form>
                     <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputWeight">Weight</label>
                     <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
                     </div>
                     </div>
-                  </form>
-                  </div>
-                   </div>
-                </div>
-                </div>
+                
                   
                   
-<!--                //FORM #2-->
-                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
-                <form>
-<!--                  //allergies input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputAllergies">Allergies</label>
-                    <input type="text" class="form-control" id="inputAllergies" placeholder="Allergies">
-                    </div>
-<!--                    //dietary restrictions input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputRestrictions">Restrictions</label>
-                    <input type="text" class="form-control" id="inputRestrictions" placeholder="Restrictions">
-                    </div>
-<!--                    //food preferences input-->
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputPreferences">Preferences</label>
-                    <input type="text" class="form-control" id="inputPreferences" placeholder="Preferences">
-                    </div>
-<!--                    //other input-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputOther">Other</label>
-                    <input type="text" class="form-control" id="inputOther" placeholder="Other">
-                    </div>
-                    </div>
-                  </form>
-                  </div>
-                </div>
-                </div>
-               
-                   
-                  
-<!--                //FORM #3-->
-                 <h1 class="h3 mb-3 font-weight-normal">Fitness Level & Weight Goals</h1>
-                <form>
 <!--                    //fitness level input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputActivityLevel">Fitness Level</label>
-                    <input type="text" class="form-control" id="inputActivityLevel" placeholder="Activity Level">
-                    </div>
-<!--                    //weight goals input-->
-                       <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputWeightGoal">Weight Goal</label>
-                    <input type="text" class="form-control" id="inputWeightGoal" placeholder="Weight Goal">
-                    </div>
-                    </div>
-                  </form>
-                  </div>
-                  
-                   <!--                //FORM #4-->
-                 <h1 class="h3 mb-3 font-weight-normal">Restrictions</h1>
-                <form>    
-<!--                body type input-->
-                   <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputBodyType">Body Type</label>
-                    <select id="inputBodyType" class="form-control">
+                        <label for="inputActivityLevel">Activity Level</label>
+                    <select id="inputActivityLevel" class="form-control">
                         <option selected>Choose...</option>
-                        <option>Ectomorph</option>
-                        <option>Endomorph</option>
-                        <option>Mesomorph</option>
+                        <option>A Little</option>
+                        <option>Middle</option>
+                        <option>A Ton</option>
                         </select>
                     </div>
+                  </div>
+                  
+ 
+
 <!--                    diet type input-->
                     <div class="form-row">
                     <div class="form-group col-md-6">
@@ -124,27 +68,25 @@ export default function prepareUser(props) {
                         <option>Anything Else</option>
                         </select>
                     </div>
-<!--                    any other diet-->
-                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputOtherDiet">Other Diet</label>
-                    <input type="text" class="form-control" id="inputOtherDiet" placeholder="Other Diet">
                     </div>
+
+
                 
-<!--                #FORM #5-->
-                 <h1 class="h3 mb-3 font-weight-normal">Recommended Calories/Macros</h1>
-                <form>
+
 <!--                    //calories information-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCalories">Calories</label>
                     <input type="text" class="form-control" id="inputCalories" placeholder="Calories">
                     </div>
+                       </div>
+                   
 <!--                    //protein input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputProtein">Protein</label>
                     <input type="text" class="form-control" id="inputProtein" placeholder="Protein">
+                    </div>
                     </div>
 <!--                    //carbs input-->
                      <div class="form-row">
@@ -152,20 +94,17 @@ export default function prepareUser(props) {
                         <label for="inputCarbs">Carbs</label>
                     <input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
                     </div>
+                    </div>
 <!--                    //fat input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputFat">Fat</label>
                     <input type="text" class="form-control" id="inputFat" placeholder="Fat">
                     </div>
+                    </div>
 <!--                    //submit button-->
                   <button type="submit" id="submitBtn">Submit</button>
-                  </div>
-                    </div>
                   </form>
-                  </div>
-                  </div>
-                </div>
             
   </body>
 </html>
@@ -340,13 +279,13 @@ function updateUserInfo() {
 
         // const heightField = document.querySelector("#inputHeight");
         const weightField = document.querySelector("#inputWeight");
-        const allergiesField = document.querySelector("#inputAllergies");
+        // const allergiesField = document.querySelector("#inputAllergies");
         // const restrictionsField = document.querySelector("#inputRestrictions");
         // const preferencesField = document.querySelector("#inputPreferences");
         const activityLevelField = document.querySelector("#inputActivityLevel");
-        const weightGoalField = document.querySelector("#inputWeightGoal");
+        // const weightGoalField = document.querySelector("#inputWeightGoal");
         // const bodyTypeField = document.querySelector("#inputBodyType");
-        // const dietTypeField = document.querySelector("#inputDietType");
+        const dietTypeField = document.querySelector("#inputDietType");
         const caloriesField = document.querySelector("#inputCalories");
         const proteinField = document.querySelector("#inputProtein");
         const carbsField = document.querySelector("#inputCarbs");
@@ -355,13 +294,13 @@ function updateUserInfo() {
         let updateUser = {
             // height: heightField.value,
             weight: weightField.value,
-            allergies: allergiesField.value,
+            // allergies: allergiesField.value,
             // restrictions: restrictionsField.value,
             // preferences: preferencesField.value,
             activityLevel: activityLevelField.value,
-            weightGoal: weightGoalField.value,
+            // weightGoal: weightGoalField.value,
             // bodyType: bodyTypeField.value,
-            // diet: dietTypeField.value,
+            diet: dietTypeField.value,
             calorieGoal: caloriesField.value,
             proteinGoal: proteinField.value,
             carbGoal: carbsField.value,
