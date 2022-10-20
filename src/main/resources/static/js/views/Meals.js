@@ -386,6 +386,59 @@ function drag(e) {
     }
 }
 
+//Sedentary: little or no exercise
+//Moderate: exercise 4-5 times per week.
+//Active: daily exercise or intense exercise 3-4 times per week.
+//Very Active: intense exercise 6-7 times per week.
+const activityReference = {
+    sedentary: {boy: 1, girl: 1, man: 1, woman: 1},
+    moderate: {boy: 1.13, girl: 1.16, man: 1.11, woman: 1.12},
+    active: {boy: 1.26, girl: 1.31, man: 1.25, woman: 1.27},
+    veryActive: {boy: 1.42, girl: 1.56, man: 1.48, woman: 1.45}
+}
+function calculateCalorieRecommendation(gender, weight, height, age, activityLevel) {
+    //set coefficients for age(a), activityLevel(PA), mass(m), and height(h)
+    let base, a, PA, m, h;
+    if(!gender || !weight || !height || !age || !activityLevel) {
+        console.log(`Unable to calculate `)
+    }
+    let mass = weight * 2.205;
+    if(gender === "male" && age > 18) {
+        base = 662;
+        a = age * 9.53;
+        PA = activityReference[activityLevel].man;
+        m = mass * 15.91;
+        h = height * 539.6;
+    }
+    if(gender === "female" && age > 18) {
+        base = 354;
+        a = age * 6.91;
+        PA = activityReference[activityLevel].woman;
+        m = mass * 9.36;
+        h = height * 726;
+    }
+    if(gender === "male" && age >= 3 && age <= 18) {
+        base = 88.5;
+        a = age * 61.9;
+        PA = activityReference[activityLevel].boy;
+        m = mass * 26.7;
+        h = height * 903;
+    }
+    if(gender === "female" && age >= 3 && age <= 18) {
+        base = 135.3;
+        a = age * 30.8;
+        PA = activityReference[activityLevel].girl;
+        m = mass * 10;
+        h = height * 934;
+    }
+    if(age < 3) {
+        return (89 * mass) - 80;
+    }
+    return base - a + (PA * (m * h));
+}
+
+
+
 async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
