@@ -72,7 +72,7 @@ export default function Register(props) {
 
 </form>
 
-<button id="test">test button</button>
+<!--<button id="test">test button</button>-->
 
 `;
 }
@@ -137,7 +137,7 @@ function fixStepIndicator(n) {
 
 export function RegisterEvent(){
     //button from prev code wasn't working used test and functional
-    testButtonListener();
+    // testButtonListener();
     showTab(currentTab); // Display the current tab
     const prevBtn = document.querySelector("#prevBtn")
     prevBtn.addEventListener("click",function (){
@@ -156,6 +156,7 @@ export function RegisterEvent(){
     // const registerButton = document.querySelector("#register-btn");
     // registerButton.addEventListener("click", function() {
 }
+
 
 function testButtonListener() {
     let testBtn = document.querySelector("#test")

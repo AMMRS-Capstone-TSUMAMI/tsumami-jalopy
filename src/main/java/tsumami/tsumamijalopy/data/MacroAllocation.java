@@ -20,15 +20,8 @@ public class MacroAllocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private String dietType;
-
-    @NotNull
+    private String name;
     private Long carbPercent;
-
-    @NotNull
     private Long fatPercent;
-
-    @NotNull
     private Long proteinPercent;
 }

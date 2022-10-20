@@ -12,7 +12,7 @@ export default function render(props, route) {
     } else if(route.backgroundImage){
         body.setAttribute("style", `background-image: ${route.backgroundImage};`);
     } else {
-        body.setAttribute("style", `background-color: white`);
+        body.setAttribute("style", `background-color: var(--bg-color)`);
     }
     const app = document.querySelector('#app');
     const title = `tsUmami - ${route.title}`;

@@ -77,31 +77,36 @@ export default function About(props) {
 
             for (let i = 0; i <= 4; i++) {
                 html += `
-    <div class="flip-card-container " style="--hue: 220">
+    <div class="flip-card-container " style="--hue: 220" xmlns="http://www.w3.org/1999/html">
       <div class="flip-card col-sm-2">
         <div class="card-front">
           <ul>
             <figure>
-            <div class="img-bg"></div>
-            <img src="${Developer[i].background}" alt="img">
+            <div class="img-bg imgAbout"></div>
+            <img class="imgAbout" src="${Developer[i].background}" alt="img">
           </figure>
+
             <figcaption> <img src="${Developer[i].pictures}" class="ppl-img" alt="img"></figcaption>
-            <li> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
+            <li id="card-name"> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
             <li> <span>${Developer[i].vetStatus}</span></li>
             <li> <span>${Developer[i].quotes}</span></li>
+            <li>
+                <button id="about-card-btn">           
+                  <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
+                  <a data-link href="https://github.com/${Developer[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
+                  <a data-link href="${Developer[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
+                  <a data-link href="https://${Developer[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
+                </button>
+            </li>
           </ul>
+          
         </div>
         <div class="card-back">
           <figure>
-            <div class="img-bg"></div>
+            <div class="img-bg imgAbout"></div>
             <img src="${Developer[i].background}" alt="img">
           </figure>
-          <button id="about-card-cardback-btn">
-              <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
-              <a data-link href="https://github.com/${Developer[i].github}" target="_blank"><img data-passthru src="img/github-signResized.png" alt="img"></a>
-              <a data-link href="${Developer[i].alumniLink}" target="_blank"><img data-passthru src="img/rubber-duckResized.png" alt="img"></a>
-              <a data-link href="https://${Developer[i].resume}.venuscohort.com" target="_blank"><img data-passthru src="img/resumeResized.png" alt="img"></a>
-          </button>
+
           <div class="design-container">
             <span class="design design--1"></span>
             <span class="design design--2"></span>

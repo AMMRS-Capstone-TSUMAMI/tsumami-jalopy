@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -29,6 +28,7 @@ public class User {
     private LocalDate birthdate;
     private Long height;
     private Long weight;
+    private String bodyType;
     private String diet;
     private String activityLevel;
     private Long calorieGoal;
