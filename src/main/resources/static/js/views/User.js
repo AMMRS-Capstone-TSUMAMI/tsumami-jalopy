@@ -14,13 +14,13 @@ export default function prepareUser(props) {
     let allChefLevels = props.allChefLevels;
     let userChefLevelsIds = [];
 
-    for (let trophy of trophies) {
-        userTrophiesIds.push(trophy.id)
-    }
-
-    for (let chefLevel of chefLevels) {
-        userChefLevelsIds.push(chefLevel.id)
-    }
+    // for (let trophy of trophies) {
+    //     userTrophiesIds.push(trophy.id)
+    // }
+    //
+    // for (let chefLevel of chefLevels) {
+    //     userChefLevelsIds.push(chefLevel.id)
+    // }
 
     // console.log(userTrophiesIds)
     // console.log(trophies);
