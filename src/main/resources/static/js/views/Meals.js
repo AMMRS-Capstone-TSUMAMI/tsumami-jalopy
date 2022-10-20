@@ -6,15 +6,19 @@ import createView from "../createView.js";
 // TODO: transmit date to backend when meal is added
 // TODO:
 // TODO:
-let me;
 let today = new Date;
+let me;
 let trophyId;
+let intolerances;
+let diet;
 let startDay;
 let plan;
 let results;
 let timeslotId;
 export default function Meals(props) {
     me = props.me;
+    intolerances = me.intolerances;
+    diet = me.diet;
     getStartDay(today)
     return `
 <div class="container g-0">
@@ -160,7 +164,13 @@ async function fetchRecipes(query) {
             'Content-Type': 'application/json'
         }
     }
-    let data = await fetch(`${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`, request)
+    let URL = `${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`
+    if(intolerances.length > 0) {
+        URL += `&${intolerances.map((el) => el.name).join(",")}`
+    }
+    if(diet !== "no diet" && diet !== null)
+        URL += `&${diet}`
+    let data = await fetch(URL, request)
         .then(function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
@@ -286,7 +296,7 @@ function populateCalendar() {
             <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
                 <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
-                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId} data-slot-id="${slotId}"></i>
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}" data-slot-id="${slotId}"></i>
             </div>
             <div class="card-body"></div>
             <div class="card-footer p-1">${title}</div>
@@ -365,8 +375,19 @@ function addMealCardListeners() {
             let recipeId = btn.dataset.recipeId;
             console.log(recipeId);
             createView(`/recipes/${recipeId}`)
-            // getAPI(recipeId)
         })
+    })
+    let delBtns = document.querySelectorAll(".delete")
+    delBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let recipeCard = btn.parentElement.parentElement;
+            let recipeId = btn.dataset.recipeId;
+            let slotId = btn.dataset.slotId;
+            deleteRecipe(slotId, recipeId).then(() => {
+                recipeCard.outerHTML = "";
+            })
+        })
+
     })
 }
 function toggleOverlay(element) {
