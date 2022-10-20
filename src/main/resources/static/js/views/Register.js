@@ -47,13 +47,13 @@ export default function Register(props) {
 
 <div id="lastTab" class="tab">
 <label for="inputCalories">Calorie Goal</label>
-<input type="text" class="form-control" id="inputCalories" placeholder="Calories">
+<input type="text" class="form-control" id="inputCalories" placeholder="Calorie Goal">
 <label for="inputProtein">Protein Goal</label>
-<input type="text" class="form-control" id="inputProtein" placeholder="Protein">
+<input type="text" class="form-control" id="inputProtein" placeholder="Protein Goal">
 <label for="inputCarbs">Carb Goal</label>
-<input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
+<input type="text" class="form-control" id="inputCarbs" placeholder="Carb Gaol">
 <label for="inputFat">Fat Goal</label>
-<input type="text" class="form-control" id="inputFat" placeholder="Fat">
+<input type="text" class="form-control" id="inputFat" placeholder="Fat Goal">
 </div>
 
 <div style="overflow:auto;">
