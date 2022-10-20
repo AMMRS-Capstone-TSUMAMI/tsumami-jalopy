@@ -1,5 +1,5 @@
 import createView from "../createView.js"
-import {getHeaders, isRegistered} from "../auth.js";
+import {getHeaders, isRegistered, setLoggedInUserInfo} from "../auth.js";
 
 
 let currentTab = 0; // Current tab is set to be the first tab (0)
@@ -45,7 +45,7 @@ export default function Register(props) {
 </div>
 
 
-<div class="tab">
+<div id="lastTab" class="tab">
 <label for="inputCalories">Calories</label>
 <input type="text" class="form-control" id="inputCalories" placeholder="Calories">
 <label for="inputProtein">Protein</label>
@@ -72,7 +72,7 @@ export default function Register(props) {
 
 </form>
 
-<button id="test">test button</button>
+
 
 `;
 }
@@ -93,17 +93,26 @@ function showTab(n) {
     }
     if (n === (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Submit";
-    } else {
+
+        }else {
         document.getElementById("nextBtn").innerHTML = "Next";
     }
     // ... and run a function that displays the correct step indicator:
+if(document.getElementById("nextBtn").innerHTML === "Submit") {
+
+    testButtonListener();
+
+    }
     fixStepIndicator(n)
+
+
 }
 
 function nextPrev(n) {
     // console.log("n")
     // This function will figure out which tab to display
     const x = document.getElementsByClassName("tab");
+    console.log(x[currentTab]);
     // Exit the function if any field in the current tab is invalid:
     if (n === 1 && !validateForm()) return false;
     // Hide the current tab:
@@ -111,11 +120,11 @@ function nextPrev(n) {
     // Increase or decrease the current tab by 1:
     currentTab = currentTab + n;
     // if you have reached the end of the form... :
-    if (currentTab >= x.length) {
-        //...the form gets submitted:
-        document.getElementById("regForm").submit();
-        return false;
-    }
+    // if (currentTab >= x.length) {
+    //     //...the form gets submitted:
+    //     document.getElementById("regForm").submit();
+    //     return false;
+    // }
     // Otherwise, display the correct tab:
     showTab(currentTab);
 }
@@ -137,7 +146,7 @@ function fixStepIndicator(n) {
 
 export function RegisterEvent(){
     //button from prev code wasn't working used test and functional
-    testButtonListener();
+    // testButtonListener();
     showTab(currentTab); // Display the current tab
     const prevBtn = document.querySelector("#prevBtn")
     prevBtn.addEventListener("click",function (){
@@ -159,8 +168,10 @@ export function RegisterEvent(){
 
 
 function testButtonListener() {
-    let testBtn = document.querySelector("#test")
-    testBtn.addEventListener("click", function (event) {
+    // let testBtn = document.querySelector("#test")
+    // let lastTab = document.querySelector("#lastTab")
+    // if()
+    document.getElementById("nextBtn").addEventListener("click", function (event) {
         console.log("our function for testbtn")
 
 
@@ -205,7 +216,9 @@ function testButtonListener() {
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
                 console.log(response.status);
+                setLoggedInUserInfo();
                 createView("/meals");
             })
     })
 }
+
