@@ -60,7 +60,7 @@ export default function prepareUser(props) {
 <!--                    diet type input-->
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputDietType">Body Type</label>
+                        <label for="inputDietType">Diet Type</label>
                     <select id="inputDietType" class="form-control">
                         <option selected>Choose...</option>
                         <option>Paleo</option>
@@ -69,14 +69,13 @@ export default function prepareUser(props) {
                         </select>
                     </div>
                     </div>
-
-
-                
+                    
+                              
 
 <!--                    //calories information-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCalories">Calories</label>
+                        <label for="inputCalories">Calories Goal</label>
                     <input type="text" class="form-control" id="inputCalories" placeholder="Calories">
                     </div>
                        </div>
@@ -84,21 +83,21 @@ export default function prepareUser(props) {
 <!--                    //protein input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputProtein">Protein</label>
+                        <label for="inputProtein">Protein Goal</label>
                     <input type="text" class="form-control" id="inputProtein" placeholder="Protein">
                     </div>
                     </div>
 <!--                    //carbs input-->
                      <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCarbs">Carbs</label>
+                        <label for="inputCarbs">Carbs Goal</label>
                     <input type="text" class="form-control" id="inputCarbs" placeholder="Carbs">
                     </div>
                     </div>
 <!--                    //fat input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputFat">Fat</label>
+                        <label for="inputFat">Fat Goal</label>
                     <input type="text" class="form-control" id="inputFat" placeholder="Fat">
                     </div>
                     </div>
@@ -316,7 +315,7 @@ function updateUserInfo() {
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
                 console.log(response.status);
-                createView("/");
+                createView("/me");
             })
     })
 }
