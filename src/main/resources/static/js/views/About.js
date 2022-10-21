@@ -1,4 +1,5 @@
 export default function About(props) {
+
     let Developer = [
         {
             "pictures": "../../img/matthew.png",
@@ -9,8 +10,8 @@ export default function About(props) {
             "github": "Matthew-Grayson",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "matthewgrayson",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
+            "background": "/img/bg-matthew.png\" alt=\"img",
+            "quotes": '"Consider fully; act decisively"' + '<br>' + '― Jigoro Kano'
         },
         {
             "pictures": "../../img/shaquielle.png",
@@ -21,8 +22,8 @@ export default function About(props) {
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
+            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
+            "quotes": '"“Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
         },
         {
             "pictures": "../../img/ryan.png",
@@ -46,8 +47,9 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"I see now that the circumstances of one\'s birth is irrelevant, it is what you do with the gift of life that determines who you are"' + '<br>' + '― Mewtwo'
+            "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
         },
+
         {
             "pictures": "../../img/miguel.png",
             "vetStatus": "Full Stack Developer & Army Veteran",
@@ -58,7 +60,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "miguelguzman",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"Wooh"' + '<br>' + '-Rick Flair'
+            "quotes": '"But the cream will rise to the top"' + '<br>' + '-Abraham Lincoln'
         }
     ]
     // icon credits
@@ -70,7 +72,7 @@ export default function About(props) {
     `)
 
     let html = `<header>
-        <h1 id="about-page-h1">About Us (rename to something cool)</h1>
+<!--        <h1 id="about-page-h1">About Us (rename to something cool)</h1>-->
 </header>
     <div class="container wrapper">
         <div class="row duh overflow-y-scroll">`;
