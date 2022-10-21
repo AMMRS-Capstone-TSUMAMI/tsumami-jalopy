@@ -8,12 +8,22 @@ import Navbar from "./views/partials/Navbar.js";
 export default function render(props, route) {
     const body = document.querySelector("#indexBody");
     if(route.backgroundColor) {
-        body.setAttribute("style", `background-color: ${route.backgroundColor};`);
-    } else if(route.backgroundImage){
-        body.setAttribute("style", `background-image: ${route.backgroundImage};`);
+        // body.setAttribute("style", `background-color: ${route.backgroundColor};`);
+        body.style.backgroundColor = route.backgroundColor;
+        console.log("bg color is running");
     } else {
         body.setAttribute("style", `background-color: var(--bg-color)`);
     }
+    if(route.backgroundImage){
+        body.setAttribute("style", `background-image: ${route.backgroundImage};`);
+        console.log("bg img is running");
+    }
+    if(route.backdropFilter){
+        // body.setAttribute("style", `backdrop-filter: ${route.blurb};`);
+        body.style.backdropFilter = route.backdropFilter;
+        console.log(route.backgroundColor);
+    }
+
     const app = document.querySelector('#app');
     const title = `tsUmami - ${route.title}`;
     document.title = title;

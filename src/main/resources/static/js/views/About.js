@@ -38,7 +38,7 @@ export default function About(props) {
             "github": "RSKYoshi",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ryanyoshimura",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "background": "/img/capstone/kahalaSunrise.jpg\" alt=\"img",
             "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
@@ -50,10 +50,9 @@ export default function About(props) {
             "github": "ashmar32",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "background": "/img/ashleyBgAbout.jpeg\" alt=\"img",
             "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
         },
-
         {
             "pictures": "../../img/miguel.png",
             "vetStatus": "Full Stack Developer & Army Veteran",
