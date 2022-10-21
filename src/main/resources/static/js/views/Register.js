@@ -19,47 +19,44 @@ export default function Register(props) {
 <h1>Register:</h1>
 
 <!-- One "tab" for each step in the form: -->
-<div class="tab">
-<label for="inputHeight">Height</label>
-<input type="text" class="form-control" id="inputHeight" placeholder="Height">
-<label for="inputWeight">Weight</label>
-<input type="text" class="form-control" id="inputWeight" placeholder="Weight">
+<div class="tab justify-content-evenly">
+<input type="text" class="form-control" id="inputHeight" style="text-align:center;margin:20px;" placeholder="Height">
+<input type="text" class="form-control" id="inputWeight" style="text-align:center;margin:20px;" placeholder="Weight">
 </div>
 
 
 <div class="tab">
-<label for="inputDietType">Diet Type</label>
- <select id="inputDietType" class="form-control">
+                    <select type="text" id="inputDietType" style="text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
-                        <option>Anything Else</option>
+                        <option>Vegan</option>
                         </select>
-<label for="inputActivityLevel">Activity Level</label>
-                    <select id="inputActivityLevel" class="form-control">
+
+                     <select type="text" id="inputActivityLevel" style="text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
-                        <option>A Little</option>
-                        <option>Middle</option>
-                        <option>A Ton</option>
+                        <option>Sedentary</option>
+                        <option>Mildly Active</option>
+                        <option>Active</option>
                         </select>
 </div>
 
 
-<div id="lastTab" class="tab">
-<label for="inputCalories">Calorie Goal</label>
-<input type="text" class="form-control" id="inputCalories" placeholder="Calorie Goal">
-<label for="inputProtein">Protein Goal</label>
-<input type="text" class="form-control" id="inputProtein" placeholder="Protein Goal">
-<label for="inputCarbs">Carb Goal</label>
-<input type="text" class="form-control" id="inputCarbs" placeholder="Carb Gaol">
-<label for="inputFat">Fat Goal</label>
-<input type="text" class="form-control" id="inputFat" placeholder="Fat Goal">
+<div class="tab">
+
+<input type="text" class="form-control" id="inputProtein" style="text-align:center;margin:20px;" placeholder="Protein Goal">
+
+<input type="text" class="form-control" id="inputCarbs" style="text-align:center;margin:20px;" placeholder="Carb Goal">
+
+<input type="text" class="form-control" id="inputFat" style="text-align:center;margin:20px;" placeholder="Fat Goal">
+
+<input type="text" class="form-control" id="inputCalories" style="text-align:center;margin:20px;" placeholder="Calorie Goal">
 </div>
 
 <div style="overflow:auto;">
 <div style="float:right;">
-<button type="button" id="prevBtn">Previous</button>
-<button type="button" id="nextBtn">Next</button>
+<button type="button" class="button" id="prevBtn">Previous</button>
+<button type="button" class="button" id="nextBtn">Next</button>
 </div>
 </div>
 
@@ -98,10 +95,9 @@ function showTab(n) {
         document.getElementById("nextBtn").innerHTML = "Next";
     }
     // ... and run a function that displays the correct step indicator:
-if(document.getElementById("nextBtn").innerHTML === "Submit") {
-
-    testButtonListener();
-
+    if
+        (document.getElementById("nextBtn").innerHTML === "Submit") {
+    // submitRegistration();
     }
     fixStepIndicator(n)
 
@@ -109,6 +105,7 @@ if(document.getElementById("nextBtn").innerHTML === "Submit") {
 }
 
 function nextPrev(n) {
+
     // console.log("n")
     // This function will figure out which tab to display
     const x = document.getElementsByClassName("tab");
@@ -126,12 +123,38 @@ function nextPrev(n) {
     //     return false;
     // }
     // Otherwise, display the correct tab:
+    if
+    ( n === 1 &&
+        document.getElementById("nextBtn").innerHTML === "Submit") {
+        submitRegistration();
+        return
+    }
     showTab(currentTab);
 }
 
 function validateForm() {
-
-    return true; // return the true status
+    // This function deals with validation of the form fields
+    var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    if (! x[currentTab]){
+        return true;
+    }
+    y = x[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value === "") {
+            // add an "invalid" class to the field:
+            y[i].className += " invalid";
+            // and set the current valid status to false:
+            valid = false;
+        }
+    }
+    // If the valid status is true, mark the step as finished and valid:
+    if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid; // return the valid status
 }
 
 function fixStepIndicator(n) {
@@ -167,11 +190,11 @@ export function RegisterEvent(){
 }
 
 
-function testButtonListener() {
+function submitRegistration() {
     // let testBtn = document.querySelector("#test")
     // let lastTab = document.querySelector("#lastTab")
     // if()
-    document.getElementById("nextBtn").addEventListener("click", function (event) {
+    // document.getElementById("nextBtn").addEventListener("click", function (event) {
         console.log("our function for testbtn")
 
 
@@ -206,19 +229,18 @@ function testButtonListener() {
             fatGoal: fatField.value,
         }
         console.log(newUser);
-
         let request = {
             method: "PATCH",
             headers: getHeaders(),
             body: JSON.stringify(newUser)
         }
-        //changed endpoint name
+            //changed endpoint name
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
                 console.log(response.status);
                 setLoggedInUserInfo();
                 createView("/meals");
             })
-    })
+    // })
 }
 

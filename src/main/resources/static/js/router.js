@@ -1,6 +1,6 @@
 import Home, {HomeEvents} from "./views/Home.js";
 import Landing from "./views/Landing.js";
-import About from "./views/About.js";
+import About, {aboutEvent} from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
 import Login, {LoginEvent} from "./views/Login.js";
@@ -75,12 +75,17 @@ export default function router(URI) {
         },
         '/about': {
             returnView: About,
-            state: {},
+            state: {
+                me: '/api/users/me'
+            },
             uri: '/about',
             title: 'About',
-            // backgroundColor: 'rgb(29, 29, 29)'
+            // backgroundColor: ' var(--text-color)'
+            // backgroundColor: 'rgb(29, 29, 29)',
             // backgroundImage: "url('https://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg');"
-            backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');"
+            backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');",
+            // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
+            backdropFilter:  `blur(7.7px)`
         },
         '/error': {
             returnView: Error404,
@@ -98,6 +103,7 @@ export default function router(URI) {
             returnView: recipesHTML,
             state: {
                 recipes: `https://api.spoonacular.com/recipes/:id/information?apiKey=${SPOONACULAR_API}`,
+                me: '/api/users/me'
             },
             uri: '/recipes/:id',
             title: 'Recipes',

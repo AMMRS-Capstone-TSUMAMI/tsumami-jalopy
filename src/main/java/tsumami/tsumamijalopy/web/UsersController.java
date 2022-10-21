@@ -84,7 +84,7 @@ public class UsersController {
     }
 
     @PatchMapping("/addTrophy/{trophyId}")
-    public void addTrophyAndXp(@PathVariable Long trophyId, @RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+    public Trophy addTrophyAndXp(@PathVariable Long trophyId, @RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
         Trophy newTrophy = trophyRepository.findById(trophyId).get();
 
@@ -99,6 +99,8 @@ public class UsersController {
         loggedInUser.setExperiencePoints(usersXp);
 
         usersRepository.save(loggedInUser);
+
+        return trophyRepository.findById(trophyId).get();
     }
 
 }

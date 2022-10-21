@@ -1,4 +1,9 @@
+import {checkAndAddTrophy} from "./User.js";
+let me;
 export default function About(props) {
+     me = props.me;
+    console.log(me)
+    
     let Developer = [
         {
             "pictures": "../../img/matthew.png",
@@ -9,8 +14,8 @@ export default function About(props) {
             "github": "Matthew-Grayson",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "matthewgrayson",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "background": "/img/bg-matthew.png\" alt=\"img",
+            "quotes": '"Consider fully; act decisively"' + '<br>' + '― Jigoro Kano'
         },
         {
             "pictures": "../../img/shaquielle.png",
@@ -22,7 +27,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
             "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
         },
         {
             "pictures": "../../img/ryan.png",
@@ -33,8 +38,8 @@ export default function About(props) {
             "github": "RSKYoshi",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ryanyoshimura",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "background": "/img/capstone/kahalaSunrise.jpg\" alt=\"img",
+            "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
             "pictures": "../../img/ashley.png",
@@ -45,8 +50,8 @@ export default function About(props) {
             "github": "ashmar32",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"I see now that the circumstances of one\'s birth is irrelevant, it is what you do with the gift of life that determines who you are"' + '<p>' + '― Mewtwo'
+            "background": "/img/ashleyBgAbout.jpeg\" alt=\"img",
+            "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
         },
         {
             "pictures": "../../img/miguel.png",
@@ -57,8 +62,8 @@ export default function About(props) {
             "github": "MiguelAGuzman",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "miguelguzman",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"Wooh"' + '<p>' + '-Rick Flair'
+            "background": "../../img/rocky-mountain.jpg\" alt=\"Rocky Mountains",
+            "quotes": '"But the cream will rise to the top"' + '<br>' + '-Abraham Lincoln'
         }
     ]
     // icon credits
@@ -70,7 +75,7 @@ export default function About(props) {
     `)
 
     let html = `<header>
-        <h1 id="about-page-h1">About Us (rename to something cool)</h1>
+<!--        <h1 id="about-page-h1">About Us (rename to something cool)</h1>-->
 </header>
     <div class="container wrapper">
         <div class="row duh overflow-y-scroll">`;
@@ -89,7 +94,7 @@ export default function About(props) {
             <figcaption> <img src="${Developer[i].pictures}" class="ppl-img" alt="img"></figcaption>
             <li id="card-name"> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
             <li> <span>${Developer[i].vetStatus}</span></li>
-            <li> <span>${Developer[i].quotes}</span></li>
+            <li class="g-0"> <span>${Developer[i].quotes}</span></li>
             <li>
                 <button id="about-card-btn">           
                   <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
@@ -125,6 +130,12 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
+}
+
+export function aboutEvent () {
+    console.log(me.trophies)
+    checkAndAddTrophy(me.trophies, 3)
+    console.log("is this thing on?")
 }
 
 

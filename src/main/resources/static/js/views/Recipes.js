@@ -1,3 +1,4 @@
+import {checkAndAddTrophy} from "./User.js";
 // import {recipeID} from './Meals.js'
 // let recipeId;
 
@@ -9,6 +10,9 @@
 // let apiCookingInstructions = [];
 
 // let recipe;
+let me;
+
+
 let recipeInfo;
 // let html;
 // let html2;
@@ -16,6 +20,7 @@ let recipeInfo;
 export default function recipesHTML(props) {
     recipeInfo = props.recipes
     console.log(recipeInfo);
+    me = props.me;
     return `
             <div class="container g-0">
                 <div class="row">   
@@ -37,10 +42,14 @@ export function recipesEvent() {
     populateHeader();
     populateIngredients();
     populateSteps();
+    checkAndAddTrophy(me.trophies, 4);
+
     // perhaps this is where I can call the recipe ID from meals.js
     //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call
     // recipeSelectedHandler();
     // populateRecipeInfo();
+
+
     // console.log("Hello recipesEvent");
     // console.log("${response.json}");
 }
@@ -209,7 +218,7 @@ function populateSteps() {
             html2 += `
                 <div>
                     <div>
-                        <div>${recipeIngredientList[j].amount} ${recipeIngredientList[j].measures.us.unitLong}</div>
+                        <div>${recipeIngredientList[j].measures.us.amount} ${recipeIngredientList[j].measures.us.unitLong}</div>
                         <img class="recipeIngredientImg" src="${imgR}" alt="img">
                         <div>${recipeIngredientList[j].originalName}</div>
                     </div>
