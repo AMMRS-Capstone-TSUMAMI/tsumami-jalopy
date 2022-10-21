@@ -121,41 +121,20 @@ export default function prepareUser(props) {
                     `).join("")}
                 </div>
             </div>
-            <div class="col-6">
-                <div class="trophy-container d-flex flex-wrap justify-content-center">
-                    ${allTrophies.map(trophy => `
-                    
-                         ${appendTrophyHTML(userTrophiesIds, trophy)}
-                    
-                    `).join("")}
-                </div> 
-            </div>
-        </div>    
-<!--testing toast-->
-<!--<div class="toast-container position-fixed bottom-0 end-0 p-3">-->
-<!--  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">-->
-<!--    <div class="toast-header">-->
-<!--          <img src="https://cdn-icons-png.flaticon.com/512/6951/6951856.png" class="rounded me-2" alt="...">-->
-
-<!--      <strong class="me-auto">Bootstrap</strong>-->
-<!--      <small>11 mins ago</small>-->
-<!--      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>-->
-<!--    </div>-->
-<!--    <div class="toast-body">-->
-<!--      Hello, world! This is a toast message.-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-            
-        </div>
-        
-        
-        
-        
-        
-      
+                    <div class="col-6">
+                        <div class="trophy-container d-flex flex-wrap justify-content-center">
+                            ${allTrophies.map(trophy => `
+                            
+                                 ${appendTrophyHTML(userTrophiesIds, trophy)}
+                            
+                            `).join("")}
+                        </div> 
+                    </div>
+            </div>    
+        </div> 
     `;
 }
+
 function appendTrophyHTML (usersTrophies, currentTrophy){
     if (usersTrophies.includes(currentTrophy.id)) {
         return `
@@ -170,18 +149,19 @@ function appendTrophyHTML (usersTrophies, currentTrophy){
                         </div>      
           `
     }
-    return `<div class="card trophy-card trophy-unearned m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
-                    <div class="trophy-unearned-overlay">
-                      <div class="card-body">
-                        <img src="/img/newunearned.png" class="trophy-icon"> 
-                      </div>
-                      <div class="card-body">
-                        <h6 class="trophy-title text-center">${currentTrophy.title}</h6>
-                      </div>
-                    </div>
-                    </div>`
+        return `<div class="card trophy-card trophy-unearned m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+                        <div class="trophy-unearned-overlay">
+                          <div class="card-body">
+                            <img src="/img/newunearned.png" class="trophy-icon"> 
+                          </div>
+                          <div class="card-body">
+                            <h6 class="trophy-title text-center">${currentTrophy.title}</h6>
+                          </div>
+                        </div>
+                        </div>
+        `
 
-}
+    }
 
 function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
     let usersCurrentXp = usersXp
@@ -214,28 +194,27 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
                 </div>
         `
     }
-    return `<div class="chef-card m-2 p-2 tt" data-bs-title=${JSON.stringify(currentChefLevel.description)} data-desc=${JSON.stringify(currentChefLevel.description)}">
-                  <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex">
-                        <img src=${JSON.stringify(currentChefLevel.photo)} alt="chef level" class="chef-level-img">                  
-                        <h6 class="chef-title mx-3">${currentChefLevel.title} </h6>
-                      </div>
-                      <div class="w-65">
-                          <div class="bar-container">
-                              <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
+        return `<div class="chef-card m-2 p-2 tt" data-bs-title=${JSON.stringify(currentChefLevel.description)} data-desc=${JSON.stringify(currentChefLevel.description)}">
+                      <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex">
+                            <img src=${JSON.stringify(currentChefLevel.photo)} alt="chef level" class="chef-level-img">                  
+                            <h6 class="chef-title mx-3">${currentChefLevel.title} </h6>
                           </div>
-                          <div class="d-flex justify-content-between">
-                            <div>${usersCurrentXp} / ${currentChefLevelXpThreshold}</div>
-                            <div>${currentChefLevel.description}</div>
+                          <div class="w-65">
+                              <div class="bar-container">
+                                  <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                <div>${usersCurrentXp} / ${currentChefLevelXpThreshold}</div>
+                                <div>${currentChefLevel.description}</div>
+                              </div>
                           </div>
                       </div>
-                  </div>
-                </div>`
-}
+                    </div>`
+    }
 
 
 export function prepareUserJS() {
-    // doToggleUserInfoHandler();
     updateUserInfo();
     trophyCardEventListener();
 }
@@ -245,8 +224,6 @@ function trophyCardEventListener() {
     tooltips.forEach(t => {
         new bootstrap.Tooltip(t)
     })
-
-
 }
 
 function updateUserInfo() {
@@ -321,7 +298,7 @@ function updateUserInfo() {
 
 
 // changed to export to be used elsewhere
-export function awardUserATrophy(trophyId) {
+export async function awardUserATrophy(trophyId) {
     console.log('inside awardUserATrophy function')
 
     let requestHeader = {
@@ -329,7 +306,7 @@ export function awardUserATrophy(trophyId) {
         headers: getHeaders()
     }
 
-    fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
+    await fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
         // console.log('inside fetch')
         console.log(response)
         return response.json();
@@ -341,7 +318,7 @@ export function awardUserATrophy(trophyId) {
     })
 }
 
-// maybe make this an await function
+// maybe make this an await function?
 export function checkAndAddTrophy(usersTrophyArray, trophyId) {
     console.log('inside checkAndAddTrophy function')
     for (let i = 0; i < usersTrophyArray.length; i++) {
@@ -350,6 +327,7 @@ export function checkAndAddTrophy(usersTrophyArray, trophyId) {
         }
     }
     awardUserATrophy(trophyId);
+    usersTrophyArray.push({ id: trophyId});
 }
 
 
@@ -373,9 +351,7 @@ function moreToast(title, description) {
             <div>${description}</div>
          </div>
 `
-    // document.description.innerHTML += `
-    // <div class="toast-card"></div>
-    // `;
+
 
     document.body.appendChild(toastDiv);
     // alertSound();

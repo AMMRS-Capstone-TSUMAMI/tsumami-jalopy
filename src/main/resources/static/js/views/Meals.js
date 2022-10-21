@@ -1,4 +1,4 @@
-import {getHeaders, isLoggedIn} from "../auth.js";
+import {getHeaders, getMe, getUser, isLoggedIn, setLoggedInUserInfo} from "../auth.js";
 import createView from "../createView.js";
 import {checkAndAddTrophy, getUserData} from "./User.js";
 
@@ -125,7 +125,10 @@ export default function Meals(props) {
 }
 
 export async function MealsEvent() {
-    checkAndAddTrophy(me.trophies, 1);
+    await checkAndAddTrophy(me.trophies, 1);
+    console.log(me)
+    me = await getMe();
+    console.log(me);
     prepareSearchFields();
     addCalendarListeners();
     await fetchCalendarEntries().then(async() => {
@@ -164,11 +167,12 @@ async function fetchRecipes(query) {
     if(diet !== "no diet" && diet !== null)
         URL += `&${diet}`
     let data = await fetch(URL, request)
-        .then(function(response) {
+        .then(async function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
             } else {
                 console.log("Search Complete");
+                me = await getMe();
                 checkAndAddTrophy(me.trophies, 2)
                 //trying to reset me variable to updated user with new trophy
                 getUserData().then(data => me = data);
