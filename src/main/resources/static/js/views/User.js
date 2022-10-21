@@ -28,15 +28,14 @@ export default function prepareUser(props) {
 
     // make the user's original pw available somewhere in here
     return `
-        <h1>Update Info</h1>
+        <h1>Update Info:</h1>
         
        <!--                    //FORM #1-->
 <!--                    //weight input-->
                     <form>
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputWeight">Weight</label>
-                    <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
+                    <input type="text" class="form-control" id="inputWeight" style="width:500px;text-align:center;margin:20px;" placeholder="Weight">
                     </div>
                     </div>
                 
@@ -45,10 +44,9 @@ export default function prepareUser(props) {
 <!--                    //fitness level input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputActivityLevel">Activity Level</label>
-                    <select id="inputActivityLevel" class="form-control">
+                    <select id="inputActivityLevel" style="width:500px;text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
-                        <option>Sedimentary</option>
+                        <option>Sedentary</option>
                         <option>Mildly Active</option>
                         <option>Active</option>
                         </select>
@@ -60,8 +58,7 @@ export default function prepareUser(props) {
 <!--                    diet type input-->
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputDietType">Diet Type</label>
-                    <select id="inputDietType" class="form-control">
+                    <select id="inputDietType" style="width:500px;text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
@@ -70,39 +67,35 @@ export default function prepareUser(props) {
                     </div>
                     </div>
                     
-                              
-
-<!--                    //calories information-->
-                      <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCalories">Calories Goal</label>
-                    <input type="text" class="form-control" id="inputCalories" placeholder="Calorie Goal">
-                    </div>
-                       </div>
+                             
                    
 <!--                    //protein input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputProtein">Protein Goal</label>
-                    <input type="text" class="form-control" id="inputProtein" placeholder="Protein Goal">
+                    <input type="text" class="form-control" id="inputProtein" style="width:500px;text-align:center;margin:20px;" placeholder="Protein Goal">
                     </div>
                     </div>
 <!--                    //carbs input-->
                      <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCarbs">Carbs Goal</label>
-                    <input type="text" class="form-control" id="inputCarbs" placeholder="Carb Goal">
+                    <input type="text" class="form-control" id="inputCarbs" style="width:500px;text-align:center;margin:20px;" placeholder="Carb Goal">
                     </div>
                     </div>
 <!--                    //fat input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputFat">Fat Goal</label>
-                    <input type="text" class="form-control" id="inputFat" placeholder="Fat Goal">
+                    <input type="text" class="form-control" id="inputFat" style="width:500px;text-align:center;margin:20px;" placeholder="Fat Goal">
                     </div>
                     </div>
+                    
+                    <!--                    //calories information-->
+                      <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputCalories" style="width:500px;text-align:center;margin:20px;" placeholder="Calorie Goal">
+                    </div>
+                       </div>
 <!--                    //submit button-->
-                  <button type="submit" id="submitBtn">Submit</button>
+                  <button class="button" type="submit" id="submitBtn">Submit</button>
                   </form>
             
   </body>
