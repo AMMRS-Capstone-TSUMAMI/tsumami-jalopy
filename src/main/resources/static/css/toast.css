@@ -1,0 +1,28 @@
+.toast-card {
+    background-color: white;
+    width: 30%;
+
+    border: 1px solid grey;
+
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px grey;
+
+    position: fixed;
+    top: 1em;
+    right: 1em;
+}
+
+.toast-title {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid black;
+}
+
+.gold {
+    color: gold;
+}
+
+#toast-close {
+    cursor: pointer;
+}

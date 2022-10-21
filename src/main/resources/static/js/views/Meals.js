@@ -1,6 +1,6 @@
-import {getHeaders} from "../auth.js";
+import {getHeaders, getMe, getUser, isLoggedIn, setLoggedInUserInfo} from "../auth.js";
 import createView from "../createView.js";
-// import {awardUserATrophy} from "./User.js";
+import {checkAndAddTrophy, getUserData} from "./User.js";
 
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
@@ -8,7 +8,7 @@ import createView from "../createView.js";
 // TODO:
 let today = new Date;
 let me;
-let trophyId;
+// let trophyId;
 let intolerances;
 let diet;
 let startDay;
@@ -125,6 +125,10 @@ export default function Meals(props) {
 }
 
 export async function MealsEvent() {
+    await checkAndAddTrophy(me.trophies, 1);
+    console.log(me)
+    me = await getMe();
+    console.log(me);
     prepareSearchFields();
     addCalendarListeners();
     await fetchCalendarEntries().then(async() => {
@@ -132,18 +136,10 @@ export async function MealsEvent() {
     }).then(() => {
         addMealCardListeners()
     })
-    // checkAndAddTrophy(me.trophies, 1);
     console.log("MealsEvent Complete");
 }
 
-// export function checkAndAddTrophy(trophyArray, trophyId) {
-//     for (let i = 0; i < trophyArray.length; i++) {
-//         if (trophyArray[i].id === trophyId) {
-//             return;
-//         }
-//     }
-//     awardUserATrophy(trophyId);
-// }
+
 
 function prepareSearchFields() {
     const recipeField = document.querySelector("#meals-recipe-search-field");
@@ -171,11 +167,15 @@ async function fetchRecipes(query) {
     if(diet !== "no diet" && diet !== null)
         URL += `&${diet}`
     let data = await fetch(URL, request)
-        .then(function(response) {
+        .then(async function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
             } else {
                 console.log("Search Complete");
+                me = await getMe();
+                checkAndAddTrophy(me.trophies, 2)
+                //trying to reset me variable to updated user with new trophy
+                getUserData().then(data => me = data);
                 return response.json()
             }
         });
