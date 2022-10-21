@@ -27,7 +27,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
             "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
-            "quotes": '"“Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
+            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
         },
         {
             "pictures": "../../img/ryan.png",
