@@ -60,6 +60,12 @@ VALUES
     (2, 'Choppin\' calories and taking names!', '/img/sousChef.png',    20, 'Sous Chef'),
     (3, 'Head Honcho, Keep cookin!',    '/img/exChef.png',  30, 'Executive Chef');
 
+INSERT INTO `trophies` (`id`, `description`, `photo`, `title`)
+VALUES
+    (1,	'Completed registration!',	NULL,	'New chef!'),
+    (2,	'Searched first recipe!',	NULL,	'Surfing for searches!'),
+    (3,	'Learned about the development team!',	NULL,	'Team Player!'),
+    (4,	'Cooking your first recipe!',	NULL,	'What\'s cookin\' good lookin\'?')
 
 
 
