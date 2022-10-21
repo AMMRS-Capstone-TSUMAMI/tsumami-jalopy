@@ -62,7 +62,7 @@ export default function About(props) {
             "github": "MiguelAGuzman",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "miguelguzman",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "background": "../../img/rocky-mountain.jpg\" alt=\"Rocky Mountains",
             "quotes": '"But the cream will rise to the top"' + '<br>' + '-Abraham Lincoln'
         }
     ]
