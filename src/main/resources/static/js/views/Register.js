@@ -33,14 +33,14 @@ export default function Register(props) {
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
-                        <option>Anything Else</option>
+                        <option>Vegan</option>
                         </select>
 <label for="inputActivityLevel">Activity Level</label>
                     <select id="inputActivityLevel" class="form-control">
                         <option selected>Choose...</option>
-                        <option>A Little</option>
-                        <option>Middle</option>
-                        <option>A Ton</option>
+                        <option>Sedimentary</option>
+                        <option>Mildly Active</option>
+                        <option>Active</option>
                         </select>
 </div>
 
