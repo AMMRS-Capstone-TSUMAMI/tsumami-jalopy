@@ -1,4 +1,8 @@
+import {checkAndAddTrophy} from "./User.js";
+let me;
 export default function About(props) {
+     me = props.me;
+    console.log(me)
     let Developer = [
         {
             "pictures": "../../img/matthew.png",
@@ -125,6 +129,12 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
+}
+
+export function aboutEvent () {
+    console.log(me.trophies)
+    checkAndAddTrophy(me.trophies, 3)
+    console.log("is this thing on?")
 }
 
 

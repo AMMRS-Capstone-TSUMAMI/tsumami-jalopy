@@ -1,6 +1,6 @@
 import {getHeaders} from "../auth.js";
 import createView from "../createView.js";
-// import {awardUserATrophy} from "./User.js";
+import {checkAndAddTrophy} from "./User.js";
 
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
@@ -8,7 +8,7 @@ import createView from "../createView.js";
 // TODO:
 let today = new Date;
 let me;
-let trophyId;
+// let trophyId;
 let intolerances;
 let diet;
 let startDay;
@@ -125,6 +125,7 @@ export default function Meals(props) {
 }
 
 export async function MealsEvent() {
+    checkAndAddTrophy(me.trophies, 1);
     prepareSearchFields();
     addCalendarListeners();
     await fetchCalendarEntries().then(async() => {
@@ -132,18 +133,10 @@ export async function MealsEvent() {
     }).then(() => {
         addMealCardListeners()
     })
-    // checkAndAddTrophy(me.trophies, 1);
     console.log("MealsEvent Complete");
 }
 
-// export function checkAndAddTrophy(trophyArray, trophyId) {
-//     for (let i = 0; i < trophyArray.length; i++) {
-//         if (trophyArray[i].id === trophyId) {
-//             return;
-//         }
-//     }
-//     awardUserATrophy(trophyId);
-// }
+
 
 function prepareSearchFields() {
     const recipeField = document.querySelector("#meals-recipe-search-field");
@@ -176,6 +169,7 @@ async function fetchRecipes(query) {
                 console.log("Error Finding Recipe: " + response.status);
             } else {
                 console.log("Search Complete");
+                checkAndAddTrophy(me.trophies, 2)
                 return response.json()
             }
         });

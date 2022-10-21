@@ -14,19 +14,19 @@ export default function prepareUser(props) {
     let allChefLevels = props.allChefLevels;
     let userChefLevelsIds = [];
 
-    // for (let trophy of trophies) {
-    //     userTrophiesIds.push(trophy.id)
-    // }
-    //
-    // for (let chefLevel of chefLevels) {
-    //     userChefLevelsIds.push(chefLevel.id)
-    // }
+    //going thru trophy array and pushing added trophies to it
+    for (let trophy of trophies) {
+        userTrophiesIds.push(trophy.id)
+    }
 
-    // console.log(userTrophiesIds)
-    // console.log(trophies);
-    // console.log(chefLevels);
+    for (let chefLevel of chefLevels) {
+        userChefLevelsIds.push(chefLevel.id)
+    }
 
-    // make the user's original pw available somewhere in here
+    console.log(userTrophiesIds)
+    console.log(trophies);
+    console.log(chefLevels);
+
     return `
         <h1>Update Info</h1>
         
@@ -237,9 +237,6 @@ export function prepareUserJS() {
     // doToggleUserInfoHandler();
     updateUserInfo();
     trophyCardEventListener();
-    // console.log(user.posts.length);
-    // awardUserATrophy(2);
-    // moreToast();
 }
 
 function trophyCardEventListener() {
@@ -320,42 +317,37 @@ function updateUserInfo() {
     })
 }
 
-// }
 
-// function doTogglePasswordHandler() {
-//     const button = document.querySelector("#toggleShowPassword");
-//     button.addEventListener("click", function(event) {
-//         // grab a reference to confirm password
-//         const oldPassword = document.querySelector("#oldpassword");
-//         const newPassword = document.querySelector("#newpassword");
-//         const confirmPassword = document.querySelector("#confirmpassword");
-//         if(confirmPassword.getAttribute("type") === "password") {
-//             confirmPassword.setAttribute("type", "text");
-//             oldPassword.setAttribute("type", "text");
-//             newPassword.setAttribute("type", "text");
-//         } else {
-//             confirmPassword.setAttribute("type", "password");
-//             oldPassword.setAttribute("type", "password");
-//             newPassword.setAttribute("type", "password");
-//         }
-//     });
-// }
-//changed to export to be used elsewhere
-// export function awardUserATrophy(trophyId) {
-//
-//     let requestHeader = {
-//         method: 'PATCH',
-//         headers: getHeaders()
-//     }
+// changed to export to be used elsewhere
+export function awardUserATrophy(trophyId) {
+    console.log('inside awardUserATrophy function')
 
-    // fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
-    //     console.log(response)
-    // }).finally(function (){
-    //     //function that will append a toast to the body on page
-    //     // moreToast()
-    // })
-// }}
-//     )}
+    let requestHeader = {
+        method: 'PATCH',
+        headers: getHeaders()
+    }
+
+    fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
+        console.log('inside fetch')
+        console.log(response)
+    }).finally(function (){
+        console.log("trophy added successfully")
+        //function that will append a toast to the body on page
+        // moreToast()
+    })
+}
+
+// maybe make this an await function
+export function checkAndAddTrophy(usersTrophyArray, trophyId) {
+    console.log('inside checkAndAddTrophy function')
+    for (let i = 0; i < usersTrophyArray.length; i++) {
+        if (usersTrophyArray[i].id === trophyId) {
+            return;
+        }
+    }
+    awardUserATrophy(trophyId);
+}
+
 
 
 // function moreToast() {
@@ -367,3 +359,5 @@ function updateUserInfo() {
 //
 //     toast.show()
 // }}
+
+
