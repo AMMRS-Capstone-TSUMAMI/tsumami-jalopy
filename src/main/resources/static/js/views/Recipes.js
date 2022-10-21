@@ -14,23 +14,33 @@ let recipeInfo;
 // let html2;
 
 export default function recipesHTML(props) {
-    recipeInfo=props.recipes
-    // data = props.data;
+    recipeInfo = props.recipes
+    console.log(recipeInfo);
     return `
-         <main>
-                <h1>Recipe</h1>
-                <div id="recipe-apiData" class="d-flex flex-row justify-content-evenly">header code here</div>
-                <div id="recipe-apiData2" class="d-flex flex-row justify-content-evenly"></div>
-                <div id="recipe-apiData3" class="d-flex flex-column justify-content-evenly"></div>
-        </main>
+            <div class="container g-0">
+                <div class="row">   
+                    <div id="recipes-header" class="col g-0"></div>
+                    <div id="ingredient-cards" class="row row-cols-3 row-cols-md-6 g-4"></div>
+                </div>
+                <div class="col">
+                    <ol id="recipe-instructions"></ol>
+                </div>
+            </div>
+<!--                <h1>Recipe</h1>            -->
+<!--            <div id="recipe-apiData" class="d-flex flex-row justify-content-evenly">header code here</div>-->
+<!--            <div id="recipe-apiData2" class="d-flex flex-row justify-content-evenly"></div>-->
+<!--            <div id="recipe-apiData3" class="d-flex flex-column justify-content-evenly"></div>-->
  `;
 }
 
 export function recipesEvent() {
+    populateHeader();
+    populateIngredients();
+    populateSteps();
     // perhaps this is where I can call the recipe ID from meals.js
     //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call
     // recipeSelectedHandler();
-    populateRecipeInfo();
+    // populateRecipeInfo();
     // console.log("Hello recipesEvent");
     // console.log("${response.json}");
 }
@@ -87,7 +97,49 @@ export function recipesEvent() {
 //                 populateRecipeInfo();
 //         }
 //         )}
+function populateHeader() {
+    let header = document.querySelector("#recipes-header")
+    header.innerHTML = `
+<h3 id="recipes-home-card-title" data-id="${recipeInfo.id}">${recipeInfo.title}</h3>
+<img src="${recipeInfo.image}" class="home-card-img" alt="Recipe Image">        
+    `;
+}
+function populateIngredients() {
+    let html = "";
+    let ingredientCards = document.querySelector("#ingredient-cards")
+    let ingredients = recipeInfo.extendedIngredients.map((el) => el);
+    for(let i = 0; i < ingredients.length; i++) {
+        let image = `https://spoonacular.com/cdn/ingredients_100x100/${ingredients[i].image}`;
+        if (ingredients[i].image === null){
+            image = "/img/frying-panResized.png"
+        }
+        html += `
+<div class="col">
+    <div class="card ingredient-card">
+        <div class="card-header">${ingredients[i].measures.us.amount} ${ingredients[i].measures.us.unitShort}</div>
+        <div class="card-body p-1">
+            <div class="ingredient-img" style="background-image: url(${image})"></div>
+        </div>
+        <div class="card-footer">${ingredients[i].name}</div>
+    </div>
+</div>
 
+
+        `
+    }
+    ingredientCards.innerHTML = html;
+}
+function populateSteps() {
+    let html = "";
+    let stepsList = document.querySelector("#recipe-instructions")
+    let steps = recipeInfo.analyzedInstructions[0].steps.map((el) => el.step)
+    console.log(`steps`);
+    console.log(steps);
+    for(let i = 0; i < steps.length; i++) {
+        html += `<li>${steps[i]}</li>`
+    }
+    stepsList.innerHTML = html;
+}
     function populateRecipeInfo(){
 
         let html = "";
@@ -117,7 +169,6 @@ export function recipesEvent() {
                 </div>
             </div>
                     `
-
         let recipeIngredientList = [];
 
        let recipeInstructionsList = [];
