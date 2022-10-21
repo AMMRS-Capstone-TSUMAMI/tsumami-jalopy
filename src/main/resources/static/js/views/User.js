@@ -23,9 +23,9 @@ export default function prepareUser(props) {
         userChefLevelsIds.push(chefLevel.id)
     }
 
-    console.log(userTrophiesIds)
-    console.log(trophies);
-    console.log(chefLevels);
+    // console.log(userTrophiesIds)
+    // console.log(trophies);
+    // console.log(chefLevels);
 
     return `
         <h1>Update Info</h1>
@@ -190,6 +190,7 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
     let xpBarPercent = ((usersCurrentXp / currentChefLevelXpThreshold) * 100).toFixed(0) + "%";
     console.log(xpBarPercent)
     if (usersCurrentXp / currentChefLevelXpThreshold * 100 > 100) {
+        usersCurrentXp = currentChefLevelXpThreshold
         xpBarPercent = "100%"
     }
     if (usersChefLevels.includes(currentChefLevel.id)) {
@@ -205,7 +206,7 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
                               <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
                           </div>
                           <div class="d-flex justify-content-between">
-                            <div>123 / 4930</div>
+                            <div>${usersCurrentXp} / ${currentChefLevelXpThreshold}</div>
                             <div>${currentChefLevel.description}</div>
                           </div>
                       </div>
@@ -224,7 +225,7 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
                               <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
                           </div>
                           <div class="d-flex justify-content-between">
-                            <div>123 / 4930</div>
+                            <div>${usersCurrentXp} / ${currentChefLevelXpThreshold}</div>
                             <div>${currentChefLevel.description}</div>
                           </div>
                       </div>
@@ -311,6 +312,7 @@ function updateUserInfo() {
 //changed endpoint name
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
+                moreToast();
                 console.log(response.status);
                 createView("/me");
             })
@@ -328,12 +330,14 @@ export function awardUserATrophy(trophyId) {
     }
 
     fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
-        console.log('inside fetch')
+        // console.log('inside fetch')
         console.log(response)
-    }).finally(function (){
-        console.log("trophy added successfully")
+        return response.json();
+    }).then(data => {
+        // console.log("trophy added successfully")
+        console.log(data)
         //function that will append a toast to the body on page
-        // moreToast()
+        moreToast(data.title, data.description)
     })
 }
 
@@ -350,14 +354,62 @@ export function checkAndAddTrophy(usersTrophyArray, trophyId) {
 
 
 
-// function moreToast() {
-//
-//     var newElement = document. createElement("div"); newElement. innerHTML = ``
-//
-//     const toastLiveExample = document.getElementById('liveToast')
-//     const toast = new bootstrap.Toast(toastLiveExample)
-//
-//     toast.show()
-// }}
+function moreToast(title, description) {
+    let toastDiv = document.createElement("div");
+
+    toastDiv.classList.add("toast-card");
+    //language=html
+    toastDiv.innerHTML = `
+        <div class="toast-title">
+            <div class="mx-1 my-1 d-flex">
+                <i class="bi bi-trophy-fill gold mx-1"></i>
+                <div class="mx-1">${title}</div>
+            </div>
+            <div class="mx-1 my-1">
+                <i class="bi bi-x-lg" id="toast-close"></i>
+            </div>
+        </div>
+        <div class="toast-body mx-1 my-3">
+            <div>${description}</div>
+         </div>
+`
+    // document.description.innerHTML += `
+    // <div class="toast-card"></div>
+    // `;
+
+    document.body.appendChild(toastDiv);
+    // alertSound();
+
+    document.querySelector('#toast-close').addEventListener('click', function (){
+        toastDiv.remove();
+    })
+
+    setTimeout(function (){
+        removeFadeOut(toastDiv, 1000)
+    }, 5000)
+}
+
+function removeFadeOut( el, speed ) {
+    var seconds = speed/1000;
+    el.style.transition = "opacity "+seconds+"s ease";
+
+    el.style.opacity = 0;
+    setTimeout(function() {
+        el.parentNode.removeChild(el);
+    }, speed);
+}
+
+export function getUserData() {
+    let requestObject = {
+        method: "GET",
+        headers: getHeaders()
+    }
+    return fetch('http://localhost:8080/api/users/me', requestObject).then(response => {
+        return response.json()
+    }).then(data => {
+        return data;
+    })
+
+}
 
 

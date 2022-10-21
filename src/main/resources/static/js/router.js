@@ -101,6 +101,7 @@ export default function router(URI) {
             returnView: recipesHTML,
             state: {
                 recipes: `https://api.spoonacular.com/recipes/:id/information?apiKey=${SPOONACULAR_API}`,
+                me: '/api/users/me'
             },
             uri: '/recipes/:id',
             title: 'Recipes',

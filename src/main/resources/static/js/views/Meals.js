@@ -1,6 +1,6 @@
-import {getHeaders} from "../auth.js";
+import {getHeaders, isLoggedIn} from "../auth.js";
 import createView from "../createView.js";
-import {checkAndAddTrophy} from "./User.js";
+import {checkAndAddTrophy, getUserData} from "./User.js";
 
 // TODO: use UTC date
 // TODO: transmit date to backend when meal is added
@@ -170,6 +170,8 @@ async function fetchRecipes(query) {
             } else {
                 console.log("Search Complete");
                 checkAndAddTrophy(me.trophies, 2)
+                //trying to reset me variable to updated user with new trophy
+                getUserData().then(data => me = data);
                 return response.json()
             }
         });
