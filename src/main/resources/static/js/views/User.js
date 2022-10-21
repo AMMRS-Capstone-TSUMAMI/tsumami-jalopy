@@ -14,29 +14,28 @@ export default function prepareUser(props) {
     let allChefLevels = props.allChefLevels;
     let userChefLevelsIds = [];
 
-    // for (let trophy of trophies) {
-    //     userTrophiesIds.push(trophy.id)
-    // }
-    //
-    // for (let chefLevel of chefLevels) {
-    //     userChefLevelsIds.push(chefLevel.id)
-    // }
+    //going thru trophy array and pushing added trophies to it
+    for (let trophy of trophies) {
+        userTrophiesIds.push(trophy.id)
+    }
+
+    for (let chefLevel of chefLevels) {
+        userChefLevelsIds.push(chefLevel.id)
+    }
 
     // console.log(userTrophiesIds)
     // console.log(trophies);
     // console.log(chefLevels);
 
-    // make the user's original pw available somewhere in here
     return `
-        <h1>Update Info</h1>
+        <h1>Update Info:</h1>
         
        <!--                    //FORM #1-->
 <!--                    //weight input-->
                     <form>
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputWeight">Weight</label>
-                    <input type="text" class="form-control" id="inputWeight" placeholder="Weight">
+                    <input type="text" class="form-control" id="inputWeight" style="width:500px;text-align:center;margin:20px;" placeholder="Weight">
                     </div>
                     </div>
                 
@@ -45,10 +44,9 @@ export default function prepareUser(props) {
 <!--                    //fitness level input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputActivityLevel">Activity Level</label>
-                    <select id="inputActivityLevel" class="form-control">
+                    <select id="inputActivityLevel" style="width:500px;text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
-                        <option>Sedimentary</option>
+                        <option>Sedentary</option>
                         <option>Mildly Active</option>
                         <option>Active</option>
                         </select>
@@ -60,8 +58,7 @@ export default function prepareUser(props) {
 <!--                    diet type input-->
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputDietType">Diet Type</label>
-                    <select id="inputDietType" class="form-control">
+                    <select id="inputDietType" style="width:500px;text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
@@ -70,39 +67,35 @@ export default function prepareUser(props) {
                     </div>
                     </div>
                     
-                              
-
-<!--                    //calories information-->
-                      <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCalories">Calories Goal</label>
-                    <input type="text" class="form-control" id="inputCalories" placeholder="Calorie Goal">
-                    </div>
-                       </div>
+                             
                    
 <!--                    //protein input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputProtein">Protein Goal</label>
-                    <input type="text" class="form-control" id="inputProtein" placeholder="Protein Goal">
+                    <input type="text" class="form-control" id="inputProtein" style="width:500px;text-align:center;margin:20px;" placeholder="Protein Goal">
                     </div>
                     </div>
 <!--                    //carbs input-->
                      <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCarbs">Carbs Goal</label>
-                    <input type="text" class="form-control" id="inputCarbs" placeholder="Carb Goal">
+                    <input type="text" class="form-control" id="inputCarbs" style="width:500px;text-align:center;margin:20px;" placeholder="Carb Goal">
                     </div>
                     </div>
 <!--                    //fat input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputFat">Fat Goal</label>
-                    <input type="text" class="form-control" id="inputFat" placeholder="Fat Goal">
+                    <input type="text" class="form-control" id="inputFat" style="width:500px;text-align:center;margin:20px;" placeholder="Fat Goal">
                     </div>
                     </div>
+                    
+                    <!--                    //calories information-->
+                      <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputCalories" style="width:500px;text-align:center;margin:20px;" placeholder="Calorie Goal">
+                    </div>
+                       </div>
 <!--                    //submit button-->
-                  <button type="submit" id="submitBtn">Submit</button>
+                  <button class="button" type="submit" id="submitBtn">Submit</button>
                   </form>
             
   </body>
@@ -121,41 +114,20 @@ export default function prepareUser(props) {
                     `).join("")}
                 </div>
             </div>
-            <div class="col-6">
-                <div class="trophy-container d-flex flex-wrap justify-content-center">
-                    ${allTrophies.map(trophy => `
-                    
-                         ${appendTrophyHTML(userTrophiesIds, trophy)}
-                    
-                    `).join("")}
-                </div> 
-            </div>
-        </div>    
-<!--testing toast-->
-<!--<div class="toast-container position-fixed bottom-0 end-0 p-3">-->
-<!--  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">-->
-<!--    <div class="toast-header">-->
-<!--          <img src="https://cdn-icons-png.flaticon.com/512/6951/6951856.png" class="rounded me-2" alt="...">-->
-
-<!--      <strong class="me-auto">Bootstrap</strong>-->
-<!--      <small>11 mins ago</small>-->
-<!--      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>-->
-<!--    </div>-->
-<!--    <div class="toast-body">-->
-<!--      Hello, world! This is a toast message.-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-            
-        </div>
-        
-        
-        
-        
-        
-      
+                    <div class="col-6">
+                        <div class="trophy-container d-flex flex-wrap justify-content-center">
+                            ${allTrophies.map(trophy => `
+                            
+                                 ${appendTrophyHTML(userTrophiesIds, trophy)}
+                            
+                            `).join("")}
+                        </div> 
+                    </div>
+            </div>    
+        </div> 
     `;
 }
+
 function appendTrophyHTML (usersTrophies, currentTrophy){
     if (usersTrophies.includes(currentTrophy.id)) {
         return `
@@ -170,18 +142,19 @@ function appendTrophyHTML (usersTrophies, currentTrophy){
                         </div>      
           `
     }
-    return `<div class="card trophy-card trophy-unearned m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
-                    <div class="trophy-unearned-overlay">
-                      <div class="card-body">
-                        <img src="/img/newunearned.png" class="trophy-icon"> 
-                      </div>
-                      <div class="card-body">
-                        <h6 class="trophy-title text-center">${currentTrophy.title}</h6>
-                      </div>
-                    </div>
-                    </div>`
+        return `<div class="card trophy-card trophy-unearned m-2 tt" data-bs-title=${JSON.stringify(currentTrophy.description)} data-desc=${currentTrophy.description.replace(/\s/g , "-")}>
+                        <div class="trophy-unearned-overlay">
+                          <div class="card-body">
+                            <img src="/img/newunearned.png" class="trophy-icon"> 
+                          </div>
+                          <div class="card-body">
+                            <h6 class="trophy-title text-center">${currentTrophy.title}</h6>
+                          </div>
+                        </div>
+                        </div>
+        `
 
-}
+    }
 
 function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
     let usersCurrentXp = usersXp
@@ -190,6 +163,7 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
     let xpBarPercent = ((usersCurrentXp / currentChefLevelXpThreshold) * 100).toFixed(0) + "%";
     console.log(xpBarPercent)
     if (usersCurrentXp / currentChefLevelXpThreshold * 100 > 100) {
+        usersCurrentXp = currentChefLevelXpThreshold
         xpBarPercent = "100%"
     }
     if (usersChefLevels.includes(currentChefLevel.id)) {
@@ -205,7 +179,7 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
                               <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
                           </div>
                           <div class="d-flex justify-content-between">
-                            <div>123 / 4930</div>
+                            <div>${usersCurrentXp} / ${currentChefLevelXpThreshold}</div>
                             <div>${currentChefLevel.description}</div>
                           </div>
                       </div>
@@ -213,33 +187,29 @@ function appendChefHTML (usersChefLevels, currentChefLevel, usersXp){
                 </div>
         `
     }
-    return `<div class="chef-card m-2 p-2 tt" data-bs-title=${JSON.stringify(currentChefLevel.description)} data-desc=${JSON.stringify(currentChefLevel.description)}">
-                  <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex">
-                        <img src=${JSON.stringify(currentChefLevel.photo)} alt="chef level" class="chef-level-img">                  
-                        <h6 class="chef-title mx-3">${currentChefLevel.title} </h6>
-                      </div>
-                      <div class="w-65">
-                          <div class="bar-container">
-                              <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
+        return `<div class="chef-card m-2 p-2 tt" data-bs-title=${JSON.stringify(currentChefLevel.description)} data-desc=${JSON.stringify(currentChefLevel.description)}">
+                      <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex">
+                            <img src=${JSON.stringify(currentChefLevel.photo)} alt="chef level" class="chef-level-img">                  
+                            <h6 class="chef-title mx-3">${currentChefLevel.title} </h6>
                           </div>
-                          <div class="d-flex justify-content-between">
-                            <div>123 / 4930</div>
-                            <div>${currentChefLevel.description}</div>
+                          <div class="w-65">
+                              <div class="bar-container">
+                                  <div class="skills html" id=${"chefLevel" + currentChefLevel.id} style="width: ${xpBarPercent}">${xpBarPercent}</div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                <div>${usersCurrentXp} / ${currentChefLevelXpThreshold}</div>
+                                <div>${currentChefLevel.description}</div>
+                              </div>
                           </div>
                       </div>
-                  </div>
-                </div>`
-}
+                    </div>`
+    }
 
 
 export function prepareUserJS() {
-    // doToggleUserInfoHandler();
     updateUserInfo();
     trophyCardEventListener();
-    // console.log(user.posts.length);
-    // awardUserATrophy(2);
-    // moreToast();
 }
 
 function trophyCardEventListener() {
@@ -247,8 +217,6 @@ function trophyCardEventListener() {
     tooltips.forEach(t => {
         new bootstrap.Tooltip(t)
     })
-
-
 }
 
 function updateUserInfo() {
@@ -314,56 +282,103 @@ function updateUserInfo() {
 //changed endpoint name
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
+                moreToast();
                 console.log(response.status);
                 createView("/me");
             })
     })
 }
 
-// }
 
-// function doTogglePasswordHandler() {
-//     const button = document.querySelector("#toggleShowPassword");
-//     button.addEventListener("click", function(event) {
-//         // grab a reference to confirm password
-//         const oldPassword = document.querySelector("#oldpassword");
-//         const newPassword = document.querySelector("#newpassword");
-//         const confirmPassword = document.querySelector("#confirmpassword");
-//         if(confirmPassword.getAttribute("type") === "password") {
-//             confirmPassword.setAttribute("type", "text");
-//             oldPassword.setAttribute("type", "text");
-//             newPassword.setAttribute("type", "text");
-//         } else {
-//             confirmPassword.setAttribute("type", "password");
-//             oldPassword.setAttribute("type", "password");
-//             newPassword.setAttribute("type", "password");
-//         }
-//     });
-// }
-//changed to export to be used elsewhere
-// export function awardUserATrophy(trophyId) {
-//
-//     let requestHeader = {
-//         method: 'PATCH',
-//         headers: getHeaders()
-//     }
+// changed to export to be used elsewhere
+export async function awardUserATrophy(trophyId) {
+    console.log('inside awardUserATrophy function')
 
-    // fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
-    //     console.log(response)
-    // }).finally(function (){
-    //     //function that will append a toast to the body on page
-    //     // moreToast()
-    // })
-// }}
-//     )}
+    let requestHeader = {
+        method: 'PATCH',
+        headers: getHeaders()
+    }
+
+    await fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
+        // console.log('inside fetch')
+        console.log(response)
+        return response.json();
+    }).then(data => {
+        // console.log("trophy added successfully")
+        console.log(data)
+        //function that will append a toast to the body on page
+        moreToast(data.title, data.description)
+    })
+}
+
+// maybe make this an await function?
+export function checkAndAddTrophy(usersTrophyArray, trophyId) {
+    console.log('inside checkAndAddTrophy function')
+    for (let i = 0; i < usersTrophyArray.length; i++) {
+        if (usersTrophyArray[i].id === trophyId) {
+            return;
+        }
+    }
+    awardUserATrophy(trophyId);
+    usersTrophyArray.push({ id: trophyId});
+}
 
 
-// function moreToast() {
-//
-//     var newElement = document. createElement("div"); newElement. innerHTML = ``
-//
-//     const toastLiveExample = document.getElementById('liveToast')
-//     const toast = new bootstrap.Toast(toastLiveExample)
-//
-//     toast.show()
-// }}
+
+function moreToast(title, description) {
+    let toastDiv = document.createElement("div");
+
+    toastDiv.classList.add("toast-card");
+    //language=html
+    toastDiv.innerHTML = `
+        <div class="toast-title">
+            <div class="mx-1 my-1 d-flex">
+                <i class="bi bi-trophy-fill gold mx-1"></i>
+                <div class="mx-1">${title}</div>
+            </div>
+            <div class="mx-1 my-1">
+                <i class="bi bi-x-lg" id="toast-close"></i>
+            </div>
+        </div>
+        <div class="toast-body mx-1 my-3">
+            <div>${description}</div>
+         </div>
+`
+
+
+    document.body.appendChild(toastDiv);
+    // alertSound();
+
+    document.querySelector('#toast-close').addEventListener('click', function (){
+        toastDiv.remove();
+    })
+
+    setTimeout(function (){
+        removeFadeOut(toastDiv, 1000)
+    }, 5000)
+}
+
+function removeFadeOut( el, speed ) {
+    var seconds = speed/1000;
+    el.style.transition = "opacity "+seconds+"s ease";
+
+    el.style.opacity = 0;
+    setTimeout(function() {
+        el.parentNode.removeChild(el);
+    }, speed);
+}
+
+export function getUserData() {
+    let requestObject = {
+        method: "GET",
+        headers: getHeaders()
+    }
+    return fetch('http://localhost:8080/api/users/me', requestObject).then(response => {
+        return response.json()
+    }).then(data => {
+        return data;
+    })
+
+}
+
+

@@ -1,5 +1,9 @@
+import {checkAndAddTrophy} from "./User.js";
+let me;
 export default function About(props) {
-
+     me = props.me;
+    console.log(me)
+    
     let Developer = [
         {
             "pictures": "../../img/matthew.png",
@@ -23,7 +27,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
             "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
-            "quotes": '"“Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
+            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
         },
         {
             "pictures": "../../img/ryan.png",
@@ -127,6 +131,12 @@ export default function About(props) {
         </div>
     </div>`;
         return html;
+}
+
+export function aboutEvent () {
+    console.log(me.trophies)
+    checkAndAddTrophy(me.trophies, 3)
+    console.log("is this thing on?")
 }
 
 

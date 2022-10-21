@@ -1,6 +1,6 @@
 import createView from "./createView.js";
 
-export function setLoggedInUserInfo() {
+export function setLoggedInUserInfo(redirectTuRegister) {
     const request = {
         method: "GET",
         headers: getHeaders()
@@ -11,7 +11,23 @@ export function setLoggedInUserInfo() {
             return response.json();
         }).then(function(data) {
             window.localStorage.setItem("tsumami_user", JSON.stringify(data));
-            createView("/register");
+            if(redirectTuRegister) {
+                createView("/register");
+            }
+    });
+}
+
+export async function getMe() {
+    const request = {
+        method: "GET",
+        headers: getHeaders()
+    }
+    const url = BACKEND_HOST_URL + "/api/users/me";
+    return await fetch(url, request)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            return data;
     });
 }
 
