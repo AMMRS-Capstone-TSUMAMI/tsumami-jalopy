@@ -165,7 +165,7 @@ export function recipesEvent() {
             html2 += `
                 <div>
                     <div>
-                        <div>${recipeIngredientList[j].amount} ${recipeIngredientList[j].measures.us.unitLong}</div>
+                        <div>${recipeIngredientList[j].measures.us.amount} ${recipeIngredientList[j].measures.us.unitLong}</div>
                         <img class="recipeIngredientImg" src="${imgR}" alt="img">
                         <div>${recipeIngredientList[j].originalName}</div>
                     </div>
