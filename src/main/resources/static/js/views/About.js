@@ -21,7 +21,7 @@ export default function About(props) {
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
-            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
             "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
         },
         {
@@ -46,7 +46,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "quotes": '"I see now that the circumstances of one\'s birth is irrelevant, it is what you do with the gift of life that determines who you are"' + '<p>' + '― Mewtwo'
         },
         {
             "pictures": "../../img/miguel.png",
