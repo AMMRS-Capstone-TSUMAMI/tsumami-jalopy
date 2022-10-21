@@ -4,7 +4,7 @@ import {checkForLoginTokens, getUser, isLoggedIn, isRegistered, setLoggedInUserI
 
 export default function init() {
     if (checkForLoginTokens(window.location.href)) {
-        setLoggedInUserInfo();
+        setLoggedInUserInfo(true);
         return;
     }
     loadViewOnPageRequest();
