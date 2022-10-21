@@ -166,10 +166,10 @@ async function fetchRecipes(query) {
     }
     let URL = `${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`
     if(intolerances.length > 0) {
-        URL += `&${intolerances.map((el) => el.name).join(",")}`
+        URL += `&intolerances=${intolerances.map((el) => el.name).join(",")}`
     }
     if(diet !== "no diet" && diet !== null)
-        URL += `&${diet}`
+        URL += `&diet=${diet}`
     let data = await fetch(URL, request)
         .then(function(response) {
             if(!response.ok) {
