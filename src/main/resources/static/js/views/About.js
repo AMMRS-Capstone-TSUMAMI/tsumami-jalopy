@@ -10,7 +10,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "matthewgrayson",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
             "pictures": "../../img/shaquielle.png",
@@ -21,8 +21,8 @@ export default function About(props) {
             "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "shaquiellerobbins",
-            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
+            "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
             "pictures": "../../img/ryan.png",
@@ -34,7 +34,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ryanyoshimura",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"From one thing, know ten thousand things"' + '<p>' + '― Miyamoto Musashi'
+            "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
             "pictures": "../../img/ashley.png",
@@ -46,7 +46,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ashleymartinez",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"I see now that the circumstances of one\'s birth is irrelevant, it is what you do with the gift of life that determines who you are"' + '<p>' + '― Mewtwo'
+            "quotes": '"I see now that the circumstances of one\'s birth is irrelevant, it is what you do with the gift of life that determines who you are"' + '<br>' + '― Mewtwo'
         },
         {
             "pictures": "../../img/miguel.png",
@@ -58,7 +58,7 @@ export default function About(props) {
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "miguelguzman",
             "background": "https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\" alt=\"Brohm Lake",
-            "quotes": '"Wooh"' + '<p>' + '-Rick Flair'
+            "quotes": '"Wooh"' + '<br>' + '-Rick Flair'
         }
     ]
     // icon credits
@@ -89,7 +89,7 @@ export default function About(props) {
             <figcaption> <img src="${Developer[i].pictures}" class="ppl-img" alt="img"></figcaption>
             <li id="card-name"> ${Developer[i].firstName}<br>${Developer[i].lastName}</li>
             <li> <span>${Developer[i].vetStatus}</span></li>
-            <li> <span>${Developer[i].quotes}</span></li>
+            <li class="g-0"> <span>${Developer[i].quotes}</span></li>
             <li>
                 <button id="about-card-btn">           
                   <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img data-passthru src="img/linkedinResized.png" alt="img"></a>
