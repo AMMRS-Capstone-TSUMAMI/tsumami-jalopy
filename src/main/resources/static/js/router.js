@@ -83,10 +83,11 @@ export default function router(URI) {
             title: 'About',
             // backgroundColor: ' var(--text-color)'
             // backgroundColor: 'rgb(29, 29, 29)',
+            background: 'linear-gradient(145deg, #444, #000)',
             // backgroundImage: "url('https://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg');"
             // backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');",
             // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
-            backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
+            // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
             backdropFilter:  `blur(7.7px)`,
             viewEvent: aboutEvent
         },
