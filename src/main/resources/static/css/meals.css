@@ -5,9 +5,7 @@
     border-collapse: collapse;
     margin: 0;
 }
-li .timeslot {
 
-}
 #meals-calendar li {
     display: table-cell;
     font-size: 1.4vw;
@@ -101,4 +99,3 @@ li .timeslot {
     background-color: rgba(176, 196, 222, 0.25);
     border-bottom: 3px solid var(--border-color);
 }
-.calendar-day
