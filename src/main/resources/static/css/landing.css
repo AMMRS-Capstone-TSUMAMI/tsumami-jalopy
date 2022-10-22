@@ -1,7 +1,7 @@
 #leftHalf {
 
     top: 0;
-    background-image: url("/img/pexels-photo-255501.jpeg");
+    background-image: url("../img/landingPageBg.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

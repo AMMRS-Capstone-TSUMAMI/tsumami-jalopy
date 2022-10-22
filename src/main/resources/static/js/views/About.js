@@ -82,7 +82,7 @@ export default function About(props) {
 
             for (let i = 0; i <= 4; i++) {
                 html += `
-    <div class="flip-card-container " style="--hue: 220" xmlns="http://www.w3.org/1999/html">
+    <div class="card-container " style="--hue: 220" xmlns="http://www.w3.org/1999/html">
       <div class="flip-card col-sm-2">
         <div class="card-front">
           <ul>
@@ -97,7 +97,7 @@ export default function About(props) {
             <li class="g-0"> <span>${Developer[i].quotes}</span></li>
             <li>
                 <button id="about-card-btn">           
-                  <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img class = "linkBtn" data-passthru src="img/linkedinResized.png" alt="img"></a>
+                  <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img class = "linkBtn" data-passthru src="img/linkedin.png" alt="img"></a>
                   <a data-link href="https://github.com/${Developer[i].github}" target="_blank"><img class = "linkBtn" data-passthru src="img/github-signResized.png" alt="img"></a>
                   <a data-link href="${Developer[i].alumniLink}" target="_blank"><img class = "linkBtn" data-passthru src="img/codeup-arrow.png" alt="img"></a>
                   <a data-link href="https://${Developer[i].resume}.venuscohort.com" target="_blank"><img class = "linkBtn" data-passthru src="img/venus-sm.png" alt="img"></a>
