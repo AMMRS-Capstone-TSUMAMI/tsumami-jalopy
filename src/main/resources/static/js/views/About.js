@@ -38,7 +38,7 @@ export default function About(props) {
             "github": "RSKYoshi",
             "alumniLink": "https://alumni.codeup.com/web-developers",
             "resume": "ryanyoshimura",
-            "background": "/img/capstone/kahalaSunrise.jpg\" alt=\"img",
+            "background": "/img/kaenaBeachResized.jpg\" alt=\"img",
             "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
