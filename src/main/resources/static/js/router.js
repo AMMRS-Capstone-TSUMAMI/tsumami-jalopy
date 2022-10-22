@@ -86,7 +86,8 @@ export default function router(URI) {
             // backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');",
             // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
             backgroundImage: "url('\img/landingPageBg.jpeg\');",
-            backdropFilter:  `blur(7.7px)`
+            backdropFilter:  `blur(7.7px)`,
+            viewEvent: aboutEvent
         },
         '/error': {
             returnView: Error404,
