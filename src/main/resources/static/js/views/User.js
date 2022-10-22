@@ -333,7 +333,7 @@ function moreToast(title, description) {
     toastDiv.innerHTML = `
         <div class="toast-title">
             <div class="mx-1 my-1 d-flex">
-                <i class="bi bi-trophy-fill gold mx-1"></i>
+                <img src="/img/earnedTrophy.png" class="toast-img">
                 <div class="mx-1">${title}</div>
             </div>
             <div class="mx-1 my-1">

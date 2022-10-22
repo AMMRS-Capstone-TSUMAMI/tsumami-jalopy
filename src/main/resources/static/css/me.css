@@ -34,6 +34,7 @@ p{
 .trophy-card {
     width: 150px;
     height: 250px;
+    justify-content: start;
 
 }
 
@@ -88,7 +89,7 @@ p{
 .html {width: 40%; background-color: #04AA6D;}
 
 .trophy-title {
-    font-size: 20px;
+    font-size: 16px;
 }
 .skills {
     background-color: #228B22;

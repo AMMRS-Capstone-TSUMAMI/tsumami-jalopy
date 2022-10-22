@@ -1,13 +1,13 @@
 #leftHalf {
 
     top: 0;
-    background-image: url("/img/pexels-photo-255501.jpeg");
+    background-image: url("/img/landingPageBg.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 50%;
-    position: fixed;
-    left: 0px;
+    position: absolute;
+    left: 0;
     height: 100%;
     z-index: 1;
     padding: 0;
@@ -33,7 +33,7 @@
     background-color: #202A25;
     width: 50%;
     position: absolute;
-    right: 0px;
+    right: 0;
     height: 100%;
     color: #FFF;
     display: flex;
