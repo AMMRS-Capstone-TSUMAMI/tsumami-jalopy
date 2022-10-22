@@ -22,13 +22,13 @@ export default function Meals(props) {
     getStartDay(today)
     return `
 <div class="container g-0">
-    <div id="meals-header" class="container g-0">
-        <div class="row g-0">
-            <div class="col d-flex mx-0 my-3" style="justify-content: left">
-                <h1>Meal Planner</h1>
-            </div>
-        </div>
-    </div>
+    <!--    <div id="meals-header" class="container g-0">-->
+    <!--        <div class="row g-0">-->
+    <!--            <div class="col d-flex mx-0 my-3" style="justify-content: left">-->
+    <!--                <h1>Meal Planner</h1>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
     <div id="meals-main" class="container g-0">
         <div class="row">
             <div class="col-2 gs-0 ge-3 ps-0">
@@ -69,7 +69,7 @@ export default function Meals(props) {
                             <span id="meals-calendar-week" data-week-start="${startDay}">${generateCalendarWeek(startDay)}</span>
                             <i id="week-next" class="bi bi-caret-right-fill"></i>
                         </div>
-                        <ul>
+                        <ul class="calendar-day">
                             <li class="timeslot-name"></li>
                             <li class="meals-calendar">Monday</li>
                             <li class="meals-calendar">Tuesday</li>
@@ -79,7 +79,7 @@ export default function Meals(props) {
                             <li class="meals-calendar">Saturday</li>
                             <li class="meals-calendar">Sunday</li>
                         </ul>
-                        <ul class="meals-calendar-row">
+                        <ul class="meals-calendar-row slot-morning">
                             <li class="timeslot-name morning">
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
@@ -91,7 +91,7 @@ export default function Meals(props) {
                             <li class="meals-calendar timeslot" data-slot="61"></li>
                             <li class="meals-calendar timeslot" data-slot="71"></li>
                         </ul>
-                        <ul class="meals-calendar-row">
+                        <ul class="meals-calendar-row slot-noon">
                             <li class="timeslot-name noon">
                                 <i class="bi bi-brightness-high-fill"></i>
                             </li>
@@ -103,7 +103,7 @@ export default function Meals(props) {
                             <li class="meals-calendar timeslot" data-slot="62"></li>
                             <li class="meals-calendar timeslot" data-slot="72"></li>
                         </ul>
-                        <ul class="meals-calendar-row">
+                        <ul class="meals-calendar-row slot-evening">
                             <li class="timeslot-name evening">
                                 <i class="bi bi-moon-fill evening"></i>
                             </li>
@@ -174,7 +174,6 @@ async function fetchRecipes(query) {
                 console.log("Search Complete");
                 me = await getMe();
                 checkAndAddTrophy(me.trophies, 2)
-                //trying to reset me variable to updated user with new trophy
                 getUserData().then(data => me = data);
                 return response.json()
             }
@@ -196,9 +195,6 @@ function populateResults() {
         recipeId = result.id;
         title = result.title;
         image = result.image;
-        console.log(recipeId);
-        console.log(title);
-        console.log(image);
 
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
