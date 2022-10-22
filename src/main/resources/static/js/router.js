@@ -86,7 +86,7 @@ export default function router(URI) {
             // backgroundImage: "url('https://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg');"
             // backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');",
             // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
-            backgroundImage: "url('\img/landingPageBg.jpeg\');",
+            backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
             backdropFilter:  `blur(7.7px)`,
             viewEvent: aboutEvent
         },
