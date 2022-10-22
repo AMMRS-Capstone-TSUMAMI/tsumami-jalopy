@@ -439,7 +439,7 @@
 }
 
 #about-card-btn:hover {
-    transform: translate(0, -10px);
+    transform: translate(0, -5px);
     box-shadow: 0 0 20px 0 aqua;
     border-radius: 10px;
     transition: 1s ease;
@@ -453,7 +453,14 @@
 .linkBtn{
     height: 30px;
     width: 30px;
+    box-shadow: 0 0 20px 0 aqua;
+
 }
+.linkBtn:hover{
+    /*box-shadow: 0 0 20px 0 aqua;*/
+    /*border-radius: 12px;*/
+}
+
 
 
 
