@@ -11,6 +11,6 @@
     height: 100%;
 }
 html {
-    overflow: scroll;
+    overflow: hidden;
     height: 100%;
 }
