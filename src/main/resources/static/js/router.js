@@ -71,7 +71,8 @@ export default function router(URI) {
             },
             uri: '/meals',
             title: 'Meals',
-            viewEvent: MealsEvent
+            viewEvent: MealsEvent,
+            backgroundColor: `var(--bg-color-dark)`
         },
         '/about': {
             returnView: About,
@@ -110,7 +111,8 @@ export default function router(URI) {
             },
             uri: '/recipes/:id',
             title: 'Recipes',
-            viewEvent: recipesEvent
+            viewEvent: recipesEvent,
+            backgroundColor: `var(--bg-color-dark)`
         }
     };
 
