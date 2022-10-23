@@ -29,12 +29,13 @@
     justify-content: center;
     text-align: center;
     font-size: 30px;
-    color: #05386B;
+    /*color: #05386B;*/
     /*font-family: var(--body);*/
 }
 
 #about-page-h1{
     color: whitesmoke;
+    justify-content: center;
 }
 
 .social-links {
@@ -90,14 +91,13 @@
     ================================
 */
 
-/* Hover over a card to flip, can tab too. */
 
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */
-.card-container *,
-.card-container *::after,
-.card-container *::before {
+.about-card-container *,
+.about-card-container *::after,
+.about-card-container *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -116,7 +116,7 @@
 /*}*/
 
 /* .flip-card-container */
-.card-container {
+.about-card-container {
     --hue: 150;
     --primary: hsl(var(--hue), 50%, 50%);
     --white-1: hsl(0, 0%, 90%);
@@ -130,7 +130,7 @@
 }
 
 /* .flip-card */
-.flip-card {
+.about-card {
     width: inherit;
     height: inherit;
     position: relative;
@@ -139,8 +139,13 @@
     border-radius: 24px;
 }
 
-.flip-card:hover{
-    box-shadow: 0 0 25px 0 rgba(0, 178, 255, 0.63);
+.about-card:hover{
+    /*box-shadow: 0 0 25px 0 rgba(0, 178, 255, 0.63);*/
+    box-shadow: 0 0 20px 0 rgba(190, 81, 232, 0.63), 0 0 10px 1px rgba(0, 178, 255, 0.63);
+    /*box-shadow: 0 0 10px 1px rgba(0, 178, 255, 0.63), 0 0 10px 1px rgba(0, 255, 4, 0.63),0 0 10px 1px rgb(226, 241, 10),0 0 20px 0 rgba(190, 81, 232, 0.63);*/
+    /*box-shadow: 0 0 25px 0 rgba(101, 19, 124, 0.41);*/
+
+
 }
 
 /* hover and focus-within states */
@@ -150,8 +155,8 @@
 /*}*/
 
 /* .card-... */
-.card-front,
-.card-back {
+.about-card-front,
+.about-card-back {
     width: 100%;
     height: 100%;
     border-radius: 24px;
@@ -167,24 +172,24 @@
 }
 
 /* .card-front */
-.card-front {
+.about-card-front {
     /*transform: rotateY(0deg);*/
     z-index: 2;
 }
 
 /* .card-back */
-.card-back {
+.about-card-back {
     /*transform: rotateY(180deg);*/
     z-index: 1;
 }
 
 /* figure */
-.card-container figure {
+.about-card-container figure {
     z-index: -1;
 }
 
 /* figure, .img-bg */
-.card-container figure,
+.about-card-container figure,
 .img-bg {
     position: absolute;
     top: 0;
@@ -200,7 +205,7 @@
 }
 
 /* figcaption */
-.card-container figcaption {
+.about-card-container figcaption {
     display: flex;
     width: auto;
     margin-top: 12%;
@@ -216,7 +221,7 @@
     /*background: hsla(var(--hue), 25%, 10%, .5);*/
 }
 
-.card-container #card-name {
+.about-card-container #card-name {
     padding-top: 35px;
 }
 
@@ -225,11 +230,11 @@
     background: hsla(var(--hue), 25%, 10%, .5);
 }
 
-.card-front .img-bg {
+.about-card-front .img-bg {
     clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
 }
 
-.card-front .img-bg::before {
+.about-card-front .img-bg::before {
     content: "";
     position: absolute;
     top: 31%;
@@ -243,19 +248,19 @@
     transition: .2s;
 }
 
-.card-back .img-bg {
+.about-card-back .img-bg {
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
 }
 
 /* hover state */
-.card-container:hover .card-front .img-bg::before {
+.about-card-container:hover .about-card-front .img-bg::before {
     width: 6px;
     border-left-color: var(--primary);
     border-right-color: var(--primary);
 }
 
 /* ul */
-.card-container ul {
+.about-card-container ul {
     padding-top: 50%;
     margin: 0 auto;
     width: 70%;
@@ -269,7 +274,7 @@
 }
 
 /* li */
-.card-container li {
+.about-card-container li {
     width: 100%;
     margin-top: 12px;
     padding-bottom: 12px;
@@ -278,11 +283,11 @@
     position: relative;
 }
 
-.card-container li:nth-child(2n) {
+.about-card-container li:nth-child(2n) {
     color: var(--white-2);
 }
 
-.card-container li:not(:last-child)::after {
+.about-card-container li:not(:last-child)::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -294,11 +299,11 @@
 }
 
 /* button */
-.card-container button {
-    font-family: inherit;
-    font-weight: bold;
+.about-card-container button {
+    /*font-family: inherit;*/
+    /*font-weight: bold;*/
     color: var(--white-1);
-    letter-spacing: 2px;
+    /*letter-spacing: 2px;*/
     padding: 9px 20px;
     /*border: 1px solid var(--grey);*/
     border-radius: 1000px;
@@ -307,14 +312,14 @@
     cursor: pointer;
 }
 
-.card-container button:hover,
-.card-container button:focus {
+.about-card-container button:hover,
+.about-card-container button:focus {
     color: var(--primary);
     background: hsla(var(--hue), 25%, 10%, .2);
     border-color: currentColor;
 }
 
-.card-container button:active {
+.about-card-container button:active {
     transform: translate(1px);
 }
 
@@ -414,9 +419,9 @@
 }
 
 /* states */
-.card-container button:hover+.design-container,
-.card-container button:active+.design-container,
-.card-container button:focus+.design-container {
+.about-card-container button:hover+.design-container,
+.about-card-container button:active+.design-container,
+.about-card-container button:focus+.design-container {
     --tr: 20;
     --op: .7;
 }
@@ -440,9 +445,10 @@
 
 #about-card-btn:hover {
     transform: translate(0, -5px);
-    box-shadow: 0 0 20px 0 aqua;
-    border-radius: 10px;
-    transition: 1s ease;
+    /*box-shadow: 0 0 20px 0 aqua;*/
+    box-shadow: whitesmoke;
+    /*border-radius: 10px;*/
+    transition: 0.5s ease;
     /*background-color: rgba(52, 50, 50, 0.95);*/
     /*background-color: rgb(4, 65, 46);*/
     /*background-color: rgba(117, 94, 25, 0.98);*/
@@ -463,13 +469,44 @@
     /*box-shadow: black 0 0 5px;*/
     /*margin: 1vw 1vh;*/
     /*transform: rotateY(180deg);*/
-    animation: spin-horizontal 5s infinite linear;
+    animation: spin-horizontal 3s infinite linear;
     /*border-radius: 1em;*/
 }
 @keyframes spin-horizontal {
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
 }
+#ammrs{
+    justify-content: center;
+}
+
+/*click effect*/
+div.clickEffect{
+    position:fixed;
+    box-sizing:border-box;
+    border-style:solid;
+    /*border-color:#FFFFFF;*/
+    border-color: lightblue transparent;
+    border-radius:50%;
+    animation:clickEffect 0.4s ease-out;
+    z-index:99;
+}
+
+@keyframes clickEffect{
+    0%{
+        opacity:1;
+        width:1em; height:1em;
+        margin:-1em;
+        border-width:0.5em;
+    }
+    100%{
+        opacity:0.2;
+        width:4em; height:4em;
+        margin:-1em;
+        border-width:0.03em;
+    }
+}
+/*click effect end*/
 
 
 
