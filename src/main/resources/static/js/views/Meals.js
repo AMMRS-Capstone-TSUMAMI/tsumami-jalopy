@@ -203,7 +203,7 @@ function populateResults() {
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
     <div class="meal-overlay" style="display: none">
         <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
-        <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+<!--        <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
         <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}"></i>
     </div>
     <div class="card-body"></div>
@@ -294,7 +294,7 @@ function populateCalendar() {
         <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
             <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
-                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+<!--                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
                 <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}" data-slot-id="${slotId}"></i>
             </div>
             <div class="card-body"></div>
