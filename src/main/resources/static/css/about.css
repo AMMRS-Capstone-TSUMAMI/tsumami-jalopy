@@ -141,7 +141,8 @@
 
 .about-card:hover{
     /*box-shadow: 0 0 25px 0 rgba(0, 178, 255, 0.63);*/
-    box-shadow: 0 0 25px 0 rgba(190, 81, 232, 0.63), 0 0 5px 1px rgba(0, 178, 255, 0.63);
+    box-shadow: 0 0 20px 0 rgba(190, 81, 232, 0.63), 0 0 10px 1px rgba(0, 178, 255, 0.63);
+    /*box-shadow: 0 0 10px 1px rgba(0, 178, 255, 0.63), 0 0 10px 1px rgba(0, 255, 4, 0.63),0 0 10px 1px rgb(226, 241, 10),0 0 20px 0 rgba(190, 81, 232, 0.63);*/
     /*box-shadow: 0 0 25px 0 rgba(101, 19, 124, 0.41);*/
 
 
@@ -446,7 +447,7 @@
     transform: translate(0, -5px);
     /*box-shadow: 0 0 20px 0 aqua;*/
     box-shadow: whitesmoke;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     transition: 0.5s ease;
     /*background-color: rgba(52, 50, 50, 0.95);*/
     /*background-color: rgb(4, 65, 46);*/
@@ -479,9 +480,6 @@
     justify-content: center;
 }
 
-
-
-
 /*click effect*/
 div.clickEffect{
     position:fixed;
@@ -491,7 +489,7 @@ div.clickEffect{
     border-color: lightblue transparent;
     border-radius:50%;
     animation:clickEffect 0.4s ease-out;
-    z-index:99999;
+    z-index:99;
 }
 
 @keyframes clickEffect{

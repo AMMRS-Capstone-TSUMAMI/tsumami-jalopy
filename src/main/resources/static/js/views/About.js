@@ -83,7 +83,7 @@ export default function About(props) {
        
     </header>
     <div class="container wrapper">
-        <div class="row duh overflow-y-scroll">`;
+        <div class="row duh">`;
 
             for (let i = 0; i <= 4; i++) {
                 aboutHtml += `
@@ -135,11 +135,31 @@ export function aboutEvent() {
     // let aboutPage = document.querySelector("#entireAboutPage")
     //     aboutPage.addEventListener('click', clickEffect);
 
+    // let clientScrollY = 0;
+    // let totalScrollY = 0;
+    //
+    // function updateTotalScrollY(){
+    //     totalScrollY = window.scrollY + clientScrollY;
+    //     console.log(totalScrollY);
+    // }
+    //
+    // document.addEventListener('mousemove', (e1) => {
+    //     clientScrollY = e1.clientY;
+    //     updateTotalScrollY();
+    // })
+    // document.addEventListener('scroll', (e) => {
+    //     updateTotalScrollY();
+    // });
+
+
     function clickEffect(e) {
         let d = document.createElement("div");
         d.className = "clickEffect";
         d.style.top = e.clientY + "px";
         d.style.left = e.clientX + "px";
+
+
+
         document.body.appendChild(d);
         d.addEventListener('animationend', function () {
             d.parentElement.removeChild(d);
