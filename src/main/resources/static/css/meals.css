@@ -1,6 +1,9 @@
 :root {
     --calendar-radius: .75rem;
 }
+#meals-main {
+    color: var(--text-color-dark);
+}
 
 #meals-calendar ul {
     width: 100%;
@@ -23,16 +26,17 @@
 }
 .meal-card {
     width: 100%;
+    max-width: 175px;
     background-size: 12rem;
     background-position: center;
     height: 6rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color-dark);
     border-radius: var(--calendar-radius);
 }
 
 .meal-card .card-footer {
     color: white;
-    background-color: var(--border-color);
+    background-color: var(--border-color-dark);
     width: 100%;
     font-size: .7vw;
     opacity: 75%;
@@ -45,7 +49,7 @@
 }
 
 .meals-calendar {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color-dark);
 }
 .meals-calendar-row {
     height: 20vh;
@@ -102,35 +106,35 @@
     background-color: rgba(176, 196, 222, 0.25);
 }
 #meals-calendar .left {
-    border-left: 3px solid var(--border-color);
+    border-left: 3px solid var(--border-color-dark);
 }
 #meals-calendar .top-left {
-    border-top: 3px solid var(--border-color);
-    border-left: 3px solid var(--border-color);
+    border-top: 3px solid var(--border-color-dark);
+    border-left: 3px solid var(--border-color-dark);
     border-top-left-radius: var(--calendar-radius);
 }
 #meals-calendar .top {
-    border-top: 3px solid var(--border-color);
+    border-top: 3px solid var(--border-color-dark);
 }
 #meals-calendar .top-right {
-    border-top: 3px solid var(--border-color);
-    border-right: 3px solid var(--border-color);
+    border-top: 3px solid var(--border-color-dark);
+    border-right: 3px solid var(--border-color-dark);
     border-top-right-radius: var(--calendar-radius);
 }
 #meals-calendar .right {
-    border-right: 3px solid var(--border-color);
+    border-right: 3px solid var(--border-color-dark);
 }
 #meals-calendar .bottom-right {
-    border-bottom: 3px solid var(--border-color);
-    border-right: 3px solid var(--border-color);
+    border-bottom: 3px solid var(--border-color-dark);
+    border-right: 3px solid var(--border-color-dark);
     border-bottom-right-radius: var(--calendar-radius);
 }
 #meals-calendar .bottom {
-    border-bottom: 3px solid var(--border-color);
+    border-bottom: 3px solid var(--border-color-dark);
 }
 #meals-calendar .bottom-left {
-    border-bottom: 3px solid var(--border-color);
-    border-left: 3px solid var(--border-color);
+    border-bottom: 3px solid var(--border-color-dark);
+    border-left: 3px solid var(--border-color-dark);
     border-bottom-left-radius: var(--calendar-radius);
 }
 
