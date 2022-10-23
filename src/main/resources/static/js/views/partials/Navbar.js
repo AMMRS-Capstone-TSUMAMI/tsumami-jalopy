@@ -3,7 +3,7 @@ import {isLoggedIn} from "../../auth.js";
 export default function Navbar(props) {
     if(isLoggedIn()) {
         return `
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
         <a class="navbar-brand" data-link href="/about">
             <img src="/img/logo-dark-sm.png" data-passthru alt="tsUmami" height="40" class="d-inline-block align-text-top">
