@@ -1,5 +1,4 @@
 #leftHalf {
-
     top: 0;
     background-image: url("../img/landingPageBg.jpeg");
     background-position: center;
@@ -7,7 +6,7 @@
     background-size: cover;
     width: 50%;
     position: fixed;
-    left: 0px;
+    left: 0;
     height: 100%;
     z-index: 1;
     padding: 0;
