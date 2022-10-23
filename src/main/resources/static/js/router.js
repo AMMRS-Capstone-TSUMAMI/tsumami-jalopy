@@ -96,12 +96,14 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: ' ERROR',
+            backgroundColor: `var(--bg-color-dark)`
         },
         '/loading': {
             returnView: Loading,
             state: {},
             uri: location.pathname,
             title: 'Loading...',
+            backgroundColor: `var(--bg-color-dark)`
         },
         '/recipes/:id': {
             returnView: recipesHTML,
