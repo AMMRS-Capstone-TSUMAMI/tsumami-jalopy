@@ -38,10 +38,10 @@ export default function recipesHTML(props) {
 }
 
 export function recipesEvent() {
+    checkAndAddTrophy(me.trophies, 4);
     populateHeader();
     populateIngredients();
     populateSteps();
-    checkAndAddTrophy(me.trophies, 4);
 
     // perhaps this is where I can call the recipe ID from meals.js
     //uncomment below to activate API call!! Only comment out if not wanting to automatically make the call

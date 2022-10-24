@@ -28,7 +28,7 @@ export default function prepareUser(props) {
     // console.log(chefLevels);
 
     return `
-        <h1>Update Info:</h1>
+        <h1 class="update-h1">Update Info:</h1>
         
        <!--                    //FORM #1-->
 <!--                    //weight input-->
@@ -98,11 +98,9 @@ export default function prepareUser(props) {
                   <button class="button" type="submit" id="submitBtn">Submit</button>
                   </form>
             
-  </body>
-</html>
 <!--    working on achievement displays-->
         <div class="container-fluid achievement-background">
-            <h2 class="underline achievement-header">My Achievements</h2>
+            <h2 class="underline-achievement-header">My Achievements</h2>
         <div class="achievement-row row">
         
             <div class="col-6">
@@ -333,7 +331,7 @@ function moreToast(title, description) {
     toastDiv.innerHTML = `
         <div class="toast-title">
             <div class="mx-1 my-1 d-flex">
-                <i class="bi bi-trophy-fill gold mx-1"></i>
+                <img src="/img/earnedTrophy.png" class="toast-img">
                 <div class="mx-1">${title}</div>
             </div>
             <div class="mx-1 my-1">
@@ -347,7 +345,7 @@ function moreToast(title, description) {
 
 
     document.body.appendChild(toastDiv);
-    // alertSound();
+    alertSound();
 
     document.querySelector('#toast-close').addEventListener('click', function (){
         toastDiv.remove();
@@ -366,6 +364,11 @@ function removeFadeOut( el, speed ) {
     setTimeout(function() {
         el.parentNode.removeChild(el);
     }, speed);
+}
+
+function alertSound () {
+    const sound = new Audio('/img/woo-hoo.mp3');
+    sound.play().then();
 }
 
 export function getUserData() {

@@ -6,6 +6,10 @@ p{
     font-size: 22px;
 }
 
+.update-h1 {
+    color: #F4F4ED;
+}
+
 .trophy-earned {
     background-color: #B4E4B6;
     border: 3px solid #000;
@@ -18,22 +22,10 @@ p{
     color: #a7a5a5;
 }
 
-/*.trophy-unearned-overlay{*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    z-index: 2;*/
-/*    background-color: rgba(0, 0, 0, 0.5);*/
-
-/*}*/
-
 .trophy-card {
     width: 150px;
     height: 250px;
+    justify-content: start;
 
 }
 
@@ -88,7 +80,7 @@ p{
 .html {width: 40%; background-color: #04AA6D;}
 
 .trophy-title {
-    font-size: 20px;
+    font-size: 16px;
 }
 .skills {
     background-color: #228B22;
@@ -110,6 +102,10 @@ p{
     /*background-color: #F4F4ED;*/
     margin-top: 10px;
     padding-top: 30px;
+}
+
+.underline-achievement-header {
+    color: #F4F4ED;
 }
 
 

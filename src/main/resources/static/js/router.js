@@ -42,7 +42,7 @@ export default function router(URI) {
             uri: '/me',
             title: 'User Info',
             viewEvent: prepareUserJS,
-            background: `#eaeff3`
+            
         },
         '/login': {
             returnView: Login,
