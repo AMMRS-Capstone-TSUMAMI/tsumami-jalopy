@@ -12,7 +12,9 @@ p{
 
 .trophy-earned {
     /*background-color: #B4E4B6;*/
-    background-color: #f5d44f;
+    /*background-color: #f5d44f;*/
+    background: rgb(213,176,45);
+    background: radial-gradient(circle, rgba(213,176,45,1) 34%, rgba(255,249,94,1) 74%, rgba(240,232,31,1) 100%);
     border: 3px solid #000;
 
 }
