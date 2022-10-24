@@ -11,6 +11,8 @@
     table-layout: fixed; /* optional, for equal spacing */
     border-collapse: separate;
     margin: 0;
+    box-shadow: grey 0 0 16px -7px;
+    border-radius: 10px;
 }
 
 #meals-calendar li {

@@ -45,6 +45,7 @@ export default function prepareUser(props) {
                       <div class="form-row">
                     <div class="form-group col-md-6">
                     <select id="inputActivityLevel" style="width:500px;text-align:center;margin:20px;" class="form-control">
+                        <label>Activity Level</label>
                         <option selected>Choose...</option>
                         <option>Sedentary</option>
                         <option>Mildly Active</option>
@@ -60,9 +61,11 @@ export default function prepareUser(props) {
                     <div class="form-group col-md-6">
                     <select id="inputDietType" style="width:500px;text-align:center;margin:20px;" class="form-control">
                         <option selected>Choose...</option>
+                        <label>Diet Type</label>
                         <option>Paleo</option>
                         <option>Keto</option>
                         <option>Vegan</option>
+                        <option>no diet</option>
                         </select>
                     </div>
                     </div>
@@ -382,5 +385,3 @@ export function getUserData() {
         return data;
     })
 }
-
-
