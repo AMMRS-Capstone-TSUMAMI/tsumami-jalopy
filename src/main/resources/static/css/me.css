@@ -6,6 +6,10 @@ p{
     font-size: 22px;
 }
 
+.update-h1 {
+    color: #F4F4ED;
+}
+
 .trophy-earned {
     background-color: #B4E4B6;
     border: 3px solid #000;
@@ -17,19 +21,6 @@ p{
     border: 3px solid #a7a5a5;
     color: #a7a5a5;
 }
-
-/*.trophy-unearned-overlay{*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    z-index: 2;*/
-/*    background-color: rgba(0, 0, 0, 0.5);*/
-
-/*}*/
 
 .trophy-card {
     width: 150px;
@@ -108,9 +99,13 @@ p{
 }
 
 .achievement-background {
-    background-color: #F4F4ED;
+    /*background-color: #F4F4ED;*/
     margin-top: 10px;
     padding-top: 30px;
+}
+
+.underline-achievement-header {
+    color: #F4F4ED;
 }
 
 
