@@ -37,12 +37,14 @@ export default function router(URI) {
                 me: '/api/users/me',
                 allTrophies: '/api/trophies/getAllTrophies',
                 allChefLevels: '/api/chefLevels/getAllChefLevels',
-                macros: '/api/macros'
+                macros: '/api/macros',
             },
             uri: '/me',
             title: 'User Info',
             viewEvent: prepareUserJS,
             background: `#eaeff3`
+            // background: 'linear-gradient(145deg, #444, #000)',
+
         },
         '/login': {
             returnView: Login,
