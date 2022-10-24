@@ -1,12 +1,24 @@
+/*:root {*/
+/*    --bg-color: #F4F4ED;*/
+/*    --bg-color-dark: #202A25;*/
+/*    --border-color: #228B22;*/
+/*    --border-color-dark: #215b24;*/
+/*    --text-color: #202A25;*/
+/*    --text-color-dark: white;*/
+/*    --btn-color: #B4E4B6;*/
+/*    --navbar-text-color: #7cb06c;*/
+/*    --muted-text-color: #215b24;*/
+/*}*/
+
 :root {
     --bg-color: #F4F4ED;
-    --bg-color-dark: #202A25;
+    --bg-color-lightBlue: #eaeff3;
     --border-color: #228B22;
-    --border-color-dark: #215b24;
+    --background-color: #eaeff3;
     --text-color: #202A25;
     --text-color-dark: white;
     --btn-color: #B4E4B6;
-    --navbar-text-color: #7cb06c;
+    --navbar-text-color: white;
     --muted-text-color: #215b24;
 }
 
