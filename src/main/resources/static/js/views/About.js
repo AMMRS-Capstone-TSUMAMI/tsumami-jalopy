@@ -78,19 +78,8 @@ export default function About(props) {
     <header>
         <div>
             <h1 id="about-page-h1" class="d-flex">About us</h1>
-            <button id="button" class="d-flex">AMMRS</button>
-            <div  id="design-container" class="design-container">
-                <span class="design design--1"></span>
-                <span class="design design--2"></span>
-                <span class="design design--3"></span>
-                <span class="design design--4"></span>
-                <span class="design design--5"></span>
-                <span class="design design--6"></span>
-                <span class="design design--7"></span>
-                <span class="design design--8"></span>
-            </div>
+            <div id="button" class="d-flex" style="justify-content: center">AMMRS</div>
         </div.img-bg>
-       
     </header>
     <div class="container wrapper">
         <div class="aboutCardsMainContainer">`;

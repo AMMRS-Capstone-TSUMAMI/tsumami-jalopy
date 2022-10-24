@@ -64,7 +64,7 @@ export default function router(URI) {
             state: {},
             uri: '/logout',
             title: "Logout",
-            viewEvent: LogoutEvent
+            viewEvent: LogoutEvent,
         },
         '/meals': {
             returnView: Meals,
