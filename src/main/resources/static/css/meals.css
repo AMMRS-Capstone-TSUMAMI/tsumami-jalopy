@@ -35,13 +35,12 @@
 }
 
 .meal-card .card-footer {
-    color: white;
-    background-color: var(--background-color);
+    color: black;
+    background-color: rgba(234,239,243,.6);
     width: 100%;
     font-size: .7vw;
-    opacity: 75%;
     border: 0;
-    text-shadow: 1px 1px black;
+    text-shadow: 1px 1px white;
 }
 .meal-card .card-body {
     width: 100%;
