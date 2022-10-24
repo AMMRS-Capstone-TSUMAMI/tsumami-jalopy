@@ -23,6 +23,11 @@ export default function render(props, route) {
         body.style.backdropFilter = route.backdropFilter;
         console.log(route.backgroundColor);
     }
+    if(route.background){
+        // body.setAttribute("style", `backdrop-filter: ${route.blurb};`);
+        body.style.background = route.background;
+        console.log(route.background);
+    }
 
     const app = document.querySelector('#app');
     const title = `tsUmami - ${route.title}`;

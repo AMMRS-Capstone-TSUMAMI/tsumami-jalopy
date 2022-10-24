@@ -1,3 +1,13 @@
-#navbar{
-    padding: 1rem;
+.navbar {
+    font-family: 'Work Sans', sans-serif;
+    background-color: rgba(33, 91, 36, .5);
+}
+.nav-link, .navbar-brand {
+    color: var(--text-color);
+    font-weight: 1000;
+    opacity: 75%;
+}
+.nav-link:hover, .navbar-brand:hover {
+    opacity: 100%;
+    text-shadow: var(--btn-color) 1px 1px;
 }
