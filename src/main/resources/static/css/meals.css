@@ -2,7 +2,7 @@
     --calendar-radius: .75rem;
 }
 #meals-main {
-    color: var(--text-color-dark);
+    /*color: var(--text-color-dark);*/
 }
 
 #meals-calendar ul {
@@ -30,13 +30,13 @@
     background-size: 12rem;
     background-position: center;
     height: 6rem;
-    border: 1px solid var(--border-color-dark);
+    border: 1px solid var(--background-color);
     border-radius: var(--calendar-radius);
 }
 
 .meal-card .card-footer {
     color: white;
-    background-color: var(--border-color-dark);
+    background-color: var(--background-color);
     width: 100%;
     font-size: .7vw;
     opacity: 75%;
@@ -49,7 +49,7 @@
 }
 
 .meals-calendar {
-    border: 1px solid var(--border-color-dark);
+    border: 1px solid var(--background-color);
 }
 .meals-calendar-row {
     height: 20vh;
@@ -97,44 +97,48 @@
     color: white;
 }
 .slot-morning .meals-calendar {
-    background-color: rgba(255, 218, 185, 0.25);
+    /*background-color: rgba(255, 218, 185, 0.25);*/
+    background-color: white;
+
 }
 .slot-noon .timeslot {
-    background-color: rgba(250, 250, 210, 0.25);
+    /*background-color: rgba(250, 250, 210, 0.25);*/
+    background-color: white;
 }
 .slot-evening .timeslot {
-    background-color: rgba(176, 196, 222, 0.25);
+    /*background-color: rgba(176, 196, 222, 0.25);*/
+    background-color: white;
 }
 #meals-calendar .left {
-    border-left: 3px solid var(--border-color-dark);
+    border-left: 3px solid var(--background-color);
 }
 #meals-calendar .top-left {
-    border-top: 3px solid var(--border-color-dark);
-    border-left: 3px solid var(--border-color-dark);
+    border-top: 3px solid var(--background-color);
+    border-left: 3px solid var(--background-color);
     border-top-left-radius: var(--calendar-radius);
 }
 #meals-calendar .top {
-    border-top: 3px solid var(--border-color-dark);
+    border-top: 3px solid var(--background-color);
 }
 #meals-calendar .top-right {
-    border-top: 3px solid var(--border-color-dark);
-    border-right: 3px solid var(--border-color-dark);
+    border-top: 3px solid var(--background-color);
+    border-right: 3px solid var(--background-color);
     border-top-right-radius: var(--calendar-radius);
 }
 #meals-calendar .right {
-    border-right: 3px solid var(--border-color-dark);
+    border-right: 3px solid var(--background-color);
 }
 #meals-calendar .bottom-right {
-    border-bottom: 3px solid var(--border-color-dark);
-    border-right: 3px solid var(--border-color-dark);
+    border-bottom: 3px solid var(--background-color);
+    border-right: 3px solid var(--background-color);
     border-bottom-right-radius: var(--calendar-radius);
 }
 #meals-calendar .bottom {
-    border-bottom: 3px solid var(--border-color-dark);
+    border-bottom: 3px solid var(--background-color);
 }
 #meals-calendar .bottom-left {
-    border-bottom: 3px solid var(--border-color-dark);
-    border-left: 3px solid var(--border-color-dark);
+    border-bottom: 3px solid var(--background-color);
+    border-left: 3px solid var(--background-color);
     border-bottom-left-radius: var(--calendar-radius);
 }
 

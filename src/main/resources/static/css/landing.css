@@ -29,7 +29,8 @@
 
 #rightHalf {
     top: 0;
-    background-color: #202A25;
+    /*background-color: #202A25;*/
+    background-color: #280b13;
     width: 50%;
     position: absolute;
     right: 0px;
