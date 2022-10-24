@@ -11,7 +11,8 @@ p{
 }
 
 .trophy-earned {
-    background-color: #B4E4B6;
+    /*background-color: #B4E4B6;*/
+    background-color: #39393b;
     border: 3px solid #000;
 
 }
@@ -107,7 +108,6 @@ p{
 .underline-achievement-header {
     color: #F4F4ED;
 }
-
 
 /* CSS */
 .button {
