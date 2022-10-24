@@ -6,6 +6,18 @@ export default function About(props) {
     
     let Developer = [
         {
+            "pictures": "../../img/ashley.png",
+            "vetStatus": "Full Stack Developer & AirForce Veteran",
+            "firstName": "Ashley",
+            "lastName": "Martinez",
+            "linkedIn": "ashmar32",
+            "github": "ashmar32",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "ashleymartinez",
+            "background": "/img/ashleyBgAbout.jpeg\" alt=\"img",
+            "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
+        },
+        {
             "pictures": "../../img/matthew.png",
             "vetStatus": "Full Stack Developer & Army Veteran",
             "firstName": "Matthew",
@@ -18,16 +30,16 @@ export default function About(props) {
             "quotes": '"Consider fully; act decisively"' + '<br>' + '― Jigoro Kano'
         },
         {
-            "pictures": "../../img/shaquielle.png",
-            "vetStatus": "Full Stack Developer & AirForce Veteran",
-            "firstName": "Shaquielle",
-            "lastName": "Robbins",
-            "linkedIn": "shaquiellerobbins",
-            "github": "shaquiellerobbins",
+            "pictures": "../../img/miguel.png",
+            "vetStatus": "Full Stack Developer & Army Veteran",
+            "firstName": "Miguel",
+            "lastName": "Guzman",
+            "linkedIn": "miguelguzmanwd",
+            "github": "MiguelAGuzman",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "shaquiellerobbins",
-            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
-            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
+            "resume": "miguelguzman",
+            "background": "../../img/rocky-mountain.jpg\" alt=\"Rocky Mountains",
+            "quotes": '"Arrogance breeds complacency and complacency breeds failure"' + '<br>' + '-Anonymous'
         },
         {
             "pictures": "../../img/ryan.png",
@@ -42,29 +54,17 @@ export default function About(props) {
             "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
-            "pictures": "../../img/ashley.png",
+            "pictures": "../../img/shaquielle.png",
             "vetStatus": "Full Stack Developer & AirForce Veteran",
-            "firstName": "Ashley",
-            "lastName": "Martinez",
-            "linkedIn": "ashmar32",
-            "github": "ashmar32",
+            "firstName": "Shaquielle",
+            "lastName": "Robbins",
+            "linkedIn": "shaquiellerobbins",
+            "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "ashleymartinez",
-            "background": "/img/ashleyBgAbout.jpeg\" alt=\"img",
-            "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
+            "resume": "shaquiellerobbins",
+            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
+            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
         },
-        {
-            "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
-            "firstName": "Miguel",
-            "lastName": "Guzman",
-            "linkedIn": "miguelguzmanwd",
-            "github": "MiguelAGuzman",
-            "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "miguelguzman",
-            "background": "../../img/rocky-mountain.jpg\" alt=\"Rocky Mountains",
-            "quotes": '"Arrogance breeds complacency and complacency breeds failure"' + '<br>' + '-Anonymous'
-        }
     ]
     // icon credits
     console.log(`
@@ -83,7 +83,7 @@ export default function About(props) {
        
     </header>
     <div class="container wrapper">
-        <div class="row duh">`;
+        <div class="aboutCardsMainContainer">`;
 
             for (let i = 0; i <= 4; i++) {
                 aboutHtml += `
