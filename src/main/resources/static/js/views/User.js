@@ -378,7 +378,6 @@ export function getUserData() {
     }).then(data => {
         return data;
     })
-
 }
 
 

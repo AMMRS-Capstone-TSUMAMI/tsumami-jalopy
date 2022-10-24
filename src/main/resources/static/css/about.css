@@ -77,8 +77,12 @@
     justify-content: center;
 }
 
-.duh{
+.aboutCardsMainContainer{
     justify-content: center;
+    flex-wrap: nowrap;
+    display: flex;
+    margin: 5vh;
+
 }
 
 /*#matthew-pic {*/
@@ -101,6 +105,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /*transform: rotateY(153deg);*/
 }
 
 /* body */
@@ -123,9 +128,9 @@
     --white-2: hsl(0, 0%, 80%);
     --dark: hsl(var(--hue), 25%, 10%);
     --grey: hsl(0, 0%, 50%);
-    width: 310px;
-    height: 500px;
-    margin: 40px;
+    width: 19rem;
+    height: 31rem;
+    margin: 1rem;
     perspective: 1000px;
 }
 
@@ -135,7 +140,7 @@
     height: inherit;
     position: relative;
     transform-style: preserve-3d;
-    transition: .6s .1s;
+    transition: .1s .1s;
     border-radius: 24px;
 }
 
@@ -308,7 +313,7 @@
     /*border: 1px solid var(--grey);*/
     border-radius: 1000px;
     background: transparent;
-    transition: .3s;
+    transition: .1s;
     cursor: pointer;
 }
 
@@ -448,7 +453,7 @@
     /*box-shadow: 0 0 20px 0 aqua;*/
     box-shadow: whitesmoke;
     /*border-radius: 10px;*/
-    transition: 0.5s ease;
+    transition: 0.1s ease;
     /*background-color: rgba(52, 50, 50, 0.95);*/
     /*background-color: rgb(4, 65, 46);*/
     /*background-color: rgba(117, 94, 25, 0.98);*/
@@ -469,7 +474,7 @@
     /*box-shadow: black 0 0 5px;*/
     /*margin: 1vw 1vh;*/
     /*transform: rotateY(180deg);*/
-    animation: spin-horizontal 3s infinite linear;
+    animation: spin-horizontal 2s infinite linear;
     /*border-radius: 1em;*/
 }
 @keyframes spin-horizontal {
@@ -507,7 +512,11 @@ div.clickEffect{
     }
 }
 /*click effect end*/
-
+/*.row{*/
+    /*flex-wrap: nowrap;*/
+    /*display: flex;*/
+    /*margin: 5vh;*/
+/*}*/
 
 
 
