@@ -8,7 +8,7 @@ export default function Register(props) {
 
     if(isRegistered()){
         createView("/meals");
-        return;
+        return ""
     }
 
     return `
