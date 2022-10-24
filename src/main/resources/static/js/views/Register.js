@@ -10,7 +10,6 @@ export default function Register(props) {
         createView("/meals");
         return ""
     }
-
     return `
 
 
