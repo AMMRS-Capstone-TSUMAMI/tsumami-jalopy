@@ -313,7 +313,7 @@
     /*border: 1px solid var(--grey);*/
     border-radius: 1000px;
     background: transparent;
-    transition: .1s;
+    transition: .3s ease;
     cursor: pointer;
 }
 
