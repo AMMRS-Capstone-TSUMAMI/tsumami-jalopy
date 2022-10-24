@@ -12,7 +12,7 @@ p{
 
 .trophy-earned {
     /*background-color: #B4E4B6;*/
-    background-color: #39393b;
+    background-color: #f5d44f;
     border: 3px solid #000;
 
 }
@@ -48,7 +48,7 @@ p{
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
-    background-color: #B4E4B6;
+    background-color: #eaeff3;
 }
 
 /* Make sure that padding behaves as expected */
@@ -84,7 +84,7 @@ p{
     font-size: 16px;
 }
 .skills {
-    background-color: #228B22;
+    background-color: #7e213c;
 }
 
 .underline:after {
@@ -100,13 +100,13 @@ p{
 }
 
 .achievement-background {
-    /*background-color: #F4F4ED;*/
+    background-color: #F4F4ED;
     margin-top: 10px;
     padding-top: 30px;
 }
 
 .underline-achievement-header {
-    color: #F4F4ED;
+    color: black;
 }
 
 /* CSS */
@@ -159,4 +159,8 @@ p{
 .button-3:active {
     background-color: #298e46;
     box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.update-h1 {
+    color: black;
 }
