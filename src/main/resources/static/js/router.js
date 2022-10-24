@@ -44,7 +44,6 @@ export default function router(URI) {
             viewEvent: prepareUserJS,
             background: `#eaeff3`
             // background: 'linear-gradient(145deg, #444, #000)',
-
         },
         '/login': {
             returnView: Login,
