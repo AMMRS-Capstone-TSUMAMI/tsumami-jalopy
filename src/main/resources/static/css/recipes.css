@@ -2,7 +2,7 @@
 /*    width: 54rem;*/
 /*}*/
 #recipes-page {
-    color: var(--text-color-dark);
+    /*color: var(--text-color-dark);*/
 }
 #recipes-card-title {
     text-align: center;
@@ -29,8 +29,9 @@
 .ingredient-card {
     font-size: .8vw;
     box-sizing: border-box;
-    border-color: var(--border-color);
-    background-color: rgba(180, 228, 182, .5);
+    /*border-color: var(--border-color);*/
+    border-color: black;
+    /*background-color: rgba(180, 228, 182, .5);*/
 }
 .ingredient-card .card-body {
     align-items: center;
@@ -40,5 +41,10 @@
     text-align: center;
     z-index: 2;
     border: none;
+    /*background: none;*/
 }
+.ingredient-card .card-footer{
+    background: none;
+}
+
 

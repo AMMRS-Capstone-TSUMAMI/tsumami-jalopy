@@ -77,9 +77,19 @@ export default function About(props) {
     let aboutHtml = `
     <header>
         <div>
-            <h1 id="about-page-h1" class="d-flex">Welcome to our Developers</h1>
-            <div id="ammrs" class="d-flex">AMMRS</div>
-        </div>
+            <h1 id="about-page-h1" class="d-flex">About us</h1>
+            <button id="button" class="d-flex">AMMRS</button>
+            <div  id="design-container" class="design-container">
+                <span class="design design--1"></span>
+                <span class="design design--2"></span>
+                <span class="design design--3"></span>
+                <span class="design design--4"></span>
+                <span class="design design--5"></span>
+                <span class="design design--6"></span>
+                <span class="design design--7"></span>
+                <span class="design design--8"></span>
+            </div>
+        </div.img-bg>
        
     </header>
     <div class="container wrapper">
@@ -151,22 +161,37 @@ export function aboutEvent() {
     //     updateTotalScrollY();
     // });
 
-document.addEventListener("scroll", clickEffect);
+// document.addEventListener("scroll", clickEffect);
+//     function clickEffect(e) {
+//         let d = document.createElement("div");
+//         d.className = "clickEffect";
+//         d.style.top = e.clientY + "px";
+//         d.style.left = e.clientX + "px";
+//
+//         document.body.appendChild(d);
+//         d.addEventListener('animationend', function () {
+//             d.parentElement.removeChild(d);
+//         }.bind(this));
+//
+//         console.log(e);
+//     }
+//
+//     document.addEventListener('click', clickEffect);
+// }
+
     function clickEffect(e) {
         let d = document.createElement("div");
         d.className = "clickEffect";
         d.style.top = e.clientY + "px";
         d.style.left = e.clientX + "px";
-
         document.body.appendChild(d);
         d.addEventListener('animationend', function () {
             d.parentElement.removeChild(d);
         }.bind(this));
-
-        console.log(e);
     }
 
     document.addEventListener('click', clickEffect);
 }
+
 
 

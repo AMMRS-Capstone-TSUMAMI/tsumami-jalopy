@@ -37,11 +37,13 @@ export default function router(URI) {
                 me: '/api/users/me',
                 allTrophies: '/api/trophies/getAllTrophies',
                 allChefLevels: '/api/chefLevels/getAllChefLevels',
-                macros: '/api/macros'
+                macros: '/api/macros',
             },
             uri: '/me',
             title: 'User Info',
-            viewEvent: prepareUserJS
+            viewEvent: prepareUserJS,
+            background: `#eaeff3`
+            // background: 'linear-gradient(145deg, #444, #000)',
         },
         '/login': {
             returnView: Login,
@@ -72,7 +74,7 @@ export default function router(URI) {
             uri: '/meals',
             title: 'Meals',
             viewEvent: MealsEvent,
-            backgroundColor: `var(--bg-color-dark)`
+            background: `#eaeff3`
         },
         '/about': {
             returnView: About,
@@ -84,6 +86,8 @@ export default function router(URI) {
             // backgroundColor: ' var(--text-color)'
             // backgroundColor: 'rgb(29, 29, 29)',
             background: 'linear-gradient(145deg, #444, #000)',
+            // backgroundColor: `#eaeff3`,
+            // background: 'linear-gradient(145deg, #DFE0DF, #000)',
             // backgroundImage: "url('https://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg');"
             // backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');",
             // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
@@ -96,14 +100,14 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: ' ERROR',
-            backgroundColor: `var(--bg-color-dark)`
+            background: `#eaeff3`
         },
         '/loading': {
             returnView: Loading,
             state: {},
             uri: location.pathname,
             title: 'Loading...',
-            backgroundColor: `var(--bg-color-dark)`
+            background: `#eaeff3`
         },
         '/recipes/:id': {
             returnView: recipesHTML,
@@ -114,7 +118,7 @@ export default function router(URI) {
             uri: '/recipes/:id',
             title: 'Recipes',
             viewEvent: recipesEvent,
-            backgroundColor: `var(--bg-color-dark)`
+            background: `#eaeff3`
         }
     };
 
