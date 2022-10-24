@@ -347,7 +347,7 @@ function moreToast(title, description) {
 
 
     document.body.appendChild(toastDiv);
-    // alertSound();
+    alertSound();
 
     document.querySelector('#toast-close').addEventListener('click', function (){
         toastDiv.remove();
@@ -366,6 +366,11 @@ function removeFadeOut( el, speed ) {
     setTimeout(function() {
         el.parentNode.removeChild(el);
     }, speed);
+}
+
+function alertSound () {
+    const sound = new Audio('/img/woo-hoo.mp3');
+    sound.play().then();
 }
 
 export function getUserData() {
