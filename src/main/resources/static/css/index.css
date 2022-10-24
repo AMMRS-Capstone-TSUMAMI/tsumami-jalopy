@@ -7,5 +7,10 @@
     /*max-height: 120vh;*/
     background-size: cover;
     /*position: absolute;*/
+    overflow: scroll;
+    height: 100%;
 }
-
+html {
+    overflow: hidden;
+    height: 100%;
+}

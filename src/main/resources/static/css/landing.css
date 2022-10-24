@@ -1,12 +1,19 @@
 #leftHalf {
-
     top: 0;
+<<<<<<< HEAD
     background-image: url("/img/landingPageBg.jpeg");
+=======
+    background-image: url("../img/landingPageBg.jpeg");
+>>>>>>> dab1bfc19bd52b36669882cd69b2d55e8681a1b2
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 50%;
+<<<<<<< HEAD
     position: absolute;
+=======
+    position: fixed;
+>>>>>>> dab1bfc19bd52b36669882cd69b2d55e8681a1b2
     left: 0;
     height: 100%;
     z-index: 1;

@@ -71,7 +71,8 @@ export default function router(URI) {
             },
             uri: '/meals',
             title: 'Meals',
-            viewEvent: MealsEvent
+            viewEvent: MealsEvent,
+            backgroundColor: `var(--bg-color-dark)`
         },
         '/about': {
             returnView: About,
@@ -82,10 +83,11 @@ export default function router(URI) {
             title: 'About',
             // backgroundColor: ' var(--text-color)'
             // backgroundColor: 'rgb(29, 29, 29)',
+            background: 'linear-gradient(145deg, #444, #000)',
             // backgroundImage: "url('https://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg');"
             // backgroundImage: "url('\img/norway_fjord_2000x1200.jpeg\');",
             // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
-            backgroundImage: "url('\img/landingPageBg.jpeg\');",
+            // backgroundImage: "url('\img/ocean-bgResized.jpeg\');",
             backdropFilter:  `blur(7.7px)`,
             viewEvent: aboutEvent
         },
@@ -94,12 +96,14 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: ' ERROR',
+            backgroundColor: `var(--bg-color-dark)`
         },
         '/loading': {
             returnView: Loading,
             state: {},
             uri: location.pathname,
             title: 'Loading...',
+            backgroundColor: `var(--bg-color-dark)`
         },
         '/recipes/:id': {
             returnView: recipesHTML,
@@ -109,7 +113,8 @@ export default function router(URI) {
             },
             uri: '/recipes/:id',
             title: 'Recipes',
-            viewEvent: recipesEvent
+            viewEvent: recipesEvent,
+            backgroundColor: `var(--bg-color-dark)`
         }
     };
 

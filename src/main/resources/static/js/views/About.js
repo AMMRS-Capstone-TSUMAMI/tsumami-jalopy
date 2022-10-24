@@ -6,6 +6,18 @@ export default function About(props) {
     
     let Developer = [
         {
+            "pictures": "../../img/ashley.png",
+            "vetStatus": "Full Stack Developer & AirForce Veteran",
+            "firstName": "Ashley",
+            "lastName": "Martinez",
+            "linkedIn": "ashmar32",
+            "github": "ashmar32",
+            "alumniLink": "https://alumni.codeup.com/web-developers",
+            "resume": "ashleymartinez",
+            "background": "/img/ashleyBgAbout.jpeg\" alt=\"img",
+            "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
+        },
+        {
             "pictures": "../../img/matthew.png",
             "vetStatus": "Full Stack Developer & Army Veteran",
             "firstName": "Matthew",
@@ -18,16 +30,16 @@ export default function About(props) {
             "quotes": '"Consider fully; act decisively"' + '<br>' + '― Jigoro Kano'
         },
         {
-            "pictures": "../../img/shaquielle.png",
-            "vetStatus": "Full Stack Developer & AirForce Veteran",
-            "firstName": "Shaquielle",
-            "lastName": "Robbins",
-            "linkedIn": "shaquiellerobbins",
-            "github": "shaquiellerobbins",
+            "pictures": "../../img/miguel.png",
+            "vetStatus": "Full Stack Developer & Army Veteran",
+            "firstName": "Miguel",
+            "lastName": "Guzman",
+            "linkedIn": "miguelguzmanwd",
+            "github": "MiguelAGuzman",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "shaquiellerobbins",
-            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
-            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
+            "resume": "miguelguzman",
+            "background": "../../img/rocky-mountain.jpg\" alt=\"Rocky Mountains",
+            "quotes": '"Arrogance breeds complacency and complacency breeds failure"' + '<br>' + '-Anonymous'
         },
         {
             "pictures": "../../img/ryan.png",
@@ -42,29 +54,17 @@ export default function About(props) {
             "quotes": '"From one thing, know ten thousand things"' + '<br>' + '― Miyamoto Musashi'
         },
         {
-            "pictures": "../../img/ashley.png",
+            "pictures": "../../img/shaquielle.png",
             "vetStatus": "Full Stack Developer & AirForce Veteran",
-            "firstName": "Ashley",
-            "lastName": "Martinez",
-            "linkedIn": "ashmar32",
-            "github": "ashmar32",
+            "firstName": "Shaquielle",
+            "lastName": "Robbins",
+            "linkedIn": "shaquiellerobbins",
+            "github": "shaquiellerobbins",
             "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "ashleymartinez",
-            "background": "/img/ashleyBgAbout.jpeg\" alt=\"img",
-            "quotes": '"I dwell in possibility"' + '<br>' + '― Emily Dickinson'
+            "resume": "shaquiellerobbins",
+            "background": "/img/shaquielleAboutBg.jpeg\" alt=\"img",
+            "quotes": '"Shoot for the moon. Even if you miss, you\'ll land among the stars"' + '<br>' + '― Norman Vincent Peale'
         },
-        {
-            "pictures": "../../img/miguel.png",
-            "vetStatus": "Full Stack Developer & Army Veteran",
-            "firstName": "Miguel",
-            "lastName": "Guzman",
-            "linkedIn": "miguelguzmanwd",
-            "github": "MiguelAGuzman",
-            "alumniLink": "https://alumni.codeup.com/web-developers",
-            "resume": "miguelguzman",
-            "background": "../../img/rocky-mountain.jpg\" alt=\"Rocky Mountains",
-            "quotes": '"But the cream will rise to the top"' + '<br>' + '-Abraham Lincoln'
-        }
     ]
     // icon credits
     console.log(`
@@ -74,17 +74,22 @@ export default function About(props) {
           <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Dave Gandy - Flaticon</a>
     `)
 
-    let html = `<header>
-<!--        <h1 id="about-page-h1">About Us (rename to something cool)</h1>-->
-</header>
+    let aboutHtml = `
+    <header>
+        <div>
+            <h1 id="about-page-h1" class="d-flex">Welcome to our Developers</h1>
+            <div id="ammrs" class="d-flex">AMMRS</div>
+        </div>
+       
+    </header>
     <div class="container wrapper">
-        <div class="row duh overflow-y-scroll">`;
+        <div class="aboutCardsMainContainer">`;
 
             for (let i = 0; i <= 4; i++) {
-                html += `
-    <div class="flip-card-container " style="--hue: 220" xmlns="http://www.w3.org/1999/html">
-      <div class="flip-card col-sm-2">
-        <div class="card-front">
+                aboutHtml += `
+    <div class="about-card-container" style="--hue: 220" xmlns="http://www.w3.org/1999/html">
+      <div class="about-card col-sm-2">
+        <div class="about-card-front">
           <ul>
             <figure>
             <div class="img-bg imgAbout"></div>
@@ -97,45 +102,71 @@ export default function About(props) {
             <li class="g-0"> <span>${Developer[i].quotes}</span></li>
             <li>
                 <button id="about-card-btn">           
-                  <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img class = "linkBtn" data-passthru src="img/linkedinResized.png" alt="img"></a>
+                  <a data-link href="https://linkedin.com/in/${Developer[i].linkedIn}" target="_blank"><img class = "linkBtn" data-passthru src="img/linkedin.png" alt="img"></a>
                   <a data-link href="https://github.com/${Developer[i].github}" target="_blank"><img class = "linkBtn" data-passthru src="img/github-signResized.png" alt="img"></a>
-                  <a data-link href="${Developer[i].alumniLink}" target="_blank"><img class = "linkBtn" data-passthru src="img/rubber-duckResized.png" alt="img"></a>
+                  <a data-link href="${Developer[i].alumniLink}" target="_blank"><img class = "linkBtn" data-passthru src="img/codeup-arrow.png" alt="img"></a>
                   <a data-link href="https://${Developer[i].resume}.venuscohort.com" target="_blank"><img class = "linkBtn" data-passthru src="img/venus-sm.png" alt="img"></a>
                 </button>
             </li>
           </ul>
-          
-        </div>
-        <div class="card-back">
-          <figure>
-            <div class="img-bg imgAbout"></div>
-            <img src="${Developer[i].background}" alt="img">
-          </figure>
-
-          <div class="design-container">
-            <span class="design design--1"></span>
-            <span class="design design--2"></span>
-            <span class="design design--3"></span>
-            <span class="design design--4"></span>
-            <span class="design design--5"></span>
-            <span class="design design--6"></span>
-            <span class="design design--7"></span>
-            <span class="design design--8"></span>
-          </div>
         </div>
       </div>
     </div>
     `}
-            html += `
+            aboutHtml += `
         </div>
-    </div>`;
-        return html;
+</div>`;
+        return aboutHtml;
 }
 
-export function aboutEvent () {
-    console.log(me.trophies)
+export function aboutEvent() {
+    // console.log(me.trophies)
     checkAndAddTrophy(me.trophies, 3)
-    console.log("is this thing on?")
+    // console.log("is this thing on?")
+
+    // function clickEffect(e){
+    //     // e.preventDefault();
+    //     let d=document.createElement("div");
+    //     d.className="clickEffect";
+    //     d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+    //     document.body.appendChild(d);
+    //     d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+    // }
+    // let aboutPage = document.querySelector("#entireAboutPage")
+    //     aboutPage.addEventListener('click', clickEffect);
+
+    // let clientScrollY = 0;
+    // let totalScrollY = 0;
+    //
+    // function updateTotalScrollY(){
+    //     totalScrollY = window.scrollY + clientScrollY;
+    //     console.log(totalScrollY);
+    // }
+    //
+    // document.addEventListener('mousemove', (e1) => {
+    //     clientScrollY = e1.clientY;
+    //     updateTotalScrollY();
+    // })
+    // document.addEventListener('scroll', (e) => {
+    //     updateTotalScrollY();
+    // });
+
+document.addEventListener("scroll", clickEffect);
+    function clickEffect(e) {
+        let d = document.createElement("div");
+        d.className = "clickEffect";
+        d.style.top = e.clientY + "px";
+        d.style.left = e.clientX + "px";
+
+        document.body.appendChild(d);
+        d.addEventListener('animationend', function () {
+            d.parentElement.removeChild(d);
+        }.bind(this));
+
+        console.log(e);
+    }
+
+    document.addEventListener('click', clickEffect);
 }
 
 

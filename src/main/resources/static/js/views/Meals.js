@@ -22,13 +22,13 @@ export default function Meals(props) {
     getStartDay(today)
     return `
 <div class="container g-0">
-    <div id="meals-header" class="container g-0">
-        <div class="row g-0">
-            <div class="col d-flex mx-0 my-3" style="justify-content: left">
-                <h1>Meal Planner</h1>
-            </div>
-        </div>
-    </div>
+    <!--    <div id="meals-header" class="container g-0">-->
+    <!--        <div class="row g-0">-->
+    <!--            <div class="col d-flex mx-0 my-3" style="justify-content: left">-->
+    <!--                <h1>Meal Planner</h1>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
     <div id="meals-main" class="container g-0">
         <div class="row">
             <div class="col-2 gs-0 ge-3 ps-0">
@@ -47,12 +47,12 @@ export default function Meals(props) {
                                 </form>
                                 <div id="meals-recipe-search-results"></div> 
                         </div>
-                         <form>
-                            <div class="mb-3">
-                                <label for="meals-favorite-recipe-search" class="form-label">Search Favorites</label>
-                                <input type="search" class="form-control" id="meals-favorite-search" placeholder="Favorites">
-                            </div>
-                        </form>
+<!--                         <form>-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="meals-favorite-recipe-search" class="form-label">Search Favorites</label>-->
+<!--                                <input type="search" class="form-control" id="meals-favorite-search" placeholder="Favorites">-->
+<!--                            </div>-->
+<!--                        </form>-->
                         <!--                        TODO: Collapsible-->
                         <!--                            TODO: Search Recipes-->
                         <!--                                TODO: Search Results data-recipe-id-->
@@ -69,52 +69,55 @@ export default function Meals(props) {
                             <span id="meals-calendar-week" data-week-start="${startDay}">${generateCalendarWeek(startDay)}</span>
                             <i id="week-next" class="bi bi-caret-right-fill"></i>
                         </div>
-                        <ul>
+                        <ul class="calendar-day">
                             <li class="timeslot-name"></li>
-                            <li class="meals-calendar">Monday</li>
-                            <li class="meals-calendar">Tuesday</li>
-                            <li class="meals-calendar">Wednesday</li>
-                            <li class="meals-calendar">Thursday</li>
-                            <li class="meals-calendar">Friday</li>
-                            <li class="meals-calendar">Saturday</li>
-                            <li class="meals-calendar">Sunday</li>
+                            <li class="meals-calendar top-left">Monday</li>
+                            <li class="meals-calendar top">Tuesday</li>
+                            <li class="meals-calendar top">Wednesday</li>
+                            <li class="meals-calendar top">Thursday</li>
+                            <li class="meals-calendar top">Friday</li>
+                            <li class="meals-calendar top">Saturday</li>
+                            <li class="meals-calendar top-right">Sunday</li>
                         </ul>
-                        <ul class="meals-calendar-row">
+                        <ul class="meals-calendar-row slot-morning">
                             <li class="timeslot-name morning">
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
-                            <li class="meals-calendar timeslot" data-slot="11"></li>
+                            <li class="meals-calendar timeslot left" data-slot="11"></li>
                             <li class="meals-calendar timeslot" data-slot="21"></li>
                             <li class="meals-calendar timeslot" data-slot="31"></li>
                             <li class="meals-calendar timeslot" data-slot="41"></li>
                             <li class="meals-calendar timeslot" data-slot="51"></li>
                             <li class="meals-calendar timeslot" data-slot="61"></li>
-                            <li class="meals-calendar timeslot" data-slot="71"></li>
+                            <li class="meals-calendar timeslot right" data-slot="71"></li>
                         </ul>
-                        <ul class="meals-calendar-row">
+                        <ul class="meals-calendar-row slot-noon">
                             <li class="timeslot-name noon">
                                 <i class="bi bi-brightness-high-fill"></i>
                             </li>
-                            <li class="meals-calendar timeslot" data-slot="12"></li>
+                            <li class="meals-calendar timeslot left" data-slot="12"></li>
                             <li class="meals-calendar timeslot" data-slot="22"></li>
                             <li class="meals-calendar timeslot" data-slot="32"></li>
                             <li class="meals-calendar timeslot" data-slot="42"></li>
                             <li class="meals-calendar timeslot" data-slot="52"></li>
                             <li class="meals-calendar timeslot" data-slot="62"></li>
-                            <li class="meals-calendar timeslot" data-slot="72"></li>
+                            <li class="meals-calendar timeslot right" data-slot="72"></li>
                         </ul>
-                        <ul class="meals-calendar-row">
+                        <ul class="meals-calendar-row slot-evening">
                             <li class="timeslot-name evening">
                                 <i class="bi bi-moon-fill evening"></i>
                             </li>
-                            <li class="meals-calendar timeslot" data-slot="13"></li>
-                            <li class="meals-calendar timeslot" data-slot="23"></li>
-                            <li class="meals-calendar timeslot" data-slot="33"></li>
-                            <li class="meals-calendar timeslot" data-slot="43"></li>
-                            <li class="meals-calendar timeslot" data-slot="53"></li>
-                            <li class="meals-calendar timeslot" data-slot="63"></li>
-                            <li class="meals-calendar timeslot" data-slot="73"></li>
+                            <li class="meals-calendar timeslot bottom-left" data-slot="13"></li>
+                            <li class="meals-calendar timeslot bottom" data-slot="23"></li>
+                            <li class="meals-calendar timeslot bottom" data-slot="33"></li>
+                            <li class="meals-calendar timeslot bottom" data-slot="43"></li>
+                            <li class="meals-calendar timeslot bottom" data-slot="53"></li>
+                            <li class="meals-calendar timeslot bottom" data-slot="63"></li>
+                            <li class="meals-calendar timeslot bottom-right" data-slot="73"></li>
                         </ul>
+                        <div style="text-align: center">Legend: <i class="bi bi-brightness-alt-high-fill"></i>:morning&#9;<i class="bi bi-brightness-high-fill"></i>:noon&#9;<i class="bi bi-moon-fill evening" style="font-size: .8rem"></i>:evening
+
+                        </div>
                     </div>
                 </div> 
             </div>
@@ -174,7 +177,6 @@ async function fetchRecipes(query) {
                 console.log("Search Complete");
                 me = await getMe();
                 checkAndAddTrophy(me.trophies, 2)
-                //trying to reset me variable to updated user with new trophy
                 getUserData().then(data => me = data);
                 return response.json()
             }
@@ -196,15 +198,12 @@ function populateResults() {
         recipeId = result.id;
         title = result.title;
         image = result.image;
-        console.log(recipeId);
-        console.log(title);
-        console.log(image);
 
         html += `
 <div class="card meal-card" id="${id}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
     <div class="meal-overlay" style="display: none">
         <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
-        <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+<!--        <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
         <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}"></i>
     </div>
     <div class="card-body"></div>
@@ -295,7 +294,7 @@ function populateCalendar() {
         <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
             <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
-                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>
+<!--                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
                 <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}" data-slot-id="${slotId}"></i>
             </div>
             <div class="card-body"></div>
