@@ -35,6 +35,7 @@ export default function prepareUser(props) {
                     <form>
                     <div class="form-row">
                     <div class="form-group col-md-6">
+                    <label>Weight</label>
                     <input type="text" class="form-control" id="inputWeight" style="width:500px;text-align:center;margin:20px;" placeholder="Weight">
                     </div>
                     </div>
@@ -44,7 +45,9 @@ export default function prepareUser(props) {
 <!--                    //fitness level input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
+                    <label>Diet Type</label>
                     <select id="inputActivityLevel" style="width:500px;text-align:center;margin:20px;" class="form-control">
+                     
                         <option selected>Choose...</option>
                         <option>Sedentary</option>
                         <option>Mildly Active</option>
@@ -58,7 +61,9 @@ export default function prepareUser(props) {
 <!--                    diet type input-->
                     <div class="form-row">
                     <div class="form-group col-md-6">
+                     <label>Activity Level</label>
                     <select id="inputDietType" style="width:500px;text-align:center;margin:20px;" class="form-control">
+                   
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
@@ -72,18 +77,21 @@ export default function prepareUser(props) {
 <!--                    //protein input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
+                    <label>Protein Goal</label>
                     <input type="text" class="form-control" id="inputProtein" style="width:500px;text-align:center;margin:20px;" placeholder="Protein Goal">
                     </div>
                     </div>
 <!--                    //carbs input-->
                      <div class="form-row">
                     <div class="form-group col-md-6">
+                    <label>Carb Goal</label>
                     <input type="text" class="form-control" id="inputCarbs" style="width:500px;text-align:center;margin:20px;" placeholder="Carb Goal">
                     </div>
                     </div>
 <!--                    //fat input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
+                    <label>Fat Goal</label>
                     <input type="text" class="form-control" id="inputFat" style="width:500px;text-align:center;margin:20px;" placeholder="Fat Goal">
                     </div>
                     </div>
@@ -91,6 +99,7 @@ export default function prepareUser(props) {
                     <!--                    //calories information-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
+                    <label>Calorie Goal</label>
                     <input type="text" class="form-control" id="inputCalories" style="width:500px;text-align:center;margin:20px;" placeholder="Calorie Goal">
                     </div>
                        </div>
