@@ -28,14 +28,18 @@ export default function prepareUser(props) {
     // console.log(chefLevels);
 
     return `
-        <h1 class="update-h1">Update Info:</h1>
+    <div class="container-fluid user-container">
+    <div class="card-flex">
+        <div class="user-card">
+        <h2 class="update-h1">Update Info</h2>
         
        <!--                    //FORM #1-->
 <!--                    //weight input-->
                     <form>
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputWeight" style="width:500px;text-align:center;margin:20px;" placeholder="Weight">
+                    <label>Weight Goal</label>
+                    <input type="text" class="form-control" id="inputWeight" style="width:500px;margin:8px;" placeholder="Current Weight: ${me.weight}">
                     </div>
                     </div>
                 
@@ -44,8 +48,8 @@ export default function prepareUser(props) {
 <!--                    //fitness level input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                    <select id="inputActivityLevel" style="width:500px;text-align:center;margin:20px;" class="form-control">
-                        <label>Activity Level</label>
+                    <label>Activity Level</label>
+                    <select id="inputActivityLevel" style="width:500px;margin:8px;" class="form-control">
                         <option selected>Choose...</option>
                         <option>Sedentary</option>
                         <option>Mildly Active</option>
@@ -59,7 +63,8 @@ export default function prepareUser(props) {
 <!--                    diet type input-->
                     <div class="form-row">
                     <div class="form-group col-md-6">
-                    <select id="inputDietType" style="width:500px;text-align:center;margin:20px;" class="form-control">
+                    <label>Diet Type</label>
+                    <select id="inputDietType" style="width:500px;margin:8px;" class="form-control">
                         <option selected>Choose...</option>
                         <label>Diet Type</label>
                         <option>Paleo</option>
@@ -75,35 +80,44 @@ export default function prepareUser(props) {
 <!--                    //protein input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputProtein" style="width:500px;text-align:center;margin:20px;" placeholder="Protein Goal">
+                    <label>Protein Goal</label>
+                    <input type="text" class="form-control" id="inputProtein" style="width:500px;margin:8px;" placeholder="Current Protein Goal: ${me.proteinGoal}">
                     </div>
                     </div>
 <!--                    //carbs input-->
                      <div class="form-row">
                     <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputCarbs" style="width:500px;text-align:center;margin:20px;" placeholder="Carb Goal">
+                    <label>Carb Goal</label>
+                    <input type="text" class="form-control" id="inputCarbs" style="width:500px;margin:8px;" placeholder="Current Carb Goal: ${me.carbGoal}">
                     </div>
                     </div>
 <!--                    //fat input-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputFat" style="width:500px;text-align:center;margin:20px;" placeholder="Fat Goal">
+                    <label>Fat Goal</label>
+                    <input type="text" class="form-control" id="inputFat" style="width:500px;margin:8px;" placeholder="Current Fat Goal: ${me.fatGoal}">
                     </div>
                     </div>
                     
                     <!--                    //calories information-->
                       <div class="form-row">
                     <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputCalories" style="width:500px;text-align:center;margin:20px;" placeholder="Calorie Goal">
+                    <label>Calorie Goal</label>
+                    <input type="text" class="form-control" id="inputCalories" style="width:500px;margin:8px;" placeholder="Current Calorie Goal: ${me.calorieGoal}">
                     </div>
                        </div>
 <!--                    //submit button-->
-                  <button class="button" type="submit" id="submitBtn">Submit</button>
+                  <button class="button" type="submit" id="submitBtn">Update Info</button>
                   </form>
+              </div>
+            </div>
+    </div>
             
 <!--    working on achievement displays-->
         <div class="container-fluid achievement-background">
             <h2 class="underline-achievement-header">My Achievements</h2>
+            <p>Earn Trophies and gain Chef Levels by completing tasks around the site.</p>  
+            <p>Hoover over the greyed out trophy for a helpful tip! </p>
         <div class="achievement-row row">
         
             <div class="col-6">
@@ -348,7 +362,7 @@ function moreToast(title, description) {
 
 
     document.body.appendChild(toastDiv);
-    alertSound();
+    // alertSound();
 
     document.querySelector('#toast-close').addEventListener('click', function (){
         toastDiv.remove();
