@@ -12,6 +12,7 @@
     border: solid 3px var(--border-color);
     border-radius: 50%;
     background-size: cover;
+    margin: 2rem;
 }
 
 .ingredient-img {
@@ -45,6 +46,9 @@
 }
 .ingredient-card .card-footer{
     background: none;
+}
+#ingredient-cards{
+    display: flex;
 }
 
 

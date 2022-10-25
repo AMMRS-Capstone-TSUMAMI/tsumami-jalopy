@@ -1,5 +1,6 @@
 .toast-card {
-    background-color: #B4E4B6;
+    background: rgb(213,176,45);
+    background: radial-gradient(circle, rgba(213,176,45,1) 34%, rgba(255,249,94,1) 74%, rgba(240,232,31,1) 100%);
     width: 20%;
 
     border: 3px solid black;

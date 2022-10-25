@@ -19,26 +19,22 @@ export default function Register(props) {
 
 <!-- One "tab" for each step in the form: -->
 <div class="tab justify-content-evenly">
-<label>Height</label>
 <input type="text" class="form-control" id="inputHeight" style="text-align:center;margin:20px;" placeholder="Height">
-<label>Weight</label>
 <input type="text" class="form-control" id="inputWeight" style="text-align:center;margin:20px;" placeholder="Weight">
 </div>
 
 
 <div class="tab">
-<label>Diet Type</label>
                     <select type="text" id="inputDietType" style="text-align:center;margin:20px;" class="form-control">
-                  
+                        <label>Diet Type</label>
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
-                        <option>Vegan</option>
+                        <option>no diet</option>
                         </select>
 
-<label>Activity Level</label>
                      <select type="text" id="inputActivityLevel" style="text-align:center;margin:20px;" class="form-control">
-                     
+                        <label>Activity Level</label>
                         <option selected>Choose...</option>
                         <option>Sedentary</option>
                         <option>Mildly Active</option>
@@ -48,13 +44,13 @@ export default function Register(props) {
 
 
 <div class="tab">
-<label>Protein Goal</label>
+
 <input type="text" class="form-control" id="inputProtein" style="text-align:center;margin:20px;" placeholder="Protein Goal">
-<label>Carb Goal</label>
+
 <input type="text" class="form-control" id="inputCarbs" style="text-align:center;margin:20px;" placeholder="Carb Goal">
-<label>Fat Goal</label>
+
 <input type="text" class="form-control" id="inputFat" style="text-align:center;margin:20px;" placeholder="Fat Goal">
-<label>Calorie Goal</label>
+
 <input type="text" class="form-control" id="inputCalories" style="text-align:center;margin:20px;" placeholder="Calorie Goal">
 </div>
 

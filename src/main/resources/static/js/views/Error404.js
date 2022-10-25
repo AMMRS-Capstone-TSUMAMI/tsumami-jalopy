@@ -1,3 +1,9 @@
 export default function Error404(props) {
-    return `<h1>404 ERROR</h1>`;
+    return `
+<div id="error-main" class="container">
+    <h1>Something went wrong! </h1>
+    <h2>But at least there's a cool looking error page.</h2>
+    <a href="/meals" data-link>Go Home</a>
+</div>
+`;
 }

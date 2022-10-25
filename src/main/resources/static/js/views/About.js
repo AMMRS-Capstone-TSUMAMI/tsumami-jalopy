@@ -87,7 +87,7 @@ export default function About(props) {
             for (let i = 0; i <= 4; i++) {
                 aboutHtml += `
     <div class="about-card-container" style="--hue: 220" xmlns="http://www.w3.org/1999/html">
-      <div class="about-card col-sm-2">
+      <div class="about-card col">
         <div class="about-card-front">
           <ul>
             <figure>
