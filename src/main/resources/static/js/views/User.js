@@ -297,7 +297,7 @@ function updateUserInfo() {
 //changed endpoint name
         fetch(USER_API_BASE_URL + "/updateUser", request)
             .then(response => {
-                moreToast();
+                // moreToast();
                 console.log(response.status);
                 createView("/me");
             })
