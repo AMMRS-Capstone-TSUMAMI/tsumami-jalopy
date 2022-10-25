@@ -489,10 +489,10 @@ function drag(e) {
     }
     if(!this.dataset.calories) {
         fetchNutrition(this.dataset.recipeId).then(() => {
-            this.dataset.calories = Number.parseFloat(nutrition.calories).toString();
-            this.dataset.carbs = Number.parseFloat(nutrition.carbs).toString();
-            this.dataset.fat = Number.parseFloat(nutrition.fat).toString();
-            this.dataset.protein = Number.parseFloat(nutrition.protein).toString();
+            this.dataset.calories = Math.round(Number.parseFloat(nutrition.calories)).toString();
+            this.dataset.carbs = Math.round(Number.parseFloat(nutrition.carbs)).toString();
+            this.dataset.fat = Math.round(Number.parseFloat(nutrition.fat)).toString();
+            this.dataset.protein = Math.round(Number.parseFloat(nutrition.protein)).toString();
         })
     }
 }
