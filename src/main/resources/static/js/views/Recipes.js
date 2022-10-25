@@ -24,7 +24,7 @@ export default function recipesHTML(props) {
     return `
             <div id="recipes-page" class="container g-0">
                 <div class="row">   
-                    <div id="recipes-header" class="col-3 col-md-6 g-0 pe-1"></div>
+                    <div id="recipes-header" class=""></div>
                     <div class="col-6 g-0">
                         <div id="ingredient-cards" class="row row-cols-3 row-cols-lg-6 g-0 ps-1 pt-5"></div>
                     </div>
@@ -115,6 +115,9 @@ function populateHeader() {
 <div class="instruction-div row">
     <ol id="recipe-instructions"></ol>
 </div>        
+<div>
+    <img src="/img/black-marble-cuttingboard.jpg" alt="img" id="recipe-cuttingboard">
+</div>
     `;
 }
 function populateIngredients() {
@@ -127,6 +130,7 @@ function populateIngredients() {
             image = "/img/frying-panResized.png"
         }
         html += `
+
 <div class="col">
     <div class="card ingredient-card">
         <div class="card-header">${ingredients[i].measures.us.amount} ${ingredients[i].measures.us.unitShort}</div>
