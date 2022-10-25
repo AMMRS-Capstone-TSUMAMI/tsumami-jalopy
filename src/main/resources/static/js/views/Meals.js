@@ -11,10 +11,12 @@ let me;
 // let trophyId;
 let intolerances;
 let diet;
+let nutrition;
 let startDay;
 let plan;
 let results;
 let timeslotId;
+let summaries;
 export default function Meals(props) {
     me = props.me;
     intolerances = me.intolerances;
@@ -107,16 +109,25 @@ export default function Meals(props) {
                             <li class="timeslot-name evening">
                                 <i class="bi bi-moon-fill evening"></i>
                             </li>
-                            <li class="meals-calendar timeslot bottom-left" data-slot="13"></li>
-                            <li class="meals-calendar timeslot bottom" data-slot="23"></li>
-                            <li class="meals-calendar timeslot bottom" data-slot="33"></li>
-                            <li class="meals-calendar timeslot bottom" data-slot="43"></li>
-                            <li class="meals-calendar timeslot bottom" data-slot="53"></li>
-                            <li class="meals-calendar timeslot bottom" data-slot="63"></li>
-                            <li class="meals-calendar timeslot bottom-right" data-slot="73"></li>
+                            <li class="meals-calendar timeslot" data-slot="13"></li>
+                            <li class="meals-calendar timeslot" data-slot="23"></li>
+                            <li class="meals-calendar timeslot" data-slot="33"></li>
+                            <li class="meals-calendar timeslot" data-slot="43"></li>
+                            <li class="meals-calendar timeslot" data-slot="53"></li>
+                            <li class="meals-calendar timeslot" data-slot="63"></li>
+                            <li class="meals-calendar timeslot" data-slot="73"></li>
+                        </ul>
+                        <ul class="meals-calendar-row summaries">
+                            <li class="timeslot-name"></li>
+                            <li class="meals-calendar summary bottom-left" data-summary="1"></li>
+                            <li class="meals-calendar summary bottom" data-summary="2"></li>
+                            <li class="meals-calendar summary bottom" data-summary="3"></li>
+                            <li class="meals-calendar summary bottom" data-summary="4"></li>
+                            <li class="meals-calendar summary bottom" data-summary="5"></li>
+                            <li class="meals-calendar summary bottom" data-summary="6"></li>
+                            <li class="meals-calendar summary bottom-right" data-summary="7"></li>
                         </ul>
                         <div style="text-align: center">Legend: <i class="bi bi-brightness-alt-high-fill"></i>:morning&#9;<i class="bi bi-brightness-high-fill"></i>:noon&#9;<i class="bi bi-moon-fill evening" style="font-size: .8rem"></i>:evening
-
                         </div>
                     </div>
                 </div> 
@@ -138,6 +149,9 @@ export async function MealsEvent() {
         await populateCalendar()
     }).then(() => {
         addMealCardListeners()
+    })
+    await fetchSummaries().then(async () => {
+        populateSummaries()
     })
     console.log("MealsEvent Complete");
 }
@@ -185,6 +199,62 @@ async function fetchRecipes(query) {
     results = data.results;
     populateResults();
 }
+async function fetchNutrition(id) {
+    const request = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    let URL = `${RECIPES}/${id}/nutritionWidget.json?apiKey=${SPOONACULAR_API}`
+    let data = await fetch(URL, request)
+        .then(async function(response) {
+            if(!response.ok) {
+                console.log("Error Finding Nutrition Facts: " + response.status);
+            } else {
+                console.log("Search Complete");
+                return response.json()
+            }
+        });
+    console.log(data);
+    nutrition = data;
+}
+
+async function fetchSummaries() {
+    const request = {
+        method: "GET",
+        headers: getHeaders()
+    }
+    summaries = await fetch(`${BACKEND_HOST_URL}/api/plans/summary?startDate=${startDay.ISO()}`, request)
+        .then(function(response) {
+            if(!response.ok) {
+                console.log("Error Finding Summary: " + response.status);
+            } else {
+                console.log("Populated Summaries");
+                return response.json()
+            }
+        }).then(function(data) {
+            return data
+        })
+
+}
+function populateSummaries () {
+    summaries.forEach((summary) => {
+        let day = summary[0];
+        let calories = summary[1];
+        let fat = summary[2];
+        let carbs = summary[3];
+        let protein = summary[4];
+        let target = document.querySelector(`[data-summary="${day}"]`)
+        target.innerHTML = `
+        <div class="calories">Calories: ${calories}</div>
+        <div class="fat">Fat: ${fat}g</div>
+        <div class="carbs">Carbs: ${carbs}g</div>
+        <div class="protein">Protein: ${protein}g</div>
+        `
+
+    })
+}
 
 function populateResults() {
     const recipeResults = document.querySelector("#meals-recipe-search-results")
@@ -215,13 +285,13 @@ function populateResults() {
     addMealCardListeners()
 }
 
-async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot) {
+async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot, calories, fat, carbs, protein) {
     //todo update data-slot-id in html
     const request = {
         method: "POST",
         headers: getHeaders()
     }
-    timeslotId = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}`, request)
+    timeslotId = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}&calories=${calories}&fat=${fat}&carbs=${carbs}&protein=${protein}`, request)
         .then(function (response) {
             if (response.status !== 200) {
                 console.log(`fetch returned status code: ${response.status}`);
@@ -289,9 +359,13 @@ function populateCalendar() {
             slotId = plan[i][1],
             recipeId = plan[i][2],
             title = plan[i][3],
-            image = plan[i][4];
+            image = plan[i][4],
+            calories = plan[i][5],
+            fat = plan[i][6],
+            carbs = plan[i][7],
+            protein = plan[i][8];
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" draggable="true" style="background-image: url(${image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" data-calories="${calories}" data-carbs="${carbs}" data-fat="${fat}" data-protein="${protein}" draggable="true" style="background-image: url(${image})">
             <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
 <!--                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
@@ -301,7 +375,16 @@ function populateCalendar() {
             <div class="card-footer p-1">${title}</div>
         </div>
         `
+
     }
+    let summaryClasses = document.querySelectorAll(".summary");
+    summaryClasses.forEach((summary) => {
+        summary.innerHTML = `
+        <div class="calories">Calories: </div>
+        <div class="fat">Fat: </div>
+        <div class="carbs">Carbs: </div>
+        <div class="protein">Protein: </div>`
+    })
 }
 
 function generateCalendarWeek(start) {
@@ -404,6 +487,14 @@ function drag(e) {
     } else {
         console.log("This doesn't have a slotId");
     }
+    if(!this.dataset.calories) {
+        fetchNutrition(this.dataset.recipeId).then(() => {
+            this.dataset.calories = Number.parseFloat(nutrition.calories).toString();
+            this.dataset.carbs = Number.parseFloat(nutrition.carbs).toString();
+            this.dataset.fat = Number.parseFloat(nutrition.fat).toString();
+            this.dataset.protein = Number.parseFloat(nutrition.protein).toString();
+        })
+    }
 }
 
 //Sedentary: little or no exercise
@@ -471,8 +562,15 @@ async function drop(e) {
     let startDate = startDay.ISO()
     let dayNum = el.parentElement.dataset.slot[0];
     let timeslot = el.parentElement.dataset.slot[1];
-    await addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot).then(() => {
+    let calories = el.dataset.calories;
+    let fat = el.dataset.fat;
+    let carbs = el.dataset.carbs;
+    let protein = el.dataset.protein;
+    await addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot, calories, fat, carbs, protein).then(() => {
         el.dataset.slotId = timeslotId;
+    }).then(async () => {
+        await fetchSummaries().then(async () => {
+            populateSummaries()
+        })
     })
-    //todo update data-slot-id in html
 }

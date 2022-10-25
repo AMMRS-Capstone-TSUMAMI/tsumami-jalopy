@@ -30,6 +30,10 @@ public class Recipe {
     private Long id;
 
     private String name;
+    private Long calories;
+    private Long fat;
+    private Long carbs;
+    private Long protein;
 
     @Column(length = 1000)
     private String photo;

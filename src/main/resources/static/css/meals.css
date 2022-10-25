@@ -97,18 +97,9 @@
 .meal-overlay .bi-info-circle-fill {
     color: white;
 }
-.slot-morning .meals-calendar {
-    /*background-color: rgba(255, 218, 185, 0.25);*/
+#meals-calendar .timeslot, #meals-calendar .summary {
     background-color: white;
-
-}
-.slot-noon .timeslot {
-    /*background-color: rgba(250, 250, 210, 0.25);*/
-    background-color: white;
-}
-.slot-evening .timeslot {
-    /*background-color: rgba(176, 196, 222, 0.25);*/
-    background-color: white;
+    border-color: var(--background-color);
 }
 #meals-calendar .left {
     border-left: 3px solid var(--background-color);
@@ -141,5 +132,10 @@
     border-bottom: 3px solid var(--background-color);
     border-left: 3px solid var(--background-color);
     border-bottom-left-radius: var(--calendar-radius);
+}
+.summaries div {
+    text-align: left;
+    font-size: .9vw;
+    padding-left: .5rem;
 }
 

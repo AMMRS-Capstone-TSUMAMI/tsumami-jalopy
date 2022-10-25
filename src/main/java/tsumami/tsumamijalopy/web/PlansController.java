@@ -42,7 +42,7 @@ public class PlansController {
 //        planWeeksRepository.addRecipeToSlot(id, name, image, startDate, userId, dayNum, timeslot);
 //    }
     @PostMapping("/post")
-    public Long insertRecipe(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam Long recipeId, @RequestParam String recipeName, @RequestParam String image, @RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
+    public Long insertRecipe(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam Long recipeId, @RequestParam String recipeName, @RequestParam String image, @RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot, @RequestParam Long calories, @RequestParam Long fat, @RequestParam Long carbs, @RequestParam Long protein) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
         Long userId = loggedInUser.getId();
         planWeeksRepository.insertWeek(startDate, userId);
@@ -51,7 +51,7 @@ public class PlansController {
         Long planDayId = planDaysRepository.getPlanDayId(dayNum, planWeekId);
         planTimeslotsRepository.insertTimeslot(timeslot, planDayId);
         Long timeslotId = planTimeslotsRepository.getPlanTimeslotId(timeslot, planDayId);
-        recipesRepository.insertRecipe(recipeId, recipeName, image);
+        recipesRepository.insertRecipe(recipeId, recipeName, image, calories, fat, carbs, protein);
         recipesRepository.insertTimeslotRecipe(timeslotId, recipeId);
         return timeslotId;
 
@@ -61,22 +61,11 @@ public class PlansController {
     public void deleteRecipe(@RequestParam Long recipeId, @RequestParam Long planTimeslotId) {
         recipesRepository.deleteRecipe(recipeId, planTimeslotId);
     }
-//    @PostMapping("/insertweek")
-//    public void insertWeek(@RequestParam String startDate, @RequestParam Long userId) {
-//        planWeeksRepository.insertWeek(startDate, userId);
-//    }
-//    @GetMapping("/getweek")
-//    public Long getWeekId(@RequestParam String startDate, @RequestParam Long userId) {
-//        return planWeeksRepository.getPlanWeekId(startDate, userId);
-//    }
-//    @PostMapping("/create")
-//    public void createRecipe(@RequestParam Long id, @RequestParam String name, @RequestParam String image, @RequestParam String startDate, @RequestParam Long userId, @RequestParam Long dayNum, @RequestParam Long timeslot) {
-//        Recipe newRecipe = new Recipe(id, name, image, null, null);
-//        newRecipe = recipesRepository.save(newRecipe);
-//        PlanWeek planWeek = new PlanWeek();
-//        planWeek.setStartDate(LocalDate.parse(startDate));
-//        planWeek.setUser(usersRepository.findById(userId).get());
-//        PlanDay planDay = new PlanDay();
-//        planDay.setDayNum(dayNum);
-//    }
+    @GetMapping("/summary")
+    public String[][] summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
+        return planDaysRepository.summarizeDayNutrients(startDate, userId);
+    }
+
 }

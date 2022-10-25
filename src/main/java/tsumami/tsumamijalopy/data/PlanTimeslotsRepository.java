@@ -32,7 +32,11 @@ public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Lon
             "ptr.plan_timeslot_id, " +
             "ptr.recipe_id, " +
             "r.name AS recipe, " +
-            "r. photo " +
+            "r.photo, " +
+            "r.calories, " +
+            "r.fat, " +
+            "r.carbs, " +
+            "r.protein " +
             "FROM plan_timeslot_recipe ptr " +
             "LEFT JOIN recipes r on r.id = ptr.recipe_id " +
             "LEFT JOIN plan_timeslots pt on pt.id = ptr.plan_timeslot_id " +
