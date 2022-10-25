@@ -314,7 +314,7 @@ export async function awardUserATrophy(trophyId) {
         headers: getHeaders()
     }
 
-    await fetch('http://localhost:8080/api/users/addTrophy/' + trophyId, requestHeader).then(response => {
+    await fetch(`${BACKEND_HOST_URL}/api/users/addTrophy/` + trophyId, requestHeader).then(response => {
         // console.log('inside fetch')
         console.log(response)
         return response.json();
@@ -393,7 +393,7 @@ export function getUserData() {
         method: "GET",
         headers: getHeaders()
     }
-    return fetch('http://localhost:8080/api/users/me', requestObject).then(response => {
+    return fetch('${BACKEND_HOST_URL}/api/users/me', requestObject).then(response => {
         return response.json()
     }).then(data => {
         return data;
