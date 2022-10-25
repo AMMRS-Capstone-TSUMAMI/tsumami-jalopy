@@ -109,8 +109,10 @@ function populateHeader() {
     let header = document.querySelector("#recipes-header")
     header.innerHTML = `
 <h3 id="recipes-card-title" data-id="${recipeInfo.id}">${recipeInfo.title}</h3>
-<img src="${recipeInfo.image}" id="recipes-card-img" alt="Recipe Image">
-<div class="instruction-div">
+<div class="row">
+    <img src="${recipeInfo.image}" id="recipes-card-img" alt="Recipe Image">
+</div>
+<div class="instruction-div row">
     <ol id="recipe-instructions"></ol>
 </div>        
     `;
