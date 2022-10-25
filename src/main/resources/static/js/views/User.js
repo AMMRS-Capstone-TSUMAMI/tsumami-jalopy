@@ -393,7 +393,7 @@ export function getUserData() {
         method: "GET",
         headers: getHeaders()
     }
-    return fetch('${BACKEND_HOST_URL}/api/users/me', requestObject).then(response => {
+    return fetch(`${BACKEND_HOST_URL}/api/users/me`, requestObject).then(response => {
         return response.json()
     }).then(data => {
         return data;
