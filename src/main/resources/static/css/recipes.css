@@ -8,10 +8,13 @@
     text-align: center;
 }
 #recipes-card-img {
-    width: 100%;
-    border: solid 3px var(--border-color);
-    border-radius: 50%;
+    /*width: 100%;*/
+    /*border: solid 3px var(--border-color);*/
+    border-radius: 7%;
     background-size: cover;
+    margin: 2rem;
+    width: 62rem;
+    height: 25rem;
 }
 
 .ingredient-img {
@@ -45,6 +48,9 @@
 }
 .ingredient-card .card-footer{
     background: none;
+}
+#ingredient-cards{
+    display: flex;
 }
 
 

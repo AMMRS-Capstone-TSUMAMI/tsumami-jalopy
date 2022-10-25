@@ -71,7 +71,7 @@ export default function Meals(props) {
                             <span id="meals-calendar-week" data-week-start="${startDay}">${generateCalendarWeek(startDay)}</span>
                             <i id="week-next" class="bi bi-caret-right-fill"></i>
                         </div>
-                        <ul class="calendar-day">
+                       <ul class="calendar-day">
                             <li class="timeslot-name"></li>
                             <li class="meals-calendar">Monday</li>
                             <li class="meals-calendar">Tuesday</li>
@@ -79,7 +79,7 @@ export default function Meals(props) {
                             <li class="meals-calendar">Thursday</li>
                             <li class="meals-calendar">Friday</li>
                             <li class="meals-calendar">Saturday</li>
-                            <li class="meals-calendar top-right">Sunday</li>
+                            <li class="meals-calendar">Sunday</li>
                         </ul>
                         <ul class="meals-calendar-row slot-morning">
                             <li class="timeslot-name morning">
