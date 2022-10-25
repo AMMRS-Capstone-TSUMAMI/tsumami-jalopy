@@ -1,58 +1,58 @@
 div {
-    font-family: 'Work Sans', sans-serif;
+font-family: 'Work Sans', sans-serif;
 }
 
 p{
-    font-size: 22px;
+font-size: 22px;
 }
 
 .update-h1 {
-    color: #F4F4ED;
+color: #F4F4ED;
+padding-bottom: 20px;
 }
 
 .trophy-earned {
-    /*background-color: #B4E4B6;*/
-    /*background-color: #f5d44f;*/
-    /*background: rgb(213,176,45);*/
-    /*background: radial-gradient(circle, rgba(213,176,45,1) 34%, rgba(255,249,94,1) 74%, rgba(240,232,31,1) 100%);*/
-background: linear-gradient(to left top, rgb(255, 255, 0) 0%/*bottom-right color*/, rgb(126, 33, 60) 50% /*middle color*/, rgba(255, 255, 0, 1) 100% /*top-left color*/),
-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))/*"faked" black background make sure to add last or it will appear before the transparent/colored layer*/;
-    border: 3px solid #000;
+/*background-color: #B4E4B6;*/
+/*background-color: #f5d44f;*/
+/*background: rgb(213,176,45);*/
+    background: rgb(213,176,45);
+    background: radial-gradient(circle, rgba(213,176,45,1) 34%, rgba(255,249,94,1) 74%, rgba(240,232,31,1) 100%);
+border: 3px solid #000;
 
 }
 
 .trophy-unearned {
-    background-color: #FFF;
-    border: 3px solid #a7a5a5;
-    color: #a7a5a5;
+background-color: #FFF;
+border: 3px solid #a7a5a5;
+color: #a7a5a5;
 }
 
 .trophy-card {
-    width: 150px;
-    height: 250px;
-    justify-content: start;
+width: 150px;
+height: 250px;
+justify-content: start;
 
 }
 
 .trophy-icon {
-    font-size: 5em;
-    height: 125px;
-    width: 125px;
-    z-index: 1;
+font-size: 5em;
+height: 125px;
+width: 125px;
+z-index: 1;
 }
 
 .chef-level-img {
-    height: 50px;
-    width: 50px;
-    border-radius: 0;
+height: 50px;
+width: 50px;
+border-radius: 0;
 }
 
 .chef-card {
-    border: 3px solid black;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #eaeff3;
+border: 3px solid black;
+border-radius: 5px;
+margin: 10px;
+padding: 10px;
+background-color: #eaeff3;
 }
 
 /* Make sure that padding behaves as expected */
@@ -60,111 +60,136 @@ linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))/*"faked" black background ma
 
 /* Container for skill bars */
 .bar-container {
-    width: 100%; /* Full width */
-    height: 50%;
-    background-color: #FFF; /* Grey background */
-    align-self: start;
-    border: 3px solid #000;
-    border-radius: 8px;
+width: 100%; /* Full width */
+height: 50%;
+background-color: #FFF; /* Grey background */
+align-self: start;
+border: 3px solid #000;
+border-radius: 8px;
 }
 
 .skills {
-    text-align: right; /* Right-align text */
-    /*padding-top: 10px; !* Add top padding *!*/
-    /*padding-bottom: 10px; !* Add bottom padding *!*/
-    color: white; /* White text color */
-    border-radius: 3px;
-    padding-right: 10px;
+text-align: right; /* Right-align text */
+/*padding-top: 10px; !* Add top padding *!*/
+/*padding-bottom: 10px; !* Add bottom padding *!*/
+color: white; /* White text color */
+border-radius: 3px;
+padding-right: 10px;
 }
 
 
 .w-65 {
-    width: 65%;
+width: 65%;
 }
 
 .html {width: 40%; background-color: #04AA6D;}
 
 .trophy-title {
-    font-size: 16px;
+font-size: 16px;
 }
 .skills {
-    background-color: #7e213c;
+background-color: #7e213c;
 }
 
 .underline:after {
-    content: "";
-    display:block;
-    border-bottom: 6px solid #228B22;
-    width: 70px;
-    margin-top: 5px;
+content: "";
+display:block;
+border-bottom: 6px solid #228B22;
+width: 70px;
+margin-top: 5px;
 }
 
 .achievement-header {
-    margin-bottom: 30px;
+margin-bottom: 30px;
 }
 
 .achievement-background {
-    background-color: #F4F4ED;
-    margin-top: 10px;
-    padding-top: 30px;
+background-color: #F4F4ED;
+//margin-top: 10px;
+padding-top: 30px;
 }
 
 .underline-achievement-header {
-    color: black;
+color: black;
 }
 
 /* CSS */
 .button {
-    appearance: none;
-    background-color: #2ea44f;
-    border: 1px solid rgba(27, 31, 35, .15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
+appearance: none;
+background-color: #7e213c;
+border: 1px solid rgba(27, 31, 35, .15);
+border-radius: 5px;
+box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+display: inline-block;
+font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+font-size: 14px;
+font-weight: 600;
+line-height: 20px;
+padding: 6px 16px;
+position: relative;
+text-align: center;
+text-decoration: none;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+vertical-align: middle;
+white-space: nowrap;
 }
 
 .button:focus:not(:focus-visible):not(.focus-visible) {
-    box-shadow: none;
-    outline: none;
+box-shadow: none;
+outline: none;
 }
 
 .button:hover {
-    background-color: #2c974b;
+background-color: #FFF;
+    color: #7e213c;
 }
 
 .button:focus {
-    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
-    outline: none;
+box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+outline: none;
 }
 
 .button-3:disabled {
-    background-color: #94d3a2;
-    border-color: rgba(27, 31, 35, .1);
-    color: rgba(255, 255, 255, .8);
-    cursor: default;
+background-color: #94d3a2;
+border-color: rgba(27, 31, 35, .1);
+color: rgba(255, 255, 255, .8);
+cursor: default;
 }
 
 .button-3:active {
-    background-color: #298e46;
-    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+background-color: #298e46;
+box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
 .update-h1 {
-    color: black;
+color: black;
+}
+
+.user-container {
+background-image: url("../img/lightuserbg.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+width: 100%;
+padding-left: 0;
+padding-right: 0;
+}
+.user-card {
+background-color:#fff;
+padding: 30px;
+margin:30px;
+border: 3px solid #000;
+border-radius: 5px;
+//width:50%;
+}
+.card-flex {
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }

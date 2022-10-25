@@ -30,7 +30,8 @@
 #rightHalf {
     top: 0;
     /*background-color: #202A25;*/
-    background-color: #280b13;
+    background: rgb(126,33,60);
+    background: linear-gradient(143deg, rgba(126,33,60,1) 0%, rgba(0,0,0,1) 76%);
     width: 50%;
     position: absolute;
     right: 0;
@@ -45,19 +46,20 @@
 
 .btn-primary {
     padding: 10px;
-    background-color: #228B22;
+    background-color: #7E213CFF;
     border-radius: 2px;
     font-size: 22px;
     font-family: 'Work Sans', sans-serif;
-    border: 2px solid;
+    border: 2px solid #7E213CFF;
+
     text-align: center;
     width: 100%;
 }
 
 .btn-primary:hover {
-    background-color: #B4E4B6 !important;
-    color: #228B22 !important;
-    border: 2px solid #228B22 !important;
+    background-color: #7E213CFF !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
 }
 
 .underline:after {
