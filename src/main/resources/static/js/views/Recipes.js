@@ -24,10 +24,15 @@ export default function recipesHTML(props) {
     return `
             <div id="recipes-page" class="container g-0">
                 <div class="row">   
-                    <div id="recipes-header" class=""></div>
+                    <div id="recipes-header" class="col"></div>
+                </div>
+                <div class="row">
                     <div class="col-6 g-0">
-                        <div id="ingredient-cards" class="row row-cols-3 row-cols-lg-6 g-0 ps-1 pt-5"></div>
+                        <div id="ingredient-cards" class="row row-cols-3 row-cols-lg-6 g-0 ps-1"></div>
                     </div>
+                    <div class="instruction-div col-6">
+                        <ol id="recipe-instructions"></ol>
+                    </div>  
                 </div>
             </div>
 <!--                <h1>Recipe</h1>            -->
@@ -111,13 +116,7 @@ function populateHeader() {
 <h3 id="recipes-card-title" data-id="${recipeInfo.id}">${recipeInfo.title}</h3>
 <div class="row">
     <img src="${recipeInfo.image}" id="recipes-card-img" alt="Recipe Image">
-</div>
-<div class="instruction-div row">
-    <ol id="recipe-instructions"></ol>
-</div>        
-<div>
-    <img src="/img/black-marble-cuttingboard.jpg" alt="img" id="recipe-cuttingboard">
-</div>
+</div>      
     `;
 }
 function populateIngredients() {

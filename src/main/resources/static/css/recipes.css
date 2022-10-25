@@ -12,9 +12,10 @@
     /*border: solid 3px var(--border-color);*/
     border-radius: 7%;
     background-size: cover;
-    margin: 2rem;
-    width: 62rem;
-    height: 25rem;
+    margin: auto;
+    width: 40vw;
+    height: auto;
+    padding-bottom: 1rem;
 }
 
 .ingredient-img {
