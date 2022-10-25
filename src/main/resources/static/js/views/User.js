@@ -66,9 +66,11 @@ export default function prepareUser(props) {
                     <label>Diet Type</label>
                     <select id="inputDietType" style="width:500px;margin:8px;" class="form-control">
                         <option selected>Choose...</option>
+                        <label>Diet Type</label>
                         <option>Paleo</option>
                         <option>Keto</option>
                         <option>Vegan</option>
+                        <option>no diet</option>
                         </select>
                     </div>
                     </div>
@@ -397,5 +399,3 @@ export function getUserData() {
         return data;
     })
 }
-
-

@@ -26,13 +26,15 @@ export default function Register(props) {
 
 <div class="tab">
                     <select type="text" id="inputDietType" style="text-align:center;margin:20px;" class="form-control">
+                        <label>Diet Type</label>
                         <option selected>Choose...</option>
                         <option>Paleo</option>
                         <option>Keto</option>
-                        <option>Vegan</option>
+                        <option>no diet</option>
                         </select>
 
                      <select type="text" id="inputActivityLevel" style="text-align:center;margin:20px;" class="form-control">
+                        <label>Activity Level</label>
                         <option selected>Choose...</option>
                         <option>Sedentary</option>
                         <option>Mildly Active</option>

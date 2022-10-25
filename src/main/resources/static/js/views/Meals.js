@@ -69,27 +69,27 @@ export default function Meals(props) {
                             <span id="meals-calendar-week" data-week-start="${startDay}">${generateCalendarWeek(startDay)}</span>
                             <i id="week-next" class="bi bi-caret-right-fill"></i>
                         </div>
-                        <ul class="calendar-day">
+                       <ul class="calendar-day">
                             <li class="timeslot-name"></li>
-                            <li class="meals-calendar top-left">Monday</li>
-                            <li class="meals-calendar top">Tuesday</li>
-                            <li class="meals-calendar top">Wednesday</li>
-                            <li class="meals-calendar top">Thursday</li>
-                            <li class="meals-calendar top">Friday</li>
-                            <li class="meals-calendar top">Saturday</li>
-                            <li class="meals-calendar top-right">Sunday</li>
+                            <li class="meals-calendar">Monday</li>
+                            <li class="meals-calendar">Tuesday</li>
+                            <li class="meals-calendar">Wednesday</li>
+                            <li class="meals-calendar">Thursday</li>
+                            <li class="meals-calendar">Friday</li>
+                            <li class="meals-calendar">Saturday</li>
+                            <li class="meals-calendar">Sunday</li>
                         </ul>
                         <ul class="meals-calendar-row slot-morning">
                             <li class="timeslot-name morning">
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                             </li>
-                            <li class="meals-calendar timeslot left" data-slot="11"></li>
-                            <li class="meals-calendar timeslot" data-slot="21"></li>
-                            <li class="meals-calendar timeslot" data-slot="31"></li>
-                            <li class="meals-calendar timeslot" data-slot="41"></li>
-                            <li class="meals-calendar timeslot" data-slot="51"></li>
-                            <li class="meals-calendar timeslot" data-slot="61"></li>
-                            <li class="meals-calendar timeslot right" data-slot="71"></li>
+                            <li class="meals-calendar timeslot top-left" data-slot="11"></li>
+                            <li class="meals-calendar timeslot top" data-slot="21"></li>
+                            <li class="meals-calendar timeslot top" data-slot="31"></li>
+                            <li class="meals-calendar timeslot top" data-slot="41"></li>
+                            <li class="meals-calendar timeslot top" data-slot="51"></li>
+                            <li class="meals-calendar timeslot top" data-slot="61"></li>
+                            <li class="meals-calendar timeslot top-right" data-slot="71"></li>
                         </ul>
                         <ul class="meals-calendar-row slot-noon">
                             <li class="timeslot-name noon">
