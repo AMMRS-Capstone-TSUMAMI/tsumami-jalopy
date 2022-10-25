@@ -1,15 +1,18 @@
 USE tsumami;
 
-SELECT pw.start_date AS week,
-       pd.day_num AS day,
-       pt.timeslot AS timeslot,
-       ptr.recipe_id AS recipe
+SELECT pd.day_num AS day,
+       SUM(r.calories) AS calories,
+       SUM(r.fat) AS fat,
+       SUM(r.carbs) AS carbs,
+       SUM(r.protein) AS protein
 FROM plan_timeslot_recipe ptr
-LEFT JOIN plan_timeslots pt on pt.id = ptr.plan_timeslot_id
-LEFT JOIN plan_days pd on pt.plan_day_id = pd.id
-LEFT JOIN plan_weeks pw on pd.plan_week_id = pw.id
-WHERE pw.start_date = '2022-10-10'
-  AND pw.user_id = 1;
+         LEFT JOIN recipes r ON r.id = ptr.recipe_id
+         LEFT JOIN plan_timeslots pt ON pt.id = ptr.plan_timeslot_id
+         LEFT JOIN plan_days pd ON pt.plan_day_id = pd.id
+         LEFT JOIN plan_weeks pw ON pd.plan_week_id = pw.id
+WHERE pw.start_date = '2022-10-24'
+  AND pw.user_id = 10
+GROUP BY day;
 
 INSERT IGNORE INTO recipes (id, name, photo)
 VALUES

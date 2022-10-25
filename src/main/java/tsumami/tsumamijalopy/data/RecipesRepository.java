@@ -16,10 +16,10 @@ public interface RecipesRepository extends JpaRepository<Recipe, Long> {
     void insertTimeslotRecipe(@Param("plan_timeslot_id") Long planTimeslotId, @Param("recipe_id") Long id);
     @Transactional
     @Modifying
-    @Query(value = "INSERT IGNORE INTO recipes (id, name, photo) " +
+    @Query(value = "INSERT IGNORE INTO recipes (id, name, photo, calories, fat, carbs, protein) " +
             "VALUES " +
-            "    (:id, :name, :photo)", nativeQuery = true)
-    void insertRecipe(@Param("id") Long recipeId, @Param("name") String recipeName, @Param("photo") String image);
+            "    (:id, :name, :photo, :calories, :fat, :carbs, :protein)", nativeQuery = true)
+    void insertRecipe(@Param("id") Long recipeId, @Param("name") String recipeName, @Param("photo") String image, @Param("calories") Long calories, @Param("fat") Long fat, @Param("carbs") Long carbs, @Param("protein") Long protein);
     @Transactional
     @Modifying
     @Query(value = "DELETE FROM plan_timeslot_recipe " +
