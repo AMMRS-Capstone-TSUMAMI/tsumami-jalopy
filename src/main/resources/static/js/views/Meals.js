@@ -472,9 +472,7 @@ function addMealCardListeners() {
 
     })
 }
-function toggleOverlay(element) {
-    element.children[0].style = "flex";
-}
+
 
 function allowDrop(e) {
     e.preventDefault();
@@ -573,4 +571,16 @@ async function drop(e) {
             populateSummaries()
         })
     })
+}
+async function fetch(request, url) {
+    return await fetch(url, request)
+        .then(function(response) {
+            if(!response.ok) {
+                console.log(response.status);
+            } else {
+                return response.json()
+            }
+        }).then(function(data) {
+            return data
+        })
 }
