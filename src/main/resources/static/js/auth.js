@@ -8,9 +8,12 @@ export const BACKEND_POST_OPTIONS = {
     method: "POST",
     headers: getHeaders()
 };
-export const BACKEND_PATCH_OPTIONS = {
-    method: 'PATCH',
-    headers: getHeaders()
+export function BACKEND_PATCH_OPTIONS(input) {
+    return {
+        method: 'PATCH',
+        headers: getHeaders(),
+        body: JSON.stringify(input)
+    }
 }
 export const BACKEND_DELETE_OPTIONS = {
     method: "DELETE"
