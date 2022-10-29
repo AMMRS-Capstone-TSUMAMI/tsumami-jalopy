@@ -34,7 +34,6 @@ function calculateCalorieRecommendation(gender, weight, height, age, activityLev
     const aF = activityFactor[activityLevel]
     const s = gender === 'male' ? 5 : -161;
     return (m + h + a + s) * aF;
-
 }
 
 function calculateMacrosInGrams(calories, macroAllocation) {
