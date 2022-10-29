@@ -1,4 +1,4 @@
-import {getHeaders, getMe, getUser, isLoggedIn, setLoggedInUserInfo} from "../auth.js";
+import * as auth from "../auth.js";
 import createView from "../createView.js";
 import {checkAndAddTrophy, getUserData} from "./User.js";
 
@@ -24,13 +24,6 @@ export default function Meals(props) {
     getStartDay(today)
     return `
 <div class="container g-0">
-    <!--    <div id="meals-header" class="container g-0">-->
-    <!--        <div class="row g-0">-->
-    <!--            <div class="col d-flex mx-0 my-3" style="justify-content: left">-->
-    <!--                <h1>Meal Planner</h1>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
     <div id="meals-main" class="container g-0">
         <div class="row">
             <div class="col-2 gs-0 ge-3 ps-0">
@@ -141,7 +134,7 @@ export default function Meals(props) {
 export async function MealsEvent() {
     await checkAndAddTrophy(me.trophies, 1);
     console.log(me)
-    me = await getMe();
+    me = await auth.getMe();
     console.log(me);
     prepareSearchFields();
     addCalendarListeners();
@@ -171,25 +164,25 @@ function prepareSearchFields() {
 }
 
 async function fetchRecipes(query) {
-    const request = {
+    const options = {
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
         }
     }
-    let URL = `${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`
+    let url = `${SEARCH_RECIPES}?query=${query}&number=${MAX_RESULTS}&apiKey=${SPOONACULAR_API}`
     if(intolerances.length > 0) {
-        URL += `&intolerances=${intolerances.map((el) => el.name).join(",")}`
+        url += `&intolerances=${intolerances.map((el) => el.name).join(",")}`
     }
     if(diet !== "no diet" && diet !== null)
-        URL += `&diet=${diet}`
-    let data = await fetch(URL, request)
+        url += `&diet=${diet}`
+    let data = await fetch(url, options)
         .then(async function(response) {
             if(!response.ok) {
                 console.log("Error Finding Recipe: " + response.status);
             } else {
                 console.log("Search Complete");
-                me = await getMe();
+                me = await auth.getMe();
                 checkAndAddTrophy(me.trophies, 2)
                 getUserData().then(data => me = data);
                 return response.json()
@@ -200,14 +193,14 @@ async function fetchRecipes(query) {
     populateResults();
 }
 async function fetchNutrition(id) {
-    const request = {
+    const options = {
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
         }
     }
     let URL = `${RECIPES}/${id}/nutritionWidget.json?apiKey=${SPOONACULAR_API}`
-    let data = await fetch(URL, request)
+    let data = await fetch(URL, options)
         .then(async function(response) {
             if(!response.ok) {
                 console.log("Error Finding Nutrition Facts: " + response.status);
@@ -221,23 +214,10 @@ async function fetchNutrition(id) {
 }
 
 async function fetchSummaries() {
-    const request = {
-        method: "GET",
-        headers: getHeaders()
-    }
-    summaries = await fetch(`${BACKEND_HOST_URL}/api/plans/summary?startDate=${startDay.ISO()}`, request)
-        .then(function(response) {
-            if(!response.ok) {
-                console.log("Error Finding Summary: " + response.status);
-            } else {
-                console.log("Populated Summaries");
-                return response.json()
-            }
-        }).then(function(data) {
-            return data
-        })
-
+    const url = `${BACKEND_HOST_URL}/api/plans/summary?startDate=${startDay.ISO()}`;
+    summaries = await fetchJSON(url, auth.BACKEND_GET_OPTIONS);
 }
+
 function populateSummaries () {
     summaries.forEach((summary) => {
         let day = summary[0];
@@ -287,43 +267,19 @@ function populateResults() {
 
 async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot, calories, fat, carbs, protein) {
     //todo update data-slot-id in html
-    const request = {
-        method: "POST",
-        headers: getHeaders()
-    }
-    timeslotId = await fetch(`${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}&calories=${calories}&fat=${fat}&carbs=${carbs}&protein=${protein}`, request)
-        .then(function (response) {
-            if (response.status !== 200) {
-                console.log(`fetch returned status code: ${response.status}`);
-                console.log(response.statusText);
-            } else {
-                console.log("Entry removed.");
-                return response.json();
-            }
-        }).then(function (data) {
-            return data
-        });
+    const url = `${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}&calories=${calories}&fat=${fat}&carbs=${carbs}&protein=${protein}`;
+    timeslotId = await fetchJSON(url, auth.BACKEND_POST_OPTIONS);
 }
+
 async function deleteRecipe(planTimeslotId, recipeId) {
-    const request = {
-        method: "DELETE"
-    }
-    await fetch(`${BACKEND_HOST_URL}/api/plans/delete?planTimeslotId=${planTimeslotId}&recipeId=${recipeId}`, request)
-        .then(function(response) {
-            if(response.status !== 200) {
-                console.log(`fetch returned status code: ${response.status}`);
-                console.log(response.statusText);
-            } else {
-                console.log("Entry removed.");
-                return response.text();
-            }
-        })
+    const url = `${BACKEND_HOST_URL}/api/plans/delete?planTimeslotId=${planTimeslotId}&recipeId=${recipeId}`;
+    await fetchText(url, auth.BACKEND_DELETE_OPTIONS);
 }
 
 function getStartDay(date) {
     let day = date.getDay()
     if(day === 0) {
-        startDay = date.addDays(-6);
+        startDay = date.utils.addDays(-6);
     }
     if(day === 1) {
         startDay = date;
@@ -335,21 +291,8 @@ function getStartDay(date) {
 }
 
 async function fetchCalendarEntries() {
-    const request = {
-        method: "GET",
-        headers: getHeaders()
-    }
-    plan = await fetch(`${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`, request)
-        .then(function(response) {
-            if(!response.ok) {
-                console.log("Error Finding Recipe: " + response.status);
-            } else {
-                console.log("Populated Recipes");
-                return response.json()
-            }
-        }).then(function(data) {
-            return data
-        })
+    const url = `${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`
+    plan = await fetchJSON(url, auth.BACKEND_GET_OPTIONS)
 }
 
 function populateCalendar() {
@@ -416,17 +359,6 @@ function decrementWeek() {
     displayedWeek.setAttribute("data-week-start", startDay);
     updateCalendarWeek(startDay);
 }
-Date.prototype.addDays = function(days) {
-    let date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-}
-Date.prototype.ISO = function() {
-    let date = new Date(this.valueOf());
-    date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
-    return date;
-}
-
 
 function addCalendarListeners() {
     const timeslots = document.querySelectorAll(".timeslot");
@@ -495,59 +427,6 @@ function drag(e) {
     }
 }
 
-//Sedentary: little or no exercise
-//Moderate: exercise 4-5 times per week.
-//Active: daily exercise or intense exercise 3-4 times per week.
-//Very Active: intense exercise 6-7 times per week.
-const activityReference = {
-    sedentary: {boy: 1, girl: 1, man: 1, woman: 1},
-    moderate: {boy: 1.13, girl: 1.16, man: 1.11, woman: 1.12},
-    active: {boy: 1.26, girl: 1.31, man: 1.25, woman: 1.27},
-    veryActive: {boy: 1.42, girl: 1.56, man: 1.48, woman: 1.45}
-}
-function calculateCalorieRecommendation(gender, weight, height, age, activityLevel) {
-    //set coefficients for age(a), activityLevel(PA), mass(m), and height(h)
-    let base, a, PA, m, h;
-    if(!gender || !weight || !height || !age || !activityLevel) {
-        console.log(`Unable to calculate `)
-    }
-    let mass = weight * 2.205;
-    if(gender === "male" && age > 18) {
-        base = 662;
-        a = age * 9.53;
-        PA = activityReference[activityLevel].man;
-        m = mass * 15.91;
-        h = height * 539.6;
-    }
-    if(gender === "female" && age > 18) {
-        base = 354;
-        a = age * 6.91;
-        PA = activityReference[activityLevel].woman;
-        m = mass * 9.36;
-        h = height * 726;
-    }
-    if(gender === "male" && age >= 3 && age <= 18) {
-        base = 88.5;
-        a = age * 61.9;
-        PA = activityReference[activityLevel].boy;
-        m = mass * 26.7;
-        h = height * 903;
-    }
-    if(gender === "female" && age >= 3 && age <= 18) {
-        base = 135.3;
-        a = age * 30.8;
-        PA = activityReference[activityLevel].girl;
-        m = mass * 10;
-        h = height * 934;
-    }
-    if(age < 3) {
-        return (89 * mass) - 80;
-    }
-    return base - a + (PA * (m * h));
-}
-
-
-
 async function drop(e) {
     e.preventDefault();
     let data = e.dataTransfer.getData("text");
@@ -571,16 +450,4 @@ async function drop(e) {
             populateSummaries()
         })
     })
-}
-async function fetch(request, url) {
-    return await fetch(url, request)
-        .then(function(response) {
-            if(!response.ok) {
-                console.log(response.status);
-            } else {
-                return response.json()
-            }
-        }).then(function(data) {
-            return data
-        })
 }
