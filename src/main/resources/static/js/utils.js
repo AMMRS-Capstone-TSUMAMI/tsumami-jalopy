@@ -8,6 +8,13 @@ const activityFactor = {
     moderate: 1.55,
     high: 1.725,
 }
+const weightGoalFactor = {
+    losePound: -500,
+    loseHalfPound: -250,
+    maintain: 0,
+    gainHalfPound: 250,
+    gainPound: 500
+}
 const macroAllocations = {
     ectomorph: {
         fat: .2,
@@ -27,13 +34,13 @@ const macroAllocations = {
 }
 
 //calculate calorie recommendations based on Mifflin St Jeor equation: P = 10m + 6.25h + 5a + s
-function calculateCalorieRecommendation(gender, weight, height, age, activityLevel) {
+function calculateCalorieRecommendation(gender, weight, height, age, activityLevel, weightGoal) {
     const m = weight * 2.205 * 10;
     const h = height * 2.54 * 6.25;
     const a = age * 5
     const aF = activityFactor[activityLevel]
     const s = gender === 'male' ? 5 : -161;
-    return (m + h + a + s) * aF;
+    return (m + h + a + s) * aF - weightGoalFactor[weightGoal];
 }
 
 function calculateMacrosInGrams(calories, macroAllocation) {
