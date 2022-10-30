@@ -8,7 +8,6 @@ import {checkAndAddTrophy, getUserData} from "./User.js";
 // TODO:
 let today = new Date;
 let me;
-// let trophyId;
 let intolerances;
 let diet;
 let nutrition;
@@ -133,9 +132,7 @@ export default function Meals(props) {
 
 export async function MealsEvent() {
     await checkAndAddTrophy(me.trophies, 1);
-    console.log(me)
     me = await auth.getMe();
-    console.log(me);
     prepareSearchFields();
     addCalendarListeners();
     await fetchCalendarEntries().then(async() => {
