@@ -1,5 +1,24 @@
 import createView from "./createView.js";
 
+export const BACKEND_GET_OPTIONS = {
+    method: "GET",
+    headers: getHeaders()
+};
+export const BACKEND_POST_OPTIONS = {
+    method: "POST",
+    headers: getHeaders()
+};
+export function BACKEND_PATCH_OPTIONS(input) {
+    return {
+        method: 'PATCH',
+        headers: getHeaders(),
+        body: JSON.stringify(input)
+    }
+}
+export const BACKEND_DELETE_OPTIONS = {
+    method: "DELETE"
+};
+
 export function setLoggedInUserInfo(redirectTuRegister) {
     const request = {
         method: "GET",

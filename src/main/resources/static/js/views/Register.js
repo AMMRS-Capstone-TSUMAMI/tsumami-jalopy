@@ -1,5 +1,5 @@
 import createView from "../createView.js"
-import {getHeaders, isRegistered, setLoggedInUserInfo} from "../auth.js";
+import {BACKEND_PATCH_OPTIONS, getHeaders, isRegistered, setLoggedInUserInfo} from "../auth.js";
 
 
 let currentTab = 0; // Current tab is set to be the first tab (0)
@@ -19,46 +19,44 @@ export default function Register(props) {
 
 <!-- One "tab" for each step in the form: -->
 <div class="tab justify-content-evenly">
-<input type="text" class="form-control" id="inputHeight" style="text-align:center;margin:20px;" placeholder="Height">
-<input type="text" class="form-control" id="inputWeight" style="text-align:center;margin:20px;" placeholder="Weight">
+    <input type="text" class="form-control" id="inputHeight" style="text-align:center;margin:20px;" placeholder="Height">
+    <input type="text" class="form-control" id="inputWeight" style="text-align:center;margin:20px;" placeholder="Weight">
 </div>
 
 
 <div class="tab">
-                    <select type="text" id="inputDietType" style="text-align:center;margin:20px;" class="form-control">
-                        <label>Diet Type</label>
-                        <option selected>Choose...</option>
-                        <option>Paleo</option>
-                        <option>Keto</option>
-                        <option>no diet</option>
-                        </select>
-
-                     <select type="text" id="inputActivityLevel" style="text-align:center;margin:20px;" class="form-control">
-                        <label>Activity Level</label>
-                        <option selected>Choose...</option>
-                        <option>Sedentary</option>
-                        <option>Mildly Active</option>
-                        <option>Active</option>
-                        </select>
+    <select type="text" id="inputDietType" style="text-align:center;margin:20px;" class="form-control">
+        <label>Diet Type</label>
+            <option selected value="no diet">No Diet</option>
+            <option>Ketogenic</option>
+            <option>Paleo</option>
+            <option>Pescetarian</option>
+            <option>Primal</option>
+            <option>Vegan</option>
+            <option>Vegetarian</option>
+            <option>Lacto-Vegetarian</option>
+            <option>Ovo-Vegetarian</option>          
+    </select>  
+    <select type="text" id="inputActivityLevel" style="text-align:center;margin:20px;" class="form-control">
+        <label>Activity Level</label>
+            <option value="sedentary" selected>Sedentary</option>
+            <option value="light">Light</option>
+            <option value="moderate">Moderate</option>
+            <option value="high">High</option>
+    </select>
 </div>
-
-
 <div class="tab">
-
-<input type="text" class="form-control" id="inputProtein" style="text-align:center;margin:20px;" placeholder="Protein Goal">
-
-<input type="text" class="form-control" id="inputCarbs" style="text-align:center;margin:20px;" placeholder="Carb Goal">
-
-<input type="text" class="form-control" id="inputFat" style="text-align:center;margin:20px;" placeholder="Fat Goal">
-
-<input type="text" class="form-control" id="inputCalories" style="text-align:center;margin:20px;" placeholder="Calorie Goal">
+    <input type="text" class="form-control" id="inputProtein" style="text-align:center;margin:20px;" placeholder="Protein Goal">
+    <input type="text" class="form-control" id="inputCarbs" style="text-align:center;margin:20px;" placeholder="Carb Goal">
+    <input type="text" class="form-control" id="inputFat" style="text-align:center;margin:20px;" placeholder="Fat Goal">
+    <input type="text" class="form-control" id="inputCalories" style="text-align:center;margin:20px;" placeholder="Calorie Goal">
 </div>
 
 <div style="overflow:auto;">
-<div style="float:right;">
-<button type="button" class="button" id="prevBtn">Previous</button>
-<button type="button" class="button" id="nextBtn">Next</button>
-</div>
+    <div style="float:right;">
+        <button type="button" class="button" id="prevBtn">Previous</button>
+        <button type="button" class="button" id="nextBtn">Next</button>
+    </div>
 </div>
 
 <!-- Circles which indicates the steps of the form: -->
@@ -191,57 +189,23 @@ export function RegisterEvent(){
 }
 
 
-function submitRegistration() {
-    // let testBtn = document.querySelector("#test")
-    // let lastTab = document.querySelector("#lastTab")
-    // if()
-    // document.getElementById("nextBtn").addEventListener("click", function (event) {
-        console.log("our function for testbtn")
-
-
-
-        const heightField = document.querySelector("#inputHeight");
-        const weightField = document.querySelector("#inputWeight");
-        // const allergiesField = document.querySelector("#inputAllergies");
-        // const restrictionsField = document.querySelector("#inputRestrictions");
-        // const preferencesField = document.querySelector("#inputPreferences");
-        const activityLevelField = document.querySelector("#inputActivityLevel");
-        // const weightGoalField = document.querySelector("#inputWeightGoal");
-        // const bodyTypeField = document.querySelector("#inputBodyType");
-        const dietTypeField = document.querySelector("#inputDietType");
-        const caloriesField = document.querySelector("#inputCalories");
-        const proteinField = document.querySelector("#inputProtein");
-        const carbsField = document.querySelector("#inputCarbs");
-        const fatField = document.querySelector("#inputFat");
-        // changed names of fields to match database
-        let newUser = {
-            height: heightField.value,
-            weight: weightField.value,
-            // allergies: allergiesField.value,
-            // restrictions: restrictionsField.value,
-            // preferences: preferencesField.value,
-            activityLevel: activityLevelField.value,
-            // weightGoal: weightGoalField.value,
-            // bodyType: bodyTypeField.value,
-            diet: dietTypeField.value,
-            calorieGoal: caloriesField.value,
-            proteinGoal: proteinField.value,
-            carbGoal: carbsField.value,
-            fatGoal: fatField.value,
-        }
+async function submitRegistration() {
+        const height = document.querySelector("#inputHeight").value;
+        const weight = document.querySelector("#inputWeight").value;
+        const activityLevel = document.querySelector("#inputActivityLevel").value;
+        const diet = document.querySelector("#inputDietType").value;
+        let calorieGoal = document.querySelector("#inputCalories").value;
+        let proteinGoal = document.querySelector("#inputProtein").value;
+        let carbGoal = document.querySelector("#inputCarbs").value;
+        let fatGoal = document.querySelector("#inputFat").value;
+        let newUser = {height, weight, activityLevel, diet, calorieGoal, proteinGoal, carbGoal, fatGoal}
         console.log(newUser);
-        let request = {
-            method: "PATCH",
-            headers: getHeaders(),
-            body: JSON.stringify(newUser)
-        }
-            //changed endpoint name
-        fetch(USER_API_BASE_URL + "/updateUser", request)
+        const url = `${USER_API_BASE_URL}/updateUser`;
+        await fetch(url, BACKEND_PATCH_OPTIONS(newUser))
             .then(response => {
                 console.log(response.status);
                 setLoggedInUserInfo();
                 createView("/meals");
             })
-    // })
 }
 
