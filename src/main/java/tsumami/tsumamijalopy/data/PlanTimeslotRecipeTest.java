@@ -2,31 +2,22 @@ package tsumami.tsumamijalopy.data;
 
 import lombok.*;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="recipe_ingredient")
-
-public class RecipeIngredient {
+public class PlanTimeslotRecipeTest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
     @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @JoinColumn(name = "plan_timeslot_id")
+    private PlanTimeslot planTimeslot;
 
-    @NotEmpty
-    private Double amount;
-
-    @NotEmpty
-    private String unit;
 }

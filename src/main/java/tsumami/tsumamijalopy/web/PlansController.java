@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.*;
 import tsumami.tsumamijalopy.services.AuthBuddy;
 
+import java.sql.Array;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -66,6 +68,12 @@ public class PlansController {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
         Long userId = loggedInUser.getId();
         return planDaysRepository.summarizeDayNutrients(startDate, userId);
+    }
+    @GetMapping("/jpql")
+    public List<PlanWeekDTO> queryWithJPQL(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
+        return planWeeksRepository.getRecipesByPlanWeek(userId, LocalDate.parse(startDate));
     }
 
 }

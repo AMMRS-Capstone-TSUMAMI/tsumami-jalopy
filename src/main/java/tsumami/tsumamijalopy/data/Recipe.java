@@ -14,18 +14,9 @@ import tsumami.tsumamijalopy.data.RecipesRepository;
 @AllArgsConstructor
 @Getter
 @Setter
-//@ToString
 @Entity
 @Table(name="recipes")
 public class Recipe {
-
-//    private RecipesRepository repository;
-//
-//    public Recipe(RecipesRepository recipesRepository) {
-//        this.repository = recipesRepository;
-//    }
-
-
     @Id
     private Long id;
 

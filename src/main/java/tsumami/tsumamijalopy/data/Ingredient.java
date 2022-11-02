@@ -1,18 +1,12 @@
 package tsumami.tsumamijalopy.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.Collection;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-//@ToString
 @Entity
 @Table(name="ingredients")
 public class Ingredient {
