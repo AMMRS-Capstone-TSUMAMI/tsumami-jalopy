@@ -295,7 +295,7 @@ async function fetchCalendarEntries() {
 function populateCalendar() {
     console.log(plan);
     plan.forEach((el) => {
-        let target = document.querySelector(`[data-slot="${plan.dayNum.concat(plan.timeslot)}"]`),
+        let target = document.querySelector(`[data-slot="${el.dayNum}${el.timeslot}"]`),
             id = `r${Math.random().toString(36).slice(2)}`;
         target.innerHTML += `
         <div class="card meal-card" id="${id}" data-slot-id="${el.slotId}" data-recipe-id="${el.recipeId}" data-title="${el.title}" data-image="${el.image}" data-calories="${el.calories}" data-carbs="${el.carbs}" data-fat="${el.fat}" data-protein="${el.protein}" draggable="true" style="background-image: url(${el.image})">

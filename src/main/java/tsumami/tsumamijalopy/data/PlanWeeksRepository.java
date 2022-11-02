@@ -31,7 +31,8 @@ public interface PlanWeeksRepository extends JpaRepository<PlanWeek, Long> {
             "LEFT JOIN PlanTimeslotRecipeTest ptr ON pt.id = ptr.planTimeslot.id " +
             "LEFT JOIN Recipe r ON ptr.recipe.id = r.id " +
             "WHERE pw.user.id = :user_id " +
-            "AND pw.startDate = :start_date")
+            "AND pw.startDate = :start_date " +
+            "AND ptr.recipe IS NOT NULL")
     List<PlanWeekDTO> getRecipesByPlanWeek(@Param("user_id") Long userId,
                                            @Param("start_date") LocalDate startDate);
 }

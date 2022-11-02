@@ -12,7 +12,7 @@ public class PlanWeekDTO {
     private Long timeslot;
     private Long recipeId;
     private String title;
-    private String image; //change to photo if image doesn't work
+    private String image;
     private Long calories;
     private Long fat;
     private Long carbs;
