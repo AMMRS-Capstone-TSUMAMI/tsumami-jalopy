@@ -19,15 +19,6 @@ public interface PlanTimeslotsRepository extends JpaRepository<PlanTimeslot, Lon
             "AND plan_day_id = :plan_day_id", nativeQuery = true)
     Long getPlanTimeslotId(@Param("timeslot") Long timeslot, @Param("plan_day_id") Long planDayId);
 
-//    @Query(value = "SELECT plan_timeslots.* FROM plan_timeslots " +
-//            "LEFT JOIN plan_days ON plan_timeslots.plan_day_id = plan_days.id " +
-//            "LEFT JOIN plan_weeks ON plan_days.plan_week_id = plan_weeks.id " +
-//            "WHERE plan_weeks.start_date = :start_date " +
-//            "AND plan_days.day_num = :day_num " +
-//            "AND plan_timeslots.timeslot = :timeslot " +
-//            "AND plan_weeks.user_id = :user_id", nativeQuery = true)
-//    PlanTimeslot getPlanTimeslotByDayWeekStart(@Param("start_date") String startDate, @Param("day_num") Long dayNum, @Param("timeslot") Long timeslot, @Param("user_id") Long userId);
-
     @Query(value = "SELECT CONCAT(pd.day_num, pt.timeslot) AS slot, " +
             "ptr.plan_timeslot_id, " +
             "ptr.recipe_id, " +

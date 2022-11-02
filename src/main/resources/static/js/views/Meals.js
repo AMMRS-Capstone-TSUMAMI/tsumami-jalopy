@@ -288,35 +288,26 @@ function getStartDay(date) {
 }
 
 async function fetchCalendarEntries() {
-    const url = `${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`
+    const url = `${BACKEND_HOST_URL}/api/plans/recipes?startDate=${startDay.ISO()}`
     plan = await fetchJSON(url, auth.BACKEND_GET_OPTIONS)
 }
 
 function populateCalendar() {
-    for(let i = 0; i < plan.length; i++) {
-        let target = document.querySelector(`[data-slot="${plan[i][0]}"]`),
-            id = "r" + Math.random().toString(36).slice(2),
-            slotId = plan[i][1],
-            recipeId = plan[i][2],
-            title = plan[i][3],
-            image = plan[i][4],
-            calories = plan[i][5],
-            fat = plan[i][6],
-            carbs = plan[i][7],
-            protein = plan[i][8];
+    console.log(plan);
+    plan.forEach((el) => {
+        let target = document.querySelector(`[data-slot="${plan.dayNum.concat(plan.timeslot)}"]`),
+            id = `r${Math.random().toString(36).slice(2)}`;
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" data-calories="${calories}" data-carbs="${carbs}" data-fat="${fat}" data-protein="${protein}" draggable="true" style="background-image: url(${image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${el.slotId}" data-recipe-id="${el.recipeId}" data-title="${el.title}" data-image="${el.image}" data-calories="${el.calories}" data-carbs="${el.carbs}" data-fat="${el.fat}" data-protein="${el.protein}" draggable="true" style="background-image: url(${el.image})">
             <div class="meal-overlay" style="display: none">              
-                <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
-<!--                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
-                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}" data-slot-id="${slotId}"></i>
+                <i class="bi bi-info-circle-fill info" data-recipe-id="${el.recipeId}"></i>
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${el.recipeId}" data-slot-id="${el.slotId}"></i>
             </div>
             <div class="card-body"></div>
-            <div class="card-footer p-1">${title}</div>
+            <div class="card-footer p-1">${el.title}</div>
         </div>
         `
-
-    }
+    })
     let summaryClasses = document.querySelectorAll(".summary");
     summaryClasses.forEach((summary) => {
         summary.innerHTML = `

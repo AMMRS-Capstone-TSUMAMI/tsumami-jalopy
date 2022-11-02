@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.*;
 import tsumami.tsumamijalopy.services.AuthBuddy;
 
-import java.sql.Array;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,25 +19,25 @@ public class PlansController {
     private PlanTimeslotsRepository planTimeslotsRepository;
     private AuthBuddy authBuddy;
 
+    @GetMapping("/recipes")
+    public List<PlanWeekDTO> getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
+        return planWeeksRepository.getRecipesByPlanWeek(userId, LocalDate.parse(startDate));
+    }
+
     @GetMapping("")
     public List<PlanTimeslot> getAllTimeslots() {
         return planTimeslotsRepository.findAll();
     }
 
-//    @GetMapping("/timeslot")
-//    public PlanTimeslot getPlanTimeslotByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
-//        return planTimeslotsRepository.getPlanTimeslotByDayWeekStart(startDate, dayNum, timeslot, 1L);
-        //TODO replace 1L with userId pulled from auth header
-        //TODO add a PostMapping
-        //TODO add recipe{id}
-        //TODO post request in frontend; parameters passed in url
+
+//    @GetMapping("/get")
+//    public String[][] getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+//        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+//        Long userId = loggedInUser.getId();
+//        return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
 //    }
-    @GetMapping("/get")
-    public String[][] getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
-        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
-        Long userId = loggedInUser.getId();
-        return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
-    }
 //    @PostMapping("/recipeslot")
 //    public void addRecipeToSlot(@RequestParam Long id, @RequestParam String name, @RequestParam String image, @RequestParam String startDate, @RequestParam Long userId, @RequestParam Long dayNum, @RequestParam Long timeslot) {
 //        planWeeksRepository.addRecipeToSlot(id, name, image, startDate, userId, dayNum, timeslot);
@@ -69,11 +68,4 @@ public class PlansController {
         Long userId = loggedInUser.getId();
         return planDaysRepository.summarizeDayNutrients(startDate, userId);
     }
-    @GetMapping("/jpql")
-    public List<PlanWeekDTO> queryWithJPQL(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
-        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
-        Long userId = loggedInUser.getId();
-        return planWeeksRepository.getRecipesByPlanWeek(userId, LocalDate.parse(startDate));
-    }
-
 }
