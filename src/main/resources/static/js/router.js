@@ -25,6 +25,12 @@ export default function router(URI) {
             title: 'Landing',
         },
         '/': {
+            returnView: Landing,
+            state: {},
+            uri: '/landing',
+            title: 'landing',
+        },
+        '/home': {
             returnView: Home,
             state: {},
             uri: '/',
