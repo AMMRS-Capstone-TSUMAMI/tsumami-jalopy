@@ -1,5 +1,9 @@
 
+let me;
+let recipeInfo;
+
 export default function Home(props) {
+    recipeInfo=props.recipes;
     console.log("The frontend did it. HER FAULT");
 
     return `
@@ -11,6 +15,9 @@ export default function Home(props) {
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 </form>
                 <div id="search-results"></div>
+            </div>
+            <div>
+                
             </div>
         </main>
     `;
