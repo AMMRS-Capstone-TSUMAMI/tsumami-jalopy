@@ -32,19 +32,19 @@ public class Recipe {
     @Column(length = 1000)
     private String description;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
-            targetEntity = PlanTimeslot.class)
-    @JoinTable(
-            name="plan_timeslot_recipe",
-            joinColumns = {@JoinColumn(name = "recipe_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name="plan_timeslot_id", nullable = false, updatable = false)},
-            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
-            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
-    )
-    @JsonIgnoreProperties({"recipes", "planDay"})
-    private Collection<PlanTimeslot> planTimeslots;
+//    @ManyToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+//            targetEntity = PlanTimeslot.class)
+//    @JoinTable(
+//            name="plan_timeslot_recipe",
+//            joinColumns = {@JoinColumn(name = "recipe_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name="plan_timeslot_id", nullable = false, updatable = false)},
+//            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+//            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+//    )
+//    @JsonIgnoreProperties({"recipes", "planDay"})
+//    private Collection<PlanTimeslot> planTimeslots;
 
 //TODO add ManyToMany
 

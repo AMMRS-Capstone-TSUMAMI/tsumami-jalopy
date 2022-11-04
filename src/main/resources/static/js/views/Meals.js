@@ -217,19 +217,13 @@ async function fetchSummaries() {
 
 function populateSummaries () {
     summaries.forEach((summary) => {
-        let day = summary[0];
-        let calories = summary[1];
-        let fat = summary[2];
-        let carbs = summary[3];
-        let protein = summary[4];
-        let target = document.querySelector(`[data-summary="${day}"]`)
+        let target = document.querySelector(`[data-summary="${summary.dayNum}"]`)
         target.innerHTML = `
-        <div class="calories">Calories: ${calories}</div>
-        <div class="fat">Fat: ${fat}g</div>
-        <div class="carbs">Carbs: ${carbs}g</div>
-        <div class="protein">Protein: ${protein}g</div>
+        <div class="calories">Calories: ${summary.calories}</div>
+        <div class="fat">Fat: ${summary.fat}g</div>
+        <div class="carbs">Carbs: ${summary.carbs}g</div>
+        <div class="protein">Protein: ${summary.protein}g</div>
         `
-
     })
 }
 
@@ -298,10 +292,10 @@ function populateCalendar() {
         let target = document.querySelector(`[data-slot="${el.dayNum}${el.timeslot}"]`),
             id = `r${Math.random().toString(36).slice(2)}`;
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-slot-id="${el.slotId}" data-recipe-id="${el.recipeId}" data-title="${el.title}" data-image="${el.image}" data-calories="${el.calories}" data-carbs="${el.carbs}" data-fat="${el.fat}" data-protein="${el.protein}" draggable="true" style="background-image: url(${el.image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${el.timeslotId}" data-recipe-id="${el.recipeId}" data-title="${el.title}" data-image="${el.image}" data-calories="${el.calories}" data-carbs="${el.carbs}" data-fat="${el.fat}" data-protein="${el.protein}" draggable="true" style="background-image: url(${el.image})">
             <div class="meal-overlay" style="display: none">              
                 <i class="bi bi-info-circle-fill info" data-recipe-id="${el.recipeId}"></i>
-                <i class="bi bi-trash3-fill delete" data-recipe-id="${el.recipeId}" data-slot-id="${el.slotId}"></i>
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${el.recipeId}" data-slot-id="${el.timeslotId}"></i>
             </div>
             <div class="card-body"></div>
             <div class="card-footer p-1">${el.title}</div>

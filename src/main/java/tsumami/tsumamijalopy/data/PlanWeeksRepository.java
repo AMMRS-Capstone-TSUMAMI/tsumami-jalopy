@@ -23,17 +23,28 @@ public interface PlanWeeksRepository extends JpaRepository<PlanWeek, Long> {
     Long getPlanWeekId(@Param("start_date") String startDate, @Param("user_id") Long userId);
 
     @Query(value = "SELECT NEW tsumami.tsumamijalopy.data.PlanWeekDTO(" +
-            "pd.dayNum, pt.timeslot, ptr.recipe.id, r.name, r.photo, r.calories, r.fat, r.carbs, r.protein" +
+            "pd.dayNum, pt.timeslot, pt.id, ptr.recipe.id, r.name, r.photo, r.calories, r.fat, r.carbs, r.protein" +
             ") " +
             "FROM PlanWeek pw " +
             "LEFT JOIN PlanDay pd ON pw.id = pd.planWeek.id " +
             "LEFT JOIN PlanTimeslot pt ON pd.id = pt.planDay.id " +
-            "LEFT JOIN PlanTimeslotRecipeTest ptr ON pt.id = ptr.planTimeslot.id " +
+            "LEFT JOIN PlanTimeslotRecipe ptr ON pt.id = ptr.planTimeslot.id " +
             "LEFT JOIN Recipe r ON ptr.recipe.id = r.id " +
             "WHERE pw.user.id = :user_id " +
             "AND pw.startDate = :start_date " +
-            "AND ptr.recipe IS NOT NULL")
+            "AND ptr.recipe.id IS NOT NULL")
     List<PlanWeekDTO> getRecipesByPlanWeek(@Param("user_id") Long userId,
                                            @Param("start_date") LocalDate startDate);
+    //TODO: update PlanTimeslotRecipeTest to PlanTimeslotRecipe
+    @Query(value = "SELECT NEW tsumami.tsumamijalopy.data.SummaryDTO(pd.dayNum, r.calories, r.fat, r.carbs, r.protein) " +
+            "FROM PlanWeek pw " +
+            "LEFT JOIN PlanDay pd ON pw.id = pd.planWeek.id " +
+            "LEFT JOIN PlanTimeslot pt ON pd.id = pt.planDay.id " +
+            "LEFT JOIN PlanTimeslotRecipe ptr ON pt.id = ptr.planTimeslot.id " +
+            "LEFT JOIN Recipe r ON ptr.recipe.id = r.id " +
+            "WHERE pw.user.id = :user_id " +
+            "AND pw.startDate = :start_date " +
+            "AND ptr.recipe.id IS NOT NULL")
+    List<SummaryDTO> getSummariesByPlanWeek(@Param("user_id") Long userId,
+                                            @Param("start_date") LocalDate startDate);
 }
-//TODO: update PlanTimeslotRecipeTest to PlanTimeslotRecipe

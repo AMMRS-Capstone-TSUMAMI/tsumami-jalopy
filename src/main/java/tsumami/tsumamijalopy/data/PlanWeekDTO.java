@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class PlanWeekDTO {
     private Long dayNum;
     private Long timeslot;
+    private Long timeslotId;
     private Long recipeId;
     private String title;
     private String image;

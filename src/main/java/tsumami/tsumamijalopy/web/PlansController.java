@@ -32,12 +32,12 @@ public class PlansController {
     }
 
 
-//    @GetMapping("/get")
-//    public String[][] getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
-//        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
-//        Long userId = loggedInUser.getId();
-//        return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
-//    }
+    @GetMapping("/get")
+    public String[][] getRecipesByPlanWeekOld(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
+        return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
+    }
 //    @PostMapping("/recipeslot")
 //    public void addRecipeToSlot(@RequestParam Long id, @RequestParam String name, @RequestParam String image, @RequestParam String startDate, @RequestParam Long userId, @RequestParam Long dayNum, @RequestParam Long timeslot) {
 //        planWeeksRepository.addRecipeToSlot(id, name, image, startDate, userId, dayNum, timeslot);
@@ -63,9 +63,15 @@ public class PlansController {
         recipesRepository.deleteRecipe(recipeId, planTimeslotId);
     }
     @GetMapping("/summary")
-    public String[][] summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+    public List<SummaryDTO> summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
         Long userId = loggedInUser.getId();
-        return planDaysRepository.summarizeDayNutrients(startDate, userId);
+        return planWeeksRepository.getSummariesByPlanWeek(userId, LocalDate.parse(startDate));
     }
+//    @GetMapping("/summary")
+//    public String[][] summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+//        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+//        Long userId = loggedInUser.getId();
+//        return planDaysRepository.summarizeDayNutrients(startDate, userId);
+//    }
 }
