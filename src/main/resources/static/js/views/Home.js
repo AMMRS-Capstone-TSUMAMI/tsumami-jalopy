@@ -1,10 +1,10 @@
 
-let me;
-let recipeInfo;
+// let recipeData;
 
 export default function Home(props) {
-    recipeInfo=props.recipes;
+    // recipeData=props.recipeData;
     console.log("The frontend did it. HER FAULT");
+    // console.log(recipeData);
 
     return `
         <main>
@@ -15,9 +15,6 @@ export default function Home(props) {
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 </form>
                 <div id="search-results"></div>
-            </div>
-            <div>
-                
             </div>
         </main>
     `;
@@ -40,7 +37,7 @@ function searchBarHandler(e) {
 }
 
 function getAPI(userSearch) {
-    return fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=d2ecbe1149a34180a752204407a10c5b&query=${userSearch}&number=5`).then(resp => {
+    return fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=12`).then(resp => {
         return resp.json();
     }).then(food => {
         let recipeArray = [];
@@ -64,8 +61,8 @@ function getAPI(userSearch) {
 
         return Promise.resolve();
         //dont delete this
-    }).catch(erre => {
-        console.log(erre);
+    }).catch(error => {
+        console.log(error);
         return Promise.reject();
     });
 }

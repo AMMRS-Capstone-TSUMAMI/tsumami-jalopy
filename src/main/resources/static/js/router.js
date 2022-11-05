@@ -32,10 +32,7 @@ export default function router(URI) {
         },
         '/home': {
             returnView: Home,
-            state: {
-                recipes: `https://api.spoonacular.com/recipes/:id/information?apiKey=${SPOONACULAR_API}`,
-                me: '/api/users/me'
-            },
+            state: {},
             uri: '/home',
             title: 'home',
             background: `#eaeff3`,

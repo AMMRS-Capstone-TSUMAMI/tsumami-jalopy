@@ -229,7 +229,6 @@ function populateSummaries () {
         <div class="carbs">Carbs: ${carbs}g</div>
         <div class="protein">Protein: ${protein}g</div>
         `
-
     })
 }
 
