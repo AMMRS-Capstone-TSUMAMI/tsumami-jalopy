@@ -1,5 +1,5 @@
 import createView from "../createView.js"
-import {BACKEND_PATCH_OPTIONS, getHeaders, isRegistered, setLoggedInUserInfo} from "../auth.js";
+import {BACKEND_PATCH_OPTIONS,isRegistered, setLoggedInUserInfo} from "../auth.js";
 
 
 let currentTab = 0; // Current tab is set to be the first tab (0)
@@ -9,10 +9,8 @@ export default function Register(props) {
     if(isRegistered()){
         createView("/meals");
         return ""
-    }
-    return `
-
-
+    } else {
+        return `
 <form id="regForm" action="">
 
 <h1>Register:</h1>
@@ -65,12 +63,10 @@ export default function Register(props) {
   <span class="step"></span>
   <span class="step"></span>
 </div>
-
 </form>
-
-
-
 `;
+    }
+
 }
 
 function showTab(n) {
@@ -167,8 +163,7 @@ function fixStepIndicator(n) {
 }
 
 export function RegisterEvent(){
-    //button from prev code wasn't working used test and functional
-    // testButtonListener();
+
     showTab(currentTab); // Display the current tab
     const prevBtn = document.querySelector("#prevBtn")
     prevBtn.addEventListener("click",function (){
@@ -176,16 +171,6 @@ export function RegisterEvent(){
     const nextBtn = document.querySelector("#nextBtn")
     nextBtn.addEventListener("click",function (){
         nextPrev(1)})
-
-    //this if statement wasn't working
-    // if (currentTab === 5){
-    //     const submitBtn = document.querySelector("#nextBtn")
-    //     submitBtn.addEventListener("click",function (){
-    //         console.log("is this thing on?")
-    //         nextPrev(1)})
-
-    // const registerButton = document.querySelector("#register-btn");
-    // registerButton.addEventListener("click", function() {
 }
 
 

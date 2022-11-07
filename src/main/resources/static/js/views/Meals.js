@@ -1,6 +1,7 @@
 import * as auth from "../auth.js";
 import createView from "../createView.js";
 import {checkAndAddTrophy, getUserData} from "./User.js";
+import * as utils from "../utils.js"
 
 // TODO: update summaries for empty days
 // TODO: calculate summaries in frontend
@@ -204,7 +205,7 @@ async function fetchNutrition(id) {
 
 async function fetchSummaries() {
     const url = `${BACKEND_HOST_URL}/api/plans/summary?startDate=${startDay.ISO()}`;
-    summaries = await fetchJSON(url, auth.BACKEND_GET_OPTIONS);
+    summaries = await utils.fetchJSON(url, auth.BACKEND_GET_OPTIONS);
 }
 
 // function populateSummaries () {
@@ -261,12 +262,12 @@ function populateResults() {
 
 async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot, calories, fat, carbs, protein) {
     const url = `${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}&calories=${calories}&fat=${fat}&carbs=${carbs}&protein=${protein}`;
-    timeslotId = await fetchJSON(url, auth.BACKEND_POST_OPTIONS);
+    timeslotId = await utils.fetchJSON(url, auth.BACKEND_POST_OPTIONS);
 }
 
 async function deleteRecipe(planTimeslotId, recipeId) {
     const url = `${BACKEND_HOST_URL}/api/plans/delete?planTimeslotId=${planTimeslotId}&recipeId=${recipeId}`;
-    await fetchText(url, auth.BACKEND_DELETE_OPTIONS);
+    await utils.fetchText(url, auth.BACKEND_DELETE_OPTIONS);
 }
 
 function getStartDay(date) {
@@ -285,7 +286,7 @@ function getStartDay(date) {
 
 async function fetchCalendarEntries() {
     const url = `${BACKEND_HOST_URL}/api/plans/recipes?startDate=${startDay.ISO()}`
-    plan = await fetchJSON(url, auth.BACKEND_GET_OPTIONS)
+    plan = await utils.fetchJSON(url, auth.BACKEND_GET_OPTIONS)
 }
 
 function populateCalendar() {
