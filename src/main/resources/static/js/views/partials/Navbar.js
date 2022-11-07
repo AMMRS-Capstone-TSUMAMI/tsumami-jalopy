@@ -5,7 +5,7 @@ export default function Navbar(props) {
         return `
 <nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" data-link href="/about">
+        <a class="navbar-brand" data-link href="/home">
             <img src="/img/logo-sm.png" data-passthru alt="tsUmami" height="40" class="d-inline-block align-text-top">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,6 +21,9 @@ export default function Navbar(props) {
                 </li> 
                 <li class="nav-item">
                     <a class="nav-link active" style="color: white" data-link href="/logout">Logout</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link active" style="color: white" data-link href="/about">Dev page</a>
                 </li>
             </ul>
         </div>

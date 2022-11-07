@@ -32,6 +32,7 @@
 }
 
 .home-recipe-card {
+    display: flex;
     width: 100px;
     height: 200px;
     padding: 10px;
@@ -39,6 +40,10 @@
 }
 
 .home-card-image {
-    width: 100px;
+    border-radius: 40%;
+    /*background-size: cover;*/
+    margin: auto;
+    width: 40vw;
     height: auto;
+    padding-bottom: 1rem;
 }

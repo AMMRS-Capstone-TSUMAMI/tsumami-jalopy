@@ -25,10 +25,17 @@ export default function router(URI) {
             title: 'Landing',
         },
         '/': {
+            returnView: Landing,
+            state: {},
+            uri: '/landing',
+            title: 'Landing',
+        },
+        '/home': {
             returnView: Home,
             state: {},
-            uri: '/',
-            title: 'Home',
+            uri: '/home',
+            title: 'home',
+            background: `#eaeff3`,
             viewEvent: HomeEvents
         },
         '/me': {
