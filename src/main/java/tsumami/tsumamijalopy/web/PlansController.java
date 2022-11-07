@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tsumami.tsumamijalopy.data.*;
 import tsumami.tsumamijalopy.services.AuthBuddy;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,21 +19,21 @@ public class PlansController {
     private PlanTimeslotsRepository planTimeslotsRepository;
     private AuthBuddy authBuddy;
 
+    @GetMapping("/recipes")
+    public List<PlanWeekDTO> getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+        Long userId = loggedInUser.getId();
+        return planWeeksRepository.getRecipesByPlanWeek(userId, LocalDate.parse(startDate));
+    }
+
     @GetMapping("")
     public List<PlanTimeslot> getAllTimeslots() {
         return planTimeslotsRepository.findAll();
     }
 
-//    @GetMapping("/timeslot")
-//    public PlanTimeslot getPlanTimeslotByDayWeekStart(@RequestParam String startDate, @RequestParam Long dayNum, @RequestParam Long timeslot) {
-//        return planTimeslotsRepository.getPlanTimeslotByDayWeekStart(startDate, dayNum, timeslot, 1L);
-        //TODO replace 1L with userId pulled from auth header
-        //TODO add a PostMapping
-        //TODO add recipe{id}
-        //TODO post request in frontend; parameters passed in url
-//    }
+
     @GetMapping("/get")
-    public String[][] getRecipesByPlanWeek(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+    public String[][] getRecipesByPlanWeekOld(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
         Long userId = loggedInUser.getId();
         return planTimeslotsRepository.getRecipesByPlanWeek(startDate, userId);
@@ -62,10 +63,15 @@ public class PlansController {
         recipesRepository.deleteRecipe(recipeId, planTimeslotId);
     }
     @GetMapping("/summary")
-    public String[][] summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+    public List<SummaryDTO> summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
         User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
         Long userId = loggedInUser.getId();
-        return planDaysRepository.summarizeDayNutrients(startDate, userId);
+        return planWeeksRepository.getSummariesByPlanWeek(userId, LocalDate.parse(startDate));
     }
-
+//    @GetMapping("/summary")
+//    public String[][] summarizeDayNutrients(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader, @RequestParam String startDate) {
+//        User loggedInUser = authBuddy.getUserFromAuthHeader(authHeader);
+//        Long userId = loggedInUser.getId();
+//        return planDaysRepository.summarizeDayNutrients(startDate, userId);
+//    }
 }

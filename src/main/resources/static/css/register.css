@@ -1,6 +1,6 @@
 /* Style the form */
 #regForm {
-    margin: 100px auto;
+    margin: 0px auto;
     padding: 40px;
     width: 70%;
     min-width: 300px;
@@ -11,7 +11,7 @@ input {
     padding: 10px;
     width: 100%;
     font-size: 17px;
-    font-family: Raleway;
+    font-family: Raleway, serif;
     border: 1px solid #aaaaaa;
 }
 
@@ -71,15 +71,20 @@ input.invalid {
     vertical-align: middle;
     white-space: nowrap;
 }
+.register {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .button:after {
     content: "";
     background: #f1f1f1;
     display: block;
     position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
+    /*padding-top: 300%;*/
+    /*padding-left: 350%;*/
     margin-left: -20px !important;
-    margin-top: -120%;
+    /*margin-top: -120%;*/
     opacity: 0;
     transition: all 0.8s
 }

@@ -1,3 +1,4 @@
+import {removeStaleTokens} from "./auth.js";
 //sedentary: little to no exercise
 //light: light exercise/sports 1-3 days per week
 //moderate: moderate exercise/sports 3-5 days per week
@@ -52,7 +53,7 @@ function calculateMacrosInGrams(calories, macroAllocation) {
 }
 
 //fetch that returns json
-async function fetchJSON(url, request) {
+export async function fetchJSON(url, request) {
     return await fetch(url, request)
         .then(function(response) {
             if(!response.ok) {
@@ -65,7 +66,7 @@ async function fetchJSON(url, request) {
         })
 }
 //fetch that returns text
-async function fetchText(url, request) {
+export async function fetchText(url, request) {
     await fetch(url, request)
         .then(function(response) {
             if(!response.ok) {
@@ -87,6 +88,6 @@ Date.prototype.addDays = function(days) {
 //method converts Date object to YYYY-MM-DD format
 Date.prototype.ISO = function() {
     let date = new Date(this.valueOf());
-    date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+    date = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
     return date;
 }

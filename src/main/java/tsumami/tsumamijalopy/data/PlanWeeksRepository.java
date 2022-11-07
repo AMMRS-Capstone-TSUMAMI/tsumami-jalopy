@@ -1,11 +1,14 @@
 package tsumami.tsumamijalopy.data;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 
 public interface PlanWeeksRepository extends JpaRepository<PlanWeek, Long> {
     @Transactional
@@ -18,29 +21,30 @@ public interface PlanWeeksRepository extends JpaRepository<PlanWeek, Long> {
             "WHERE start_date = :start_date " +
             "   AND user_id = :user_id", nativeQuery = true)
     Long getPlanWeekId(@Param("start_date") String startDate, @Param("user_id") Long userId);
-//    @Query(value = "INSERT IGNORE INTO recipes (id, name, photo) " +
-//            "VALUES " +
-//            "    (:id, :name, :photo); " +
-//            "INSERT IGNORE INTO plan_weeks (start_date, user_id) " +
-//            "VALUES " +
-//            "    (:start_date, :user_id); " +
-//            "SET @plan_week_id = LAST_INSERT_ID(); " +
-//            "INSERT IGNORE INTO plan_days (day_num, plan_week_id) " +
-//            "VALUES " +
-//            "    (:day_num, @plan_week_id); " +
-//            "SET @plan_day_id = LAST_INSERT_ID(); " +
-//            "INSERT IGNORE INTO plan_timeslots (timeslot, plan_day_id) " +
-//            "VALUES " +
-//            "    (:timeslot, @plan_day_id); " +
-//            "SET @plan_timeslot_id = LAST_INSERT_ID(); " +
-//            "INSERT INTO plan_timeslot_recipe (plan_timeslot_id, recipe_id) " +
-//            "VALUES " +
-//            "    (@plan_timeslot_id, :id)", nativeQuery = true)
-//    void addRecipeToSlot(@Param("id") Long id,
-//                   @Param("name") String name,
-//                   @Param("photo") String image,
-//                   @Param("start_date") String startDate,
-//                   @Param("user_id") Long userId,
-//                   @Param("day_num") Long dayNum,
-//                   @Param("timeslot") Long timeslot);
+
+    @Query(value = "SELECT NEW tsumami.tsumamijalopy.data.PlanWeekDTO(" +
+            "pd.dayNum, pt.timeslot, pt.id, ptr.recipe.id, r.name, r.photo, r.calories, r.fat, r.carbs, r.protein" +
+            ") " +
+            "FROM PlanWeek pw " +
+            "LEFT JOIN PlanDay pd ON pw.id = pd.planWeek.id " +
+            "LEFT JOIN PlanTimeslot pt ON pd.id = pt.planDay.id " +
+            "LEFT JOIN PlanTimeslotRecipe ptr ON pt.id = ptr.planTimeslot.id " +
+            "LEFT JOIN Recipe r ON ptr.recipe.id = r.id " +
+            "WHERE pw.user.id = :user_id " +
+            "AND pw.startDate = :start_date " +
+            "AND ptr.recipe.id IS NOT NULL")
+    List<PlanWeekDTO> getRecipesByPlanWeek(@Param("user_id") Long userId,
+                                           @Param("start_date") LocalDate startDate);
+    //TODO: update PlanTimeslotRecipeTest to PlanTimeslotRecipe
+    @Query(value = "SELECT NEW tsumami.tsumamijalopy.data.SummaryDTO(pd.dayNum, r.calories, r.fat, r.carbs, r.protein) " +
+            "FROM PlanWeek pw " +
+            "LEFT JOIN PlanDay pd ON pw.id = pd.planWeek.id " +
+            "LEFT JOIN PlanTimeslot pt ON pd.id = pt.planDay.id " +
+            "LEFT JOIN PlanTimeslotRecipe ptr ON pt.id = ptr.planTimeslot.id " +
+            "LEFT JOIN Recipe r ON ptr.recipe.id = r.id " +
+            "WHERE pw.user.id = :user_id " +
+            "AND pw.startDate = :start_date " +
+            "AND ptr.recipe.id IS NOT NULL")
+    List<SummaryDTO> getSummariesByPlanWeek(@Param("user_id") Long userId,
+                                            @Param("start_date") LocalDate startDate);
 }

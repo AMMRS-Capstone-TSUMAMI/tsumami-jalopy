@@ -1,21 +1,12 @@
 import * as auth from "../auth.js";
 import createView from "../createView.js";
 import {checkAndAddTrophy, getUserData} from "./User.js";
+import * as utils from "../utils.js"
 
-// TODO: use UTC date
-// TODO: transmit date to backend when meal is added
-// TODO:
-// TODO:
+// TODO: update summaries for empty days
+// TODO: calculate summaries in frontend
 let today = new Date;
-let me;
-let intolerances;
-let diet;
-let nutrition;
-let startDay;
-let plan;
-let results;
-let timeslotId;
-let summaries;
+let me, intolerances, diet, nutrition, startDay, plan, results, timeslotId, summaries;
 export default function Meals(props) {
     me = props.me;
     intolerances = me.intolerances;
@@ -146,7 +137,9 @@ export async function MealsEvent() {
     console.log("MealsEvent Complete");
 }
 
+function calculateSummaries(calories, fat, carbs, protein) {
 
+}
 
 function prepareSearchFields() {
     const recipeField = document.querySelector("#meals-recipe-search-field");
@@ -212,24 +205,29 @@ async function fetchNutrition(id) {
 
 async function fetchSummaries() {
     const url = `${BACKEND_HOST_URL}/api/plans/summary?startDate=${startDay.ISO()}`;
-    summaries = await fetchJSON(url, auth.BACKEND_GET_OPTIONS);
+    summaries = await utils.fetchJSON(url, auth.BACKEND_GET_OPTIONS);
 }
 
+// function populateSummaries () {
+//     summaries.forEach((summary) => {
+//         let target = document.querySelector(`[data-summary="${summary.dayNum}"]`)
+//         target.innerHTML = `
+//         <div class="calories">Calories: <span>${summary.calories}</span></div>
+//         <div class="fat">Fat: <span>${summary.fat}</span>g</div>
+//         <div class="carbs">Carbs: <span>${summary.carbs}</span>g</div>
+//         <div class="protein">Protein: <span>${summary.protein}</span>g</div>
+//         `
+//     })
+// }
 function populateSummaries () {
     summaries.forEach((summary) => {
-        let day = summary[0];
-        let calories = summary[1];
-        let fat = summary[2];
-        let carbs = summary[3];
-        let protein = summary[4];
-        let target = document.querySelector(`[data-summary="${day}"]`)
+        let target = document.querySelector(`[data-summary="${summary.dayNum}"]`)
         target.innerHTML = `
-        <div class="calories">Calories: ${calories}</div>
-        <div class="fat">Fat: ${fat}g</div>
-        <div class="carbs">Carbs: ${carbs}g</div>
-        <div class="protein">Protein: ${protein}g</div>
+        <div class="calories">Calories: <span>${summary.calories}</span></div>
+        <div class="fat">Fat: <span>${summary.fat}</span>g</div>
+        <div class="carbs">Carbs: <span>${summary.carbs}</span>g</div>
+        <div class="protein">Protein: <span>${summary.protein}</span>g</div>
         `
-
     })
 }
 
@@ -263,20 +261,19 @@ function populateResults() {
 }
 
 async function addRecipe(recipeId, recipeName, image, startDate, dayNum, timeslot, calories, fat, carbs, protein) {
-    //todo update data-slot-id in html
     const url = `${BACKEND_HOST_URL}/api/plans/post?recipeId=${recipeId}&dayNum=${dayNum}&image=${image}&recipeName=${recipeName}&startDate=${startDay.ISO()}&timeslot=${timeslot}&calories=${calories}&fat=${fat}&carbs=${carbs}&protein=${protein}`;
-    timeslotId = await fetchJSON(url, auth.BACKEND_POST_OPTIONS);
+    timeslotId = await utils.fetchJSON(url, auth.BACKEND_POST_OPTIONS);
 }
 
 async function deleteRecipe(planTimeslotId, recipeId) {
     const url = `${BACKEND_HOST_URL}/api/plans/delete?planTimeslotId=${planTimeslotId}&recipeId=${recipeId}`;
-    await fetchText(url, auth.BACKEND_DELETE_OPTIONS);
+    await utils.fetchText(url, auth.BACKEND_DELETE_OPTIONS);
 }
 
 function getStartDay(date) {
     let day = date.getDay()
     if(day === 0) {
-        startDay = date.utils.addDays(-6);
+        startDay = date.addDays(-6);
     }
     if(day === 1) {
         startDay = date;
@@ -288,43 +285,34 @@ function getStartDay(date) {
 }
 
 async function fetchCalendarEntries() {
-    const url = `${BACKEND_HOST_URL}/api/plans/get?startDate=${startDay.ISO()}`
-    plan = await fetchJSON(url, auth.BACKEND_GET_OPTIONS)
+    const url = `${BACKEND_HOST_URL}/api/plans/recipes?startDate=${startDay.ISO()}`
+    plan = await utils.fetchJSON(url, auth.BACKEND_GET_OPTIONS)
 }
 
 function populateCalendar() {
-    for(let i = 0; i < plan.length; i++) {
-        let target = document.querySelector(`[data-slot="${plan[i][0]}"]`),
-            id = "r" + Math.random().toString(36).slice(2),
-            slotId = plan[i][1],
-            recipeId = plan[i][2],
-            title = plan[i][3],
-            image = plan[i][4],
-            calories = plan[i][5],
-            fat = plan[i][6],
-            carbs = plan[i][7],
-            protein = plan[i][8];
+    console.log(plan);
+    plan.forEach((el) => {
+        let target = document.querySelector(`[data-slot="${el.dayNum}${el.timeslot}"]`),
+            id = `r${Math.random().toString(36).slice(2)}`;
         target.innerHTML += `
-        <div class="card meal-card" id="${id}" data-slot-id="${slotId}" data-recipe-id="${recipeId}" data-title="${title}" data-image="${image}" data-calories="${calories}" data-carbs="${carbs}" data-fat="${fat}" data-protein="${protein}" draggable="true" style="background-image: url(${image})">
+        <div class="card meal-card" id="${id}" data-slot-id="${el.timeslotId}" data-recipe-id="${el.recipeId}" data-title="${el.title}" data-image="${el.image}" data-calories="${el.calories}" data-carbs="${el.carbs}" data-fat="${el.fat}" data-protein="${el.protein}" draggable="true" style="background-image: url(${el.image})">
             <div class="meal-overlay" style="display: none">              
-                <i class="bi bi-info-circle-fill info" data-recipe-id="${recipeId}"></i>
-<!--                <i class="bi bi-heart-fill save" data-recipe-id="${recipeId}"></i>-->
-                <i class="bi bi-trash3-fill delete" data-recipe-id="${recipeId}" data-slot-id="${slotId}"></i>
+                <i class="bi bi-info-circle-fill info" data-recipe-id="${el.recipeId}"></i>
+                <i class="bi bi-trash3-fill delete" data-recipe-id="${el.recipeId}" data-slot-id="${el.timeslotId}"></i>
             </div>
             <div class="card-body"></div>
-            <div class="card-footer p-1">${title}</div>
+            <div class="card-footer p-1">${el.title}</div>
         </div>
         `
-
-    }
-    let summaryClasses = document.querySelectorAll(".summary");
-    summaryClasses.forEach((summary) => {
-        summary.innerHTML = `
-        <div class="calories">Calories: </div>
-        <div class="fat">Fat: </div>
-        <div class="carbs">Carbs: </div>
-        <div class="protein">Protein: </div>`
     })
+    let summaryClasses = document.querySelectorAll(".summary");
+    for(let i = 0; i < 7; i++) {
+        summaryClasses[i].innerHTML = `
+        <div class="calories">Calories: <span id="cal${i}"></span></div>
+        <div class="fat">Fat: <span id="fat${i}"></span></div>
+        <div class="carbs">Carbs: <span id="car${i}"></span></div>
+        <div class="protein">Protein: <span id="pro${i}"></span></div>`
+    }
 }
 
 function generateCalendarWeek(start) {
