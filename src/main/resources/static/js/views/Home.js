@@ -1,5 +1,7 @@
+let recipes;
+let food;
+let recipeArray;
 
-// let recipeData;
 
 export default function Home(props) {
     // recipeData=props.recipeData;
@@ -27,42 +29,60 @@ export function HomeEvents() {
 function searchBarHandler(e) {
     const userInput = document.querySelector('#search-bar');
 
-    userInput.addEventListener('keypress', function (e) {
+    userInput.addEventListener('keypress', async function (e) {
         if (e.key === 'Enter') {
             e.preventDefault()
             let userInput2 = userInput.value;
-            getAPI(userInput2);
+            await getAPI(userInput2);
         }
     })
 }
 
 function getAPI(userSearch) {
-    return fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=12`).then(resp => {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=12`).then(resp => {
         return resp.json();
     }).then(food => {
-        let recipeArray = [];
-        for (let i = 0; i < 5; i++) {
-            recipeArray.push(food.results[i])
-        }
-        console.log(recipeArray)
-        let html = "";
-        recipeArray.forEach(function (recipe, index) {
+        recipeArray = [];
+        recipeArray.push(food);
+        console.log(food);
+        console.log(recipeArray);
+        loopRecipesData()
+    })
+}
+function loopRecipesData() {
+    console.log(recipeArray);
+    for (let i = 0; i < recipeArray.length; i++) {
+        //     recipeArray.push(recipes.results)
+        // }
+        console.log(recipeArray[0].results)
+
+        for (let j = 0; j < recipeArray[0].results.length; j++) {
+            let html = "";
+            let image = "";
+            let title = "";
+            let id = "";
+
+            image += recipeArray[0].results[j].image;
+            title += recipeArray[0].results[j].title;
+            id += recipeArray[0].results[j].id;
+
             html += `
                 <div class="home-recipe-card">
                     <div class="home-card-image">
-                        <img src="${recipe.image}" class="home-card-img" alt="Recipe Image">
+                        <img src="${image}" class="home-card-img" alt="Recipe Image">
                     </div>
-                    <h3 data-id="${recipe.id}" class="home-card-title">${recipe.title}</h3>
+                    <h3 data-id="${id}" class="home-card-title">${title}</h3>
                 </div>
             `
-        })
-        const recipesContainer = document.querySelector("#search-results");
-        recipesContainer.innerHTML = html;
-
-        return Promise.resolve();
-        //dont delete this
-    }).catch(error => {
-        console.log(error);
-        return Promise.reject();
-    });
+            const recipesContainer = document.querySelector("#search-results");
+            recipesContainer.innerHTML += html;
+        }
+    }
 }
+// console.log(recipeArray)
+// recipeArray.forEach(function (recipe, index) {
+
+// })
+
+
+
