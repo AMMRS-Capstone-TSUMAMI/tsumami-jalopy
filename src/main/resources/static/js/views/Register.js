@@ -1,12 +1,12 @@
 import createView from "../createView.js"
-import {BACKEND_PATCH_OPTIONS,isRegistered, setLoggedInUserInfo} from "../auth.js";
+import * as auth from "../auth.js";
 
 
 let currentTab = 0; // Current tab is set to be the first tab (0)
 
 export default function Register(props) {
 
-    if(isRegistered()){
+    if(auth.isRegistered()){
         createView("/meals");
         return ""
     } else {
@@ -17,13 +17,13 @@ export default function Register(props) {
 
 <!-- One "tab" for each step in the form: -->
 <div class="tab justify-content-evenly">
-    <input type="text" class="form-control" id="inputHeight" style="text-align:center;margin:20px;" placeholder="Height">
-    <input type="text" class="form-control" id="inputWeight" style="text-align:center;margin:20px;" placeholder="Weight">
+    <input type="text" class="form-control register" id="inputHeight" placeholder="Height">
+    <input type="text" class="form-control register" id="inputWeight" placeholder="Weight">
 </div>
 
 
 <div class="tab">
-    <select type="text" id="inputDietType" style="text-align:center;margin:20px;" class="form-control">
+    <select type="text" id="inputDietType" class="form-control  register">
         <label>Diet Type</label>
             <option selected value="no diet">No Diet</option>
             <option>Ketogenic</option>
@@ -35,7 +35,7 @@ export default function Register(props) {
             <option>Lacto-Vegetarian</option>
             <option>Ovo-Vegetarian</option>          
     </select>  
-    <select type="text" id="inputActivityLevel" style="text-align:center;margin:20px;" class="form-control">
+    <select type="text" id="inputActivityLevel" class="form-control register">
         <label>Activity Level</label>
             <option value="sedentary" selected>Sedentary</option>
             <option value="light">Light</option>
@@ -44,13 +44,13 @@ export default function Register(props) {
     </select>
 </div>
 <div class="tab">
-    <input type="text" class="form-control" id="inputProtein" style="text-align:center;margin:20px;" placeholder="Protein Goal">
-    <input type="text" class="form-control" id="inputCarbs" style="text-align:center;margin:20px;" placeholder="Carb Goal">
-    <input type="text" class="form-control" id="inputFat" style="text-align:center;margin:20px;" placeholder="Fat Goal">
-    <input type="text" class="form-control" id="inputCalories" style="text-align:center;margin:20px;" placeholder="Calorie Goal">
+    <input type="text" class="form-control register" id="inputProtein" placeholder="Protein Goal">
+    <input type="text" class="form-control register" id="inputCarbs" placeholder="Carb Goal">
+    <input type="text" class="form-control register" id="inputFat" placeholder="Fat Goal">
+    <input type="text" class="form-control register" id="inputCalories" placeholder="Calorie Goal">
 </div>
 
-<div style="overflow:auto;">
+<div>
     <div style="float:right;">
         <button type="button" class="button" id="prevBtn">Previous</button>
         <button type="button" class="button" id="nextBtn">Next</button>
@@ -58,7 +58,7 @@ export default function Register(props) {
 </div>
 
 <!-- Circles which indicates the steps of the form: -->
-<div style="text-align:center;margin-top:40px;">
+<div style="text-align:center;margin-top:60px;">
   <span class="step"></span>
   <span class="step"></span>
   <span class="step"></span>
@@ -186,10 +186,10 @@ async function submitRegistration() {
         let newUser = {height, weight, activityLevel, diet, calorieGoal, proteinGoal, carbGoal, fatGoal}
         console.log(newUser);
         const url = `${USER_API_BASE_URL}/updateUser`;
-        await fetch(url, BACKEND_PATCH_OPTIONS(newUser))
+        await fetch(url, auth.BACKEND_PATCH_OPTIONS(newUser))
             .then(response => {
                 console.log(response.status);
-                setLoggedInUserInfo();
+                auth.setLoggedInUserInfo();
                 createView("/meals");
             })
 }
