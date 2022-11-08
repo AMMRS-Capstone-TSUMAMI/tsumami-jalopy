@@ -1,6 +1,8 @@
 let recipes;
 let food;
 let recipeArray;
+let html;
+
 
 
 export default function Home(props) {
@@ -16,9 +18,10 @@ export default function Home(props) {
                     <input type="text" id="search-bar" placeholder="Search Your Recipe...">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 </form>
-                <div id="search-results"></div>
+                <div id="search-results" class="d-flex flex-wrap scrolling-wrapper"></div>
             </div>
         </main>
+        
     `;
 }
 
@@ -39,7 +42,7 @@ function searchBarHandler(e) {
 }
 
 function getAPI(userSearch) {
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=12`).then(resp => {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=20`).then(resp => {
         return resp.json();
     }).then(food => {
         recipeArray = [];
@@ -57,7 +60,6 @@ function loopRecipesData() {
         console.log(recipeArray[0].results)
 
         for (let j = 0; j < recipeArray[0].results.length; j++) {
-            let html = "";
             let image = "";
             let title = "";
             let id = "";
@@ -69,13 +71,13 @@ function loopRecipesData() {
             html += `
                 <div class="home-recipe-card">
                     <div class="home-card-image">
-                        <img src="${image}" class="home-card-img" alt="Recipe Image">
+                        <img src="${image}" id="home-card-img" class="home-card-img" alt="Recipe Image">
+                        <div data-id="${id}" id="home-card-img" class="home-card-title">${title}</div>
                     </div>
-                    <h3 data-id="${id}" class="home-card-title">${title}</h3>
                 </div>
             `
             const recipesContainer = document.querySelector("#search-results");
-            recipesContainer.innerHTML += html;
+            recipesContainer.innerHTML = html;
         }
     }
 }
