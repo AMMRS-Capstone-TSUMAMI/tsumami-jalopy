@@ -27,27 +27,37 @@
 
 #search-results {
     display: flex;
-    justify-content:space-evenly;
+    /*justify-content:space-evenly;*/
     /*flex-wrap: nowrap;*/
 }
 
 .home-recipe-card {
     display: flex;
-    width: 100vw;
+    /* width: 100vw; */
     height: 17rem;
     padding: 10px;
-    margin: 6rem;
+    /* margin: 6rem; */
+    background-color: white;
+    border-radius: 3rem;
 }
 
 .home-card-image {
     /*background-size: cover;*/
     margin: auto;
-    width: 40vw;
+    /*width: 40vw;*/
     height: auto;
     padding-bottom: 1rem;
 }
-#home-card-img{
-    border-radius: 5%;
+#home-card-title{
+    color: black;
+    background-color: lightslategrey;
+    width: 19.5rem;
+    font-size: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5rem;
 }
 .scrolling-wrapper {
     display: flex;
@@ -77,4 +87,11 @@
 
 #home-card-img{
     font-size: 1.16rem;
+    border-radius: 1rem;
+}
+
+#outer-border{
+    border-radius: 5rem;
+    color: white;
+    border: solid white 10px;
 }
