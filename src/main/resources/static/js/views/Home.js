@@ -1,6 +1,9 @@
 let recipes;
 let food;
 let recipeArray;
+let html="";
+
+
 
 
 export default function Home(props) {
@@ -16,7 +19,7 @@ export default function Home(props) {
                     <input type="text" id="search-bar" placeholder="Search Your Recipe...">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 </form>
-                <div id="search-results"></div>
+                <div id="search-results" class="d-flex flex-wrap scrolling-wrapper"></div>
             </div>
         </main>
     `;
@@ -28,18 +31,22 @@ export function HomeEvents() {
 
 function searchBarHandler(e) {
     const userInput = document.querySelector('#search-bar');
-
     userInput.addEventListener('keypress', async function (e) {
         if (e.key === 'Enter') {
             e.preventDefault()
-            let userInput2 = userInput.value;
-            await getAPI(userInput2);
+            //function here to clear inner html for #search-results
+            let newUserQuery = userInput.value;
+            await getAPI(newUserQuery);
         }
     })
 }
+// function clearSearchResults(){
+//     let searchContainer = document.querySelector("#search-results");
+//     searchContainer.innerHTML = "";
+// }
 
 function getAPI(userSearch) {
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=12`).then(resp => {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=20`).then(resp => {
         return resp.json();
     }).then(food => {
         recipeArray = [];
@@ -50,6 +57,7 @@ function getAPI(userSearch) {
     })
 }
 function loopRecipesData() {
+    html="";
     console.log(recipeArray);
     for (let i = 0; i < recipeArray.length; i++) {
         //     recipeArray.push(recipes.results)
@@ -57,7 +65,6 @@ function loopRecipesData() {
         console.log(recipeArray[0].results)
 
         for (let j = 0; j < recipeArray[0].results.length; j++) {
-            let html = "";
             let image = "";
             let title = "";
             let id = "";
@@ -65,17 +72,24 @@ function loopRecipesData() {
             image += recipeArray[0].results[j].image;
             title += recipeArray[0].results[j].title;
             id += recipeArray[0].results[j].id;
-
+            for (let i = 0; i < recipeArray[0].results[j].length; i++) {
+                let image = `https://spoonacular.com/recipeImages/${recipeArray[0].results[j].image}`;
+                if (recipeArray[0].results[j].image === null) {
+                    image = "/img/frying-panResized.png"
+                }
+            }
             html += `
-                <div class="home-recipe-card">
-                    <div class="home-card-image">
-                        <img src="${image}" class="home-card-img" alt="Recipe Image">
+                <div id="outer-border">
+                    <div class="home-recipe-card">
+                        <div class="home-card-image">
+                            <img src="${image}" id="home-card-img" class="home-card-img" alt="Recipe Image">
+                            <div data-id="${id}" id="home-card-title">${title}</div>
+                        </div>
                     </div>
-                    <h3 data-id="${id}" class="home-card-title">${title}</h3>
                 </div>
             `
             const recipesContainer = document.querySelector("#search-results");
-            recipesContainer.innerHTML += html;
+            recipesContainer.innerHTML = html;
         }
     }
 }
