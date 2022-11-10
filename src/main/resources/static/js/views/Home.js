@@ -84,7 +84,7 @@ function loopRecipesData() {
                         <div class="home-recipe-card">
                             <div class="home-card-image">
                                 <img src="${image}" id="home-card-img" class="home-card-img" alt="Recipe Image">
-                                <div data-id="${id}" id="home-card-title">${title}</div>
+                                <div data-id="${id}" id="home-card-title" class="card-footer">${title}</div>
                             </div>
                         </div>
                     </div>
