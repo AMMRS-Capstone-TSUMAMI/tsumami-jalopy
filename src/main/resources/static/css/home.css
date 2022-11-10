@@ -108,7 +108,7 @@
 #outer-outer-border:hover{
     /*box-shadow: 0px 4px 0px 0px lightslategrey;*/
     /*box-shadow: 0px 4px 15px 0px lightslategrey;*/
-    box-shadow: 0px 4px 11px 0px #d8617d;
+    box-shadow: 0px 2px 2px 0px #c2a31c, 0px 4px 11px 0px #d8617d;
 
     transform: translate(0, -10px);
     /*box-shadow: 0 0 20px 0 lightslategray;*/

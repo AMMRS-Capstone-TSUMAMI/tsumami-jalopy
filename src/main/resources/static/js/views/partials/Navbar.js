@@ -20,8 +20,8 @@ export default function Navbar(props) {
                     <a class="nav-link active" style="color: white" data-link href="/me">My Account</a>
                 </li> 
                  <li class="nav-item ms-auto p-2 bd-highlight">
-                    <a class="navbar-brand" data-link href="/about">
-                        <img src="/img/devLogo.png" data-passthru alt="tsUmami" height="40" class="d-inline-block align-text-top">
+                    <a data-link href="/about">
+                        <img src="/img/devLogo.png" data-passthru alt="tsUmami" height="40" id="devLogo" class="d-inline-block align-text-top">
                     </a>
                 </li>
                 <li class="nav-item ms-auto p-2 bd-highlight">
@@ -36,3 +36,4 @@ export default function Navbar(props) {
         return ""
     }
 }
+console.log("graphic design(devLogo.png)--Ann Yoshimura");
