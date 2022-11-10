@@ -50,7 +50,7 @@
 }
 #home-card-title{
     color: black;
-    background-color: lightslategrey;
+    /*background-color: lightslategrey;*/
     width: 19.5rem;
     font-size: 0.8rem;
     justify-content: center;
@@ -87,11 +87,31 @@
 
 #home-card-img{
     font-size: 1.16rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
 }
 
 #outer-border{
     border-radius: 5rem;
     color: white;
     border: solid white 10px;
+    margin: 1rem;
+}
+#outer-outer-border{
+    border-radius: 7rem;
+    color: blue;
+    border: solid #d8617d 3px;
+    margin: 1rem;
+    background-color: white;
+    /*box-shadow: 0 0 20px 0 lightslategray;*/
+    box-shadow: 0 0 5px 0 lightslategray;
+}
+#outer-outer-border:hover{
+    /*box-shadow: 0px 4px 0px 0px lightslategrey;*/
+    /*box-shadow: 0px 4px 15px 0px lightslategrey;*/
+    box-shadow: 0px 4px 11px 0px #d8617d;
+
+    transform: translate(0, -10px);
+    /*box-shadow: 0 0 20px 0 lightslategray;*/
+    /*border-radius: 10px;*/
+    transition: 0.5s ease;
 }

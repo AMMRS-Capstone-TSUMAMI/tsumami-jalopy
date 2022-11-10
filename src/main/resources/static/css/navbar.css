@@ -13,3 +13,6 @@
     opacity: 100%;
     text-shadow: var(--btn-color) 1px 1px;
 }
+#logout-btn{
+    margin-left: 70vw;
+}

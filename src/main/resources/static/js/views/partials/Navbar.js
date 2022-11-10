@@ -12,18 +12,20 @@ export default function Navbar(props) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-                <li class="nav-item">
+            <ul class="navbar-nav d-flex" >
+                <li class="nav-item p-2 bd-highlight">
                     <a class="nav-link active" style="color: white" data-link aria-current="true" href="/meals">Meal Planner</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item p-2 bd-highlight">
                     <a class="nav-link active" style="color: white" data-link href="/me">My Account</a>
                 </li> 
-                <li class="nav-item">
-                    <a class="nav-link active" style="color: white" data-link href="/logout">Logout</a>
+                 <li class="nav-item ms-auto p-2 bd-highlight">
+                    <a class="navbar-brand" data-link href="/about">
+                        <img src="/img/devLogo.png" data-passthru alt="tsUmami" height="40" class="d-inline-block align-text-top">
+                    </a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link active" style="color: white" data-link href="/about">Dev page</a>
+                <li class="nav-item ms-auto p-2 bd-highlight">
+                    <a id="logout-btn" class="nav-link active" style="color: white" data-link href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
