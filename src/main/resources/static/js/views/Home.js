@@ -46,7 +46,7 @@ function searchBarHandler(e) {
 // }
 
 function getAPI(userSearch) {
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=20`).then(resp => {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API}&query=${userSearch}&number=100`).then(resp => {
         return resp.json();
     }).then(food => {
         recipeArray = [];
@@ -84,7 +84,7 @@ function loopRecipesData() {
                         <div class="home-recipe-card">
                             <div class="home-card-image">
                                 <img src="${image}" id="home-card-img" class="home-card-img" alt="Recipe Image">
-                                <div data-id="${id}" id="home-card-title">${title}</div>
+                                <div data-id="${id}" id="home-card-title" class="card-footer">${title}</div>
                             </div>
                         </div>
                     </div>
